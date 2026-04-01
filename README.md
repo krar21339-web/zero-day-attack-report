@@ -1,48 +1,63 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/render?type=waving&color=0:000000,70:003366,100:000000&height=200&section=header&text=Sentinel-AI&fontSize=50&animation=fadeIn&fontColor=ffffff" width="100%" />
+  <img src="https://capsule-render.vercel.app/render?type=soft&color=auto&height=200&section=header&text=Sentinel-AI%20Project&fontSize=40&animation=fadeIn" width="100%" />
 </div>
 
-# 🛡️ Sentinel-AI: Deep Learning for Zero-Day Attack Detection
+# Sentinel-AI: Deep Learning Framework for Zero-Day Attack Detection
 
-### 👤 Student Information
+### Student Information
 | Field | Details |
 | :--- | :--- |
-| **Student Name** | كرار محمد داود |
-| **Supervised by** | د. احمد سعد |
-| **Department** | هندسة الأمن السيبراني |
-| **Stage** | المرحلة الثانية |
+| **Student Name** | Krar Mohammed Dawood |
+| **Supervised by** | Dr. Ahmed Saad |
+| **Department** | Cyber Security Engineering |
+| **Stage** | Second Stage |
 
 ---
 
-## 🚀 2. Introduction
-In the modern cybersecurity landscape, **Zero-Day attacks** represent a critical threat. Our model uses **Deep Learning (LSTM)** to identify these threats before they cause damage.
-
-<div align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2ZicThqZndnYm54ejRxdnl6bnZ6bnZ6bnZ6bnZ6bnZ6bnZ6bnZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/YlS72382G29pW7f3A9/giphy.gif" width="80%" />
-</div>
-
-</div>
+## 1. Table of Contents
+1. [Introduction](#1-introduction)
+2. [Problem Statement](#2-problem-statement)
+3. [Technical Methodology](#3-technical-methodology)
+4. [Practical Implementation](#4-practical-implementation)
+5. [Conclusion and Recommendations](#5-conclusion-and-recommendations)
+6. [References](#6-references)
 
 ---
 
-## 🧠 3. Methodology
-We implemented a Deep Learning approach using **TensorFlow**. Unlike traditional systems, our AI analyzes *behavior* rather than *signatures*.
+## 1. Introduction
+The emergence of Zero-Day vulnerabilities presents a significant challenge to modern cybersecurity infrastructures. Traditional signature-based detection systems often fail to recognize these previously unknown threats. This report introduces **Sentinel-AI**, a framework utilizing Deep Learning to identify anomalous network behaviors.
 
-```python
-# Security Logic Example
-if anomaly_score > 0.85:
-    trigger_alert("Zero-Day Threat Detected!")
+## 2. Problem Statement
+Cyber-attacks are evolving rapidly, moving from static malware to dynamic, AI-driven exploits. The core problem addressed is the inability of conventional antivirus programs to detect exploits that do not have a pre-existing signature in global databases.
+
+## 3. Technical Methodology
+We utilize **Long Short-Term Memory (LSTM)** units, a type of Recurrent Neural Network (RNN) designed to process sequential network traffic data. 
+
+![Network Architecture](https://miro.medium.com/v2/resize:fit:1400/1*uAe7mU7iFkX2A4yB9JgY0w.png)
+*Figure 1: Deep Learning Architecture for anomaly detection.*
+
 ---
 
-## 💻 4. Practical Simulation (المحاكاة العملية)
-Our system monitors network packets and classifies them using the trained model. Below is the core logic for the anomaly detection engine:
+## 4. Practical Implementation
+The following Python snippet demonstrates the core logic of the detection engine using the TensorFlow library to score network packets.
 
 ```python
 import tensorflow as tf
 
-def predict_threat(packet_data):
-    # Analyzing packet sequence
-    result = model.predict(packet_data)
-    if result > 0.90:
-        return "CRITICAL: Zero-Day Attack Detected!"
-    return "Status: Network Secure"
+def analyze_traffic(packet_data):
+    # Analyzing packet sequence for anomalies
+    prediction = model.predict(packet_data)
+    if prediction > 0.85:
+        return "Anomaly Detected"
+    return "Secure"
+    ## 5. Conclusion and Recommendations
+This research demonstrates that behavior-based detection is the most effective defense against Zero-Day exploits. It is recommended that organizations adopt a **Zero-Trust Architecture** integrated with AI-driven monitoring systems to provide a proactive shield against the unknown.
+
+## 6. References
+1. **Mandiant:** *Global Trends in Zero-Day Exploitation (2024).*
+2. **NIST SP 800-207:** *Zero Trust Architecture Standards.*
+3. **IEEE Xplore:** *A Survey on Deep Learning for Cyber Security.*
+
+---
+<div align="right">
+  <i>Generated for Academic Purposes - 2026
