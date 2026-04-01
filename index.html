@@ -1,35 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Thesis | Sentinel-AI</title>
+    <title>تقرير الأمن السيبراني - كرار محمد</title>
     <style>
-        :root { --bg: #0b0e14; --card: #161b22; --accent: #2f81f7; --text: #adbac7; --code: #7ee787; --white: #ffffff; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        
-        /* تنسيق الصفحة ليكون متصلاً (حل مشكلة التقطيع) */
-        .page { background: var(--card); border-radius: 15px; width: 100%; max-width: 850px; min-height: auto; margin-bottom: 20px; padding: 50px; border: 1px solid #30363d; position: relative; box-sizing: border-box; transition: box-shadow 0.3s; }
-        .page:hover { box-shadow: 0 0 30px rgba(47, 129, 247, 0.4); }
-
-        /* الهيدر وشعار الجامعة (تم استبدال الباركود بالشعار الدائري الحقيقي) */
-        .college-header { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
+        :root { --bg: #0b0e14; --card: #161b22; --accent: #2f81f7; --text: #adbac7; --white: #ffffff; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .page { background: var(--card); border-radius: 15px; width: 100%; max-width: 800px; padding: 40px; margin-bottom: 20px; border: 1px solid #30363d; box-sizing: border-box; }
+        .header { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 20px; }
         .mamon-logo { width: 120px; height: 120px; background: white; border-radius: 50%; padding: 5px; border: 3px solid var(--accent); }
+        h1, h2 { color: var(--white); }
+        .cyber-image { width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid #30363d; }
+        .info-box { background: #0d1117; padding: 20px; border-radius: 10px; border: 1px solid #30363d; margin: 20px 0; }
+        .btn-download { background: var(--accent); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+        .qr-section { text-align: center; margin-top: 30px; }
+        .qr-code { background: white; padding: 10px; border-radius: 10px; display: inline-block; }
+        @media print { .no-print { display: none; } body { padding: 0; } .page { border: none; margin: 0; } }
+    </style>
+</head>
+<body>
 
-        h1 { color: var(--white); font-size: 1.8rem; line-height: 1.4; margin: 30px 0; text-align: center; }
-        h2 { border-right: 5px solid var(--accent); padding-right: 15px; color: var(--white); text-align: right; margin-top: 40px; font-size: 1.5rem; }
-        
-        /* تنسيق الصور السيبرانية */
-        .cyber-image { width: 100%; border-radius: 10px; border: 1px solid #30363d; margin: 20px 0; opacity: 0.9; }
+    <div class="page">
+        <div class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_of_Al-Ma%27mon_University_College.png/200px-Logo_of_Al-Ma%27mon_University_College.png" alt="شعار المأمون" class="mamon-logo">
+            <h2>كلية المأمون الجامعة</h2>
+            <p style="color: var(--accent);">قسم هندسة الأمن السيبراني</p>
+        </div>
 
-        /* الباركود النظيف في النهاية */
-        .source-qr { background: white; padding: 10px; border-radius: 10px; display: inline-block; margin-top: 20px; border: 3px solid var(--accent); }
-        .source-qr img { width: 140px; height: 140px; }
+        <h1 style="text-align: center;">Use Deep Learning To detect unknown attacks (Zero-Day Attacks)</h1>
 
-        pre { background: #010409; padding: 20px; border-radius: 10px; border-left: 4px solid var(--code); color: var(--code); font-size: 14px; overflow-x: auto; direction: ltr; text-align: left; }
+        <div class="info-box">
+            <p><strong>اسم الطالب:</strong> كرار محمد داود</p>
+            <p><strong>بإشراف الدكتور:</strong> أحمد سعد</p>
+            <p><strong>العام الدراسي:</strong> 2025 - 2026</p>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" class="cyber-image" alt="Cyber Security">
+    </div>
+
+    <div class="page">
+        <h2>المصادر والمراجع</h2>
+        <div class="qr-section">
+            <p>امسح الكود للمصادر العلمية (IEEE):</p>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://ieeexplore.ieee.org/abstract/document/8939402" alt="QR Code">
+            </div>
+        </div>
         
-        .info-box { background: #0d1117; padding: 15px; border-radius: 10px; border: 1px solid #30363d; text-align: right; }
-        .info-box p { margin: 5px 0; }
-        
-        /* إعدادات الطباعة للـ PDF النظيف */
-        
+        <div style="text-align: center;">
+            <button class="btn-download no-print" onclick="window.print()">📥 تحميل التقرير PDF</button>
+        </div>
+    </div>
+
+</body>
+</html>
