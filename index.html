@@ -3,113 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel-AI | Academic Report</title>
+    <title>Academic Thesis | Sentinel-AI</title>
     <style>
-        :root { --bg: #0b0e14; --card: #161b22; --accent: #2f81f7; --text: #adbac7; --white: #ffffff; --code: #7ee787; }
+        :root { --bg: #0b0e14; --card: #161b22; --accent: #2f81f7; --text: #adbac7; --code: #7ee787; --white: #ffffff; }
         body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
         
-        .page { background: var(--card); border-radius: 15px; width: 100%; max-width: 850px; min-height: 1200px; margin-bottom: 40px; padding: 60px; border: 1px solid #30363d; position: relative; box-sizing: border-box; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; }
-        
-        /* الهيدر وشعار الجامعة */
-        .college-header { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
-        .mamon-logo { width: 120px; height: auto; margin-bottom: 10px; border-radius: 10px; }
+        /* تنسيق الصفحة ليكون متصلاً (حل مشكلة التقطيع) */
+        .page { background: var(--card); border-radius: 15px; width: 100%; max-width: 850px; min-height: auto; margin-bottom: 20px; padding: 50px; border: 1px solid #30363d; position: relative; box-sizing: border-box; transition: box-shadow 0.3s; }
+        .page:hover { box-shadow: 0 0 30px rgba(47, 129, 247, 0.4); }
 
-        h1 { color: var(--white); font-size: 2.2rem; line-height: 1.4; margin: 40px 0; }
-        h2 { border-right: 5px solid var(--accent); padding-right: 15px; color: var(--white); text-align: right; margin-top: 50px; }
+        /* الهيدر وشعار الجامعة (تم استبدال الباركود بالشعار الدائري الحقيقي) */
+        .college-header { text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
+        .mamon-logo { width: 120px; height: 120px; background: white; border-radius: 50%; padding: 5px; border: 3px solid var(--accent); }
+
+        h1 { color: var(--white); font-size: 1.8rem; line-height: 1.4; margin: 30px 0; text-align: center; }
+        h2 { border-right: 5px solid var(--accent); padding-right: 15px; color: var(--white); text-align: right; margin-top: 40px; font-size: 1.5rem; }
         
         /* تنسيق الصور السيبرانية */
-        .cyber-image { width: 100%; border-radius: 12px; border: 1px solid #30363d; margin: 25px 0; transition: transform 0.3s; }
-        .cyber-image:hover { transform: scale(1.02); border-color: var(--accent); }
+        .cyber-image { width: 100%; border-radius: 10px; border: 1px solid #30363d; margin: 20px 0; opacity: 0.9; }
 
-        /* الباركود الوحيد للمصادر */
-        .source-qr { background: white; padding: 10px; border-radius: 10px; display: inline-block; margin-top: 20px; }
-        .source-qr img { width: 150px; height: 150px; }
+        /* الباركود النظيف في النهاية */
+        .source-qr { background: white; padding: 10px; border-radius: 10px; display: inline-block; margin-top: 20px; border: 3px solid var(--accent); }
+        .source-qr img { width: 140px; height: 140px; }
 
-        pre { background: #010409; padding: 25px; border-radius: 10px; border-left: 4px solid var(--code); color: var(--code); font-size: 14px; overflow-x: auto; direction: ltr; text-align: left; }
-        .page-num { position: absolute; bottom: 30px; width: 100%; left: 0; text-align: center; color: var(--accent); font-weight: bold; letter-spacing: 2px; }
+        pre { background: #010409; padding: 20px; border-radius: 10px; border-left: 4px solid var(--code); color: var(--code); font-size: 14px; overflow-x: auto; direction: ltr; text-align: left; }
         
-        .info-box { background: #0d1117; padding: 20px; border-radius: 10px; border: 1px solid #30363d; text-align: right; margin-top: 50px; }
-        .info-box p { margin: 5px 0; font-size: 1.1rem; }
-    </style>
-</head>
-<body>
-
-    <div class="page" style="text-align: center;">
-        <div class="college-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_of_Al-Ma%27mon_University_College.png/200px-Logo_of_Al-Ma%27mon_University_College.png" alt="College Logo" class="mamon-logo">
-            <h3 style="color: white; margin: 0;">كلية المأمون الجامعة</h3>
-            <p style="color: var(--accent);">قسم هندسة الأمن السيبراني</p>
-        </div>
-
-        <h1>Use Deep Learning To detect unknown attacks (Zero-Day Attacks)</h1>
-
-        <div class="info-box">
-            <p><strong>اسم الطالب:</strong> كرار محمد داود</p>
-            <p><strong>بإشراف الدكتور:</strong> أحمد سعد</p>
-            <p><strong>العام الدراسي:</strong> 2025 - 2026</p>
-        </div>
+        .info-box { background: #0d1117; padding: 15px; border-radius: 10px; border: 1px solid #30363d; text-align: right; }
+        .info-box p { margin: 5px 0; }
         
-        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="cyber-image" alt="Cybersecurity Cover">
+        /* إعدادات الطباعة للـ PDF النظيف */
         
-        <div class="page-num">PAGE 01</div>
-    </div>
-
-    <div class="page">
-        <h2>1. المقدمة (Introduction)</h2>
-        <p style="text-align: right; line-height: 1.8;">
-            تعتبر هجمات اليوم الصفر (Zero-Day Attacks) من أخطر التهديدات التي تواجه الأنظمة الحديثة، حيث تستغل ثغرات غير مكتشفة برمجياً. في هذا التقرير، نستعرض كيف يمكن للتعلم العميق تحليل السلوك واكتشاف الأنماط المشبوهة قبل وقوع الضرر.
-        </p>
-
-        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="cyber-image" alt="Detection Concept">
-        
-        <div class="page-num">PAGE 03</div>
-    </div>
-
-    <div class="page">
-        <h2>9. الجزء العملي (Practical Implementation)</h2>
-        <p style="text-align: right;">تم بناء نموذج كشف التهديدات باستخدام مكتبة TensorFlow لتحليل تدفق البيانات الحيوية للنظام:</p>
-        
-        <pre><code># Deep Learning Detection Script
-import tensorflow as tf
-from tensorflow.keras.layers import LSTM, Dense
-
-def build_sentinel_model():
-    model = tf.keras.Sequential([
-        LSTM(64, input_shape=(100, 1), return_sequences=True),
-        LSTM(32),
-        Dense(1, activation='sigmoid') # Malicious or Safe
-    ])
-    model.compile(optimizer='adam', loss='binary_crossentropy')
-    return model
-
-# AI is now monitoring system calls...</code></pre>
-
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800" class="cyber-image" alt="Coding Security">
-        
-        <div class="page-num">PAGE 10</div>
-    </div>
-
-    <div class="page" style="text-align: center;">
-        <h2>11. المصادر والمراجع (References)</h2>
-        <p style="text-align: right;">تم الاستناد في هذا البحث على أحدث الأوراق العلمية المنشورة في مجال الأمن السيبراني والذكاء الاصطناعي لعام 2026.</p>
-        
-        <div style="margin-top: 100px;">
-            <p style="color: var(--accent);">لمراجعة المصادر الأكاديمية الكاملة، يرجى مسح الرمز أدناه:</p>
-            <div class="source-qr">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/krar21339-web/" alt="Sources QR">
-            </div>
-            <p style="font-size: 0.9rem; margin-top: 10px;">IEEE & IBM Security Database 2026</p>
-        </div>
-
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800" class="cyber-image" alt="Data Center">
-
-        <div class="page-num">PAGE 15</div>
-    </div>
-
-</body>
-</html>
-<div style="text-align: center; margin: 20px;">
-    <button onclick="window.print()" style="background: #2f81f7; color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: sans-serif;">
-        📥 Download as PDF (تحميل التقرير)
-    </button>
-</div>
