@@ -1,4 +1,4 @@
-# تقرير تحليل ثغرة أمنية (Zero-Day Analysis)
+# Deep Learning Framework for Zero-Day Attack Detection
 
 ## 📋 ملخص (Summary)
 [This research project focuses on developing Deep Learning models capable of analyzing network traffic and detecting anomalous behaviors associated with Zero-Day Attacks—threats that traditional signature-based systems fail to identify.]
