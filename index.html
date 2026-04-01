@@ -3,175 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel-AI | Full Engineering Report</title>
+    <title>Sentinel-AI | Final Academic Report</title>
     <style>
-        :root { --bg: #0b0e14; --card: #161b22; --accent: #2f81f7; --text: #adbac7; --code: #7ee787; --white: #ffffff; --warn: #ff9f43; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; line-height: 1.6; display: flex; flex-direction: column; align-items: center; }
+        :root { --bg: #0b0e14; --card: #161b22; --accent: #2f81f7; --text: #adbac7; --white: #ffffff; --code: #7ee787; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
         
-        /* تنسيق الصفحة A4 */
-        .page { background: var(--card); border-radius: 15px; width: 100%; max-width: 900px; min-height: 1250px; margin-bottom: 50px; padding: 70px 60px; border: 1px solid #30363d; box-shadow: 0 15px 40px rgba(0,0,0,0.6); position: relative; box-sizing: border-box; page-break-after: always; animation: fadeIn 1s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .page { background: var(--card); border-radius: 15px; width: 100%; max-width: 850px; min-height: 1200px; margin-bottom: 40px; padding: 60px; border: 1px solid #30363d; position: relative; box-sizing: border-box; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        /* شعار الكلية */
+        .header-section { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
+        .mamon-logo { width: 80px; height: 80px; background: white; border-radius: 50%; padding: 5px; }
 
-        /* صفحة الغلاف */
-        .cover { text-align: center; justify-content: center; display: flex; flex-direction: column; height: 1150px; }
-        .college-header { display: flex; align-items: center; justify-content: center; gap: 20px; border-bottom: 2px solid #30363d; padding-bottom: 20px; margin-bottom: 40px; }
-        .college-logo { width: 90px; height: 90px; background: white; border-radius: 50%; padding: 5px; border: 2px solid var(--accent); }
-        .main-title { color: var(--white); font-size: 3.5rem; margin: 0; text-transform: uppercase; }
-        .sub-title { color: var(--accent); font-size: 1.6rem; margin-top: 10px; font-weight: bold; }
-        .student-info { margin-top: 150px; text-align: left; display: inline-block; border-left: 5px solid var(--accent); padding-left: 30px; font-size: 1.2rem; }
+        h1, h2 { color: var(--white); text-align: center; }
+        h2 { border-bottom: 1px solid var(--accent); padding-bottom: 10px; margin-top: 40px; text-align: left; }
+        
+        .img-placeholder { width: 100%; background: #0d1117; border: 1px solid var(--accent); border-radius: 10px; margin: 20px 0; text-align: center; padding: 20px; }
+        .img-placeholder img { max-width: 100%; border-radius: 5px; }
 
-        /* العناوين والتنسيق البصري */
-        h2 { color: var(--white); font-size: 2.2rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-top: 50px; }
-        h3 { color: var(--accent); margin-top: 30px; font-size: 1.5rem; }
-        p { text-align: justify; font-size: 1.1rem; }
-        .highlight { color: var(--accent); font-weight: bold; }
-        .page-number { position: absolute; bottom: 30px; left: 0; right: 0; text-align: center; color: var(--accent); font-weight: bold; }
+        /* الباركود النظيف */
+        .qr-frame { background: white; padding: 10px; border-radius: 10px; display: inline-block; margin-top: 20px; }
+        .qr-frame img { width: 120px; height: 120px; }
 
-        /* الكود، الصور، والباركود النقي */
-        pre { background: #010409; padding: 25px; border-radius: 12px; border-left: 5px solid var(--code); color: var(--code); overflow-x: auto; font-size: 13px; margin: 25px 0; }
-        .code-comment { color: #8b949e; font-style: italic; }
-        
-        .img-block { background: #1c2128; border: 1px solid var(--accent); padding: 10px; text-align: center; color: var(--accent); border-radius: 15px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
-        .img-block img { width: 100%; max-width: 700px; border-radius: 10px; opacity: 0.9; }
-        
-        .qr-clean { background: var(--white); padding: 10px; border-radius: 12px; text-align: center; display: inline-block; border: 2px solid var(--accent); width: 130px; height: 130px;}
-        .qr-clean img { width: 100%; }
-        
-        .warning-box { background: rgba(255,159,67,0.1); border-left: 4px solid var(--warn); padding: 20px; color: var(--warn); border-radius: 8px; margin: 30px 0;}
+        pre { background: #010409; padding: 20px; border-radius: 10px; border-left: 4px solid var(--code); color: var(--code); font-size: 13px; overflow-x: auto; line-height: 1.5; }
+        .comment { color: #8b949e; font-style: italic; }
+        .page-num { position: absolute; bottom: 30px; width: 100%; left: 0; text-align: center; color: var(--accent); font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="page cover">
-        <div class="college-header">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=PLACEHOLDER_FOR_AL-MAMOUN_LOGO" class="college-logo" alt="Logo">
-            <div style="text-align:left;">
-                <h3 style="color:var(--white); margin:0;">كلية المأمون الجامعة</h3>
-                <p style="margin:5px 0 0; color:var(--text);">قسم هندسة الأمن السيبراني</p>
+    <div class="page">
+        <div class="header-section">
+            <div style="text-align: left;">
+                <h3 style="margin:0; color:white;">كلية المأمون الجامعة</h3>
+                <p style="margin:5px 0; font-size: 14px;">قسم هندسة الأمن السيبراني</p>
+            </div>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=MAMOUN_UNIVERSITY_LOGO" class="mamon-logo" alt="Logo">
+        </div>
+        
+        <div style="text-align: center; margin-top: 100px;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 0;">SENTINEL-AI</h1>
+            <p style="color: var(--accent); font-size: 1.5rem; font-weight: bold;">Deep Learning for Zero-Day Attack Detection</p>
+            
+            <div style="margin-top: 150px; text-align: left; display: inline-block; border-left: 4px solid var(--accent); padding-left: 20px;">
+                <p><strong>Prepared by:</strong> Krar Mohammed Dawood</p>
+                <p><strong>Supervisor:</strong> Dr. Ahmed Saad</p>
+                <p><strong>Academic Year:</strong> 2025 - 2026</p>
             </div>
         </div>
-        <div style="text-align:center;">
-            <h1 class="main-title">SENTINEL-AI</h1>
-            <h2 style="border:none; margin:0;" class="sub-title">تقنية الـ Deep Learning لاكتشاف الهجمات غير المعروفة (Zero-Day Attacks)</h2>
-        </div>
-        <div class="student-info">
-            <p><span class="highlight">Prepared by (الطالب):</span> Krar Mohammed Dawood (كرار محمد داود)</p>
-            <p><span class="highlight">Supervisor (بإشراف):</span> Dr. Ahmed Saad (د. أحمد سعد)</p>
-            <p><span class="highlight">Subject (الموضوع):</span> AI Application in Cybersecurity</p>
-            <p><span class="highlight">Academic Year:</span> 2025-2026</p>
-        </div>
-        <div class="page-number">P. 01</div>
-    </div>
-
-    <div class="page">
-        <h2>Table of Contents</h2>
-        <div style="margin-top: 50px;">
-            <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.2rem; border-bottom: 1px dotted #30363d;"><span>1. Introduction & Concept</span><span>03</span></div>
-            <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.2rem; border-bottom: 1px dotted #30363d;"><span>2. Problem Statement & Challenges</span><span>05</span></div>
-            <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.2rem; border-bottom: 1px dotted #30363d;"><span>3. Literature Review (Chapter I)</span><span>06</span></div>
-            <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.2rem; border-bottom: 1px dotted #30363d;"><span>4. Methodology & LSTM (Chapter II)</span><span>08</span></div>
-            <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.2rem; border-bottom: 1px dotted #30363d;"><span>5. Practical Code (behavior Analysis)</span><span>10</span></div>
-            <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.2rem; border-bottom: 1px dotted #30363d;"><span>6. GPU Model Training & Results</span><span>12</span></div>
-            <div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.2rem; border-bottom: 1px dotted #30363d;"><span>7. Conclusion & References</span><span>14</span></div>
-        </div>
-        <div class="page-number">P. 02</div>
+        <div class="page-num">PAGE 01</div>
     </div>
 
     <div class="page">
         <h2>1. Introduction</h2>
-        <p>"A zero-day exploit is a cyberattack vector that takes advantage of an unknown or unaddressed security flaw in computer software, hardware or firmware. 'Zero day' refers to the fact that the software or device vendor has zero days to fix the flaw because malicious actors can already use it to access vulnerable systems."</p>
-        <div class="img-block">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x200&data=IMAGE_PLACEHOLDER:Diagram_of_Zero-Day_Vulnerability_Gap" alt="Intro Image">
-            <p style="color:var(--accent); font-size:12px;"></p>
+        <p>"A zero-day exploit is a cyberattack vector that takes advantage of an unknown security flaw... Zero day refers to the fact that vendors have zero days to fix it."</p>
+        
+        <div class="img-placeholder">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=VISUAL_DIAGRAM_ZERO_DAY_ATTACK_TIMELINE" alt="Zero Day Diagram">
+            <p style="font-size: 12px; color: var(--accent);">Figure 1: Evolution of Zero-Day Threats in 2026</p>
         </div>
-        <div class="page-number">P. 03</div>
+        <div class="page-num">PAGE 03</div>
     </div>
 
     <div class="page">
-        <h2>2. Problem Statement</h2>
-        <p>Traditional cybersecurity systems struggle against Zero-Day attacks. In the context of AI applied to cybersecurity, two major critical problems are identified:</p>
-        <ul>
-            <li>Inability of signature databases to handle huge Big Data streams.</li>
-            <li>Lack of predictive accuracy against dynamic JavaScript-based threats.</li>
-        </ul>
-        <div class="warning-box">
-            <h4>Adversarial AI Risk (خطر الذكاء الاصطناعي المعادي):</h4>
-            <p>A significant ethical and security challenge is "Data Poisoning". Attackers can target the Deep Learning model during training, forcing it to ignore malicious behaviors. Verification Data:</p>
-            <div style="text-align:center; margin-top:15px;">
-                <div class="qr-clean">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=IBM-Security-Adversarial-Machine-Learning-Report-2026" alt="QR">
-                </div>
+        <h2>4. Practical Implementation</h2>
+        <p>This section provides a deep dive into the Sentinel-AI detection logic. The model uses behavioral hooking to intercept malicious encryption attempts.</p>
+        
+        <pre><code><span class="comment">// Sentinel-AI Core: Node.js Behavior Monitor</span>
+const fs = require('fs'); <span class="comment">// File system module for I/O monitoring</span>
+const crypto = require('crypto'); <span class="comment">// Crypto module to detect unintended encryption</span>
+
+<span class="comment">// Monitoring loop for directory activity</span>
+fs.watch('./secure_data', (eventType, filename) => {
+    <span class="comment">// 1. Capture file change event</span>
+    console.log(`[MONITOR] Event: ${eventType} on file: ${filename}`);
+    
+    <span class="comment">// 2. Analyze entropy of the file content</span>
+    <span class="comment">// High entropy often indicates Ransomware encryption</span>
+    const data = fs.readFileSync(`./secure_data/${filename}`);
+    const entropy = calculateEntropy(data); 
+
+    <span class="comment">// 3. AI Threshold Trigger (Zero-Day Detection)</span>
+    if (entropy > 0.95) {
+        console.error(`[ALERT] High Entropy Detected! Blocking PID...`);
+        <span class="comment">// Logic to kill malicious process or isolate file</span>
+    }
+});</code></pre>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <div class="qr-frame">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/krar21339-web/" alt="GitHub QR">
             </div>
         </div>
-        <div class="page-number">P. 05</div>
-    </div>
-
-    <div class="page">
-        <h2>3. Methodology (LSTM Architecture)</h2>
-        <p>The Sentinel-AI framework utilizes a Deep Learning architecture based on <span class="highlight">Long Short-Term Memory (LSTM)</span> networks to analyze behavioral sequences.</p>
-        <div class="img-block">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x200&data=IMAGE_PLACEHOLDER:LSTM_Neural_Network_Architecture_for_Anomaly_Detection" alt="LSTM Image">
-            <p style="color:var(--accent); font-size:12px;"></p>
-        </div>
-        <div class="page-number">P. 08</div>
-    </div>
-
-    <div class="page">
-        <h2>4. Practical Implementation (Deep Learning Core)</h2>
-        <p>The following logic represents the "Behavioral Analysis Core" developed for Sentinel-AI, using Python, TensorFlow, and psutil for process hooking. Note the detailed line-by-line explanation:</p>
-        <pre><code><span class="code-comment">/**
- * SENTINEL-AI: BEHAVIORAL INFERENCE ENGINE
- * Developed by: Krar Mohammed Dawood
- */</span>
-import tensorflow as tf    <span class="code-comment"># Importing TensorFlow for AI model loading</span>
-import psutil            <span class="code-comment"># Importing psutil for accessing process information</span>
-import numpy as np        <span class="code-comment"># Importing NumPy for data vectorization</span>
-
-<span class="code-comment"># Step 1: Loading the pre-trained LSTM network model</span>
-model = tf.keras.models.load_style('sentinel_lstm.h5') 
-
-<span class="code-comment"># Step 2: Main Hooking Function to monitor specific processes</span>
-def monitor_hook(pid):
-    try:
-        <span class="code-comment"># Accessing the process object by Process ID (PID)</span>
-        p = psutil.Process(pid)
-        
-        <span class="code-comment"># Feature 1: Monitoring Dynamic Memory Allocation</span>
-        p_mem = p.memory_info().rss / 1024 / 1024 <span class="code-comment"># Converting bytes to MB</span>
-        
-        <span class="code-comment"># Feature 2: Measuring CPU usage behavior pattern</span>
-        p_cpu = p.cpu_percent() / 100 <span class="code-comment"># Normalizing CPU data (0-1)</span>
-        
-        <span class="code-comment"># Feature 3: Intercepting network packet entropy</span>
-        p_net = p.connections(kind='inet')
-        
-        <span class="code-comment"># Step 3: Feeding the behavior sequence vector to AI for prediction</span>
-        behavior_vector = np.array([[p_cpu, p_mem, len(p_net)]])
-        prediction = model.predict(behavior_vector)
-        
-        <span class="code-comment"># Step 4: Making the final mitigation decision based on threshold (95%)</span>
-        if prediction > 0.95:
-            console.log(f"[ALERT] Sentinel-AI detected Zero-Day behavior in PID {pid}!")
-            p.terminate() <span class="code-comment"># Terminating the process to prevent damage</span>
-            
-    except psutil.NoSuchProcess:
-        pass <span class="code-comment"># Handle cases where the process terminated before analysis</span></code></pre>
-        <div class="page-number">P. 10</div>
-    </div>
-
-    <div class="page">
-        <h2>5. Results & Validation</h2>
-        <p>Model training was accelerated using NVIDIA RTX GPUs (GPU accelerated training core). The following chart shows the comparative accuracy against unseen Zero-Day ransomware patterns:</p>
-        <div class="img-block">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x200&data=IMAGE_PLACEHOLDER:Chart_Detection_Accuracy_Sentinel_LSTM_vs_ML" alt="Results Image">
-            <p style="color:var(--accent); font-size:12px;"></p>
-        </div>
-        <div style="text-align:center; margin-top:30px;">
-            <div class="qr-clean">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Verification-Link-IEEE-Deep-Learning-Attack-Detection" alt="QR">
-            </div>
-        </div>
-        <div class="page-number">P. 12</div>
+        <div class="page-num">PAGE 10</div>
     </div>
 
 </body>
