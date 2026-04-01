@@ -18,7 +18,9 @@
 In the modern cybersecurity landscape, **Zero-Day attacks** represent a critical threat. Our model uses **Deep Learning (LSTM)** to identify these threats before they cause damage.
 
 <div align="center">
-  <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXZ3bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKSjP30Lz48M66I/giphy.gif" width="80%" />
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2ZicThqZndnYm54ejRxdnl6bnZ6bnZ6bnZ6bnZ6bnZ6bnZ6bnZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/YlS72382G29pW7f3A9/giphy.gif" width="80%" />
+</div>
+
 </div>
 
 ---
