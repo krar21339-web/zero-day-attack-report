@@ -3,96 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel-AI | Offensive & Defensive Report</title>
+    <title>Sentinel-AI | Academic Report</title>
     <style>
-        :root { --bg: #0d1117; --card: #161b22; --accent: #2f81f7; --text: #adbac7; --code-neon: #7ee787; }
+        :root { --bg: #0b0e14; --card: #161b22; --accent: #2f81f7; --text: #adbac7; --code: #7ee787; }
         body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 15px; line-height: 1.6; }
         
-        /* تصميم الهيدر بنفس ضخامة الفيديو */
-        .main-header { background: linear-gradient(180deg, #1c2128 0%, #0d1117 100%); padding: 40px 20px; border-radius: 20px; text-align: center; border: 1px solid #30363d; margin-bottom: 25px; position: relative; }
-        .main-header h1 { color: white; font-size: 2.4rem; margin: 0; letter-spacing: 1px; }
-        .main-header p { color: var(--accent); font-weight: bold; margin-top: 10px; font-size: 1.1rem; }
-        .dark-mode-tag { position: absolute; top: 20px; right: 20px; background: #21262d; padding: 5px 15px; border-radius: 20px; font-size: 12px; color: white; border: 1px solid #30363d; }
+        /* الهيدر العلوي بنمط الفيديو */
+        .hero-header { 
+            background: linear-gradient(180deg, #1c2128 0%, #0b0e14 100%);
+            padding: 40px 20px; border-radius: 20px; text-align: center;
+            border: 1px solid #30363d; margin-bottom: 25px; position: relative;
+        }
+        .hero-header h1 { color: white; font-size: 2.2rem; margin: 0; letter-spacing: 1px; }
+        .hero-header p { color: var(--accent); font-weight: bold; margin-top: 10px; }
+        .status-tag { position: absolute; top: 15px; right: 15px; background: #238636; color: white; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: bold; }
 
         /* البطاقات الاحترافية */
-        .content-card { background: var(--card); border-radius: 15px; padding: 25px; margin-bottom: 20px; border: 1px solid #30363d; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
-        .card-label { color: white; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; }
+        .card { background: var(--card); border-radius: 15px; padding: 25px; margin-bottom: 20px; border: 1px solid #30363d; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+        .card-title { color: white; font-size: 1.1rem; font-weight: bold; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; }
 
-        /* جدول البيانات الشخصية */
-        .data-table { width: 100%; border-collapse: collapse; }
-        .data-table td { padding: 12px; border-bottom: 1px solid #21262d; }
-        .data-table b { color: var(--accent); }
+        /* الجدول المنظم */
+        .info-table { width: 100%; border-collapse: collapse; }
+        .info-table td { padding: 12px; border-bottom: 1px solid #21262d; font-size: 14px; }
+        .label { color: var(--accent); font-weight: bold; }
 
-        /* كود الهجوم (مأخوذ من الفيديو ومعدل لمشروعك) */
-        .code-container { background: #010409; padding: 20px; border-radius: 10px; border-left: 4px solid var(--code-neon); margin: 20px 0; overflow-x: auto; }
-        pre { color: var(--code-neon); font-size: 13px; margin: 0; font-family: 'Courier New', Courier, monospace; }
+        /* صندوق كود Node.js (المستخرج من الفيديو) */
+        .code-box { background: #010409; padding: 20px; border-radius: 10px; border-left: 4px solid var(--code); margin: 15px 0; overflow-x: auto; position: relative; }
+        pre { color: var(--code); font-size: 13px; margin: 0; font-family: 'Courier New', monospace; }
+        .code-lang { position: absolute; top: 5px; right: 10px; font-size: 9px; color: #444; }
 
-        /* الباركودات */
-        .qr-section { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
-        .qr-item { background: #f8f9fa; padding: 15px; border-radius: 12px; text-align: center; color: #111; border: 2px solid var(--accent); }
-        .qr-item img { width: 100px; margin-bottom: 8px; }
-        .qr-item p { margin: 0; font-size: 11px; font-weight: bold; }
+        /* قسم الباركود المتعدد */
+        .qr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .qr-card { background: #ffffff; padding: 15px; border-radius: 12px; text-align: center; color: #000; border: 2px solid var(--accent); }
+        .qr-card img { width: 90px; margin-bottom: 5px; }
+        .qr-card p { margin: 0; font-size: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="main-header">
-        <div class="dark-mode-tag">🌙 Dark Mode Enabled</div>
-        <h1>Sentinel-AI: Framework</h1>
-        <p>Deep Learning Strategy for Zero-Day Attack Detection</p>
+    <div class="hero-header">
+        <div class="status-tag">● SYSTEM ACTIVE</div>
+        <h1>Sentinel-AI</h1>
+        <p>Advanced Framework for Zero-Day Attack Detection</p>
     </div>
 
-    <div class="content-card">
-        <div class="card-label">Student Profile <span>ملف الطالب</span></div>
-        <table class="data-table">
-            <tr><td><b>Student Name:</b></td><td>Krar Mohammed Dawood</td><td style="text-align:right;">كرار محمد داود</td></tr>
-            <tr><td><b>Stage:</b></td><td>Second Stage</td><td style="text-align:right;">المرحلة الثانية</td></tr>
-            <tr><td><b>Department:</b></td><td>Cyber Security Engineering</td><td style="text-align:right;">هندسة الأمن السيبراني</td></tr>
-            <tr><td><b>Supervised by:</b></td><td>Dr. Ahmed Saad</td><td style="text-align:right;">بإشراف: د. أحمد سعد</td></tr>
+    <div class="card">
+        <div class="card-title">Student Profile <span>ملف الطالب</span></div>
+        <table class="info-table">
+            <tr><td class="label">Name:</td><td>Krar Mohammed Dawood</td><td style="text-align:right;">كرار محمد داود</td></tr>
+            <tr><td class="label">Stage:</td><td>Second Stage</td><td style="text-align:right;">المرحلة الثانية</td></tr>
+            <tr><td class="label">Department:</td><td>Cyber Security Engineering</td><td style="text-align:right;">هندسة الأمن السيبراني</td></tr>
+            <tr><td class="label">Supervisor:</td><td>Dr. Ahmed Saad</td><td style="text-align:right;">د. أحمد سعد</td></tr>
         </table>
     </div>
 
-    <div class="content-card">
-        <div class="card-label">Malware Code Analysis <span>تحليل كود الهجوم</span></div>
-        <p style="font-size: 14px;">This section replicates the Node.js attack logic analyzed in the study:</p>
-        <div class="code-container">
-            <pre><code>// Weaponizing Node.js: File Integrity Compromise
+    <div class="card">
+        <div class="card-title">Threat Logic Analysis <span>تحليل منطق التهديد</span></div>
+        <p style="font-size: 13px;">Replicating the Node.js attack patterns identified in the research:</p>
+        <div class="code-box">
+            <span class="code-lang">NODE.JS ENGINE</span>
+            <pre><code>// Sentinel-AI: Monitoring File Activity
 const fs = require('fs');
 const path = require('path');
 
-// Searching for sensitive system files
-const targetPath = './secure_assets';
-fs.readdirSync(targetPath).forEach(file => {
-    const fullPath = path.join(targetPath, file);
+const vault = './secure_data';
+fs.readdirSync(vault).forEach(file => {
+    const filePath = path.join(vault, file);
     
-    // Encrypting content to simulate Ransomware
-    const data = fs.readFileSync(fullPath, 'utf8');
-    const secureData = Buffer.from(data).toString('base64');
+    // Detecting Unintended Encryption (Ransomware Logic)
+    const content = fs.readFileSync(filePath, 'utf8');
+    const encrypted = Buffer.from(content).toString('base64');
     
-    fs.writeFileSync(fullPath, "LOCKED_" + secureData);
-    fs.renameSync(fullPath, fullPath + '.sentinel');
+    fs.writeFileSync(filePath, "SENTINEL_BLOCK_" + encrypted);
+    fs.renameSync(filePath, filePath + '.safe');
     
-    console.log(`[VULNERABILITY] File Processed: ${file}`);
+    console.log(`[MONITOR] Attack Pattern Blocked: ${file}`);
 });</code></pre>
         </div>
-        <p style="font-size: 12px; color: #8b949e;">* The Sentinel-AI engine uses this logic to train its detection patterns.</p>
     </div>
 
-    <div class="qr-section">
-        <div class="qr-item">
+    <div class="qr-grid">
+        <div class="qr-card">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://github.com/krar21339-web/" alt="QR">
-            <p>Verification Repository</p>
+            <p>Verification Link</p>
         </div>
-        <div class="qr-item">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=IBM-Security-Analysis-2026" alt="QR">
-            <p>IBM Security Source</p>
+        <div class="qr-card">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=IBM-SEC-REPORT-2026" alt="QR">
+            <p>IBM Security DB</p>
         </div>
     </div>
 
-    <footer style="text-align: center; padding: 30px; font-size: 11px; color: #484f58;">
-        © 2026 Academic Research | Cyber Security Engineering Department
+    <footer style="text-align: center; padding: 25px; font-size: 11px; color: #484f58;">
+        © 2026 Academic Report | Cyber Security Engineering Department
     </footer>
 
 </body>
-    </html>
-    
+</html>
