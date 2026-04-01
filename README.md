@@ -1,4 +1,4 @@
-![Banner](https://capsule-render.vercel.app/render?type=soft&color=auto&height=200&section=header&text=Project%20Sentinel-AI&fontSize=40&animation=fadeIn&fontAlignY=38)
+![Banner](https://hacker-target.com/wp-content/uploads/2021/04/cyber-security-background.jpg)
 
 # 🛡️ Sentinel-AI: Deep Learning Framework for Zero-Day Attack Detection
 
