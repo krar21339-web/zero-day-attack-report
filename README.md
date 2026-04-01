@@ -34,7 +34,7 @@ Cyber-attacks are evolving rapidly, moving from static malware to dynamic, AI-dr
 We utilize **Long Short-Term Memory (LSTM)** units, a type of Recurrent Neural Network (RNN) designed to process sequential network traffic data. 
 
 ![Network Architecture](https://miro.medium.com/v2/resize:fit:1400/1*uAe7mU7iFkX2A4yB9JgY0w.png)
-*Figure 1: Deep Learning Architecture for anomaly detection.*
+*Figure 1: Deep Learning Architecture for behavior-based detection.*
 
 ---
 
@@ -50,8 +50,9 @@ def analyze_traffic(packet_data):
     if prediction > 0.85:
         return "Anomaly Detected"
     return "Secure"
-    ## 5. Conclusion and Recommendations
-This research demonstrates that behavior-based detection is the most effective defense against Zero-Day exploits. It is recommended that organizations adopt a **Zero-Trust Architecture** integrated with AI-driven monitoring systems to provide a proactive shield against the unknown.
+
+## 5. Conclusion and Recommendations
+This research demonstrates that behavior-based detection is the most effective defense against Zero-Day exploits. It is recommended that organizations adopt a **Zero Trust Architecture** integrated with AI-driven monitoring systems to provide a proactive shield against unknown threats.
 
 ## 6. References
 1. **Mandiant:** *Global Trends in Zero-Day Exploitation (2024).*
@@ -60,4 +61,5 @@ This research demonstrates that behavior-based detection is the most effective d
 
 ---
 <div align="right">
-  <i>Generated for Academic Purposes - 2026
+  <i>Academic Project - 2026</i>
+</div>
