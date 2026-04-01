@@ -32,3 +32,17 @@ We implemented a Deep Learning approach using **TensorFlow**. Unlike traditional
 # Security Logic Example
 if anomaly_score > 0.85:
     trigger_alert("Zero-Day Threat Detected!")
+---
+
+## 💻 4. Practical Simulation (المحاكاة العملية)
+Our system monitors network packets and classifies them using the trained model. Below is the core logic for the anomaly detection engine:
+
+```python
+import tensorflow as tf
+
+def predict_threat(packet_data):
+    # Analyzing packet sequence
+    result = model.predict(packet_data)
+    if result > 0.90:
+        return "CRITICAL: Zero-Day Attack Detected!"
+    return "Status: Network Secure"
