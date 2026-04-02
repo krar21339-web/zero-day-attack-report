@@ -14,12 +14,35 @@
             --blue: #58a6ff;
             --highlight: rgba(0, 255, 65, 0.1);
         }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); color: var(--text); margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text); 
+            margin: 0; 
+            padding: 0; 
+        }
         
+        /* كود الطباعة المطور لمنع التقطيع */
         @media print {
-            @page { size: A4; margin: 0; }
-            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .page { page-break-after: always; border: none !important; margin: 0 !important; width: 100% !important; height: 100vh;}
+            @page { 
+                size: A4; 
+                margin: 0; 
+            }
+            body { 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact; 
+                background-color: #0b0e14 !important;
+            }
+            .page { 
+                margin: 0 !important; 
+                border: none !important; 
+                box-shadow: none !important; 
+                page-break-after: always; 
+                width: 210mm;
+                height: 297mm;
+                display: block;
+                position: relative;
+            }
         }
 
         .page {
@@ -72,12 +95,10 @@
             <h2 style="border:none; color:white; font-size: 32px; margin:0;">Al-Mamoon University College</h2>
             <h3 style="color:var(--blue); font-size: 20px; margin:10px 0;">Engineering of Cybersecurity</h3>
             <p style="text-align:center; color:#888;">كلية المأمون الجامعة - هندسة الأمن السيبراني</p>
-            
             <div style="margin: 80px 0;">
                 <h1 style="border:none; font-size: 55px; color:var(--accent); text-shadow: 0 0 20px var(--accent);">SENTINEL AI</h1>
                 <h2 style="border:none; color:white; font-size: 24px; letter-spacing: 3px;">DEEP LEARNING FOR ZERO-DAY ATTACK DETECTION</h2>
             </div>
-
             <div style="border: 2px solid var(--accent); padding: 40px; display: inline-block; width: 80%; border-radius: 15px; background: rgba(0,255,65,0.02);">
                 <p style="text-align:center; color:white; font-size: 18px;"><b>Student:</b> Karrar Mohammed Dawood</p>
                 <p style="text-align:center; color:white; font-size: 18px;"><b>Supervisor:</b> Dr. Ahmed Saad</p>
@@ -104,9 +125,7 @@
 
     <div class="page">
         <h1>03. Introduction</h1>
-        <p>
-            As we navigate the complexities of 2026, cybersecurity has emerged as a fundamental necessity for protecting infrastructure. Traditional defense systems are increasingly vulnerable to sophisticated attacks. This report introduces "Sentinel AI," a proactive framework designed to detect unseen threats using Deep Learning technologies.
-        </p>
+        <p>As we navigate the complexities of 2026, cybersecurity has emerged as a fundamental necessity for protecting infrastructure. Traditional defense systems are increasingly vulnerable to sophisticated attacks. This report introduces "Sentinel AI," a proactive framework designed to detect unseen threats using Deep Learning technologies.</p>
         <div class="img-box">
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800" alt="Cyber Defense">
             <div class="img-label">Figure 3.1: The global cyber threat landscape in 2026.</div>
@@ -190,14 +209,12 @@
     <div class="page">
         <h1>10. Conclusion & References</h1>
         <p>This report has detailed the effectiveness of Deep Learning in the field of cybersecurity. Sentinel AI provides a revolutionary approach to detecting Zero-Day attacks with extreme precision.</p>
-        
         <h2>References</h2>
         <ul style="font-size: 14px; color: #adb5bd; line-height: 2;">
             <li>[1] Kaspersky Lab (2025). "AI Threat Intelligence."</li>
             <li>[2] IBM Security (2026). "The Future of Proactive Defense."</li>
             <li>[3] Al-Mamoon University College. "Cybersecurity Engineering Standards."</li>
         </ul>
-
         <div style="text-align: center; margin-top: 40px;">
             <div class="qr-container">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/Karrar-Cyber/Sentinel-AI-Report" alt="QR Code">
@@ -208,4 +225,5 @@
     </div>
 
 </body>
-</html>
+                </html>
+                    
