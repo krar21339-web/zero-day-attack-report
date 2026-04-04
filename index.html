@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel AI - Technical Report</title>
+    <title>Sentinel AI - Final Academic Report</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
 
@@ -17,7 +17,7 @@
 
         body {
             margin: 0; padding: 40px 0;
-            background-color: #eee;
+            background-color: #f0f2f5;
             font-family: 'Roboto', sans-serif;
             display: flex; flex-direction: column;
             align-items: center; gap: 50px;
@@ -27,73 +27,72 @@
             width: 210mm; height: 297mm;
             background: var(--white);
             position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,0.2);
-            border-right: 20px solid var(--navy);
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+            border-right: 25px solid var(--navy);
             display: flex; flex-direction: column;
-            padding: 20mm; overflow: hidden; flex-shrink: 0;
+            padding: 22mm; overflow: hidden; flex-shrink: 0;
         }
 
-        /* --- الصفحة 01: الغلاف --- */
-        .header-cover { display: flex; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 10px; margin-bottom: 40px; }
-        .univ-title { font-weight: bold; font-size: 18px; color: var(--navy); }
-        .dept-title { font-weight: bold; font-size: 18px; color: var(--gold); }
+        /* --- Page 01: Cover --- */
+        .header-cover { display: flex; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 12px; margin-bottom: 45px; }
+        .univ-title { font-weight: bold; font-size: 19px; color: var(--navy); }
+        .dept-title { font-weight: bold; font-size: 19px; color: var(--gold); }
         
-        .main-title { text-align: center; margin-top: 50px; }
-        .main-title h1 { font-size: 75px; font-weight: 900; color: var(--navy); letter-spacing: 15px; margin: 0; }
-        .main-title p { font-size: 18px; color: #777; letter-spacing: 2px; text-transform: uppercase; }
+        .main-title { text-align: center; margin-top: 60px; }
+        .main-title h1 { font-size: 78px; font-weight: 900; color: var(--navy); letter-spacing: 16px; margin: 0; }
+        .main-title p { font-size: 19px; color: #666; letter-spacing: 3px; text-transform: uppercase; margin-top: 10px; }
 
         .info-card {
-            margin: 60px auto; width: 90%;
-            background: var(--navy); border-radius: 25px;
-            padding: 35px; color: white;
-            box-shadow: 0 15px 35px rgba(10, 29, 55, 0.4);
-            border-bottom: 8px solid var(--gold);
-        }
-        .row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .row:last-child { border-bottom: none; }
-        .lbl-gold { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; }
-        .val-text { font-size: 16px; font-weight: 500; }
-        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 17px; font-weight: 700; text-align: right; direction: rtl; }
-
-        .supervisor { margin-top: auto; margin-bottom: 60px; padding-left: 25px; border-left: 5px solid var(--gold); }
-        .sup-name { color: var(--navy); font-size: 28px; font-weight: 900; }
-
-        /* --- الصفحة 02: الفهرس --- */
-        .dir-header { margin-top: 30px; margin-bottom: 40px; display: flex; align-items: center; }
-        .gold-marker { width: 12px; height: 35px; background: var(--gold); margin-right: 20px; }
-        .dir-header h2 { color: var(--navy); font-size: 32px; font-weight: 900; margin: 0; }
-
-        .list-item { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #f0f0f0; }
-        .item-label { color: var(--navy); font-size: 16px; font-weight: 800; }
-        .item-no { color: var(--navy); font-size: 18px; font-weight: 900; }
-
-        /* تعديل منطقة الصورة: تصميم سيبراني برمجي (لا يحتاج إنترنت) */
-        .cyber-image-area {
-            width: 100%; height: 350px;
-            background: var(--navy);
-            background-image: 
-                linear-gradient(rgba(197, 160, 89, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(197, 160, 89, 0.05) 1px, transparent 1px),
-                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000'); /* صورة سيبرانية */
-            background-size: 30px 30px, 30px 30px, cover;
-            background-position: center;
-            border-radius: 20px; margin-top: auto; margin-bottom: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            margin: 70px auto; width: 92%;
+            background: var(--navy); border-radius: 30px;
+            padding: 40px; color: white;
+            box-shadow: 0 20px 40px rgba(10, 29, 55, 0.4);
             border-bottom: 10px solid var(--gold);
-            display: flex; align-items: center; justify-content: center;
+        }
+        .row { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .row:last-child { border-bottom: none; }
+        .lbl-gold { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .val-text { font-size: 17px; font-weight: 500; margin-top: 5px; }
+        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 18px; font-weight: 700; text-align: right; direction: rtl; margin-top: 5px; }
+
+        .supervisor { margin-top: auto; margin-bottom: 70px; padding-left: 30px; border-left: 6px solid var(--gold); }
+        .sup-name { color: var(--navy); font-size: 30px; font-weight: 900; }
+
+        /* --- Page 02: Directory --- */
+        .dir-header { margin-top: 35px; margin-bottom: 45px; display: flex; align-items: center; }
+        .gold-marker { width: 14px; height: 40px; background: var(--gold); margin-right: 22px; }
+        .dir-header h2 { color: var(--navy); font-size: 34px; font-weight: 900; margin: 0; letter-spacing: 1px; }
+
+        .contents { flex-grow: 1; }
+        .list-item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #f2f2f2; }
+        .item-label { color: var(--navy); font-size: 16px; font-weight: 800; }
+        .item-no { color: var(--navy); font-size: 19px; font-weight: 900; }
+
+        /* الصورة السيبرانية الجديدة: نظيفة وبدون كتابة في الوسط */
+        .cyber-image-clean {
+            width: 100%; height: 360px;
+            background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border-radius: 25px; 
+            margin-top: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            position: relative;
         }
 
-        .cyber-image-area::after {
-            content: "[ DATA INTERFACE ACTIVE ]";
-            color: var(--gold); font-family: monospace; font-size: 14px; letter-spacing: 3px;
-            background: rgba(10, 29, 55, 0.7); padding: 10px 20px; border-radius: 5px;
+        /* لمسة تقنية إضافية على أطراف الصورة */
+        .cyber-image-clean::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(10, 29, 55, 0.6), transparent);
+            border-radius: 25px;
         }
 
-        .footer-line { position: absolute; bottom: 30px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
-        .page-id { font-size: 40px; font-weight: 900; color: var(--navy); line-height: 0.8; }
-        .page-id::before { content: ""; display: block; width: 45px; height: 6px; background: var(--gold); margin-bottom: 8px; margin-left: auto; }
+        .footer-line { position: absolute; bottom: 35px; width: 84%; left: 8%; display: flex; justify-content: space-between; align-items: flex-end; }
+        .page-id { font-size: 45px; font-weight: 900; color: var(--navy); line-height: 0.8; }
+        .page-id::before { content: ""; display: block; width: 50px; height: 7px; background: var(--gold); margin-bottom: 10px; margin-left: auto; }
 
-        @media print { body { padding: 0; } .page { box-shadow: none; border-right: 20px solid var(--navy) !important; } }
+        @media print { body { padding: 0; } .page { box-shadow: none; border-right: 25px solid var(--navy) !important; } }
     </style>
 </head>
 <body>
@@ -105,7 +104,7 @@
         </div>
         <div class="main-title">
             <h1>SENTINEL AI</h1>
-            <p>Deep Learning for Zero-Day Threat Mitigation</p>
+            <p>Advanced Deep Learning for Zero-Day Threat Mitigation</p>
         </div>
         <div class="info-card">
             <div class="row">
@@ -117,16 +116,16 @@
                 <div><div class="lbl-gold" style="text-align:right">القسم</div><div class="val-ar">هندسة الأمن السيبراني</div></div>
             </div>
             <div class="row">
-                <div><div class="lbl-gold">Stage / Section</div><div class="val-text">Second Stage - Section C</div></div>
+                <div><div class="lbl-gold">Academic Year</div><div class="val-text">2025 - 2026</div></div>
                 <div><div class="lbl-gold" style="text-align:right">المرحلة / الشعبة</div><div class="val-ar">المرحلة الثانية - شعبة C</div></div>
             </div>
         </div>
         <div class="supervisor">
-            <div style="color:#888">Supervised By:</div>
+            <div style="color:#888; font-weight:bold; font-size:14px; margin-bottom:5px;">Supervised By:</div>
             <div class="sup-name">Dr. Ahmed Saad</div>
         </div>
         <div class="footer-line">
-            <div style="color:#aaa; font-size:10px; letter-spacing:2px">TECHNICAL RESEARCH PAPER | BAGHDAD</div>
+            <div style="color:#bbb; font-size:10px; letter-spacing:3px; font-weight:700;">TECHNICAL RESEARCH DOCUMENT | BAGHDAD</div>
             <div class="page-id">01</div>
         </div>
     </div>
@@ -147,14 +146,13 @@
             <div class="list-item"><span class="item-label">08. CONCLUSION & REFERENCES</span><span class="item-no">10</span></div>
         </div>
         
-        <div class="cyber-image-area"></div>
+        <div class="cyber-image-clean"></div>
         
         <div class="footer-line">
-            <div style="color:#aaa; font-size:10px; letter-spacing:2px">CYBERSECURITY FRAMEWORK | 2025-2026</div>
+            <div style="color:#bbb; font-size:10px; letter-spacing:3px; font-weight:700;">CYBERSECURITY FRAMEWORK | 2025-2026</div>
             <div class="page-id">02</div>
         </div>
     </div>
 
 </body>
-                                                                                                                   </html>
-    
+</html>
