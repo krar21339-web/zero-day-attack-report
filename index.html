@@ -173,45 +173,45 @@
          </div>
 </body>
 </html>
-
     <div class="page">
         <div class="section-header">
             <div class="section-title">03. Literature Review</div>
-            <div class="section-subtitle">Evolution of Detection</div>
+            <div class="section-subtitle">Research & Findings</div>
         </div>
 
         <div class="content-text">
-            To build an effective defense, I first analyzed the trajectory of existing security frameworks. Historically, the industry relied on <b>Heuristic Analysis</b>—a method that looks for suspicious characteristics in code. While revolutionary at the time, it suffers from a fatal flaw: high false-positive rates when encountering legitimate but complex administrative scripts.
+            While researching previous studies, I noticed that most current security programs rely heavily on "Heuristic Analysis." It was a good method in the past, but now, attackers have become much smarter and can easily bypass these old systems.
         </div>
 
-        <div class="highlight-box">
-            "The transition from 'Rule-Based' to 'Pattern-Based' intelligence marks the true boundary between legacy security and modern AI defense."
+        <div class="highlight-box" style="border-left: 6px solid #ef4444; background: #fff5f5;">
+            <b style="color: #ef4444;">The Silent Killer (Why Detectors Fail):</b>
+            The biggest problem I found is that new attacks are "invisible." This is the real killer; the system is running, but a Zero-Day attack is stealing data in the background. The detector simply fails to see it because it doesn't have a previous "signature" or "picture" of this specific behavior.
         </div>
 
         <div style="display: flex; gap: 20px; margin: 20px 0; align-items: center;">
             <div style="flex: 1; background: #f1f5f9; padding: 20px; border-radius: 15px;">
-                <h4 style="color: var(--navy); margin-top: 0; font-size: 14px;">Previous Approaches:</h4>
+                <h4 style="color: var(--navy); margin-top: 0; font-size: 14px;">Why do traditional systems fail?</h4>
                 <ul class="problem-points" style="font-size: 12.5px;">
-                    <li><b>Statical Analysis:</b> Fails against obfuscated (hidden) malware code.</li>
-                    <li><b>Sandboxing:</b> Too slow for real-time high-speed network traffic.</li>
-                    <li><b>Basic ML Models:</b> Easily fooled by "Adversarial Attacks".</li>
+                    <li><b>Evolving Malware:</b> The virus changes its shape every time to confuse the detector.</li>
+                    <li><b>Time Delay:</b> Old systems take too much time to realize something is wrong.</li>
+                    <li><b>Behavior Mimicking:</b> Attacks act like a normal user so the detector ignores them.</li>
                 </ul>
             </div>
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600" 
-                 style="width: 300px; height: 200px; border-radius: 15px; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" 
-                 alt="Cyber Security Analysis">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800" 
+                 style="width: 300px; height: 210px; border-radius: 15px; object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.15);" 
+                 alt="Cybersecurity Concept">
         </div>
 
         <div class="content-text">
-            My review of recent scholarship indicates that <b>RNNs</b> and <b>LSTM</b> networks show the most promise for Zero-Day detection. Unlike previous models, these architectures can "remember" the sequence of actions, allowing them to spot a malicious chain of events even if each individual action looks harmless.
+            For this reason, I decided to use <b>LSTM</b> technology in my project. Why? Because it works like our memory; it doesn't just look at the current second, but it tracks the whole behavior from the start to find any "hidden" patterns. This is what makes it able to catch the "Silent Killer" I mentioned.
         </div>
 
         <div class="content-text">
-            By synthesizing these findings, I have positioned <b>Sentinel AI</b> to bridge the gap between speed and accuracy, focusing on the "temporal logic" of threats rather than just their static appearance.
+            In my <b>Sentinel AI</b> report, I focused on this point specifically, to make the defense system understand the attacker's logic and stay one step ahead.
         </div>
 
         <div class="footer">
-            <div class="footer-text">LITERATURE SYNTHESIS & GAP ANALYSIS</div>
+            <div class="footer-text">LITERATURE ANALYSIS - BY: KARRAR MOHAMMED</div>
             <div class="page-num">05</div>
         </div>
     </div>
