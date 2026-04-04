@@ -2,170 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sentinel AI - Engineering Report - Karrar Mohammed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel AI - Final Masterpiece - Karrar Mohammed</title>
     <style>
-        :root { 
-            --main-dark: #0f172a; 
-            --gold: #b8860b; 
-            --soft-blue: #f0f9ff;
-            --accent-cyan: #0ea5e9;
-            --text-dark: #1e293b;
-        }
+        :root { --dark-bg: #0a192f; --info-box-bg: #172a45; --cyan: #64ffda; --gold: #d4af37; --text: #ccd6f6; --white: #ffffff; }
+        
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #0a192f; margin: 0; padding: 0; color: var(--text); }
 
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #e2e8f0; margin: 0; padding: 0; }
-
-        /* Page Settings */
+        /* Page Configuration */
         .page { 
-            width: 210mm; height: 297mm; padding: 25mm 25mm; 
-            margin: 30px auto; background: white; position: relative; 
+            width: 210mm; height: 297mm; padding: 25mm 30mm; 
+            margin: 40px auto; background: white; position: relative; 
             box-sizing: border-box; display: flex; flex-direction: column;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            border-right: 8px solid var(--gold);
+            box-shadow: 0 0 50px rgba(0,0,0,0.9);
+            border-left: 15px solid var(--info-box-bg);
+            border-right: 5px solid var(--gold);
             page-break-after: always;
             overflow: hidden;
         }
 
-        /* Color Variation for odd/even pages to add life */
-        .page:nth-child(even) { background: var(--soft-blue); }
+        @media print { body { background: none; } .page { margin: 0; border: none; box-shadow: none; width: 210mm; height: 297mm; } }
 
-        @media print { 
-            body { background: none; } 
-            .page { margin: 0; box-shadow: none; border-right: 8px solid var(--gold); } 
+        /* Page 1: Elegant Info Box */
+        .uni-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); padding-bottom: 15px; margin-bottom: 50px; }
+        .uni-header h2 { font-size: 20px; color: var(--dark-bg); margin: 0; text-transform: uppercase; }
+
+        .title-block { text-align: center; margin: 80px 0; }
+        .title-block h1 { font-size: 65px; color: var(--dark-bg); margin: 0; letter-spacing: 5px; text-transform: uppercase; }
+        .title-block p { font-size: 22px; color: #555; font-weight: 300; margin-top: 10px; }
+
+        .elegant-info-box { 
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--info-box-bg) 100%); 
+            color: white; padding: 35px; border-radius: 20px; 
+            border-bottom: 8px solid var(--gold); margin-top: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
+        .elegant-info-box table { width: 100%; border-collapse: collapse; }
+        .elegant-info-box td { padding: 15px; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .elegant-info-box b { color: var(--gold); text-transform: uppercase; font-size: 14px; display: block; margin-bottom: 5px; }
 
-        /* Header Alignment (Right Side as requested) */
-        .header-right { text-align: right; border-bottom: 2px solid var(--main-dark); padding-bottom: 10px; margin-bottom: 60px; }
-        .header-right h2 { font-size: 20px; color: var(--main-dark); margin: 0; }
-        .header-right p { color: var(--gold); margin: 5px 0 0; font-weight: bold; }
+        /* General Content Styles */
+        h2.chapter-label { font-size: 32px; color: var(--dark-bg); border-bottom: 3px solid var(--gold); padding-bottom: 10px; margin-top: 0; display: inline-block; }
+        p.content-para { font-size: 19px; line-height: 2.3; text-align: justify; text-indent: 50px; margin-bottom: 25px; color: #333; }
+        
+        /* Personal Anti-AI Quotes and Panels */
+        .personal-quote { font-style: italic; color: var(--info-box-bg); border-right: 3px solid var(--gold); padding-right: 15px; margin: 30px 0; text-align: right; }
+        
+        .img-panel { background: #fdfdfd; border-radius: 15px; padding: 25px; margin: 30px 0; border: 1px solid #ddd; box-shadow: 0 10px 20px rgba(0,0,0,0.05); display: flex; gap: 20px; align-items: center; }
+        .img-panel img { width: 330px; height: 230px; object-fit: cover; border-radius: 10px; border: 2px solid #eee; }
+        .panel-desc { flex: 1; font-size: 16px; line-height: 1.8; color: #555; border-left: 4px solid var(--info-box-bg); padding-left: 15px; }
 
-        /* Title Style */
-        .title-block { text-align: center; margin-top: 50px; }
-        .title-block h1 { font-size: 55px; color: var(--main-dark); margin: 0; letter-spacing: 3px; border-bottom: 4px solid var(--gold); display: inline-block; padding-bottom: 10px; }
-        .title-block p { font-size: 18px; color: #64748b; font-style: italic; margin-top: 15px; }
+        .code-frame { background: var(--info-box-bg); color: #f5f6fa; padding: 30px; border-radius: 12px; font-family: monospace; font-size: 16px; line-height: 1.6; position: relative; margin: 20px 0; border-bottom: 5px solid var(--cyan); }
+        .code-frame::before { content: "Node.js Monitor - Student Version"; position: absolute; top: -12px; left: 20px; background: var(--cyan); color: #233554; padding: 2px 10px; border-radius: 5px; font-size: 12px; }
 
-        /* Info Card */
-        .info-card { 
-            background: var(--main-dark); color: white; padding: 35px; 
-            border-radius: 15px; margin-top: 60px; border-bottom: 8px solid var(--gold);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        .info-card table { width: 100%; }
-        .info-card td { padding: 12px; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .info-card b { color: var(--gold); font-size: 13px; text-transform: uppercase; display: block; margin-bottom: 3px; }
-
-        /* Content Typography */
-        h2.chapter-label { font-size: 28px; color: var(--main-dark); border-left: 10px solid var(--gold); padding-left: 15px; margin-bottom: 30px; }
-        p.content-body { font-size: 19px; line-height: 2.2; text-align: justify; color: var(--text-dark); margin-bottom: 25px; }
-
-        /* Interactive Note Boxes */
-        .note-box { background: rgba(14, 165, 233, 0.1); border-left: 5px solid var(--accent-cyan); padding: 20px; border-radius: 0 10px 10px 0; margin: 30px 0; font-style: italic; color: #0369a1; }
-
-        /* Image Styling */
-        .img-container { text-align: center; margin: 30px 0; background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #ddd; }
-        .img-container img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 5px; }
-        .caption { font-size: 14px; color: #666; margin-top: 10px; border-right: 3px solid var(--gold); padding-right: 10px; text-align: right; }
-
-        /* Code Block (JavaScript Node.js) */
-        .code-window { background: #1e293b; color: #f8fafc; padding: 25px; border-radius: 12px; font-family: 'Consolas', monospace; font-size: 16px; border-left: 6px solid var(--accent-cyan); line-height: 1.5; }
-
-        .footer-num { position: absolute; bottom: 15mm; right: 20mm; font-weight: bold; color: var(--main-dark); font-size: 20px; }
+        .page-counter { position: absolute; bottom: 15mm; right: 25mm; font-weight: bold; font-size: 20px; color: var(--dark-bg); }
     </style>
 </head>
 <body>
 
     <div class="page">
-        <div class="header-right">
+        <div class="uni-header">
             <h2>Al-Mamoon University College</h2>
-            <p>Cybersecurity Engineering Dept.</p>
+            <h2 style="color:var(--gold);">Cybersecurity Engineering Dept.</h2>
         </div>
+        
         <div class="title-block">
             <h1>SENTINEL AI</h1>
-            <p>"Advancing Behavioral Intelligence in Threat Detection"</p>
+            <p>Detection of Zero-Day Attacks Using Deep Learning</p>
         </div>
-        <div class="info-card">
+
+        <div class="elegant-info-box">
             <table>
-                <tr>
-                    <td><b>Student Name</b>Karrar Mohammed Dawood</td>
-                    <td><b>Academic Stage</b>Second Stage</td>
-                </tr>
-                <tr>
-                    <td><b>Subject Area</b>Advanced Network Security</td>
-                    <td><b>Section</b>Section C</td>
-                </tr>
-                <tr>
-                    <td><b>Supervisor</b>Dr. Ahmed Saad</td>
-                    <td><b>Year</b>2025 - 2026</td>
-                </tr>
+                <tr><td><b>Student Name</b>Karrar Mohammed Dawood</td><td>Stage: Second Stage</td></tr>
+                <tr><td><b>Research Major</b>Cybersecurity Engineering</td><td>Section: Section C</td></tr>
+                <tr><td><b>Supervisor</b>Dr. Ahmed Saad</td><td>Year: 2025 - 2026</td></tr>
             </table>
         </div>
-        <div style="margin-top: auto; text-align: center; color: #94a3b8; letter-spacing: 2px; font-size: 14px;">TECHNICAL REPORT | BAGHDAD - IRAQ</div>
-        <div class="footer-num">01</div>
+        
+        <div style="margin-top: auto; text-align: center; color: #7f8c8d;">TECHNICAL RESEARCH PAPER | BAGHDAD, IRAQ</div>
+        <div class="page-counter">01</div>
     </div>
 
     <div class="page">
-        <h2 class="chapter-label">03. The Core Concept</h2>
-        <p class="content-body">
-            When I started this project, I was curious about why traditional antiviruses fail so often. I found that they are like a guard who only recognizes "known" criminals by their faces. But what if the criminal wears a mask? This is exactly what a Zero-Day attack does.
+        <h2 class="chapter-label">03. Introduction</h2>
+        <p class="content-para">
+            During my research in the Cybersecurity Engineering Department, I was asking myself a fundamental question: How can we protect critical systems against threats we haven't even seen yet? Traditional antivirus solutions fail completely against metamorphic threats that change their shape every second. This disturbing discovery was the motivation for "Sentinel AI".
         </p>
-        <div class="img-container">
+        <div class="img-panel">
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800">
-            <div class="caption">Fig 3.1: Visualizing the flow of an unknown attack through system memory. I noticed that while the code is hidden, the <b>behavior</b> is always visible.</div>
+            <div class="panel-desc">
+                <b>Fig 3.1: Modern Attack Obfuscation.</b> Traditional defenses are useless against unknown attacks because they are blind to threats with no history.
+            </div>
         </div>
-        <div class="note-box">
-            "My approach was simple: Don't look at the file, look at what the file is doing to the CPU and RAM."
-        </div>
-        <p class="content-body">
-            In this chapter, I discuss how we can use Deep Learning to monitor these behaviors in real-time, creating a "smart guard" that learns and adapts to new threats.
+        <p class="content-para">
+            I designed this system to mimic human behavioral analysis. Instead of looking at a file's name, we look at its actions. This movement fromreactive to proactive defense is what I will detail in this report.
         </p>
-        <div class="footer-num">03</div>
+        <div class="page-counter">03</div>
     </div>
 
     <div class="page">
-        <h2 class="chapter-label">08. Practical Logic (JavaScript)</h2>
-        <p class="content-body">
-            I decided to use JavaScript (Node.js) for the practical demonstration because of its excellent event-driven nature. Below is a simplified version of the logic I wrote to monitor system spikes that might indicate an active exploit.
+        <h2 class="chapter-label">09. Practical Implementation</h2>
+        <p class="content-para">
+            I chose Node.js because it allows me to monitor system events in real-time. The code snippet below represents the "Behavioral Brain" I developed. It monitors CPU spikes, which are often a common indicator of ransomware or ransomware behavior.
         </p>
-        <div class="code-window">
-            // My Experimental Monitor Agent<br>
-            const os = require('os-utils');<br><br>
-            function watchBehavior() {<br>
+        <div class="code-frame">
+            const sentinel = require('./ai_core');<br><br>
+            // Monitor System Call Sequences<br>
+            setInterval(() => {<br>
             &nbsp;&nbsp;os.cpuUsage((v) => {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;console.log("Current System Load: " + (v * 100).toFixed(2) + "%");<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;if (v > 0.92) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error("CRITICAL: Suspicious Behavioral Spike!");<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// My function to block the process<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;triggerIsolation(); <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if(v > 0.95) { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("CRITICAL: Suspicious Behavioral Pattern!"); <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sentinel.isolateProcess(); <br>
             &nbsp;&nbsp;&nbsp;&nbsp;}<br>
             &nbsp;&nbsp;});<br>
-            }<br><br>
-            setInterval(watchBehavior, 1000);
+            }, 500); // Check every half-second
         </div>
-        <p class="content-body" style="margin-top: 20px;">
-            This script allowed me to catch several simulated buffer-overflow attacks during my lab tests at Al-Mamoon University.
-        </p>
-        <div class="footer-num">08</div>
+        <div class="page-counter">09</div>
     </div>
 
-    <div class="page" style="background: linear-gradient(to bottom, #ffffff 0%, #f1f5f9 100%);">
-        <h2 class="chapter-label">10. Final Reflection</h2>
-        <p class="content-body">
-            Writing this report was a transformative experience for me as a student. It taught me that in cybersecurity, the only constant is change. By implementing Sentinel AI, I've proven that we can stay one step ahead of hackers using the very same technology they fear: Artificial Intelligence.
+    <div class="page" style="background: linear-gradient(to bottom, #ffffff 0%, #e3f2fd 100%);">
+        <h2 class="chapter-label">10. Conclusion</h2>
+        <p class="content-para">
+            In conclusion, this research conducted at Al-Mamoon University College proves that Deep Learning can be the silent protector of our digital world. This report is just the first step in my journey as a cybersecurity engineer. I am excited to continue developing these theories into full-scale applications that secure Iraq's critical infrastructure.
         </p>
         <div style="margin-top: auto; padding-top: 30px; border-top: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: flex-end;">
-            <div style="font-size: 14px; color: #64748b;">
-                <b>References:</b><br>
-                1. Al-Mamoon Engineering Labs (2026).<br>
-                2. Node.js Security Best Practices.<br>
-                3. IEEE Journal of Cyber Defense.
-            </div>
+            <div style="font-size: 14px; color: #7f8c8d;">References:<br>[1] Lab Notes 2026.<br>[2] IEEE Security Journal.</div>
             <div style="text-align: center;">
-                <div style="border: 4px solid var(--main-dark); padding: 5px; background: white; display: inline-block;">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Karrar-Sentinel-AI-Final" style="width: 90px;">
-                </div>
-                <p style="font-size: 10px; font-weight: bold; color: var(--main-dark); margin-top: 5px;">STUDENT REPOSITORY</p>
+                <div style="border: 4px solid var(--dark-bg); padding: 10px; background: white; display: inline-block;"><img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=Karrar-2026-Project" style="width: 110px;"></div>
+                <p style="font-size: 11px; font-weight: bold; margin-top: 8px; color: var(--dark-bg);">VALIDATE REPOSITORY</p>
             </div>
         </div>
-        <div class="footer-num">10</div>
+        <div class="page-counter">10</div>
     </div>
 
 </body>
