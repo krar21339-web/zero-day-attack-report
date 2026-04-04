@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel AI - Full Project</title>
+    <title>Sentinel AI - Technical Report</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
 
@@ -11,6 +11,7 @@
             --navy: #0a1d37;
             --gold: #c5a059;
             --white: #ffffff;
+            --bg: #f8f9fa;
         }
 
         * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
@@ -20,76 +21,78 @@
             background-color: #eee;
             font-family: 'Roboto', sans-serif;
             display: flex;
-            flex-direction: column; /* يضمن أن الصفحات تحت بعضها */
+            flex-direction: column; /* يضمن الترتيب العمودي */
             align-items: center;
-            gap: 50px; /* مسافة بين الصفحة والأخرى */
+            gap: 50px;
         }
 
         .page {
             width: 210mm; height: 297mm;
             background: var(--white);
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            border-right: 18px solid var(--navy);
+            box-shadow: 0 0 30px rgba(0,0,0,0.25);
+            border-right: 18px solid var(--navy); /* الخط الجانبي الشهير */
             display: flex; flex-direction: column;
             padding: 20mm;
             overflow: hidden;
             flex-shrink: 0;
         }
 
-        /* --- Page 01: Cover --- */
+        /* --- Page 01: Cover (من صورتك الأولى) --- */
         .header-cover {
-            display: flex; justify-content: space-between;
+            display: flex; justify-content: space-between; align-items: center;
             border-bottom: 2px solid var(--navy);
-            padding-bottom: 10px; margin-bottom: 40px;
+            padding-bottom: 15px; margin-bottom: 50px;
         }
         .univ-title { font-weight: bold; font-size: 18px; color: var(--navy); }
         .dept-title { font-weight: bold; font-size: 18px; color: var(--gold); }
 
-        .main-title { text-align: center; margin-top: 50px; }
-        .main-title h1 { font-size: 75px; font-weight: 900; color: var(--navy); letter-spacing: 15px; margin: 0; }
-        .main-title p { font-size: 18px; color: #777; letter-spacing: 2px; text-transform: uppercase; }
+        .main-title { text-align: center; margin-top: 60px; }
+        .main-title h1 { font-size: 80px; font-weight: 900; color: var(--navy); letter-spacing: 15px; margin: 0; }
+        .main-title p { font-size: 20px; color: #777; letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; }
 
         .info-card {
-            margin: 60px auto; width: 85%;
+            margin: 70px auto; width: 85%;
             background: var(--navy); border-radius: 25px;
-            padding: 35px; color: white;
+            padding: 40px; color: white;
             box-shadow: 0 15px 35px rgba(10, 29, 55, 0.4);
-            border-bottom: 8px solid var(--gold);
+            border-bottom: 10px solid var(--gold);
         }
-        .row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .row { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .row:last-child { border-bottom: none; }
-        .lbl-en { font-size: 10px; color: var(--gold); font-weight: 700; text-transform: uppercase; }
-        .val-en { font-size: 15px; }
-        .lbl-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 11px; color: var(--gold); text-align: right; }
-        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 16px; font-weight: 700; text-align: right; direction: rtl; }
+        .lbl-en { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; }
+        .val-en { font-size: 16px; margin-top: 4px; }
+        .lbl-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 12px; color: var(--gold); text-align: right; }
+        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 17px; font-weight: 700; text-align: right; direction: rtl; margin-top: 4px; }
 
-        .supervisor { margin-top: auto; margin-bottom: 60px; padding-left: 25px; border-left: 5px solid var(--gold); }
-        .sup-text { color: #888; font-size: 18px; }
-        .sup-name { color: var(--navy); font-size: 28px; font-weight: 900; }
+        .supervisor { margin-top: auto; margin-bottom: 70px; padding-left: 25px; border-left: 6px solid var(--gold); }
+        .sup-text { color: #888; font-size: 19px; }
+        .sup-name { color: var(--navy); font-size: 30px; font-weight: 900; }
 
-        /* --- Page 02: Directory --- */
-        .dir-header { margin-top: 30px; margin-bottom: 50px; display: flex; align-items: center; }
-        .gold-box { width: 12px; height: 35px; background: var(--gold); margin-right: 20px; }
-        .dir-header h2 { color: var(--navy); font-size: 30px; font-weight: 900; letter-spacing: 1px; }
+        /* --- Page 02: Directory (من صورتك الثانية) --- */
+        .dir-header { margin-top: 40px; margin-bottom: 60px; display: flex; align-items: center; }
+        .gold-box { width: 14px; height: 40px; background: var(--gold); margin-right: 20px; }
+        .dir-header h2 { color: var(--navy); font-size: 32px; font-weight: 900; letter-spacing: 1px; margin: 0; }
 
         .list { width: 100%; }
-        .item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #f0f0f0; }
-        .item-text { color: var(--navy); font-size: 16px; font-weight: 800; }
-        .item-page { color: var(--navy); font-size: 18px; font-weight: 900; }
+        .item { display: flex; justify-content: space-between; padding: 22px 0; border-bottom: 1px solid #eee; }
+        .item-text { color: var(--navy); font-size: 17px; font-weight: 800; }
+        .item-page { color: var(--navy); font-size: 19px; font-weight: 900; }
 
+        /* صورة السيرفرات بدقة عالية جداً (MODIFIED) */
         .server-img {
-            width: 100%; height: 340px;
-            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1500') center/cover;
-            border-radius: 15px; margin-top: auto; margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%; height: 360px;
+            background: url('https://raw.githubusercontent.com/krar2/SentinelAI/main/SentinelAI_Server.jpg') center/cover;
+            border-radius: 20px; margin-top: auto; margin-bottom: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            image-rendering: -webkit-optimize-contrast; /* لزيادة حدة الصورة */
         }
 
         /* Footer Unified */
-        .footer-base { position: absolute; bottom: 30px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
-        .foot-note { font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase; }
-        .page-num { font-size: 35px; font-weight: 900; color: var(--navy); line-height: 0.8; }
-        .page-num::before { content: ""; display: block; width: 40px; height: 6px; background: var(--gold); margin-bottom: 8px; margin-left: auto; }
+        .footer-base { position: absolute; bottom: 35px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
+        .foot-note { font-size: 11px; color: #aaa; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
+        .page-num { font-size: 40px; font-weight: 900; color: var(--navy); line-height: 0.8; }
+        .page-num::before { content: ""; display: block; width: 45px; height: 6px; background: var(--gold); margin-bottom: 10px; margin-left: auto; }
 
         @media print { body { padding: 0; } .page { box-shadow: none; border-right: 18px solid var(--navy) !important; margin: 0; } }
     </style>
@@ -121,11 +124,11 @@
         </div>
         <div class="supervisor">
             <div class="sup-text">Supervised By: <span class="sup-name">Dr. Ahmed Saad</span></div>
-            <div style="font-size: 12px; font-weight: bold; margin-top: 5px;">Technical Research Release 2026</div>
+            <div style="font-size: 13px; font-weight: bold; margin-top: 6px; color: #444;">Technical Research Release 2026</div>
         </div>
         <div class="footer-base">
             <div class="foot-note">Technical Research Paper | Baghdad, Iraq</div>
-            <div class="page-num" style="font-size: 35px;">01</div>
+            <div class="page-num">01</div>
         </div>
     </div>
 
@@ -152,5 +155,5 @@
     </div>
 
 </body>
-    </html>
-    
+                </html>
+                
