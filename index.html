@@ -514,5 +514,65 @@
             </div>
         </div>
     </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>طباعة مشروع التخرج - كرار محمد</title>
+    <style>
+        /* إعدادات المطبعة العالمية A4 */
+        @page { size: A4; margin: 0; }
+        
+        body { 
+            margin: 0; padding: 20px 0; 
+            background: #e2e8f0; /* خلفية للمعاينة فقط */
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* حاوية الصفحة الواحدة */
+        .page {
+            width: 210mm; height: 297mm;
+            background: white;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            page-break-after: always; /* فصل الصفحات عند الطباعة */
+            box-sizing: border-box;
+        }
+
+        /* الشريط الكحلي الجانبي الثابت في تصاميمك */
+        .sidebar {
+            position: absolute;
+            top: 0; right: 0;
+            width: 25px; height: 100%;
+            background: #0a1d37; /* Navy Blue */
+            z-index: 10;
+        }
+
+        /* لضمان جودة الألوان عند استخراج الـ PDF */
+        @media print {
+            body { background: none; padding: 0; }
+            .page { margin: 0; box-shadow: none; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="sidebar"></div>
+        
+        </div>
+
+    <div class="page">
+        <div class="sidebar"></div>
+        
+        </div>
+
+    </body>
+</html>
 
     
