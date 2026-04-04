@@ -1,286 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Karrar Mohammed - Sentinel AI Report</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
-
-        :root {
-            --navy: #0a1d37;
-            --gold: #c5a059;
-            --light-bg: #f8f9fa;
-            --text-dark: #333;
-            --border-gray: #e1e4e8;
-        }
-
-        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
-
-        body {
-            margin: 0; padding: 0;
-            background-color: #222;
-            font-family: 'Roboto', 'IBM Plex Sans Arabic', sans-serif;
-        }
-
-        /* تنسيق الصفحة A4 */
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm;
-            margin: 20px auto;
-            background: white;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            page-break-after: always;
-            border-right: 12px solid var(--navy); /* الخط العمودي النيفي في طرف الصفحة */
-        }
-
-        /* الهيدر وشعار الجامعة */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 50px;
-        }
-
-        .univ-info { text-align: right; }
-        .univ-info h2 { margin: 0; color: var(--navy); font-size: 18px; }
-        .univ-info p { margin: 2px 0; color: var(--gold); font-weight: bold; font-size: 14px; }
-
-        /* عناوين الصفحات */
-        .page-title {
-            font-size: 48px;
-            font-weight: 900;
-            color: var(--navy);
-            text-align: center;
-            letter-spacing: 5px;
-            margin-top: 80px;
-        }
-
-        .sub-title {
-            text-align: center;
-            color: #777;
-            font-size: 20px;
-            margin-bottom: 60px;
-        }
-
-        /* جدول البيانات الشخصية (نفس صورتك المرفقة) */
-        .info-table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background: var(--light-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .info-table td {
-            padding: 15px 25px;
-            border: 1px solid var(--border-gray);
-            font-size: 15px;
-        }
-
-        .info-table td:first-child { font-weight: bold; color: var(--navy); width: 40%; }
-        .info-table td:last-child { text-align: right; font-family: 'IBM Plex Sans Arabic'; }
-
-        /* صناديق الأكواد (Practical Implementation) */
-        .code-container {
-            background: #2b3137;
-            color: #e6edf3;
-            padding: 25px;
-            border-radius: 8px;
-            font-family: 'Consolas', monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            margin: 20px 0;
-            position: relative;
-        }
-
-        .code-header {
-            background: #388bfd;
-            color: white;
-            padding: 4px 12px;
-            font-size: 11px;
-            border-radius: 4px;
-            position: absolute;
-            top: -10px; left: 20px;
-        }
-
-        /* فريم الصور مع الشرح (Figure Analysis) */
-        .analysis-box {
-            display: flex;
-            background: white;
-            border: 1px solid var(--border-gray);
-            border-radius: 12px;
-            overflow: hidden;
-            margin: 25px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .analysis-img {
-            width: 50%;
-            height: 220px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .analysis-text {
-            width: 50%;
-            padding: 20px;
-            border-left: 2px dashed var(--gold);
-            font-size: 13.5px;
-            line-height: 1.8;
-            text-align: right;
-            direction: rtl;
-        }
-
-        /* الفوتر والترقيم */
-        .footer-page {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--navy);
-            border-top: 3px solid var(--gold);
-            padding-top: 5px;
-        }
-
-        /* العناوين الجانبية بالذهبي */
-        .section-tag {
-            border-left: 6px solid var(--gold);
-            padding-left: 15px;
-            margin: 30px 0;
-            color: var(--navy);
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        /* قائمة المصادر */
-        .refs {
-            list-style: none;
-            padding: 0;
-            font-size: 14px;
-        }
-        .refs li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        .refs li::before { content: "•"; color: var(--gold); position: absolute; left: 0; font-size: 20px; }
-
-        @media print {
-            body { background: none; }
-            .page { margin: 0; box-shadow: none; }
-        }
-    </style>
-</head>
-<body>
-
     <div class="page">
-        <div class="header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Logo_of_Al-Ma%27moon_University_College.png/200px" style="width: 80px;">
-            <div class="univ-info">
+        <div class="header-top">
+            <div class="univ-title">
                 <h2>Al-Ma'moon University College</h2>
                 <p>Cybersecurity Engineering</p>
+                <div style="font-family:'IBM Plex Sans Arabic'; font-size: 13px; color: var(--navy); margin-top: 5px; font-weight: bold;">
+                    كلية المأمون الجامعة / هندسة الأمن السيبراني
+                </div>
             </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Logo_of_Al-Ma%27moon_University_College.png/200px" 
+                 style="width: 85px; margin-left: 20px;" alt="Logo">
         </div>
 
-        <h1 class="page-title">SENTINEL AI</h1>
-        <p class="sub-title">Next-Gen Deep Learning Defense</p>
-
-        <table class="info-table">
-            <tr><td>STUDENT: KARRAR M. DAWOOD</td><td>الطالب: كرار محمد داود</td></tr>
-            <tr><td>DEPT: CYBER ENGINEERING</td><td>القسم: هندسة الأمن السيبراني</td></tr>
-            <tr><td>STAGE: SECOND YEAR (C)</td><td>المرحلة: الثانية - شعبة C</td></tr>
-        </table>
-
-        <div style="margin-top: 100px; padding-left: 50px;">
-            <p style="color: #999; margin:0;">Supervised By:</p>
-            <h3 style="color: var(--navy); margin: 5px 0;">Dr. Ahmed Saad</h3>
-            <p style="font-size: 12px; color: var(--gold);">Technical Research Release 2026</p>
+        <div style="text-align: center; margin-top: 60px;">
+            <h1 style="font-size: 65px; color: var(--navy); letter-spacing: 12px; font-weight: 900; margin: 0;">
+                SENTINEL AI
+            </h1>
+            <p style="font-size: 20px; color: #666; letter-spacing: 4px; margin-top: 10px; text-transform: uppercase;">
+                Next-Gen Deep Learning Defense
+            </p>
         </div>
 
-        <div class="footer-page">01</div>
+        <div style="margin-top: 50px;">
+            <style>
+                .student-info-table {
+                    width: 90%;
+                    margin: 0 auto;
+                    border-collapse: collapse;
+                    background: var(--navy);
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 10px 30px rgba(10, 29, 55, 0.3);
+                    border-bottom: 6px solid var(--gold);
+                }
+                .student-info-table td {
+                    padding: 18px 25px;
+                    color: white;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    font-size: 14px;
+                }
+                .student-info-table b { color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+                .arabic-font { font-family: 'IBM Plex Sans Arabic'; font-weight: bold; text-align: right; }
+            </style>
+            
+            <table class="student-info-table">
+                <tr>
+                    <td><b>Student:</b> Karrar M. Dawood</td>
+                    <td class="arabic-font">الطالب: كرار محمد داود</td>
+                </tr>
+                <tr>
+                    <td><b>Dept:</b> Cyber Engineering</td>
+                    <td class="arabic-font">القسم: هندسة الأمن السيبراني</td>
+                </tr>
+                <tr>
+                    <td><b>Stage:</b> Second Year (C)</td>
+                    <td class="arabic-font">C المرحلة: الثانية - شعبة</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin-top: 80px; padding-left: 40px; border-left: 5px solid var(--gold);">
+            <p style="margin: 0; font-size: 14px; color: #888; font-weight: bold;">Supervised By:</p>
+            <h3 style="margin: 5px 0; font-size: 32px; color: var(--navy); font-weight: 900;">Dr. Ahmed Saad</h3>
+            <p style="margin: 0; font-size: 12px; color: var(--gold); font-weight: bold; letter-spacing: 1px;">
+                Technical Research Release 2026
+            </p>
+        </div>
+
+        <div class="footer-number">01</div>
     </div>
-
-    <div class="page">
-        <div class="section-tag">REPORT DIRECTORY</div>
-        <div style="margin-top: 40px;">
-            <div style="display:flex; justify-content:space-between; padding: 15px 0; border-bottom: 1px solid #eee;"><b>01. EXECUTIVE SUMMARY</b> <span>03</span></div>
-            <div style="display:flex; justify-content:space-between; padding: 15px 0; border-bottom: 1px solid #eee;"><b>02. PROBLEM DEFINITION</b> <span>04</span></div>
-            <div style="display:flex; justify-content:space-between; padding: 15px 0; border-bottom: 1px solid #eee;"><b>03. LITERATURE REVIEW</b> <span>05</span></div>
-            <div style="display:flex; justify-content:space-between; padding: 15px 0; border-bottom: 1px solid #eee;"><b>04. PROPOSED METHODOLOGY</b> <span>06</span></div>
-            <div style="display:flex; justify-content:space-between; padding: 15px 0; border-bottom: 1px solid #eee;"><b>05. NEURAL ARCHITECTURE</b> <span>07</span></div>
-            <div style="display:flex; justify-content:space-between; padding: 15px 0; border-bottom: 1px solid #eee;"><b>06. SYSTEM PERFORMANCE</b> <span>08</span></div>
-            <div style="display:flex; justify-content:space-between; padding: 15px 0; border-bottom: 1px solid #eee;"><b>07. PRACTICAL IMPLEMENTATION</b> <span>09</span></div>
-            <div style="display:flex; justify-content:space-between; padding: 15px 0; border-bottom: 1px solid #eee;"><b>08. CONCLUSION & REFERENCES</b> <span>10</span></div>
-        </div>
-        
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800" style="width: 100%; border-radius: 12px; margin-top: 50px;">
-        
-        <div class="footer-page">02</div>
-    </div>
-
-    <div class="page">
-        <div class="section-tag">09. Practical Implementation</div>
-        <p style="direction: rtl; text-align: right; line-height: 1.8; font-family: 'IBM Plex Sans Arabic';">
-            في هذا الجزء، بصفتي طالباً، أجد أن <b>(Node.js)</b> هي الأنسب لمراقبة النظام بشكل فوري. الكود التالي هو محاكاة لنظام إنذار ذكي يعتمد على تحليل سلوك المعالج واكتشاف العمليات المشبوهة.
-        </p>
-
-        <div class="code-container">
-            <div class="code-header">Node.js Monitor - Student Version</div>
-<pre>
-// My simple security monitor logic
-const os = require('os-utils');
-
-function startMonitoring() {
-    os.cpuUsage(function(v) {
-        // If CPU jumps suddenly, maybe it's a virus?
-        if (v > 0.90) {
-            console.log("ALERT: Unusual Behavior Found!");
-            stopMaliciousProcess(); // My test function
-        }
-    });
-}
-
-setInterval(startMonitoring, 2000); // Check every 2 seconds
-</pre>
-        </div>
-
-        <div class="analysis-box">
-            <div class="analysis-text">
-                <b>النتيجة التجريبية:</b><br>
-                هذا الكود، رغم بساطته، استطاع كشف عملية تشفير وهمية قمت بتشغيلها كاختبار. هذا يثبت أن "المراقبة اللحظية" هي مفتاح الأمان في أنظمة الذكاء الاصطناعي الحديثة.
-            </div>
-            <div class="analysis-img" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500');"></div>
-        </div>
-
-        <div class="footer-page">09</div>
-    </div>
-
-    <div class="page">
-        <div class="section-tag">08. FINAL CONCLUSION</div>
-        <p style="line-height: 1.8; color: #444; margin-bottom: 50px;">
-            This research at Al-Ma'moon University College confirms that Deep Learning is the future of proactive defense. By focusing on behavioral intent, Sentinel AI successfully mitigates the risk of Zero-Day exploits that bypass traditional security layers.
-        </p>
-
-        <hr style="border: 0; border-top: 2px solid var(--gold); margin: 40px 0;">
-
-        <h4 style="color: var(--navy);">REFERENCES (IEEE):</h4>
-        <ul class="refs">
-            <li>K. Mohammed, "Neural Defense in Cyber Engineering," 2026.</li>
-            <li>Al-Ma'moon Technical Review, vol. 14, 2025.</li>
-            <li>NIST SP 800-207, "Zero Trust Principles."</li>
-        </ul>
-
-        <div style="margin-top: 100px; display: flex; justify-content: space-between; align-items: flex-end;">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Karrar-Sentinel-AI-Verified" style="border: 1px solid #ddd; padding: 5px;">
-            <div style="text-align: right;">
-                <p style="font-size: 12px; color: #999; margin:0;">Certified Engineering Signature:</p>
-                <p style="font-family: 'Brush Script MT', cursive; font-size: 24px; color: var(--gold); margin: 5px 0;">Karrar Mohammed Dawood</p>
-            </div>
-        </div>
-
-        <div class="footer-page">10</div>
-    </div>
-
-</body>
-</html>
+    
