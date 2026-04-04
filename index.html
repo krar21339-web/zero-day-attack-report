@@ -173,24 +173,24 @@
          </div>
 </body>
 </html>
-    <div class="page">
+        <div class="page">
         <div class="section-header">
             <div class="section-title">03. Literature Review</div>
-            <div class="section-subtitle">What I found in my research</div>
+            <div class="section-subtitle">What I learned from my research</div>
         </div>
 
         <div class="content-text">
-            While I was reading about network security for this project, I found that most old tools use "Heuristic Analysis." This worked fine in the past, but I think it has a big problem now because hackers are much smarter and can easily hide from these simple systems.
+            I started looking into how people protect networks before. I found that most old tools use something called "Heuristic Analysis." It was okay for a while, but I think it has a big problem now because hackers are getting much better at hiding their work from these simple systems.
         </div>
 
-        <div class="highlight-box" style="border-left: 6px solid #ef4444; background: #fff5f5; color: #333;">
-            <b style="color: #ef4444;">The "Silent Killer" (The main gap):</b><br>
-            The biggest problem I found is when an attack is "invisible." This is the real killer for any detector; the system thinks everything is okay, but a Zero-Day attack is actually working in the background. Traditional tools fail here because they don't have a "picture" for this new behavior yet.
+        <div class="highlight-box" style="border-left: 6px solid #ef4444; background: #fffdfd; color: #333;">
+            <b style="color: #ef4444;">The "Silent Killer" Problem (The main gap):</b><br>
+            The main issue I found is that new attacks are "invisible." This is what I call the silent killer of detectors. The system thinks everything is fine, but a Zero-Day attack is actually inside, stealing info. Traditional tools can't see it because they don't have a "rule" for this new trick yet.
         </div>
 
         <div style="display: flex; gap: 20px; margin: 25px 0; align-items: center;">
             <div style="flex: 1; background: #f8fafc; padding: 20px; border-radius: 15px; border: 1px solid #e2e8f0;">
-                <h4 style="color: var(--navy); margin-top: 0; font-size: 14px;">Why do old systems fail?</h4>
+                <h4 style="color: var(--navy); margin-top: 0; font-size: 14px;">Why old systems fail? (My view):</h4>
                 <ul class="problem-points" style="font-size: 13px; color: #444;">
                     <li><b>Changing Malware:</b> The virus keeps changing its code so the detector gets confused.</li>
                     <li><b>Time Lag:</b> Old programs take too much time to realize there is a mistake.</li>
@@ -198,23 +198,22 @@
                 </ul>
             </div>
             
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjV0N3_4C1Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z9Z/s1600/1000065327.jpg" 
-                 onerror="this.src='1000065327.jpg'"
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAOEArwMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAgUBAwQGB//EADcQAAIBAwIDBAkDAwUAAAAAAAABAgMEEQUhEjFBURNhkaEGInKBkbGyweETUvIUJHNxguHx/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAIEAwUB/8QAHREBAQEBAQEBAQEAAAAAAAAAAAERAhIhMUEDEv/aAAwDAQACEQMRAC8A/W6YAAAAAAAAAAAAAAAAAAAAARnOMIOUnSiuptN7GZSUVlvZIjSqxrRU48ST5ZWwE4SjOKlFpp8mtiSOnR3L9jS4ttub6nSgAAAAAAAAAAAAAAAAAAAAAhWhKpSnThNwlKLSkuaytjndpUeXfXOW45S2R1ACmqaXWnT4I3VXDpTbbkk9+n934R2WVp/a9U6VatwS5f75eX0+GOrOgApGAAAAAAAAAAAAAAAAAAAAAB8/wDVXvI+f/qvf5FwI+S//V+/yLv7VAAfP/1Xv8i/p/3Lp0/4Xf2pAArPygAAAAAAAAAAAAAAAAAAAAApP+IunX/h47V/33p1XbO/O/wCPb5KAAAApL+p8f5w4/of6S79v8u4AK9I55SAAAAAAAAAAAAAAAAAAAAAADk6Wp95d6fofS8+Xw8/qAAAApOf9f4f6U/6n4ff749f98AAAApX9SAAAAAAAAAAAAAAAAAAAAAAAXekXnybF//AKfKev8Auvr5u4AK94Y5SAAAAAAAAAAAAAAAAAAAAAAAA7Ok+V2D879D1S+vnXbHw/34X4AAAn66HIAAAAAAAAAAAAAAAAAAAAAAAA6S/wB7L4B+Uunw7N9C874X4AAAl99KAAAAAAAAAAAAAAAAAAAAAAAAO4+Z+f8Av8R/3n4ff7v+Xw4/6q5/p49X0LwX54v+rP8A8pX788b/AEvL9mABWpAAAAAAAAAAAAAAAAAAAAAAAAOQ+Wv8b534O4/pX43534b4fO4ACv6b//Z" 
                  style="width: 320px; height: 220px; border-radius: 12px; object-fit: cover; box-shadow: 0 8px 15px rgba(0,0,0,0.1);" 
-                 alt="Project Source Code">
+                 alt="Digital Network Data Flow Visualization">
         </div>
 
         <div class="content-text">
-            So, I decided to use <b>LSTM</b> in my project. I think it is better because it works like a human brain. It doesn't just look at one second; it tracks the whole story to find hidden patterns. This is the only way to catch the "Silent Killer" I mentioned.
+            So, I decided to use <b>LSTM</b> (Long Short-Term Memory) in my project. Why? Because it works like a human brain. It doesn't just look at one second; it tracks the whole story from the start to find any hidden patterns. This is the only way to catch the "Silent Killer" that I mentioned.
         </div>
 
         <div class="content-text">
-            In my <b>Sentinel AI</b> design, I really focused on this point. I wanted a defense that understands the "logic" of the attacker instead of just waiting for a virus signature it already knows.
+            In my <b>Sentinel AI</b> design, I really focused on this part. I wanted a defense that understands the "logic" of the attacker instead of just waiting for a known virus signature.
         </div>
 
         <div class="footer">
             <div class="footer-text">LITERATURE ANALYSIS - STUDENT: KARRAR MOHAMMED</div>
             <div class="page-num">05</div>
         </div>
-        </div>
-        
+            </div>
+                
