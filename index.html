@@ -2,179 +2,149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Karrar Mohammed - Cover Page</title>
+    <title>Karrar Mohammed - Cover Page (Corrected)</title>
     <style>
-        /* استدعاء الخطوط */
+        /* استدعاء الخطوط (خط للإنجليزية وخط عربي احترافي) */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
 
         :root {
-            --navy: #0a1d37;
-            --gold: #c5a059;
+            --navy: #0a1d37; /* درجة النيفي العميقة من صورتك */
+            --gold: #c5a059; /* درجة الذهبي من صورتك */
         }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
 
         body {
             margin: 0; padding: 0;
-            background-color: #f0f2f5;
+            background-color: #eee; /* خلفية المعاينة */
             font-family: 'Roboto', sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
         }
 
-        /* تنسيق الورقة A4 */
-        .page-container {
-            width: 210mm;
-            height: 297mm;
+        /* تنسيق حاوية الصفحة A4 (نفس الشكل في صورتك) */
+        .page {
+            width: 210mm; height: 297mm;
             background: white;
-            margin: 20px auto;
             padding: 20mm;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            border-right: 15px solid var(--navy); /* الخط الجانبي من صورتك */
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            border-right: 15px solid var(--navy); /* الخط الجانبي الشهير في صورتك */
+            border-left: 2px solid #ddd;
+            display: flex; flex-direction: column;
         }
 
-        /* الهيدر العلوي (نص بدلاً من الصورة) */
+        /* الهيدر العلوي: الجامعة والقسم */
         .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--navy);
-            padding-bottom: 15px;
-            margin-bottom: 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--navy); padding-bottom: 10px; margin-bottom: 30px;
         }
-        .univ-text { font-weight: 900; font-size: 18px; color: var(--navy); }
-        .dept-text { font-weight: 700; font-size: 18px; color: var(--gold); }
+        .univ-name { font-weight: bold; font-size: 18px; color: var(--navy); }
+        .dept-name { font-weight: bold; font-size: 18px; color: var(--gold); }
 
-        /* العنوان الرئيسي */
-        .main-title {
-            text-align: center;
-            margin-top: 50px;
+        /* العنوان الرئيسي والفرعي */
+        .title-block { text-align: center; margin-top: 60px; }
+        .title-block h1 {
+            font-size: 70px; font-weight: 900; color: var(--navy);
+            letter-spacing: 12px; margin: 0;
         }
-        .main-title h1 {
-            font-size: 75px;
-            font-weight: 900;
-            color: var(--navy);
-            letter-spacing: 12px;
-            margin: 0;
-        }
-        .main-title p {
-            font-size: 20px;
-            color: #777;
-            letter-spacing: 2px;
-            margin-top: 15px;
-            text-transform: uppercase;
+        .title-block p {
+            font-size: 20px; color: #777;
+            letter-spacing: 3px; margin-top: 10px; text-transform: uppercase;
         }
 
-        /* كارت بيانات الطالب (التصميم المدمج) */
-        .info-card {
-            width: 90%;
+        /* جدول بيانات الطالب (التصميم المدمج) */
+        .student-info-grid {
             margin: 60px auto;
+            width: 85%;
             background: var(--navy);
             border-radius: 20px;
             padding: 30px 40px;
             color: white;
-            box-shadow: 0 15px 35px rgba(10, 29, 55, 0.4);
+            box-shadow: 0 15px 30px rgba(10, 29, 55, 0.3);
             border-bottom: 8px solid var(--gold);
         }
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+        .info-row { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
         .info-row:last-child { border-bottom: none; }
-        
-        .label-style { font-size: 10px; color: var(--gold); font-weight: 900; text-transform: uppercase; margin-bottom: 5px; }
-        .val-en { font-size: 16px; font-weight: 400; }
-        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 17px; font-weight: 700; text-align: right; }
+        .label-en { font-size: 10px; color: var(--gold); font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+        .val-en { font-size: 15px; font-weight: 400; }
+        .label-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 12px; color: var(--gold); font-weight: 700; text-align: right; margin-bottom: 4px; }
+        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 16px; font-weight: 700; text-align: right; }
 
-        /* الجزء السفلي للمشرف (دمج من الصورة الثانية) */
-        .supervisor-section {
-            margin-top: auto;
+        /* جزء المشرف (الدمج من الصورة الثانية) */
+        .supervised-block {
+            margin-top: auto; /* يدفعه للأسفل قبل الفوتر */
             margin-bottom: 80px;
-            padding-left: 25px;
-            border-left: 6px solid var(--gold);
-            height: 75px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding-left: 30px;
+            border-left: 5px solid var(--gold); /* الخط العمودي الذهبي */
+            height: 70px;
+            display: flex; flex-direction: column; justify-content: center;
         }
-        .sup-label { color: #888; font-size: 19px; }
-        .sup-name { color: var(--navy); font-size: 30px; font-weight: 900; margin-left: 10px; }
-        .release-date { color: #444; font-size: 13px; font-weight: bold; margin-top: 8px; }
+        .supervised-text { color: #888; font-size: 18px; }
+        .supervised-name { color: var(--navy); font-size: 28px; font-weight: 900; }
 
-        /* الفوتر */
-        .footer-line {
-            position: absolute;
-            bottom: 40px;
-            left: 10%;
-            right: 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-        .footer-loc { font-size: 11px; color: #999; letter-spacing: 3px; font-weight: bold; }
-        .page-num { font-size: 35px; font-weight: 900; color: var(--navy); line-height: 0.8; }
+        /* الفوتر السفلي */
+        .footer { position: absolute; bottom: 30px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
+        .footer-text { font-size: 11px; color: #999; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
+        .page-num { font-size: 30px; font-weight: 900; color: var(--navy); line-height: 0.8; }
 
-        @media print {
-            body { background: none; }
-            .page-container { margin: 0; box-shadow: none; border: none; }
-        }
+        /* تضبيط عند الطباعة */
+        @media print { body { background: none; } .page { margin: 0; box-shadow: none; border: none; } }
     </style>
 </head>
 <body>
 
-    <div class="page-container">
+    <div class="page">
         <div class="header-top">
-            <div class="univ-text">Al-Mamoon University College</div>
-            <div class="dept-text">Cybersecurity Dept.</div>
+            <div class="univ-name">Al-Mamoon University College</div>
+            <div class="dept-name">Cybersecurity Dept.</div>
         </div>
 
-        <div class="main-title">
+        <div class="title-block">
             <h1>SENTINEL AI</h1>
             <p>Advanced Deep Learning for Zero-Day Threat Mitigation</p>
         </div>
 
-        <div class="info-card">
+        <div class="student-info-grid">
             <div class="info-row">
                 <div>
-                    <div class="label-style">Student Name</div>
+                    <div class="label-en">Student Name</div>
                     <div class="val-en">Karrar Mohammed Dawood</div>
                 </div>
                 <div style="text-align: right;">
-                    <div class="label-style" style="text-align: right;">:اسم الطالب</div>
+                    <div class="label-ar">:اسم الطالب</div>
                     <div class="val-ar">كرار محمد داود</div>
                 </div>
             </div>
             <div class="info-row">
                 <div>
-                    <div class="label-style">Department</div>
+                    <div class="label-en">Department</div>
                     <div class="val-en">Cybersecurity Engineering</div>
                 </div>
                 <div style="text-align: right;">
-                    <div class="label-style" style="text-align: right;">:القسم</div>
+                    <div class="label-ar">:القسم</div>
                     <div class="val-ar">هندسة الأمن السيبراني</div>
                 </div>
             </div>
             <div class="info-row">
                 <div>
-                    <div class="label-style">Stage / Section</div>
+                    <div class="label-en">Stage / Section</div>
                     <div class="val-en">Second Stage - Section C</div>
                 </div>
                 <div style="text-align: right;">
-                    <div class="label-style" style="text-align: right;">:المرحلة / الشعبة</div>
+                    <div class="label-ar">:المرحلة / الشعبة</div>
                     <div class="val-ar">المرحلة الثانية - شعبة C</div>
                 </div>
             </div>
         </div>
 
-        <div class="supervisor-section">
-            <div class="sup-label">Supervised By: <span class="sup-name">Dr. Ahmed Saad</span></div>
-            <div class="release-date">Technical Research Release 2026</div>
+        <div class="supervised-block">
+            <div class="supervised-text">Supervised By: <span class="supervised-name">Dr. Ahmed Saad</span></div>
+            <div style="color: #444; font-size: 12px; font-weight: bold; margin-top: 5px;">Technical Research Release 2026</div>
         </div>
 
-        <div class="footer-line">
-            <div class="footer-loc">TECHNICAL RESEARCH PAPER | BAGHDAD, IRAQ</div>
+        <div class="footer">
+            <div class="footer-text">Technical Research Paper | Baghdad, Iraq</div>
             <div class="page-num">01</div>
         </div>
     </div>
