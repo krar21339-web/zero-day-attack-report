@@ -237,63 +237,72 @@
         </div>
  </body>
 </html>
-     <div class="page" style="padding: 50px; line-height: 1.6; background: #fff; position: relative; min-height: 1000px; font-family: 'Segoe UI', Tahoma, sans-serif; border: 1px solid #e2e8f0;">
+        <div class="page" style="padding: 60px; line-height: 1.6; background: #fff; position: relative; min-height: 1000px; font-family: 'Arial', sans-serif; direction: rtl;">
         
-        <div style="margin-bottom: 40px; border-left: 8px solid #0f172a; padding-left: 20px;">
-            <h2 style="font-size: 26px; color: #0f172a; margin: 0; text-transform: uppercase; letter-spacing: 1px;">04. Proposed Methodology</h2>
-            <p style="color: #64748b; font-size: 14px; margin-top: 5px; font-weight: 600;">TECHNICAL WORKFLOW & SYSTEM DESIGN</p>
+        <div style="margin-bottom: 40px; border-right: 5px solid #1e293b; padding-right: 20px; position: relative;">
+            <h2 style="font-size: 28px; color: #1e293b; margin: 0;">04. المنهجية المقترحة</h2>
+            <p style="color: #64748b; font-size: 14px; margin-top: 5px;">سير العمل التقني وتصميم النظام</p>
         </div>
 
-        <div class="content-text" style="margin-bottom: 30px; color: #334155; font-size: 15px;">
-            To catch the "Silent Killer" attacks, I designed a specific workflow. My focus was not just on finding viruses, but on understanding <b>Network Traffic Behavior</b> over time. This is where the power of LSTM comes in.
+        <p style="color: #334155; margin-bottom: 30px; font-size: 16px; text-align: justify;">
+            سلوك كشف هجمات "القاتل الصامت"، صممتُ آلية عمل محددة. لم يكن تركيزي منصباً على اكتشاف الفيروسات فحسب، بل على فهم سلوك حركة مرور الشبكة بمرور الوقت. وهنا تكمن قوة نموذج LSTM.
+        </p>
+
+        <div style="border-right: 5px solid #10b981; background: #f0fdf4; padding: 20px; border-radius: 5px 0 0 5px; margin-bottom: 35px;">
+            <b style="color: #059669; display: block; margin-bottom: 10px; font-size: 16px;">التحدي التقني في بناء النموذج:</b>
+            <span style="color: #374151; font-size: 14px; line-height: 1.8;">
+                غالباً ما تواجه نماذج الذكاء الاصطناعي التقليدية صعوبة في التعامل مع "البيانات الضخمة"، مما يؤدي إلى ارتفاع معدلات الإنذارات الكاذبة. لذا كان التوجه نحو بناء بنية تعلم عميق تحافظ على سرعة عالية مع تحديد دقيق للمنطق الشاذ.
+            </span>
         </div>
 
-        <div style="display: flex; gap: 25px; margin-bottom: 35px; align-items: stretch;">
+        <div style="display: flex; gap: 40px; margin-bottom: 40px; align-items: flex-start; direction: ltr;">
             
-            <div style="flex: 1.2; background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
-                <h4 style="color: #3b82f6; font-size: 16px; margin-top: 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">1. Data Preparation Phase</h4>
-                <p style="font-size: 14px; color: #475569; line-height: 1.7; margin-bottom: 15px;">
-                    I used the <b>CIC-IDS2017</b> dataset because it has real-world attack examples. First, I cleaned the data to remove any "NaN" values. Then, I normalized the numbers to be between 0 and 1 so the AI learns faster.
-                </p>
-                <h4 style="color: #10b981; font-size: 16px; margin-top: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">2. Model Parameters</h4>
-                <ul style="padding-left: 18px; font-size: 13px; color: #475569; line-height: 1.9;">
-                    <li><b>Batch Size:</b> 64 (Optimal for stability).</li>
-                    <li><b>Optimizer:</b> Adam (Fast convergence).</li>
-                    <li><b>Dropout:</b> 0.2 (Prevents Overfitting).</li>
-                </ul>
+            <div style="flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; text-align: center;">
+                <p style="font-size: 11px; color: #94a3b8; margin-bottom: 15px; font-weight: bold;">[ هندسة تدفق النظام ]</p>
+                <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+                    <circle cx="80" cy="50" r="15" fill="#3b82f6"/>
+                    <circle cx="80" cy="125" r="15" fill="#3b82f6"/>
+                    <circle cx="80" cy="200" r="15" fill="#3b82f6"/>
+                    <circle cx="200" cy="87" r="15" fill="#1e293b"/>
+                    <circle cx="200" cy="162" r="15" fill="#1e293b"/>
+                    <circle cx="320" cy="125" r="15" fill="#10b981"/>
+                    <line x1="95" y1="50" x2="185" y2="87" stroke="#cbd5e1" stroke-width="1"/>
+                    <line x1="95" y1="125" x2="185" y2="87" stroke="#cbd5e1" stroke-width="1"/>
+                    <line x1="95" y1="200" x2="185" y2="162" stroke="#cbd5e1" stroke-width="1"/>
+                    <line x1="215" y1="125" x2="305" y2="125" stroke="#cbd5e1" stroke-width="1"/>
+                </svg>
+                <p style="font-size: 10px; color: #64748b; margin-top: 15px; font-family: sans-serif;">منطق الاتصال التسلسلي LSTM</p>
             </div>
 
-            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #cbd5e1; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-                <p style="text-align: center; font-size: 11px; color: #94a3b8; margin-bottom: 10px; font-weight: bold;">[ SYSTEM FLOW ARCHITECTURE ]</p>
-                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
-                    <rect width="400" height="300" rx="10" fill="#f8fafc"/>
-                    <circle cx="80" cy="80" r="15" fill="#3b82f6"/>
-                    <circle cx="80" cy="150" r="15" fill="#3b82f6"/>
-                    <circle cx="80" cy="220" r="15" fill="#3b82f6"/>
-                    <circle cx="200" cy="80" r="15" fill="#0f172a"/>
-                    <circle cx="200" cy="150" r="15" fill="#0f172a"/>
-                    <circle cx="200" cy="220" r="15" fill="#0f172a"/>
-                    <circle cx="320" cy="150" r="15" fill="#10b981"/>
-                    <line x1="95" y1="80" x2="185" y2="80" stroke="#cbd5e1" stroke-width="2"/>
-                    <line x1="95" y1="150" x2="185" y2="150" stroke="#cbd5e1" stroke-width="2"/>
-                    <line x1="95" y1="220" x2="185" y2="220" stroke="#cbd5e1" stroke-width="2"/>
-                    <line x1="215" y1="150" x2="305" y2="150" stroke="#cbd5e1" stroke-width="2"/>
-                    <line x1="95" y1="80" x2="185" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
-                    <line x1="95" y1="220" x2="185" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
-                </svg>
-                <p style="text-align: center; font-size: 10px; color: #64748b; margin-top: 10px;">LSTM Sequential Connection Logic</p>
+            <div style="flex: 1.2; direction: rtl;">
+                <h4 style="color: #1e293b; font-size: 18px; margin-top: 0; margin-bottom: 20px;">مراحل العمل المحددة:</h4>
+                <div style="margin-bottom: 15px;">
+                    <span style="color: #b45309; font-weight: bold; margin-left: 10px;">←</span>
+                    <b style="color: #334155; font-size: 14px;">مرحلة إعداد البيانات:</b>
+                    <p style="margin: 5px 25px 0 0; font-size: 13px; color: #64748b;">استخدمتُ مجموعة CIC-IDS2017 لتنظيف القيم وتطبيع الأرقام لتكون بين 0 و 1.</p>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <span style="color: #b45309; font-weight: bold; margin-left: 10px;">←</span>
+                    <b style="color: #334155; font-size: 14px;">معلمات النموذج:</b>
+                    <p style="margin: 5px 25px 0 0; font-size: 13px; color: #64748b;">ضبط حجم الدفعة على 64 ومعدل تسرب (Dropout) بنسبة 0.2 لمنع التجاوز.</p>
+                </div>
+                <div>
+                    <span style="color: #b45309; font-weight: bold; margin-left: 10px;">←</span>
+                    <b style="color: #334155; font-size: 14px;">التدريب والاستجابة:</b>
+                    <p style="margin: 5px 25px 0 0; font-size: 13px; color: #64748b;">استخدام محسن "آدم" لتسريع عملية التعلم وضمان دقة النتائج.</p>
+                </div>
             </div>
         </div>
 
-        <div style="padding: 20px; background: #fffbeb; border-radius: 12px; border: 1px solid #fef3c7; margin-bottom: 30px;">
-            <p style="margin: 0; font-size: 14px; color: #92400e; font-style: italic; line-height: 1.8;">
-                "I decided to use a <b>Look-back period</b> of 10 packets. This means my model remembers the last 10 things that happened on the network to decide if the 11th thing is a hidden attack or just normal activity."
+        <div style="background: #fffbeb; border: 1px solid #fef3c7; padding: 20px; border-radius: 10px; margin-top: 20px;">
+            <p style="margin: 0; font-size: 14px; color: #92400e; text-align: center; font-style: italic; line-height: 1.8;">
+                "قررتُ استخدام فترة مراجعة مدتها 10 حزم بيانات. هذا يعني أن نموذجي يتذكر آخر 10 أشياء حدثت على الشبكة ليقرر ما إذا كان الشيء الحادي عشر هجوماً خفياً أم مجرد نشاط عادي."
             </p>
         </div>
 
-        <div style="position: absolute; bottom: 50px; left: 50px; right: 50px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
-            <div style="font-size: 11px; color: #94a3b8; font-weight: bold; text-transform: uppercase;">Methodology Structure - Student: Karrar Mohammed</div>
-            <div style="font-size: 32px; font-weight: bold; color: #1e293b;">06</div>
+        <div style="position: absolute; bottom: 50px; left: 50px; right: 50px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+            <div style="font-size: 12px; color: #94a3b8;">هيكل المنهجية - الطالب: كرار محمد</div>
+            <div style="font-size: 32px; font-weight: bold; color: #1e293b; opacity: 0.2;">06</div>
         </div>
-                    </div>
-         
+                        </div>
+                        
