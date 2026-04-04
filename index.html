@@ -3,96 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel AI - Final Academic Report</title>
+    <title>Sentinel AI - Complete Technical Report</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap');
 
         :root {
             --navy: #0a1d37;
             --gold: #c5a059;
             --white: #ffffff;
+            --text-gray: #334155;
         }
 
         * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
 
         body {
             margin: 0; padding: 40px 0;
-            background-color: #f0f2f5;
+            background-color: #f1f5f9;
             font-family: 'Roboto', sans-serif;
             display: flex; flex-direction: column;
-            align-items: center; gap: 50px;
+            align-items: center; gap: 60px;
         }
 
         .page {
             width: 210mm; height: 297mm;
             background: var(--white);
             position: relative;
-            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+            box-shadow: 0 0 40px rgba(0,0,0,0.15);
             border-right: 25px solid var(--navy);
-            display: flex; flex-direction: column;
             padding: 22mm; overflow: hidden; flex-shrink: 0;
+            display: flex; flex-direction: column;
         }
+
+        /* --- الهوية البصرية المشتركة --- */
+        .footer-line { position: absolute; bottom: 35px; width: 84%; left: 8%; display: flex; justify-content: space-between; align-items: flex-end; }
+        .page-id { font-size: 45px; font-weight: 900; color: var(--navy); line-height: 0.8; }
+        .page-id::before { content: ""; display: block; width: 50px; height: 7px; background: var(--gold); margin-bottom: 10px; margin-left: auto; }
+        .footer-tag { color: #bbb; font-size: 10px; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
 
         /* --- Page 01: Cover --- */
         .header-cover { display: flex; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 12px; margin-bottom: 45px; }
         .univ-title { font-weight: bold; font-size: 19px; color: var(--navy); }
         .dept-title { font-weight: bold; font-size: 19px; color: var(--gold); }
-        
         .main-title { text-align: center; margin-top: 60px; }
         .main-title h1 { font-size: 78px; font-weight: 900; color: var(--navy); letter-spacing: 16px; margin: 0; }
-        .main-title p { font-size: 19px; color: #666; letter-spacing: 3px; text-transform: uppercase; margin-top: 10px; }
-
-        .info-card {
-            margin: 70px auto; width: 92%;
-            background: var(--navy); border-radius: 30px;
-            padding: 40px; color: white;
-            box-shadow: 0 20px 40px rgba(10, 29, 55, 0.4);
-            border-bottom: 10px solid var(--gold);
-        }
+        .info-card { margin: 70px auto; width: 92%; background: var(--navy); border-radius: 30px; padding: 40px; color: white; border-bottom: 10px solid var(--gold); }
         .row { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .row:last-child { border-bottom: none; }
-        .lbl-gold { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .val-text { font-size: 17px; font-weight: 500; margin-top: 5px; }
-        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 18px; font-weight: 700; text-align: right; direction: rtl; margin-top: 5px; }
-
+        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 18px; font-weight: 700; text-align: right; direction: rtl; }
         .supervisor { margin-top: auto; margin-bottom: 70px; padding-left: 30px; border-left: 6px solid var(--gold); }
         .sup-name { color: var(--navy); font-size: 30px; font-weight: 900; }
 
         /* --- Page 02: Directory --- */
         .dir-header { margin-top: 35px; margin-bottom: 45px; display: flex; align-items: center; }
         .gold-marker { width: 14px; height: 40px; background: var(--gold); margin-right: 22px; }
-        .dir-header h2 { color: var(--navy); font-size: 34px; font-weight: 900; margin: 0; letter-spacing: 1px; }
-
-        .contents { flex-grow: 1; }
+        .dir-header h2 { color: var(--navy); font-size: 34px; font-weight: 900; margin: 0; }
         .list-item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #f2f2f2; }
         .item-label { color: var(--navy); font-size: 16px; font-weight: 800; }
-        .item-no { color: var(--navy); font-size: 19px; font-weight: 900; }
+        .cyber-img-toc { width: 100%; height: 360px; background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000&auto=format&fit=crop'); background-size: cover; background-position: center; border-radius: 25px; margin-top: auto; border: 1px solid rgba(197, 160, 89, 0.3); }
 
-        /* الصورة السيبرانية الجديدة: نظيفة وبدون كتابة في الوسط */
-        .cyber-image-clean {
-            width: 100%; height: 360px;
-            background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            border-radius: 25px; 
-            margin-top: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            position: relative;
-        }
+        /* --- Page 03: Introduction --- */
+        .section-header { border-bottom: 3px solid var(--navy); margin-bottom: 40px; padding-bottom: 15px; display: flex; justify-content: space-between; align-items: baseline; }
+        .section-header h2 { font-family: 'IBM Plex Sans Arabic'; font-size: 38px; font-weight: 700; color: var(--navy); margin: 0; }
+        .intro-content { flex-grow: 1; line-height: 1.8; color: var(--text-gray); text-align: justify; direction: rtl; font-family: 'IBM Plex Sans Arabic'; font-size: 17.5px; }
+        .intro-content p { margin-bottom: 25px; text-indent: 30px; }
+        .highlight-box { background: #f8fafc; border-right: 6px solid var(--gold); padding: 25px; margin: 35px 0; border-radius: 4px; font-style: italic; color: var(--navy); font-weight: 500; }
+        .cyber-footer-img { width: 100%; height: 280px; background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop'); background-size: cover; background-position: center; border-radius: 15px; margin-top: auto; border-bottom: 8px solid var(--gold); }
 
-        /* لمسة تقنية إضافية على أطراف الصورة */
-        .cyber-image-clean::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(10, 29, 55, 0.6), transparent);
-            border-radius: 25px;
-        }
-
-        .footer-line { position: absolute; bottom: 35px; width: 84%; left: 8%; display: flex; justify-content: space-between; align-items: flex-end; }
-        .page-id { font-size: 45px; font-weight: 900; color: var(--navy); line-height: 0.8; }
-        .page-id::before { content: ""; display: block; width: 50px; height: 7px; background: var(--gold); margin-bottom: 10px; margin-left: auto; }
-
-        @media print { body { padding: 0; } .page { box-shadow: none; border-right: 25px solid var(--navy) !important; } }
+        @media print { body { padding: 0; } .page { box-shadow: none; border-right: 25px solid var(--navy) !important; page-break-after: always; } }
     </style>
 </head>
 <body>
@@ -104,20 +80,20 @@
         </div>
         <div class="main-title">
             <h1>SENTINEL AI</h1>
-            <p>Advanced Deep Learning for Zero-Day Threat Mitigation</p>
+            <p style="color:#666; letter-spacing:3px; text-transform:uppercase;">Deep Learning for Zero-Day Threat Mitigation</p>
         </div>
         <div class="info-card">
             <div class="row">
-                <div><div class="lbl-gold">Student Name</div><div class="val-text">Karrar Mohammed Dawood</div></div>
-                <div><div class="lbl-gold" style="text-align:right">اسم الطالب</div><div class="val-ar">كرار محمد داود</div></div>
+                <div><div style="color:var(--gold); font-size:11px; font-weight:700;">STUDENT NAME</div><div style="font-size:17px; margin-top:5px;">Karrar Mohammed Dawood</div></div>
+                <div class="val-ar">كرار محمد داود</div>
             </div>
             <div class="row">
-                <div><div class="lbl-gold">Department</div><div class="val-text">Cybersecurity Engineering</div></div>
-                <div><div class="lbl-gold" style="text-align:right">القسم</div><div class="val-ar">هندسة الأمن السيبراني</div></div>
+                <div><div style="color:var(--gold); font-size:11px; font-weight:700;">DEPARTMENT</div><div style="font-size:17px; margin-top:5px;">Cybersecurity Engineering</div></div>
+                <div class="val-ar">هندسة الأمن السيبراني</div>
             </div>
             <div class="row">
-                <div><div class="lbl-gold">Academic Year</div><div class="val-text">2025 - 2026</div></div>
-                <div><div class="lbl-gold" style="text-align:right">المرحلة / الشعبة</div><div class="val-ar">المرحلة الثانية - شعبة C</div></div>
+                <div><div style="color:var(--gold); font-size:11px; font-weight:700;">ACADEMIC YEAR</div><div style="font-size:17px; margin-top:5px;">2025 - 2026</div></div>
+                <div class="val-ar">المرحلة الثانية - شعبة C</div>
             </div>
         </div>
         <div class="supervisor">
@@ -125,7 +101,7 @@
             <div class="sup-name">Dr. Ahmed Saad</div>
         </div>
         <div class="footer-line">
-            <div style="color:#bbb; font-size:10px; letter-spacing:3px; font-weight:700;">TECHNICAL RESEARCH DOCUMENT | BAGHDAD</div>
+            <div class="footer-tag">TECHNICAL RESEARCH DOCUMENT | BAGHDAD</div>
             <div class="page-id">01</div>
         </div>
     </div>
@@ -135,22 +111,43 @@
             <div class="gold-marker"></div>
             <h2>REPORT DIRECTORY</h2>
         </div>
-        <div class="contents">
-            <div class="list-item"><span class="item-label">01. EXECUTIVE SUMMARY</span><span class="item-no">03</span></div>
-            <div class="list-item"><span class="item-label">02. PROBLEM DEFINITION</span><span class="item-no">04</span></div>
-            <div class="list-item"><span class="item-label">03. LITERATURE REVIEW</span><span class="item-no">05</span></div>
-            <div class="list-item"><span class="item-label">04. PROPOSED METHODOLOGY</span><span class="item-no">06</span></div>
-            <div class="list-item"><span class="item-label">05. NEURAL ARCHITECTURE</span><span class="item-no">07</span></div>
-            <div class="list-item"><span class="item-label">06. SYSTEM PERFORMANCE</span><span class="item-no">08</span></div>
-            <div class="list-item"><span class="item-label">07. PRACTICAL IMPLEMENTATION</span><span class="item-no">09</span></div>
-            <div class="list-item"><span class="item-label">08. CONCLUSION & REFERENCES</span><span class="item-no">10</span></div>
+        <div style="flex-grow: 1;">
+            <div class="list-item"><span class="item-label">01. EXECUTIVE SUMMARY</span><span style="font-weight:900;">03</span></div>
+            <div class="list-item"><span class="item-label">02. PROBLEM DEFINITION</span><span style="font-weight:900;">04</span></div>
+            <div class="list-item"><span class="item-label">03. LITERATURE REVIEW</span><span style="font-weight:900;">05</span></div>
+            <div class="list-item"><span class="item-label">04. PROPOSED METHODOLOGY</span><span style="font-weight:900;">06</span></div>
+            <div class="list-item"><span class="item-label">05. NEURAL ARCHITECTURE</span><span style="font-weight:900;">07</span></div>
+            <div class="list-item"><span class="item-label">06. SYSTEM PERFORMANCE</span><span style="font-weight:900;">08</span></div>
+            <div class="list-item"><span class="item-label">07. PRACTICAL IMPLEMENTATION</span><span style="font-weight:900;">09</span></div>
+            <div class="list-item"><span class="item-label">08. CONCLUSION & REFERENCES</span><span style="font-weight:900;">10</span></div>
         </div>
-        
-        <div class="cyber-image-clean"></div>
-        
+        <div class="cyber-img-toc"></div>
         <div class="footer-line">
-            <div style="color:#bbb; font-size:10px; letter-spacing:3px; font-weight:700;">CYBERSECURITY FRAMEWORK | 2025-2026</div>
+            <div class="footer-tag">CYBERSECURITY FRAMEWORK | 2025-2026</div>
             <div class="page-id">02</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="section-header">
+            <h2>01. المقدمة العامة</h2>
+            <span style="color:var(--gold); font-family:Roboto; font-weight:900; font-size:20px;">EXECUTIVE INTRODUCTION</span>
+        </div>
+        <div class="intro-content">
+            <p>
+                في ظل التسارع الرقمي المهول الذي يشهده عصرنا الراهن، لم يعد الأمن السيبراني مجرد خيار تقني، بل بات ضرورة وجودية للمؤسسات والأنظمة الحيوية. ومع ظهور "هجمات اليوم الصفر" (Zero-Day Attacks)، تلك الثغرات التي تباغت الأنظمة قبل أن تكتشفها الشركات المصنعة، أصبحت الحلول التقليدية القائمة على التوقيعات الرقمية عاجزة تماماً عن الصمود. ومن هنا، انبثق هذا البحث ليعيد تعريف جبهات الدفاع الرقمي.
+            </p>
+            <div class="highlight-box">
+                "إن التحدي الحقيقي لا يكمن في بناء جدران نارية أقوى، بل في تطوير عقول اصطناعية تمتلك القدرة على التنبؤ بالخطر قبل وقوعه."
+            </div>
+            <p>
+                يكمن جوهر هذا التقرير في استغلال تقنيات "التعلم العميق" (Deep Learning)، وتحديداً الشبكات العصبية المتقدمة، لتحليل أنماط السلوك البرمجي المشبوه بشكل لحظي. بدلاً من البحث عن بصمة فيروس معروف، نقوم بتدريب نماذجنا على فهم "منطق الهجوم"، مما يسمح للنظام باكتشاف الهجمات غير المعروفة مسبقاً بدقة فائقة. سنتناول عبر فصول هذا البحث منطلقاتنا النظرية، والنتائج العملية التي تم التوصل إليها من خلال بيئة محاكاة واقعية.
+            </p>
+        </div>
+        <div class="cyber-footer-img"></div>
+        <div class="footer-line">
+            <div class="footer-tag">SENTINEL AI PROTOCOL | BAGHDAD 2026</div>
+            <div class="page-id">03</div>
         </div>
     </div>
 
