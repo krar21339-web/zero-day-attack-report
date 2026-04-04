@@ -237,68 +237,63 @@
         </div>
  </body>
 </html>
-    <div class="page" style="padding: 60px; line-height: 1.6; background: #fff; position: relative; min-height: 1000px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; direction: ltr; color: #1e293b;">
+     <div class="page" style="padding: 50px 60px; line-height: 1.6; background: #fff; position: relative; min-height: 1000px; font-family: 'Segoe UI', Tahoma, sans-serif; direction: ltr; color: #1e293b; border: 1px solid #f1f5f9;">
         
-        <div style="position: absolute; top: 60px; right: 60px; text-align: center;">
-            <div style="width: 50px; height: 4px; background: #b48c48; margin: 0 auto 5px;"></div>
-            <div style="font-size: 48px; font-weight: 800; color: #0f172a; line-height: 1;">06</div>
+        <div style="margin-bottom: 30px; border-left: 5px solid #0f172a; padding-left: 15px;">
+            <h1 style="font-size: 28px; font-weight: 800; color: #0f172a; margin: 0; text-transform: uppercase;">04. Methodological Map</h1>
+            <p style="color: #64748b; font-size: 14px; margin-top: 5px; font-weight: 600;">Sentinel AI - Intelligent Cyber Defense Framework</p>
         </div>
 
-        <div style="margin-top: 20px; margin-bottom: 50px;">
-            <h1 style="font-size: 32px; font-weight: 800; color: #0f172a; margin: 0; text-transform: uppercase; letter-spacing: -1px;">Methodological Map:</h1>
-            <h2 style="font-size: 24px; font-weight: 400; color: #3b82f6; margin: 0;">Sentinel AI - Intelligent Cyber Defense</h2>
-        </div>
-
-        <div style="margin: 40px 0; background: #f8fafc; border-radius: 20px; padding: 30px; border: 1px solid #e2e8f0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);">
-            <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
-                <path d="M150 200 L250 120 M150 200 L250 280 M350 120 L450 200 M350 280 L450 200 M550 200 L650 200" stroke="#cbd5e1" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+        <div style="margin: 30px 0; background: #f8fafc; border-radius: 15px; padding: 25px; border: 1px solid #e2e8f0; text-align: center;">
+            <p style="font-size: 11px; color: #94a3b8; margin-bottom: 20px; font-weight: bold; letter-spacing: 1px;">[ SYSTEM ARCHITECTURE FLOW ]</p>
+            <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 550px; height: auto;">
+                <path d="M100 150 L220 80 M100 150 L220 220 M320 80 L440 150 M320 220 L440 150 M500 150 L560 150" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="4"/>
                 
-                <rect x="20" y="160" width="130" height="80" rx="15" fill="#1e293b"/>
-                <text x="85" y="195" fill="white" font-size="12" font-weight="bold" text-anchor="middle">DATA INGESTION</text>
-                <text x="85" y="215" fill="#94a3b8" font-size:="10" text-anchor="middle">(PCAP Traffic)</text>
+                <rect x="20" y="120" width="100" height="60" rx="8" fill="#1e293b"/>
+                <text x="70" y="155" fill="white" font-size="10" text-anchor="middle" font-weight="bold">DATA INPUT</text>
 
-                <rect x="250" y="80" width="120" height="80" rx="15" fill="#3b82f6" opacity="0.1" stroke="#3b82f6" stroke-width="2"/>
-                <text x="310" y="115" fill="#1e293b" font-size="11" font-weight="bold" text-anchor="middle">PRE-PROCESSING</text>
-                <text x="310" y="135" fill="#64748b" font-size="9" text-anchor="middle">Feature Scaling</text>
+                <rect x="220" y="50" width="100" height="60" rx="8" fill="#3b82f6" opacity="0.1" stroke="#3b82f6"/>
+                <text x="270" y="85" fill="#1e293b" font-size="9" text-anchor="middle" font-weight="bold">PRE-PROCESS</text>
 
-                <rect x="250" y="240" width="120" height="80" rx="15" fill="#3b82f6" opacity="0.1" stroke="#3b82f6" stroke-width="2"/>
-                <text x="310" y="275" fill="#1e293b" font-size="11" font-weight="bold" text-anchor="middle">LSTM LAYERS</text>
-                <text x="310" y="295" fill="#64748b" font-size="9" text-anchor="middle">Pattern Memory</text>
+                <rect x="220" y="190" width="100" height="60" rx="8" fill="#3b82f6" opacity="0.1" stroke="#3b82f6"/>
+                <text x="270" y="225" fill="#1e293b" font-size="9" text-anchor="middle" font-weight="bold">LSTM LAYERS</text>
 
-                <circle cx="500" cy="200" r="50" fill="#0f172a"/>
-                <path d="M485 190 L515 190 L500 220 Z" fill="#10b981"/> <text x="500" y="270" fill="#0f172a" font-size="14" font-weight="800" text-anchor="middle">SENTINEL ENGINE</text>
+                <circle cx="470" cy="150" r="35" fill="#0f172a"/>
+                <path d="M465 140 L475 140 L470 160 Z" fill="#10b981"/>
+                <text x="470" y="200" fill="#0f172a" font-size="11" font-weight="bold" text-anchor="middle">AI ENGINE</text>
 
-                <rect x="650" y="160" width="130" height="80" rx="15" fill="#10b981"/>
-                <text x="715" y="195" fill="white" font-size="12" font-weight="bold" text-anchor="middle">DETECTION & ALERT</text>
-                <text x="715" y="215" fill="#ecfdf5" font-size="10" text-anchor="middle">Zero-Day Blocked</text>
+                <rect x="540" y="130" width="50" height="40" rx="5" fill="#10b981"/>
             </svg>
         </div>
 
-        <div style="display: flex; gap: 30px; margin-top: 40px;">
-            <div style="flex: 1; border-left: 4px solid #3b82f6; padding-left: 20px;">
-                <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 10px;">Step 1: Intelligence Gathering</h4>
-                <p style="font-size: 14px; color: #475569; text-align: justify;">
-                    I implemented a raw data ingestion pipeline using the <b>CIC-IDS2017</b> framework. My system doesn't just look at files; it monitors the live "heartbeat" of the network.
+        <div style="display: flex; gap: 30px; margin-top: 30px;">
+            <div style="flex: 1; padding: 20px; background: #fff; border-radius: 12px; border: 1px solid #f1f5f9; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                <h4 style="font-size: 16px; color: #3b82f6; margin-top: 0; border-bottom: 2px solid #3b82f6; display: inline-block; padding-bottom: 5px;">Phase 1: Ingestion</h4>
+                <p style="font-size: 13px; color: #475569; margin-top: 15px; text-align: justify;">
+                    I implemented a raw data ingestion pipeline using the <b>CIC-IDS2017</b> framework. My system monitors the live "heartbeat" of the network.
                 </p>
             </div>
-            <div style="flex: 1; border-left: 4px solid #10b981; padding-left: 20px;">
-                <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 10px;">Step 2: Behavioral Analysis</h4>
-                <p style="font-size: 14px; color: #475569; text-align: justify;">
-                    By using <b>Long Short-Term Memory (LSTM)</b>, the model remembers previous network states. This allows Sentinel AI to distinguish between a heavy download and a malicious scan.
+            <div style="flex: 1; padding: 20px; background: #fff; border-radius: 12px; border: 1px solid #f1f5f9; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                <h4 style="font-size: 16px; color: #10b981; margin-top: 0; border-bottom: 2px solid #10b981; display: inline-block; padding-bottom: 5px;">Phase 2: Analysis</h4>
+                <p style="font-size: 13px; color: #475569; margin-top: 15px; text-align: justify;">
+                    By using <b>LSTM</b>, the model remembers previous states, allowing Sentinel AI to distinguish between normal traffic and malicious scans.
                 </p>
             </div>
         </div>
 
-        <div style="margin-top: 40px; padding: 20px; background: #f1f5f9; border-radius: 12px; display: flex; align-items: center; gap: 15px;">
-            <div style="font-size: 24px;">💡</div>
-            <p style="margin: 0; font-size: 14px; color: #334155; font-style: italic;">
-                <b>Project Status:</b> Deployment phase active. The model currently demonstrates high-fidelity detection for unknown attack vectors.
+        <div style="margin-top: 35px; padding: 15px 25px; background: #f1f5f9; border-radius: 10px; display: flex; align-items: center; gap: 15px; border-left: 4px solid #0f172a;">
+            <span style="font-size: 20px;">💡</span>
+            <p style="margin: 0; font-size: 13px; color: #334155; font-style: italic;">
+                <b>Deployment Status:</b> The model currently demonstrates high-fidelity detection for unknown attack vectors.
             </p>
         </div>
 
-        <div style="position: absolute; bottom: 50px; left: 60px; right: 60px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; font-size: 12px; color: #94a3b8; font-weight: 600; text-transform: uppercase;">
-            <div>Project Status: Deployment Active</div>
-            <div>Student: Karrar Mohammed</div>
+        <div style="position: absolute; bottom: 50px; left: 60px; right: 60px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 11px; color: #94a3b8; font-weight: bold; text-transform: uppercase;">Student: Karrar Mohammed</div>
+            <div style="text-align: center;">
+                <div style="width: 30px; height: 3px; background: #b48c48; margin: 0 auto 5px;"></div>
+                <div style="font-size: 28px; font-weight: 800; color: #0f172a;">06</div>
+            </div>
         </div>
-        </div>
-        
+                    </div>
+            
