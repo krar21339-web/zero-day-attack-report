@@ -237,64 +237,63 @@
         </div>
  </body>
 </html>
-        <div class="page" style="padding: 60px; line-height: 1.6; background: #fff; position: relative; min-height: 1000px; font-family: 'Segoe UI', Tahoma, sans-serif;">
+     <div class="page" style="padding: 50px; line-height: 1.6; background: #fff; position: relative; min-height: 1000px; font-family: 'Segoe UI', Tahoma, sans-serif; border: 1px solid #e2e8f0;">
         
-        <div style="margin-bottom: 50px; border-bottom: 3px solid #1e293b; display: inline-block; padding-bottom: 5px;">
-            <h2 style="font-size: 26px; color: #1e293b; margin: 0; text-transform: uppercase; letter-spacing: 1px;">04. Research Methodology</h2>
-            <div style="height: 4px; width: 60px; background: #3b82f6; margin-top: 8px;"></div>
+        <div style="margin-bottom: 40px; border-left: 8px solid #0f172a; padding-left: 20px;">
+            <h2 style="font-size: 26px; color: #0f172a; margin: 0; text-transform: uppercase; letter-spacing: 1px;">04. Proposed Methodology</h2>
+            <p style="color: #64748b; font-size: 14px; margin-top: 5px; font-weight: 600;">TECHNICAL WORKFLOW & SYSTEM DESIGN</p>
         </div>
 
-        <p style="color: #475569; margin-bottom: 40px; font-size: 15px; max-width: 85%;">
-            To build a strong defense against Zero-Day attacks, I followed a step-by-step technical path. My methodology focuses on turning raw network data into "smart memories" using LSTM.
-        </p>
+        <div class="content-text" style="margin-bottom: 30px; color: #334155; font-size: 15px;">
+            To catch the "Silent Killer" attacks, I designed a specific workflow. My focus was not just on finding viruses, but on understanding <b>Network Traffic Behavior</b> over time. This is where the power of LSTM comes in.
+        </div>
 
-        <div style="position: relative; padding-left: 40px; border-left: 2px dashed #cbd5e1; margin-left: 20px;">
+        <div style="display: flex; gap: 25px; margin-bottom: 35px; align-items: stretch;">
             
-            <div style="position: relative; margin-bottom: 50px;">
-                <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: #3b82f6; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 0 10px rgba(59,130,246,0.5);"></div>
-                
-                <h4 style="margin: 0 0 10px 0; color: #1e293b; font-size: 18px; display: flex; align-items: center; gap: 10px;">
-                    Phase 01: Data Engineering
-                    <span style="font-size: 11px; background: #eff6ff; color: #3b82f6; padding: 2px 8px; border-radius: 10px;">PRE-PROCESSING</span>
-                </h4>
-                <p style="margin: 0; font-size: 14px; color: #64748b; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
-                    I spent a lot of time cleaning the <b>CIC-IDS2017</b> dataset. In my view, if the data is dirty, the AI will be useless. I removed all missing values (NaN) and used <b>Min-Max Scaling</b> to keep all network features between 0 and 1. This helps the LSTM layers converge much faster.
+            <div style="flex: 1.2; background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                <h4 style="color: #3b82f6; font-size: 16px; margin-top: 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">1. Data Preparation Phase</h4>
+                <p style="font-size: 14px; color: #475569; line-height: 1.7; margin-bottom: 15px;">
+                    I used the <b>CIC-IDS2017</b> dataset because it has real-world attack examples. First, I cleaned the data to remove any "NaN" values. Then, I normalized the numbers to be between 0 and 1 so the AI learns faster.
                 </p>
+                <h4 style="color: #10b981; font-size: 16px; margin-top: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">2. Model Parameters</h4>
+                <ul style="padding-left: 18px; font-size: 13px; color: #475569; line-height: 1.9;">
+                    <li><b>Batch Size:</b> 64 (Optimal for stability).</li>
+                    <li><b>Optimizer:</b> Adam (Fast convergence).</li>
+                    <li><b>Dropout:</b> 0.2 (Prevents Overfitting).</li>
+                </ul>
             </div>
 
-            <div style="position: relative; margin-bottom: 50px;">
-                <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: #1e293b; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 0 10px rgba(30,41,59,0.3);"></div>
-                
-                <h4 style="margin: 0 0 10px 0; color: #1e293b; font-size: 18px; display: flex; align-items: center; gap: 10px;">
-                    Phase 02: Model Architecture
-                    <span style="font-size: 11px; background: #f1f5f9; color: #1e293b; padding: 2px 8px; border-radius: 10px;">SENTINEL-BRAIN</span>
-                </h4>
-                <p style="margin: 0; font-size: 14px; color: #64748b; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
-                    For the model, I decided to use a stacked LSTM approach. I found that adding a <b>Dropout layer (0.2)</b> is very helpful because it prevents the model from just "memorizing" the attacks. I want it to "understand" them. This makes the system more flexible when it sees a brand-new threat.
-                </p>
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #cbd5e1; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                <p style="text-align: center; font-size: 11px; color: #94a3b8; margin-bottom: 10px; font-weight: bold;">[ SYSTEM FLOW ARCHITECTURE ]</p>
+                <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+                    <rect width="400" height="300" rx="10" fill="#f8fafc"/>
+                    <circle cx="80" cy="80" r="15" fill="#3b82f6"/>
+                    <circle cx="80" cy="150" r="15" fill="#3b82f6"/>
+                    <circle cx="80" cy="220" r="15" fill="#3b82f6"/>
+                    <circle cx="200" cy="80" r="15" fill="#0f172a"/>
+                    <circle cx="200" cy="150" r="15" fill="#0f172a"/>
+                    <circle cx="200" cy="220" r="15" fill="#0f172a"/>
+                    <circle cx="320" cy="150" r="15" fill="#10b981"/>
+                    <line x1="95" y1="80" x2="185" y2="80" stroke="#cbd5e1" stroke-width="2"/>
+                    <line x1="95" y1="150" x2="185" y2="150" stroke="#cbd5e1" stroke-width="2"/>
+                    <line x1="95" y1="220" x2="185" y2="220" stroke="#cbd5e1" stroke-width="2"/>
+                    <line x1="215" y1="150" x2="305" y2="150" stroke="#cbd5e1" stroke-width="2"/>
+                    <line x1="95" y1="80" x2="185" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
+                    <line x1="95" y1="220" x2="185" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
+                </svg>
+                <p style="text-align: center; font-size: 10px; color: #64748b; margin-top: 10px;">LSTM Sequential Connection Logic</p>
             </div>
-
-            <div style="position: relative;">
-                <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: #10b981; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 0 10px rgba(16,185,129,0.3);"></div>
-                
-                <h4 style="margin: 0 0 10px 0; color: #1e293b; font-size: 18px; display: flex; align-items: center; gap: 10px;">
-                    Phase 03: Training & Testing
-                    <span style="font-size: 11px; background: #f0fdf4; color: #10b981; padding: 2px 8px; border-radius: 10px;">DEPLOYMENT</span>
-                </h4>
-                <p style="margin: 0; font-size: 14px; color: #64748b; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
-                    Finally, I train the model using the <b>Adam optimizer</b>. I found it gives the best stability. The model looks back at 10 packets to find patterns. If the behavior looks like an exploit, the system flags it immediately. This is how I solve the "Silent Killer" problem.
-                </p>
-            </div>
-
         </div>
 
-        <div style="margin-top: 50px; padding: 20px; border-top: 1px solid #e2e8f0; font-style: italic; color: #64748b; font-size: 13px; text-align: center;">
-            "The goal was not just to build code, but to create a logical system that can evolve with the threats."
+        <div style="padding: 20px; background: #fffbeb; border-radius: 12px; border: 1px solid #fef3c7; margin-bottom: 30px;">
+            <p style="margin: 0; font-size: 14px; color: #92400e; font-style: italic; line-height: 1.8;">
+                "I decided to use a <b>Look-back period</b> of 10 packets. This means my model remembers the last 10 things that happened on the network to decide if the 11th thing is a hidden attack or just normal activity."
+            </p>
         </div>
 
-        <div style="position: absolute; bottom: 50px; left: 50px; right: 50px; border-top: 1px solid #f1f5f9; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
-            <div style="font-size: 11px; color: #94a3b8; font-weight: bold; text-transform: uppercase;">Methodology Structure - Karrar Mohammed</div>
-            <div style="font-size: 32px; font-weight: bold; color: #1e293b; opacity: 0.1;">06</div>
+        <div style="position: absolute; bottom: 50px; left: 50px; right: 50px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 11px; color: #94a3b8; font-weight: bold; text-transform: uppercase;">Methodology Structure - Student: Karrar Mohammed</div>
+            <div style="font-size: 32px; font-weight: bold; color: #1e293b;">06</div>
         </div>
-                        </div>
-                        
+                    </div>
+         
