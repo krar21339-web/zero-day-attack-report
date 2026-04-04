@@ -173,45 +173,45 @@
          </div>
 </body>
 </html>
-     <div class="page" style="padding: 50px; line-height: 1.6; background: white; position: relative; min-height: 1000px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <div class="section-header" style="margin-bottom: 30px;">
-            <div class="section-title" style="font-size: 28px; font-weight: bold; color: #1e293b; text-transform: uppercase; letter-spacing: 1px;">03. Literature Review</div>
-            <div class="section-subtitle" style="color: #64748b; font-weight: 500; font-size: 14px;">WHAT I LEARNED FROM MY RESEARCH</div>
+    <div class="page" style="padding: 40px; line-height: 1.6; background: #fff; min-height: 1000px; font-family: sans-serif;">
+        <div style="margin-bottom: 25px;">
+            <h2 style="font-size: 26px; color: #1e293b; margin: 0;">03. Literature Review</h2>
+            <p style="color: #64748b; font-size: 13px; margin: 5px 0 0 0;">WHAT I LEARNED FROM MY RESEARCH</p>
         </div>
 
-        <div class="content-text" style="margin-bottom: 25px; color: #334155; font-size: 15px;">
+        <p style="color: #334155; margin-bottom: 20px;">
             I started looking into how people protect networks before. I found that most old tools use something called "Heuristic Analysis." It was okay for a while, but I think it has a big problem now because hackers are getting much better at hiding their work from these simple systems.
+        </p>
+
+        <div style="border-left: 5px solid #ef4444; background: #fff5f5; padding: 20px; border-radius: 0 10px 10px 0; margin-bottom: 25px;">
+            <b style="color: #ef4444; display: block; margin-bottom: 8px;">The "Silent Killer" Problem:</b>
+            <span style="color: #475569; font-style: italic; font-size: 14px;">The main issue is that new attacks are "invisible." This is what I call the silent killer. The system thinks everything is fine, but a Zero-Day attack is actually inside, stealing info. Traditional tools fail because they don't have a "rule" for this new trick yet.</span>
         </div>
 
-        <div class="highlight-box" style="border-left: 5px solid #ef4444; background: #fff5f5; padding: 20px; border-radius: 0 10px 10px 0; margin-bottom: 30px;">
-            <b style="color: #ef4444; display: block; margin-bottom: 10px; font-size: 16px;">The "Silent Killer" Problem (The main gap):</b>
-            <span style="color: #475569; font-style: italic; font-size: 14px;">The main issue I found is that new attacks are "invisible." This is what I call the silent killer of detectors. The system thinks everything is fine, but a Zero-Day attack is actually inside, stealing info. Traditional tools can't see it because they don't have a "rule" for this new trick yet.</span>
-        </div>
-
-        <div style="display: flex; gap: 30px; margin: 30px 0; align-items: flex-start;">
-            <div style="flex: 1.2; background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0; min-height: 250px;">
-                <h4 style="color: #0f172a; margin-top: 0; font-size: 16px; margin-bottom: 15px;">Why old systems fail? (My view):</h4>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin-bottom: 12px; font-size: 14px; color: #334155;"><b>→ Changing Malware:</b> The virus keeps changing its code so the detector gets confused.</li>
-                    <li style="margin-bottom: 12px; font-size: 14px; color: #334155;"><b>→ Time Lag:</b> Old programs take too much time to realize there is a mistake.</li>
-                    <li style="margin-bottom: 0; font-size: 14px; color: #334155;"><b>→ Fake Behavior:</b> Attacks act like a normal person, so the detector just ignores them.</li>
+        <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 25px;">
+            <div style="flex: 1.2; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                <h4 style="margin-top: 0; color: #0f172a; font-size: 15px;">Why old systems fail?</h4>
+                <ul style="padding-left: 15px; font-size: 13.5px; color: #334155;">
+                    <li style="margin-bottom: 10px;"><b>Changing Malware:</b> The virus keeps changing its code so the detector gets confused.</li>
+                    <li style="margin-bottom: 10px;"><b>Time Lag:</b> Old programs take too much time to realize there is a mistake.</li>
+                    <li><b>Fake Behavior:</b> Attacks act like a normal person, so the detector ignores them.</li>
                 </ul>
             </div>
             
             <div style="flex: 1;">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAOEArwMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAgUBAwQGB//EADcQAAIBAwIDBAkDAwUAAAAAAAABAgMEEQUhEjFBURNhkaEGInKBkbGyweETUvIUJHNxguHx/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAIEAwUB/8QAHREBAQEBAQEBAQEAAAAAAAAAAAERAhIhMUEDEv/aAAwDAQACEQMRAC8A/W6YAAAAAAAAAAAAAAAAAAAAARnOMIOUnSiuptN7GZSUVlvZIjSqxrRU48ST5ZWwE4SjOKlFpp8mtiSOnR3L9jS4ttub6nSgAAAAAAAAAAAAAAAAAAAAAhWhKpSnThNwlKLSkuaytjndpUeXfXOW45S2R1ACmqaXWnT4I3VXDpTbbkk9+n934R2WVp/a9U6VatwS5f75eX0+GOrOgApGAAAAAAAAAAAAAAAAAAAAAB8/wDVXvI+f/qvf5FwI+S//V+/yLv7VAAfP/1Xv8i/p/3Lp0/4Xf2pAArPygAAAAAAAAAAAAAAAAAAAAApP+IunX/h47V/33p1XbO/O/wCPb5KAAAApL+p8f5w4/of6S79v8u4AK9I55SAAAAAAAAAAAAAAAAAAAAAADk6Wp95d6fofS8+Xw8/qAAAApOf9f4f6U/6n4ff749f98AAAApX9SAAAAAAAAAAAAAAAAAAAAAAAXekXnybF//AKfKev8Auvr5u4AK94Y5SAAAAAAAAAAAAAAAAAAAAAAAA7Ok+V2D879D1S+vnXbHw/34X4AAAn66HIAAAAAAAAAAAAAAAAAAAAAAAA6S/wB7L4B+Uunw7N9C874X4AAAl99KAAAAAAAAAAAAAAAAAAAAAAAAO4+Z+f8Av8R/3n4ff7v+Xw4/6q5/p49X0LwX54v+rP8A8pX788b/AEvL9mABWpAAAAAAAAAAAAAAAAAAAAAAAAOQ+Wv8b534O4/pX43534b4fO4ACv6b//Z" 
-                     style="width: 100%; height: 260px; border-radius: 12px; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" 
-                     alt="Cybersecurity Network Data Matrix">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI2MCIgdmlld0JveD0iMCAwIDQwMCAyNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdG09IjQwMCIgaGVpZ2h0PSIyNjAiIHJ4PSIxMiIgZmlsbD0iIzA1MDkxOCIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwayByPSIyIiBmaWxsPSIjMDBGRjk0Ii8+PGNpcmNsZSBjeD0iMzAwIiBjeT0iMTgwIiByPSIyIiBmaWxsPSIjMDBGRjk0Ii8+PHBhdGggZD0iTTEwMCA4MEwyMDAgMTMwTDMwMCAxODAiIHN0cm9rZT0iIzAwRkY5NCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48ZyBvcGFjaXR5PSIwLjUiPjx0ZXh0IHg9IjIwIiB5PSIyNDAiIGZpbGw9IiMwMEZGOTQiIGZvbnQtZmFtaWx5PSJNb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCI+W0RFVEVDVElOR19aRVJPX0RBWV0uLi48L3RleHQ+PC9nPjwvc3ZnPg==" 
+                     style="width: 100%; height: 250px; border-radius: 12px; object-fit: cover; box-shadow: 0 8px 16px rgba(0,0,0,0.2);" 
+                     alt="Cyber System Analysis">
             </div>
         </div>
 
-        <div class="content-text" style="color: #334155; margin-bottom: 20px; font-size: 15px;">
+        <p style="color: #334155;">
             So, I decided to use <b>LSTM</b> (Long Short-Term Memory) in my project. Why? Because it works like a human brain. It doesn't just look at one second; it tracks the whole story from the start to find any hidden patterns. This is the only way to catch the "Silent Killer" that I mentioned.
-        </div>
+        </p>
 
-        <div class="footer" style="position: absolute; bottom: 50px; left: 50px; right: 50px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
-            <div style="font-size: 12px; color: #94afc1;">LITERATURE ANALYSIS - PREPARED BY: KARRAR MOHAMMED</div>
-            <div style="font-size: 32px; font-weight: bold; color: #1e293b;">05</div>
+        <div style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Literature Analysis - Karrar Mohammed</div>
+            <div style="font-size: 28px; font-weight: bold; color: #1e293b;">05</div>
         </div>
-            </div>
-                                                                                                                                                                                   
+        </div>
+        
