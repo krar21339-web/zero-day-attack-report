@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel AI - Technical Report</title>
+    <title>Sentinel AI - Complete Technical Report</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
 
@@ -11,32 +11,36 @@
             --navy: #0a1d37;
             --gold: #c5a059;
             --white: #ffffff;
+            --bg: #f5f5f5;
         }
 
         * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
 
         body {
             margin: 0; padding: 40px 0;
-            background-color: #f0f0f0;
+            background-color: #eee;
             font-family: 'Roboto', sans-serif;
             display: flex; flex-direction: column;
-            align-items: center; gap: 50px;
+            align-items: center; gap: 60px;
         }
 
         .page {
             width: 210mm; height: 297mm;
             background: var(--white);
             position: relative;
-            box-shadow: 0 0 40px rgba(0,0,0,0.2);
-            border-right: 20px solid var(--navy);
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            border-right: 20px solid var(--navy); /* الخط الجانبي المميز */
             display: flex; flex-direction: column;
             padding: 20mm; overflow: hidden; flex-shrink: 0;
         }
 
-        /* --- Page 01: Cover --- */
-        .header-cover { display: flex; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 10px; margin-bottom: 40px; }
+        /* --- تصميم الغلاف (الصفحة 01) --- */
+        .header-cover {
+            display: flex; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 10px; margin-bottom: 40px;
+        }
         .univ-title { font-weight: bold; font-size: 18px; color: var(--navy); }
         .dept-title { font-weight: bold; font-size: 18px; color: var(--gold); }
+
         .main-title { text-align: center; margin-top: 50px; }
         .main-title h1 { font-size: 75px; font-weight: 900; color: var(--navy); letter-spacing: 15px; margin: 0; }
         .main-title p { font-size: 18px; color: #777; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; }
@@ -57,35 +61,28 @@
         .supervisor { margin-top: auto; margin-bottom: 60px; padding-left: 25px; border-left: 5px solid var(--gold); }
         .sup-name { color: var(--navy); font-size: 30px; font-weight: 900; }
 
-        /* --- Page 02: Directory (The Guaranteed Fix) --- */
+        /* --- تصميم الفهرس (الصفحة 02) --- */
         .dir-header { margin-top: 30px; margin-bottom: 40px; display: flex; align-items: center; }
         .gold-marker { width: 12px; height: 35px; background: var(--gold); margin-right: 20px; }
-        .dir-header h2 { color: var(--navy); font-size: 32px; font-weight: 900; margin: 0; }
+        .dir-header h2 { color: var(--navy); font-size: 32px; font-weight: 900; margin: 0; letter-spacing: 1px; }
 
-        .list-item { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #eee; }
-        .item-label { color: var(--navy); font-size: 16px; font-weight: 800; }
-        .item-no { color: var(--navy); font-size: 19px; font-weight: 900; }
+        .list-contents { width: 100%; margin-bottom: 40px; }
+        .content-item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #f0f0f0; }
+        .item-title { color: var(--navy); font-size: 16px; font-weight: 800; text-transform: uppercase; }
+        .item-page { color: var(--navy); font-size: 19px; font-weight: 900; }
 
-        /* صورة برمجية (CSS Art) لضمان الظهور دون الحاجة لرابط خارجي */
-        .server-image-fixed {
-            width: 100%; height: 360px;
-            background: linear-gradient(135deg, #0a1d37 0%, #162d50 100%);
+        /* تصحيح الصورة: وضع صورة الـ Node الواضحة كما في طلبك */
+        .node-image {
+            width: 100%; height: 350px;
+            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000&auto=format&fit=crop') center/cover;
             border-radius: 20px; margin-top: auto; margin-bottom: 20px;
-            position: relative; overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            display: flex; align-items: center; justify-content: center;
-        }
-        /* إضافة خطوط برمجية تشبه السيرفرات داخل الصورة */
-        .server-image-fixed::after {
-            content: ""; position: absolute; width: 100%; height: 100%;
-            background: repeating-linear-gradient(0deg, transparent 0px, transparent 40px, rgba(197, 160, 89, 0.1) 41px);
-        }
-        .server-image-fixed::before {
-            content: "SECURE DATA NODE"; color: rgba(197, 160, 89, 0.3);
-            font-size: 40px; font-weight: 900; letter-spacing: 10px;
+            border: 2px solid #ddd;
         }
 
+        /* التذييل المشترك */
         .footer-line { position: absolute; bottom: 30px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
+        .foot-text { font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
         .page-id { font-size: 40px; font-weight: 900; color: var(--navy); line-height: 0.8; }
         .page-id::before { content: ""; display: block; width: 45px; height: 6px; background: var(--gold); margin-bottom: 8px; margin-left: auto; }
 
@@ -118,11 +115,12 @@
             </div>
         </div>
         <div class="supervisor">
-            <div style="color:#888;">Supervised By:</div>
+            <div style="color:#888; font-size: 18px;">Supervised By:</div>
             <div class="sup-name">Dr. Ahmed Saad</div>
+            <div style="font-size: 13px; margin-top: 5px; color:#555; font-weight: bold;">Technical Research Release 2026</div>
         </div>
         <div class="footer-line">
-            <div style="color:#bbb; font-size:10px; letter-spacing:2px; font-weight: bold;">TECHNICAL RESEARCH PAPER</div>
+            <div class="foot-text">TECHNICAL RESEARCH PAPER | BAGHDAD</div>
             <div class="page-id">01</div>
         </div>
     </div>
@@ -132,24 +130,25 @@
             <div class="gold-marker"></div>
             <h2>REPORT DIRECTORY</h2>
         </div>
-        <div class="contents">
-            <div class="list-item"><span class="item-label">01. EXECUTIVE SUMMARY</span><span class="item-no">03</span></div>
-            <div class="list-item"><span class="item-label">02. PROBLEM DEFINITION</span><span class="item-no">04</span></div>
-            <div class="list-item"><span class="item-label">03. LITERATURE REVIEW</span><span class="item-no">05</span></div>
-            <div class="list-item"><span class="item-label">04. PROPOSED METHODOLOGY</span><span class="item-no">06</span></div>
-            <div class="list-item"><span class="item-label">05. NEURAL ARCHITECTURE</span><span class="item-no">07</span></div>
-            <div class="list-item"><span class="item-label">06. SYSTEM PERFORMANCE</span><span class="item-no">08</span></div>
-            <div class="list-item"><span class="item-label">07. PRACTICAL IMPLEMENTATION</span><span class="item-no">09</span></div>
-            <div class="list-item"><span class="item-label">08. CONCLUSION & REFERENCES</span><span class="item-no">10</span></div>
+        <div class="list-contents">
+            <div class="content-item"><span class="item-title">01. EXECUTIVE SUMMARY</span><span class="item-page">03</span></div>
+            <div class="content-item"><span class="item-title">02. PROBLEM DEFINITION</span><span class="item-page">04</span></div>
+            <div class="content-item"><span class="item-title">03. LITERATURE REVIEW</span><span class="item-page">05</span></div>
+            <div class="content-item"><span class="item-title">04. PROPOSED METHODOLOGY</span><span class="item-page">06</span></div>
+            <div class="content-item"><span class="item-title">05. NEURAL ARCHITECTURE</span><span class="item-page">07</span></div>
+            <div class="content-item"><span class="item-title">06. SYSTEM PERFORMANCE</span><span class="item-page">08</span></div>
+            <div class="content-item"><span class="item-title">07. PRACTICAL IMPLEMENTATION</span><span class="item-page">09</span></div>
+            <div class="content-item"><span class="item-title">08. CONCLUSION & REFERENCES</span><span class="item-page">10</span></div>
         </div>
         
-        <div class="server-image-fixed"></div>
+        <div class="node-image"></div>
         
         <div class="footer-line">
-            <div style="color:#bbb; font-size:10px; letter-spacing:2px; font-weight: bold;">CYBERSECURITY FRAMEWORK</div>
+            <div class="foot-text">CYBERSECURITY FRAMEWORK | 2025-2026</div>
             <div class="page-id">02</div>
         </div>
     </div>
 
 </body>
-</html>
+    </html>
+    
