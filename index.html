@@ -235,4 +235,72 @@
             <div style="font-size: 32px; font-weight: bold; color: #1e293b;">05</div>
         </div>
         </div>
+ </body>
+</html>
+    <div class="page" style="padding: 50px; line-height: 1.6; background: #fff; position: relative; min-height: 1000px; font-family: 'Segoe UI', Tahoma, sans-serif;">
+        
+        <div style="margin-bottom: 40px; border-left: 8px solid #0f172a; padding-left: 20px;">
+            <h2 style="font-size: 26px; color: #0f172a; margin: 0; text-transform: uppercase;">04. Proposed Methodology</h2>
+            <p style="color: #64748b; font-size: 14px; margin-top: 5px;">HOW I BUILT THE SENTINEL AI MODEL</p>
+        </div>
+
+        <div class="content-text" style="margin-bottom: 30px; color: #334155; font-size: 15px;">
+            To solve the "Silent Killer" problem I mentioned in the previous page, I designed a specific workflow. My focus was not just on finding viruses, but on understanding <b>Network Traffic Behavior</b> over time. This is where the power of LSTM comes in.
+        </div>
+
+        <div style="background: #f8fafc; padding: 30px; border-radius: 20px; border: 1px dashed #cbd5e1; margin-bottom: 40px;">
+            <h4 style="text-align: center; color: #1e293b; margin-top: 0; margin-bottom: 25px; font-size: 15px;">System Architecture Flowchart</h4>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <div style="width: 220px; padding: 12px; background: #1e293b; color: white; text-align: center; border-radius: 8px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    Raw Traffic Data (PCAP)
+                </div>
+                <div style="width: 2px; height: 20px; background: #cbd5e1;"></div>
+                
+                <div style="width: 220px; padding: 12px; background: #3b82f6; color: white; text-align: center; border-radius: 8px; font-size: 13px; font-weight: bold;">
+                    Feature Extraction (Python)
+                </div>
+                <div style="width: 2px; height: 20px; background: #cbd5e1;"></div>
+
+                <div style="width: 260px; padding: 15px; border: 2px solid #3b82f6; background: white; color: #1e293b; text-align: center; border-radius: 50px; font-size: 13px; font-weight: bold;">
+                    LSTM Neural Network Layer
+                </div>
+                <div style="width: 2px; height: 20px; background: #cbd5e1;"></div>
+
+                <div style="width: 220px; padding: 12px; background: #10b981; color: white; text-align: center; border-radius: 8px; font-size: 13px; font-weight: bold;">
+                    Attack Detection & Alert
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 25px; margin-top: 20px;">
+            <div style="flex: 1;">
+                <h4 style="color: #3b82f6; font-size: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">1. Data Preparation</h4>
+                <p style="font-size: 13.5px; color: #475569;">
+                    I used the <b>CIC-IDS2017</b> dataset because it has real-world attack examples. First, I cleaned the data to remove any "NaN" values that might break my Python code. Then, I normalized the numbers to be between 0 and 1 so the AI learns faster.
+                </p>
+            </div>
+
+            <div style="flex: 1;">
+                <h4 style="color: #10b981; font-size: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">2. Model Parameters</h4>
+                <ul style="padding-left: 15px; font-size: 13px; color: #475569; line-height: 1.8;">
+                    <li><b>Batch Size:</b> 64 (for better stability).</li>
+                    <li><b>Optimizer:</b> Adam (I found it's the best for this).</li>
+                    <li><b>Loss Function:</b> Binary Cross-Entropy.</li>
+                    <li><b>Dropout:</b> 0.2 (to avoid Overfitting).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #fffbeb; border-radius: 12px; border: 1px solid #fef3c7;">
+            <p style="margin: 0; font-size: 14px; color: #92400e; font-style: italic;">
+                "I decided to use a <b>Look-back period</b> of 10 packets. This means my model remembers the last 10 things that happened on the network to decide if the 11th thing is a hidden attack or just normal activity."
+            </p>
+        </div>
+
+        <div style="position: absolute; bottom: 50px; left: 50px; right: 50px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 11px; color: #94a3b8; font-weight: bold; text-transform: uppercase;">Methodology Report - Student: Karrar Mohammed</div>
+            <div style="font-size: 32px; font-weight: bold; color: #0f172a;">06</div>
+        </div>
+        </div>
         
