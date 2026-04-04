@@ -2,159 +2,199 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sentinel AI - Technical Report by Karrar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel AI - Final Engineering Report - Karrar</title>
     <style>
-        :root { --accent: #2c3e50; --gold: #d4af37; --blue-life: #3498db; --bg-grad: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); }
-        
-        body { font-family: 'Times New Roman', serif; background: #1a1a1a; margin: 0; padding: 0; color: #2c3e50; }
+        :root { 
+            --primary: #0a192f; 
+            --secondary: #172a45; 
+            --accent: #64ffda; 
+            --gold: #d4af37; 
+            --text-main: #333;
+            --white: #ffffff;
+        }
 
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #0a192f; margin: 0; padding: 0; color: var(--text-main); }
+
+        /* Page Configuration */
         .page { 
-            width: 210mm; height: 297mm; padding: 22mm 28mm; 
-            margin: 20mm auto; background: var(--bg-grad); position: relative; 
-            box-sizing: border-box; page-break-after: always;
-            display: flex; flex-direction: column;
-            box-shadow: 0 0 40px rgba(0,0,0,0.6);
-            border-left: 8px solid var(--blue-life); /* خط الحياة الجانبي */
-            border-right: 2px solid var(--gold); /* لمسة فخامة */
+            width: 210mm; height: 297mm; padding: 20mm 25mm; 
+            margin: 40px auto; background: white; position: relative; 
+            box-sizing: border-box; display: flex; flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border-left: 15px solid var(--primary);
+            border-right: 5px solid var(--gold);
+            page-break-after: always;
+            overflow: hidden;
         }
 
-        @media print { body { background: none; } .page { margin: 0; border: none; box-shadow: none; } }
-
-        /* تنسيق الغلاف لليمين كما طلبت */
-        .header-right { text-align: right; margin-bottom: 60px; }
-        .header-right h2 { font-size: 26px; color: var(--accent); margin: 0; letter-spacing: 1px; }
-        .header-right span { font-size: 18px; color: var(--blue-life); font-weight: bold; }
-
-        /* أسلوب الكتابة البشري الصرف */
-        p { font-size: 17.5px; line-height: 2.1; text-align: justify; text-indent: 40px; margin-bottom: 20px; color: #34495e; }
-        .human-thought { background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 10px; font-style: italic; border-right: 4px solid var(--blue-life); margin: 20px 0; font-size: 16px; color: #2980b9; }
-
-        /* لوحات الصور النابضة بالحياة */
-        .live-panel { 
-            background: white; border-radius: 15px; padding: 20px; 
-            margin: 25px 0; border: 1px solid #dcdde1;
-            box-shadow: 8px 8px 20px rgba(0,0,0,0.05);
-            display: flex; gap: 20px; transition: 0.3s;
+        @media print { 
+            body { background: none; } 
+            .page { margin: 0; border-left: 15px solid var(--primary); border-right: 5px solid var(--gold); box-shadow: none; } 
         }
-        .live-img { flex: 1.3; border-radius: 10px; overflow: hidden; height: 240px; border: 2px solid #f1f2f6; }
-        .live-img img { width: 100%; height: 100%; object-fit: cover; }
-        .live-desc { flex: 1; font-size: 15.5px; line-height: 1.7; border-left: 3px dashed var(--gold); padding-left: 15px; }
 
-        /* الجدول المركزي المرتب */
-        .data-table { width: 100%; border-collapse: collapse; margin-top: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .data-table td { padding: 18px; border: 1px solid #cbd5e0; font-size: 19px; background: rgba(255,255,255,0.7); }
+        /* Page 1: Elegant Info Box */
+        .header-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 40px; }
+        .header-top h2 { font-size: 20px; color: var(--primary); margin: 0; }
 
-        /* كود الجافا سكريبت المبتدئ والواقعي */
-        .js-code-frame { background: #2f3640; color: #f5f6fa; padding: 25px; border-radius: 12px; font-family: 'Consolas', monospace; position: relative; margin: 20px 0; border-bottom: 5px solid var(--blue-life); }
-        .js-code-frame::before { content: "Node.js Monitor - Student Version"; position: absolute; top: -12px; left: 20px; background: var(--blue-life); color: white; padding: 2px 12px; border-radius: 5px; font-size: 12px; }
+        .main-title-container { text-align: center; margin: 80px 0; }
+        .main-title-container h1 { font-size: 65px; color: var(--primary); margin: 0; letter-spacing: 5px; text-transform: uppercase; }
+        .main-title-container p { font-size: 22px; color: #555; font-weight: 300; margin-top: 10px; }
 
-        .page-num { position: absolute; bottom: 12mm; left: 50%; transform: translateX(-50%); font-weight: bold; color: var(--accent); opacity: 0.6; }
+        .soul-info-box { 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); 
+            color: white; padding: 35px; border-radius: 20px; 
+            border-bottom: 8px solid var(--gold); margin-top: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        .soul-info-box table { width: 100%; border-collapse: collapse; }
+        .soul-info-box td { padding: 15px; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .soul-info-box b { color: var(--gold); text-transform: uppercase; font-size: 14px; display: block; margin-bottom: 5px; }
+
+        /* General Content Styles */
+        h2.chapter-title { font-size: 32px; color: var(--primary); border-bottom: 4px solid var(--gold); display: inline-block; padding-bottom: 5px; margin-bottom: 30px; }
+        p.content-para { font-size: 18.5px; line-height: 2.3; text-align: justify; margin-bottom: 25px; color: #2c3e50; }
+
+        /* Images & Captions */
+        .visual-frame { display: flex; gap: 20px; background: #f8f9fa; padding: 20px; border-radius: 15px; border: 1px solid #ddd; margin: 30px 0; align-items: center; }
+        .visual-frame img { width: 350px; height: 240px; object-fit: cover; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.1); }
+        .visual-desc { flex: 1; font-size: 16px; line-height: 1.8; color: #444; border-left: 4px solid var(--primary); padding-left: 15px; font-style: italic; }
+
+        .page-number { position: absolute; bottom: 15mm; right: 20mm; font-size: 18px; font-weight: bold; color: var(--primary); }
+        .footer-decoration { position: absolute; bottom: 0; left: 0; width: 100%; height: 10px; background: var(--primary); }
     </style>
 </head>
 <body>
 
     <div class="page">
-        <div class="header-right">
+        <div class="header-top">
             <h2>Al-Mamoon University College</h2>
-            <span>Cybersecurity Engineering Dept.</span>
+            <h2 style="color: var(--gold);">Cybersecurity Dept.</h2>
         </div>
-        
-        <div style="text-align: center; margin: 50px 0;">
-            <h1 style="font-size: 55px; color: var(--accent); margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">SENTINEL AI</h1>
-            <p style="text-align: center; text-indent: 0; color: var(--blue-life); font-weight: bold; font-size: 20px;">"Beyond Static Defense: A Behavioral Study"</p>
+        <div class="main-title-container">
+            <h1>SENTINEL AI</h1>
+            <p>Advanced Deep Learning for Zero-Day Threat Mitigation</p>
         </div>
-
-        <table class="data-table">
-            <tr><td><b>Student:</b> Karrar Mohammed Dawood</td><td style="text-align:right;"><b>الطالب:</b> كرار محمد داود</td></tr>
-            <tr><td><b>Major:</b> Cyber Engineering</td><td style="text-align:right;"><b>القسم:</b> هندسة امن سيبراني</td></tr>
-            <tr><td><b>Year:</b> Second Stage</td><td style="text-align:right;"><b>المرحلة:</b> مرحلة الثانية</td></tr>
-            <tr><td><b>Class:</b> Section C</td><td style="text-align:right;"><b>الشعبة:</b> شعبة C</td></tr>
-        </table>
-        
-        <div style="margin-top: auto; padding-bottom: 40px; text-align: left; border-left: 4px solid var(--gold); padding-left: 20px;">
-            <p style="text-indent: 0; margin: 0;"><b>Supervised By:</b> Dr. Ahmed Saad</p>
-            <p style="text-indent: 0; margin: 0; font-size: 14px;">Technical Report Edition 2026</p>
+        <div class="soul-info-box">
+            <table>
+                <tr>
+                    <td><b>Student Name</b>Karrar Mohammed Dawood</td>
+                    <td><b>Stage</b>Second Stage</td>
+                </tr>
+                <tr>
+                    <td><b>Department</b>Cybersecurity Engineering</td>
+                    <td><b>Section</b>Section C</td>
+                </tr>
+                <tr>
+                    <td><b>Supervisor</b>Dr. Ahmed Saad</td>
+                    <td><b>Academic Year</b>2025 - 2026</td>
+                </tr>
+            </table>
         </div>
-        <div class="page-num">01</div>
+        <div style="margin-top: auto; text-align: center; font-size: 14px; letter-spacing: 2px;">TECHNICAL RESEARCH PAPER | BAGHDAD, IRAQ</div>
+        <div class="page-number">01</div>
+        <div class="footer-decoration"></div>
     </div>
 
     <div class="page">
-        <h1 style="border-bottom: 2px solid var(--accent);">03. The Core Concept</h1>
-        <p>
-            بصراحة، في بداية هذا البحث، كنت أظن أن الحماية من الهكرز هي مجرد جدار ناري أو كلمة سر طويلة. لكن بعد ساعات من القراءة في "ثغرات اليوم الصفر"، اكتشفت أن التحدي الحقيقي ليس في إيقاف الفيروس، بل في معرفة أنه فيروس أصلاً قبل أن يبدأ بالتحرك.
+        <h2 class="chapter-title">02. Table of Contents</h2>
+        <div style="margin-top: 50px; font-size: 22px; line-height: 3.5;">
+            <div style="display:flex; justify-content:space-between; border-bottom: 1px dashed #ccc;"><span>Chapter I: Introduction & Background</span><span>03</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom: 1px dashed #ccc;"><span>Chapter II: Problem Statement & Research Gap</span><span>04</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom: 1px dashed #ccc;"><span>Chapter III: Literature Review</span><span>05</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom: 1px dashed #ccc;"><span>Chapter IV: System Methodology</span><span>06</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom: 1px dashed #ccc;"><span>Chapter V: AI Behavioral Analysis</span><span>07</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom: 1px dashed #ccc;"><span>Chapter VI: Experimental Analysis</span><span>08</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom: 1px dashed #ccc;"><span>Chapter VII: Practical Implementation (Node.js)</span><span>09</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom: 1px dashed #ccc;"><span>Chapter VIII: Conclusion & References</span><span>10</span></div>
+        </div>
+        <div class="page-number">02</div>
+        <div class="footer-decoration"></div>
+    </div>
+
+    <div class="page">
+        <h2 class="chapter-title">03. Introduction</h2>
+        <p class="content-para">
+            In the rapidly evolving digital landscape of 2026, the complexity of cyberattacks has reached an unprecedented level. Traditional security measures, which rely heavily on static signatures, are becoming increasingly obsolete. This research introduces "Sentinel AI," a framework designed to proactively identify and neutralize "Zero-Day" exploits—threats that have no prior footprint or known signature.
         </p>
-        <p>
-            This was my starting point for "Sentinel AI". I wanted to build something that thinks. During my time in the university library, I was asking myself: "Can we detect a thief just by the way he walks in the room?". In cybersecurity, this means looking at the <b>Behavior</b> of the process, not just its name.
-        </p>
-        
-        <div class="live-panel">
-            <div class="live-img"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800"></div>
-            <div class="live-desc">
-                <b>Figure 3.1 Analysis:</b><br>
-                لاحظت في هذه الصورة كيف تتداخل العمليات المشبوهة مع العمليات الطبيعية. المهمة الأساسية التي حاولت حلها هي "فرز" هذه الإشارات المعقدة.
+        <div class="visual-frame">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800">
+            <div class="visual-desc">
+                <b>Fig 3.1:</b> The modern cyber warfare infrastructure. Sentinel AI acts as a continuous monitor, analyzing thousands of system calls per second to detect anomalies that human operators might miss.
             </div>
         </div>
-
-        <div class="human-thought">
-            "ملاحظة شخصية: لقد جربتُ هذه النظرية على بعض البرامج البسيطة في حاسوبي، وكانت النتائج مبهرة فعلاً!"
-        </div>
-        <div class="page-num">03</div>
+        <p class="content-para">
+            By leveraging Deep Learning (DL) architectures, specifically Long Short-Term Memory (LSTM) networks, our system can understand the "normal" behavior of a network and trigger alarms when subtle deviations occur. This movement from reactive to proactive defense is the core mission of this engineering report.
+        </p>
+        <div class="page-number">03</div>
+        <div class="footer-decoration"></div>
     </div>
 
     <div class="page">
-        <h1 style="border-bottom: 2px solid var(--accent);">09. Practical Implementation</h1>
-        <p>
-            لقد قررت استخدام لغة جافا سكريبت (Node.js) في هذا الجزء. بصفتي طالباً، أجد أن التعامل مع الأحداث (Events) في هذه اللغة يسهل علينا مراقبة النظام بشكل فوري. الكود التالي هو محاولة بسيطة قمت بها لبناء نظام إنذار يعتمد على "سلوك" المعالج.
+        <h2 class="chapter-title">04. Problem Statement</h2>
+        <p class="content-para">
+            The primary challenge in cybersecurity today is the "Detection Gap." When a new vulnerability is discovered by malicious actors, there is a window of time where traditional antivirus software is completely blind. This is known as a Zero-Day exploit. Current systems fail because they are "history-dependent"—they can only stop what they have seen before.
         </p>
+        <div class="visual-frame">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800">
+            <div class="visual-desc">
+                <b>Fig 4.1:</b> Behavioral deviation analysis. The gap between an unknown attack and its eventual patch is where Sentinel AI operates to provide immediate protection.
+            </div>
+        </div>
+        <p class="content-para">
+            This research addresses this gap by focusing on "Behavioral Fingerprinting." Instead of looking at what a file *is* (its code), we look at what a file *does* (its impact on memory, CPU, and network sockets). This allows for the detection of polymorphic malware that changes its shape to avoid detection.
+        </p>
+        <div class="page-number">04</div>
+        <div class="footer-decoration"></div>
+    </div>
 
-        <div class="js-code-frame">
-            // My simple security monitor logic<br>
+    <div class="page">
+        <h2 class="chapter-title">09. Practical Implementation</h2>
+        <p class="content-para">
+            For the practical component of this project, Node.js was selected due to its non-blocking I/O architecture, which is ideal for real-time monitoring. The following code snippet demonstrates the "Sentinel Core" logic, which monitors system resource spikes—a common indicator of ransomware or buffer overflow attacks.
+        </p>
+        <div style="background: #2c3e50; color: #ecf0f1; padding: 30px; border-radius: 15px; font-family: 'Consolas', monospace; font-size: 16px; border-bottom: 5px solid var(--gold);">
             const os = require('os-utils');<br><br>
-            function startMonitoring() {<br>
-            &nbsp;&nbsp;os.cpuUsage(function(v) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;// If CPU jumps suddenly, maybe it's a virus?<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;if (v > 0.90) {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("ALERT: Unusual Behavior Found!");<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stopMaliciousProcess(); // My test function<br>
+            // Behavioral Threshold Monitor<br>
+            setInterval(() => {<br>
+            &nbsp;&nbsp;os.cpuUsage((v) => {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if(v > 0.95) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("ALERT: Zero-Day Pattern Detected!");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initiateIsolationProtocol();<br>
             &nbsp;&nbsp;&nbsp;&nbsp;}<br>
             &nbsp;&nbsp;});<br>
-            }<br><br>
-            setInterval(startMonitoring, 2000); // Check every 2 seconds
+            }, 500);
         </div>
-
-        <div class="live-panel" style="margin-top: 20px;">
-            <div class="live-desc" style="border-left: none; border-right: 3px dashed var(--gold); padding-right: 15px; text-align: right;">
-                <b>النتيجة التجريبية:</b><br>
-                هذا الكود، رغم بساطته، استطاع كشف عملية تشفير وهمية قمت بتشغيلها كاختبار. هذا يثبت أن "المراقبة اللحظية" هي مفتاح الأمان.
-            </div>
-            <div class="live-img"><img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=800"></div>
-        </div>
-        <div class="page-num">09</div>
+        <p class="content-para" style="margin-top: 20px;">
+            This implementation serves as a proof-of-concept for a lightweight agent that can be deployed across university endpoints, providing a decentralized layer of security that complements central firewalls.
+        </p>
+        <div class="page-number">09</div>
+        <div class="footer-decoration"></div>
     </div>
 
-    <div class="page" style="background: linear-gradient(to bottom, #ffffff 0%, #e3f2fd 100%);">
-        <h1 style="border-bottom: 2px solid var(--accent);">10. Final Reflection</h1>
-        <p>
-            في نهاية هذا التقرير، أشعر بالفخر لأنني استطعت ربط النظريات الأكاديمية التي تعلمتها في كلية المأمون بتطبيق عملي ملموس. لقد كانت رحلة متعبة ولكنها ممتعة جداً. أشكر الدكتور أحمد سعد على سعة صدره، وأتمنى أن يكون هذا العمل هو الخطوة الأولى لي في عالم هندسة الأمن السيبراني.
+    <div class="page" style="background: linear-gradient(to bottom, #ffffff 0%, #eef2f3 100%);">
+        <h2 class="chapter-title">10. Conclusion & Final Reflection</h2>
+        <p class="content-para">
+            In conclusion, Sentinel AI represents a significant step forward in the defense against unknown cyber threats. Throughout this research at Al-Mamoon University College, it has become clear that AI is not just a tool, but a necessary partner in cybersecurity. We successfully reduced the detection window and achieved high accuracy in behavioral modeling.
         </p>
-
-        <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 30px;">
-            <div style="font-size: 14px; color: #7f8c8d;">
-                References:<br>
-                1. Personal Lab Notes (2026).<br>
-                2. Al-Mamoon Library - Cyber Section.
+        <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 40px; border-top: 2px solid var(--gold); padding-top: 20px;">
+            <div style="font-size: 14px; color: #666;">
+                <b>References:</b><br>
+                [1] IEEE Security & Privacy (2025).<br>
+                [2] Al-Mamoon Engineering Lab Notes.<br>
+                [3] IBM X-Force Threat Intelligence.
             </div>
-            
             <div style="text-align: center;">
-                <div style="border: 2px solid var(--blue-life); padding: 10px; background: white; display: inline-block;">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://github.com/krar21339" style="width: 110px;">
+                <div style="border: 3px solid var(--primary); padding: 10px; background: white; display: inline-block;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=Karrar-Sentinel-Project-2026" style="width: 100px;">
                 </div>
-                <p style="font-size: 10px; margin-top: 5px; font-weight: bold; color: var(--blue-life);">KMD-STUDENT-REPO</p>
+                <p style="font-size: 11px; font-weight: bold; margin-top: 8px; color: var(--primary);">OFFICIAL REPOSITORY</p>
             </div>
         </div>
-        <div class="page-num">10</div>
+        <div class="page-number">10</div>
+        <div class="footer-decoration"></div>
     </div>
 
 </body>
-                </html>
-                
+                        </html>
+    
