@@ -176,21 +176,21 @@
     <div class="page">
         <div class="section-header">
             <div class="section-title">03. Literature Review</div>
-            <div class="section-subtitle">What I learned from my research</div>
+            <div class="section-subtitle">What I found in my research</div>
         </div>
 
         <div class="content-text">
-            I started looking into how people protected networks before. I found that most old tools use something called "Heuristic Analysis." It was okay for a while, but I think it has a big problem now because hackers are getting much better at hiding their work from these simple systems.
+            I spent some time looking at how old systems try to stop hackers. Most of them use "Heuristic Analysis," which just looks for suspicious things in the code. I think this worked fine years ago, but today's attackers are much smarter and can hide their work easily.
         </div>
 
-        <div class="highlight-box" style="border-left: 6px solid #ef4444; background: #fffdfd; color: #333;">
-            <b style="color: #ef4444;">The "Silent Killer" Problem:</b><br>
-            The main issue I found is that new attacks are "invisible." This is what I call the silent killer of detectors. The system thinks everything is fine, but a Zero-Day attack is actually inside, stealing info. Traditional tools can't see it because they don't have a "rule" or a "picture" for this new trick yet.
+        <div class="highlight-box" style="border-left: 6px solid #ef4444; background: #fff5f5; color: #333;">
+            <b style="color: #ef4444;">The "Silent Killer" (Why they fail):</b><br>
+            The biggest gap is when an attack is "invisible." This is the real killer for any detector. The system thinks everything is okay, but a Zero-Day attack is actually working in the background. Traditional tools fail because they don't have a "picture" or a "signature" for this new trick yet.
         </div>
 
         <div style="display: flex; gap: 20px; margin: 25px 0; align-items: center;">
             <div style="flex: 1; background: #f8fafc; padding: 20px; border-radius: 15px; border: 1px solid #e2e8f0;">
-                <h4 style="color: var(--navy); margin-top: 0; font-size: 14px;">Why old systems fail? (My view):</h4>
+                <h4 style="color: var(--navy); margin-top: 0; font-size: 14px;">Why do old systems fail? (My view):</h4>
                 <ul class="problem-points" style="font-size: 13px; color: #444;">
                     <li><b>Changing Malware:</b> The virus keeps changing its code so the detector gets confused.</li>
                     <li><b>Time Lag:</b> Old programs take too much time to realize there is a mistake.</li>
@@ -199,20 +199,20 @@
             </div>
             <img src="1000065327.jpg" 
                  style="width: 320px; height: 220px; border-radius: 12px; object-fit: cover; box-shadow: 0 8px 15px rgba(0,0,0,0.1);" 
-                 alt="Project Code Image">
+                 alt="Project Analysis Source">
         </div>
 
         <div class="content-text">
-            So, I decided to use <b>LSTM</b> (Long Short-Term Memory) in my project. Why? Because it works a bit like a human brain. It doesn't just look at one second; it remembers the whole story of what happened to find hidden patterns. This is the only way to catch the "Silent Killer" that I mentioned before.
+            So, I decided to use <b>LSTM</b> in my project. I like it because it works like a human brain. It doesn't just look at one second; it tracks the whole story to find hidden patterns. This is the only way to catch the "Silent Killer" I talked about.
         </div>
 
         <div class="content-text">
-            In my <b>Sentinel AI</b> design, I really focused on this part. I wanted a defense that understands the "logic" of the attacker instead of just waiting for a virus signature that it already knows.
+            In my <b>Sentinel AI</b> design, I focused on this point. I wanted a defense that understands the "logic" of the attacker instead of just waiting for a virus signature it already knows.
         </div>
 
         <div class="footer">
             <div class="footer-text">LITERATURE ANALYSIS - PREPARED BY: KARRAR MOHAMMED</div>
             <div class="page-num">05</div>
         </div>
-    </div>
-    
+        </div>
+        
