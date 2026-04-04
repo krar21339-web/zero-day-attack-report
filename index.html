@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENTINEL AI - Full Technical Report</title>
+    <title>SENTINEL AI - Professional Technical Report</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap');
 
@@ -12,7 +12,6 @@
             --gold: #c5a059;
             --white: #ffffff;
             --gray: #64748b;
-            --light-bg: #f1f5f9;
         }
 
         * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
@@ -36,9 +35,9 @@
             flex-shrink: 0;
         }
 
-        /* --- Global Elements --- */
+        /* --- Global Footer --- */
         .footer { position: absolute; bottom: 40px; width: 85%; left: 7.5%; display: flex; justify-content: space-between; align-items: flex-end; }
-        .footer-text { color: #cbd5e1; font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+        .footer-text { color: #cbd5e1; font-size: 11px; letter-spacing: 2.5px; font-weight: 700; text-transform: uppercase; }
         .page-num { font-size: 50px; font-weight: 900; color: var(--navy); line-height: 0.8; }
         .page-num::before { content: ""; display: block; width: 60px; height: 8px; background: var(--gold); margin-bottom: 12px; margin-left: auto; }
 
@@ -46,33 +45,38 @@
         .header-top { display: flex; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 15px; margin-bottom: 60px; }
         .univ-name { font-weight: 700; font-size: 20px; color: var(--navy); }
         .dept-name { font-weight: 700; font-size: 20px; color: var(--gold); }
-        .main-title-section { text-align: center; margin-top: 50px; }
-        .main-title-section h1 { font-size: 88px; font-weight: 900; color: var(--navy); letter-spacing: 16px; margin: 0; }
-        .main-title-section p { font-size: 18px; color: var(--gray); letter-spacing: 3px; text-transform: uppercase; margin-top: 15px; }
-        .student-info-grid { margin: 70px auto; width: 95%; background: var(--navy); border-radius: 30px; padding: 40px; color: white; border-bottom: 10px solid var(--gold); }
-        .info-row { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .label-en { font-size: 10px; color: var(--gold); font-weight: 700; text-transform: uppercase; }
-        .label-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 13px; color: var(--gold); }
-        .val-en { font-size: 17px; margin-top: 5px; }
-        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 18px; direction: rtl; margin-top: 5px; }
-        .supervised-block { margin-top: auto; margin-bottom: 80px; border-left: 6px solid var(--gold); padding-left: 25px; }
-        .supervised-name { color: var(--navy); font-size: 36px; font-weight: 900; display: block; }
+        .main-title { font-size: 88px; font-weight: 900; color: var(--navy); letter-spacing: 16px; text-align: center; margin-top: 50px; }
+        .sub-title { font-size: 18px; color: var(--gray); letter-spacing: 3px; text-transform: uppercase; text-align: center; margin-top: 15px; }
+        .info-grid { margin: 70px auto; width: 95%; background: var(--navy); border-radius: 30px; padding: 40px; color: white; border-bottom: 10px solid var(--gold); }
+        .row { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .supervised { margin-top: auto; margin-bottom: 80px; border-left: 6px solid var(--gold); padding-left: 25px; }
 
         /* --- PAGE 02: DIRECTORY --- */
-        .toc-header { display: flex; align-items: center; margin-top: 25px; margin-bottom: 50px; }
+        .toc-header { display: flex; align-items: center; margin-top: 25px; margin-bottom: 45px; }
         .gold-marker { width: 14px; height: 42px; background: var(--gold); margin-right: 22px; }
         .toc-title { font-size: 38px; font-weight: 900; color: var(--navy); margin: 0; letter-spacing: 1.5px; }
-        .toc-list { flex-grow: 1; }
-        .toc-item { display: flex; justify-content: space-between; padding: 22px 0; border-bottom: 1px solid #f1f5f9; color: var(--navy); font-weight: 800; font-size: 17px; }
-        .server-img { width: 100%; height: 380px; border-radius: 25px; margin-top: 30px; object-fit: cover; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .toc-item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #f1f5f9; color: var(--navy); font-weight: 800; font-size: 17px; }
+        
+        /* ضبط أبعاد الصورة في الفهرس لتكون أكثر عرضية */
+        .server-img { 
+            width: 100%; height: 320px; /* تم تقليل الارتفاع من 380 إلى 320 لمظهر أفضل */
+            border-radius: 20px; margin-top: 40px; 
+            object-fit: cover; box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+        }
 
         /* --- PAGE 03: INTRODUCTION --- */
-        .intro-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; border-bottom: 2px solid var(--navy); padding-bottom: 10px; }
-        .highlight-quote { margin: 35px 0; padding: 30px; background: #f8fafc; border-left: 6px solid var(--gold); font-style: italic; font-size: 19px; color: var(--navy); line-height: 1.6; }
-        .intro-text { font-size: 16px; line-height: 1.9; color: #1e293b; text-align: justify; margin-bottom: 25px; }
-        .circuit-img { width: 100%; height: 260px; border-radius: 20px; object-fit: cover; margin-top: 20px; }
-        .empirical-box { display: flex; gap: 20px; background: #fff; padding: 20px; border-radius: 15px; border: 1px solid #f1f5f9; margin-top: 30px; }
-        .small-img { width: 150px; height: 110px; border-radius: 12px; object-fit: cover; }
+        .intro-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 35px; border-bottom: 2px solid var(--navy); padding-bottom: 10px; }
+        .quote { margin: 30px 0; padding: 25px; background: #f8fafc; border-left: 6px solid var(--gold); font-style: italic; font-size: 18px; color: var(--navy); line-height: 1.6; }
+        .text { font-size: 15.5px; line-height: 1.8; color: #1e293b; text-align: justify; margin-bottom: 20px; }
+        
+        /* ضبط أبعاد الصورة في المقدمة */
+        .circuit-img { 
+            width: 100%; height: 240px; /* تم تقليل الارتفاع لملاءمة النص */
+            border-radius: 20px; object-fit: cover; margin-top: 20px; 
+        }
+        
+        .empirical { display: flex; gap: 20px; background: #fff; padding: 18px; border-radius: 15px; border: 1px solid #f1f5f9; margin-top: 25px; }
+        .small-thumb { width: 140px; height: 95px; border-radius: 10px; object-fit: cover; }
 
         @media print { body { padding: 0; background: none; } .page { box-shadow: none; page-break-after: always; } }
     </style>
@@ -84,27 +88,21 @@
             <div class="univ-name">Al-Mamoon University College</div>
             <div class="dept-name">Cybersecurity Engineering</div>
         </div>
-        <div class="main-title-section">
-            <h1>SENTINEL AI</h1>
-            <p>ADVANCED DEEP LEARNING FRAMEWORK FOR ZERO-DAY PROTECTION</p>
-        </div>
-        <div class="student-info-grid">
-            <div class="info-row">
-                <div><div class="label-en">Student Name</div><div class="val-en">Karrar Mohammed Dawood</div></div>
-                <div><div class="label-ar">:اسم الطالب</div><div class="val-ar">كرار محمد داود</div></div>
+        <div class="main-title">SENTINEL AI</div>
+        <div class="sub-title">ADVANCED DEEP LEARNING FRAMEWORK FOR ZERO-DAY PROTECTION</div>
+        <div class="info-grid">
+            <div class="row">
+                <div><div style="font-size:10px; color:var(--gold); font-weight:700;">STUDENT NAME</div><div style="font-size:17px; margin-top:5px;">Karrar Mohammed Dawood</div></div>
+                <div style="text-align:right;"><div style="font-family:'IBM Plex Sans Arabic'; font-size:13px; color:var(--gold);">اسم الطالب</div><div style="font-family:'IBM Plex Sans Arabic'; font-size:18px; direction:rtl; margin-top:5px;">كرار محمد داود</div></div>
             </div>
-            <div class="info-row">
-                <div><div class="label-en">Department</div><div class="val-en">Cybersecurity Engineering</div></div>
-                <div><div class="label-ar">:القسم</div><div class="val-ar">هندسة الأمن السيبراني</div></div>
-            </div>
-            <div class="info-row">
-                <div><div class="label-en">Stage / Section</div><div class="val-en">Second Stage - Section C</div></div>
-                <div><div class="label-ar">:المرحلة / الشعبة</div><div class="val-ar">المرحلة الثانية - شعبة C</div></div>
+            <div class="row">
+                <div><div style="font-size:10px; color:var(--gold); font-weight:700;">DEPARTMENT</div><div style="font-size:17px; margin-top:5px;">Cybersecurity Engineering</div></div>
+                <div style="text-align:right;"><div style="font-family:'IBM Plex Sans Arabic'; font-size:13px; color:var(--gold);">القسم</div><div style="font-family:'IBM Plex Sans Arabic'; font-size:18px; direction:rtl; margin-top:5px;">هندسة الأمن السيبراني</div></div>
             </div>
         </div>
-        <div class="supervised-block">
-            <span style="color:var(--gray); font-weight:700; text-transform:uppercase;">Supervised By:</span>
-            <span class="supervised-name">Dr. Ahmed Saad</span>
+        <div class="supervised">
+            <span style="color:var(--gray); font-weight:700; text-transform:uppercase; font-size:14px;">Supervised By:</span>
+            <span style="color:var(--navy); font-size:36px; font-weight:900; display:block;">Dr. Ahmed Saad</span>
         </div>
         <div class="footer">
             <div class="footer-text">Technical Research Paper | Baghdad, Iraq</div>
@@ -127,7 +125,7 @@
             <div class="toc-item"><span>07. PRACTICAL IMPLEMENTATION</span><span>09</span></div>
             <div class="toc-item"><span>08. CONCLUSION & REFERENCES</span><span>10</span></div>
         </div>
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000" class="server-img" alt="Servers">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000" class="server-img" alt="Professional Servers">
         <div class="footer">
             <div class="footer-text">AL-MAMOON UNIVERSITY | CYBERSECURITY</div>
             <div class="page-num">02</div>
@@ -137,23 +135,20 @@
     <div class="page">
         <div class="intro-top">
             <div style="font-size:38px; font-weight:900; color:var(--navy);">01. Introduction</div>
-            <div style="font-size:16px; color:var(--gold); font-weight:700; text-transform:uppercase;">Executive Introduction</div>
+            <div style="font-size:15px; color:var(--gold); font-weight:700; text-transform:uppercase;">Executive Introduction</div>
         </div>
-        <div class="intro-text">
-            In an era of relentless digital acceleration, cybersecurity has shifted from a mere technical layer to a fundamental pillar of institutional survival. My research stems from a critical observation: traditional defense mechanisms are increasingly failing against the sophisticated surge of "Zero-Day Attacks." These vulnerabilities render signature-based tools obsolete long before a threat is even identified.
+        <div class="text">
+            In an era of relentless digital acceleration, cybersecurity has shifted from a mere technical layer to a fundamental pillar of institutional survival. My research stems from a critical observation: traditional defense mechanisms are increasingly failing against the sophisticated surge of "Zero-Day Attacks." These vulnerabilities render tools obsolete before a threat is even identified.
         </div>
-        <div class="highlight-quote">
-            "The true challenge in modern defense does not lie in building thicker firewalls, but in engineering autonomous 'digital minds' capable of predicting threats before they manifest."
+        <div class="quote">
+            "The true challenge in modern defense does not lie in building thicker firewalls, but in engineering autonomous 'digital minds' capable of predicting threats."
         </div>
-        <div class="intro-text">
-            This report details my approach to leveraging Deep Learning—specifically advanced neural architectures—to analyze behavioral patterns rather than static code signatures. By training models to understand the "logic of an attack," we empower systems to detect unknown threats with unprecedented precision.
-        </div>
-        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000" class="circuit-img" alt="Cyber Circuit">
-        <div class="empirical-box">
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=500" class="small-img" alt="Code">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000" class="circuit-img" alt="Data Circuit Interface">
+        <div class="empirical">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=500" class="small-thumb" alt="Code Logic">
             <div>
-                <div style="font-weight:900; color:var(--navy); margin-bottom:5px;">Project Empirical Vision:</div>
-                <div style="font-size:12px; color:var(--gray); line-height:1.5;">This introduction reflects my philosophy in merging Deep Learning with core infrastructure. Data is transformed into digital signals, scrutinized within Security Nodes to ensure zero unauthorized execution.</div>
+                <div style="font-weight:900; color:var(--navy); margin-bottom:4px; font-size:15px;">Project Empirical Vision:</div>
+                <div style="font-size:12px; color:var(--gray); line-height:1.5;">This introduction reflects my philosophy in merging Deep Learning with infrastructure. Data signals are scrutinized within Security Nodes to ensure zero unauthorized execution.</div>
             </div>
         </div>
         <div class="footer">
@@ -163,4 +158,5 @@
     </div>
 
 </body>
-</html>
+    </html>
+    
