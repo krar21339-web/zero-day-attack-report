@@ -173,45 +173,66 @@
          </div>
 </body>
 </html>
-    <div class="page" style="padding: 40px; line-height: 1.6; background: #fff; min-height: 1000px; font-family: sans-serif;">
-        <div style="margin-bottom: 25px;">
-            <h2 style="font-size: 26px; color: #1e293b; margin: 0;">03. Literature Review</h2>
-            <p style="color: #64748b; font-size: 13px; margin: 5px 0 0 0;">WHAT I LEARNED FROM MY RESEARCH</p>
+        <div class="page" style="padding: 50px; line-height: 1.6; background: #fff; position: relative; min-height: 1000px; font-family: 'Segoe UI', Arial, sans-serif;">
+        
+        <div style="margin-bottom: 35px; border-bottom: 2px solid #1e293b; padding-bottom: 10px;">
+            <h2 style="font-size: 28px; color: #1e293b; margin: 0; letter-spacing: 1px;">03. Literature Review</h2>
+            <p style="color: #64748b; font-size: 13px; margin: 5px 0 0 0; font-weight: 600; text-transform: uppercase;">Analysis of Existing Security Systems</p>
         </div>
 
-        <p style="color: #334155; margin-bottom: 20px;">
-            I started looking into how people protect networks before. I found that most old tools use something called "Heuristic Analysis." It was okay for a while, but I think it has a big problem now because hackers are getting much better at hiding their work from these simple systems.
+        <p style="color: #334155; margin-bottom: 25px; font-size: 15px;">
+            In this section, I analyzed how current networks are protected. Most systems depend on "Heuristic Rules" which look for known patterns. However, my research shows that these methods are becoming "blind" against modern, hidden attacks.
         </p>
 
-        <div style="border-left: 5px solid #ef4444; background: #fff5f5; padding: 20px; border-radius: 0 10px 10px 0; margin-bottom: 25px;">
-            <b style="color: #ef4444; display: block; margin-bottom: 8px;">The "Silent Killer" Problem:</b>
-            <span style="color: #475569; font-style: italic; font-size: 14px;">The main issue is that new attacks are "invisible." This is what I call the silent killer. The system thinks everything is fine, but a Zero-Day attack is actually inside, stealing info. Traditional tools fail because they don't have a "rule" for this new trick yet.</span>
+        <div style="border-right: 5px solid #ef4444; background: #fef2f2; padding: 20px; border-radius: 10px; margin-bottom: 35px; text-align: right; direction: rtl;">
+            <b style="color: #ef4444; display: block; margin-bottom: 8px; font-size: 17px;">مشكلة "السم القاتل" (The Main Gap):</b>
+            <span style="color: #475569; font-size: 14px; line-height: 1.8;">
+                الفجوة الأساسية التي وجدتها هي أن الهجمات الحديثة "غير مرئية". النظام يعتقد أن كل شيء طبيعي، بينما هجوم الـ Zero-Day يعمل في الخلفية. الأدوات التقليدية تفشل هنا لأنها لا تملك "قاعدة بيانات" لهذا السلوك الجديد بعد.
+            </span>
         </div>
 
-        <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 25px;">
-            <div style="flex: 1.2; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
-                <h4 style="margin-top: 0; color: #0f172a; font-size: 15px;">Why old systems fail?</h4>
-                <ul style="padding-left: 15px; font-size: 13.5px; color: #334155;">
-                    <li style="margin-bottom: 10px;"><b>Changing Malware:</b> The virus keeps changing its code so the detector gets confused.</li>
-                    <li style="margin-bottom: 10px;"><b>Time Lag:</b> Old programs take too much time to realize there is a mistake.</li>
-                    <li><b>Fake Behavior:</b> Attacks act like a normal person, so the detector ignores them.</li>
-                </ul>
-            </div>
-            
-            <div style="flex: 1;">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI2MCIgdmlld0JveD0iMCAwIDQwMCAyNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdG09IjQwMCIgaGVpZ2h0PSIyNjAiIHJ4PSIxMiIgZmlsbD0iIzA1MDkxOCIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwayByPSIyIiBmaWxsPSIjMDBGRjk0Ii8+PGNpcmNsZSBjeD0iMzAwIiBjeT0iMTgwIiByPSIyIiBmaWxsPSIjMDBGRjk0Ii8+PHBhdGggZD0iTTEwMCA4MEwyMDAgMTMwTDMwMCAxODAiIHN0cm9rZT0iIzAwRkY5NCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48ZyBvcGFjaXR5PSIwLjUiPjx0ZXh0IHg9IjIwIiB5PSIyNDAiIGZpbGw9IiMwMEZGOTQiIGZvbnQtZmFtaWx5PSJNb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCI+W0RFVEVDVElOR19aRVJPX0RBWV0uLi48L3RleHQ+PC9nPjwvc3ZnPg==" 
-                     style="width: 100%; height: 250px; border-radius: 12px; object-fit: cover; box-shadow: 0 8px 16px rgba(0,0,0,0.2);" 
-                     alt="Cyber System Analysis">
-            </div>
+        <div style="margin: 30px 0;">
+            <h4 style="color: #1e293b; margin-bottom: 15px; font-size: 16px;">Comparison: Old Systems vs. My Proposed AI</h4>
+            <table style="width: 100%; border-collapse: collapse; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-size: 14px;">
+                <thead>
+                    <tr style="background: #1e293b; color: #fff; text-align: left;">
+                        <th style="padding: 15px; border: 1px solid #334155;">Feature</th>
+                        <th style="padding: 15px; border: 1px solid #334155;">Traditional Tools</th>
+                        <th style="padding: 15px; border: 1px solid #334155; background: #0f172a;">Sentinel AI (My Project)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Detection Method</td>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0;">Static Rules (Signatures)</td>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0; color: #059669; font-weight: 600;">Deep Learning (Behavior)</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                        <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">New Attacks</td>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0;">Fails to see them</td>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0; color: #059669; font-weight: 600;">Detects via Patterns</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Response Time</td>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0;">Slow (Needs updates)</td>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0; color: #059669; font-weight: 600;">Real-time Analysis</td>
+                    </tr>
+                    <tr style="background: #f8fafc;">
+                        <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Complexity</td>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0;">Low (Simple)</td>
+                        <td style="padding: 12px; border: 1px solid #e2e8f0; color: #059669; font-weight: 600;">High (Neural Networks)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <p style="color: #334155;">
-            So, I decided to use <b>LSTM</b> (Long Short-Term Memory) in my project. Why? Because it works like a human brain. It doesn't just look at one second; it tracks the whole story from the start to find any hidden patterns. This is the only way to catch the "Silent Killer" that I mentioned.
+        <p style="color: #334155; font-size: 15px; margin-top: 25px;">
+            That's why I chose <b>LSTM (Long Short-Term Memory)</b>. It acts like a "Digital Memory" that remembers past data packets to find links that a human or a simple program would miss. This table proves that AI is no longer a luxury; it is a necessity for modern cybersecurity.
         </p>
 
-        <div style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Literature Analysis - Karrar Mohammed</div>
-            <div style="font-size: 28px; font-weight: bold; color: #1e293b;">05</div>
+        <div style="position: absolute; bottom: 50px; left: 50px; right: 50px; border-top: 1px solid #e2e8f0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: bold;">LITERATURE ANALYSIS - KARRAR MOHAMMED</div>
+            <div style="font-size: 32px; font-weight: bold; color: #1e293b;">05</div>
         </div>
         </div>
         
