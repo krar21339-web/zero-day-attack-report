@@ -17,10 +17,10 @@
 
         body {
             margin: 0; padding: 40px 0;
-            background-color: #f0f0f0;
+            background-color: #f4f4f4;
             font-family: 'Roboto', sans-serif;
             display: flex; flex-direction: column;
-            align-items: center; gap: 50px;
+            align-items: center; gap: 40px;
         }
 
         .page {
@@ -56,7 +56,7 @@
         .val-en { font-size: 15px; font-weight: 500; margin-top: 4px; }
         .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 16px; font-weight: 700; text-align: right; direction: rtl; margin-top: 4px; }
 
-        /* --- Page 02: Directory Fix --- */
+        /* --- Page 02: Directory --- */
         .dir-title { margin-top: 20px; margin-bottom: 30px; display: flex; align-items: center; }
         .marker { width: 10px; height: 35px; background: var(--gold); margin-right: 15px; }
         .dir-title h2 { color: var(--navy); font-size: 30px; font-weight: 900; margin: 0; }
@@ -66,22 +66,31 @@
         .list-label { color: var(--navy); font-size: 15px; font-weight: 800; }
         .list-no { color: var(--navy); font-size: 17px; font-weight: 900; }
 
-        /* تضمين الصورة كـ Background ثابت لضمان الوضوح التام */
-        .image-container {
-            width: 100%; height: 340px;
-            background-color: #050f1d;
-            background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1000');
-            background-size: cover; background-position: center;
-            border-radius: 15px; margin-top: 20px;
+        /* الحل الجذري: صورة سيبرانية مرسومة بالكود (SVG) لضمان الظهور دوماً */
+        .cyber-graphic {
+            width: 100%; height: 350px;
+            background: var(--navy);
+            border-radius: 15px; margin-top: 30px;
+            position: relative; overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            position: relative;
+            display: flex; align-items: center; justify-content: center;
         }
-        .image-container::after {
-            content: "SECURE NODE INTERFACE";
-            position: absolute; bottom: 20px; left: 20px;
-            color: var(--gold); font-size: 12px; font-weight: 900; letter-spacing: 2px;
-            background: rgba(10, 29, 55, 0.8); padding: 5px 15px; border-radius: 5px;
+
+        /* رسم خطوط سيرفر وتأثيرات تقنية */
+        .cyber-graphic::before {
+            content: ""; position: absolute; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, transparent 0px, transparent 39px, rgba(197, 160, 89, 0.1) 40px);
         }
+        .cyber-graphic::after {
+            content: "SECURE NODE ENCRYPTION";
+            color: var(--gold); font-size: 35px; font-weight: 900;
+            opacity: 0.2; letter-spacing: 5px; text-align: center;
+        }
+
+        .server-dots {
+            position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px;
+        }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); opacity: 0.5; }
 
         .footer { position: absolute; bottom: 30px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
         .pg-num { font-size: 35px; font-weight: 900; color: var(--navy); }
@@ -108,7 +117,7 @@
             </div>
             <div class="info-row">
                 <div><div class="tag">Department</div><div class="val-en">Cybersecurity Engineering</div></div>
-                <div><div class="lbl-gold" style="text-align:right"></div><div class="val-ar">هندسة الأمن السيبراني</div></div>
+                <div><div class="val-ar">هندسة الأمن السيبراني</div></div>
             </div>
             <div class="info-row">
                 <div><div class="tag">Stage / Section</div><div class="val-en">Second Stage - Section C</div></div>
@@ -133,7 +142,6 @@
         <div class="list-wrap">
             <div class="list-row"><span class="list-label">01. EXECUTIVE SUMMARY</span><span class="list-no">03</span></div>
             <div class="list-row"><span class="list-label">02. PROBLEM DEFINITION</span><span class="list-no">04</span></div>
-            <div class="list-item"><span class="item-label"></span><span class="item-no"></span></div>
             <div class="list-row"><span class="list-label">03. LITERATURE REVIEW</span><span class="list-no">05</span></div>
             <div class="list-row"><span class="list-label">04. PROPOSED METHODOLOGY</span><span class="list-no">06</span></div>
             <div class="list-row"><span class="list-label">05. NEURAL ARCHITECTURE</span><span class="list-no">07</span></div>
@@ -142,7 +150,11 @@
             <div class="list-row"><span class="list-label">08. CONCLUSION & REFERENCES</span><span class="list-no">10</span></div>
         </div>
         
-        <div class="image-container"></div>
+        <div class="cyber-graphic">
+            <div class="server-dots">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+        </div>
         
         <div class="footer">
             <div style="color:#ccc; font-size:9px; font-weight:bold; letter-spacing:1px;">CYBERSECURITY FRAMEWORK | 2025-2026</div>
@@ -151,5 +163,4 @@
     </div>
 
 </body>
-                                                               </html>
-    
+</html>
