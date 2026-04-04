@@ -2,311 +2,155 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>Karrar Mohammed - Cover Page (Corrected Section)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel AI - Full Project</title>
     <style>
-        /* استدعاء الخطوط */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
 
         :root {
             --navy: #0a1d37;
             --gold: #c5a059;
+            --white: #ffffff;
         }
 
         * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
 
         body {
-            margin: 0; padding: 0;
+            margin: 0; padding: 40px 0;
             background-color: #eee;
             font-family: 'Roboto', sans-serif;
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* يضمن أن الصفحات تحت بعضها */
+            align-items: center;
+            gap: 50px; /* مسافة بين الصفحة والأخرى */
         }
 
         .page {
             width: 210mm; height: 297mm;
-            background: white;
-            padding: 20mm;
+            background: var(--white);
             position: relative;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-            border-right: 15px solid var(--navy);
-            border-left: 2px solid #ddd;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            border-right: 18px solid var(--navy);
             display: flex; flex-direction: column;
+            padding: 20mm;
+            overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .header-top {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid var(--navy); padding-bottom: 10px; margin-bottom: 30px;
+        /* --- Page 01: Cover --- */
+        .header-cover {
+            display: flex; justify-content: space-between;
+            border-bottom: 2px solid var(--navy);
+            padding-bottom: 10px; margin-bottom: 40px;
         }
-        .univ-name { font-weight: bold; font-size: 18px; color: var(--navy); }
-        .dept-name { font-weight: bold; font-size: 18px; color: var(--gold); }
+        .univ-title { font-weight: bold; font-size: 18px; color: var(--navy); }
+        .dept-title { font-weight: bold; font-size: 18px; color: var(--gold); }
 
-        .title-block { text-align: center; margin-top: 60px; }
-        .title-block h1 {
-            font-size: 70px; font-weight: 900; color: var(--navy);
-            letter-spacing: 12px; margin: 0;
-        }
-        .title-block p {
-            font-size: 20px; color: #777;
-            letter-spacing: 3px; margin-top: 10px; text-transform: uppercase;
-        }
+        .main-title { text-align: center; margin-top: 50px; }
+        .main-title h1 { font-size: 75px; font-weight: 900; color: var(--navy); letter-spacing: 15px; margin: 0; }
+        .main-title p { font-size: 18px; color: #777; letter-spacing: 2px; text-transform: uppercase; }
 
-        .student-info-grid {
-            margin: 60px auto;
-            width: 85%;
-            background: var(--navy);
-            border-radius: 20px;
-            padding: 30px 40px;
-            color: white;
-            box-shadow: 0 15px 30px rgba(10, 29, 55, 0.3);
+        .info-card {
+            margin: 60px auto; width: 85%;
+            background: var(--navy); border-radius: 25px;
+            padding: 35px; color: white;
+            box-shadow: 0 15px 35px rgba(10, 29, 55, 0.4);
             border-bottom: 8px solid var(--gold);
         }
-        .info-row { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
-        .info-row:last-child { border-bottom: none; }
-        
-        .label-en { font-size: 10px; color: var(--gold); font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
-        .val-en { font-size: 15px; font-weight: 400; }
-        
-        .label-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 12px; color: var(--gold); font-weight: 700; text-align: right; margin-bottom: 4px; }
+        .row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .row:last-child { border-bottom: none; }
+        .lbl-en { font-size: 10px; color: var(--gold); font-weight: 700; text-transform: uppercase; }
+        .val-en { font-size: 15px; }
+        .lbl-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 11px; color: var(--gold); text-align: right; }
         .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 16px; font-weight: 700; text-align: right; direction: rtl; }
 
-        .supervised-block {
-            margin-top: auto;
-            margin-bottom: 80px;
-            padding-left: 30px;
-            border-left: 5px solid var(--gold);
-            height: 70px;
-            display: flex; flex-direction: column; justify-content: center;
+        .supervisor { margin-top: auto; margin-bottom: 60px; padding-left: 25px; border-left: 5px solid var(--gold); }
+        .sup-text { color: #888; font-size: 18px; }
+        .sup-name { color: var(--navy); font-size: 28px; font-weight: 900; }
+
+        /* --- Page 02: Directory --- */
+        .dir-header { margin-top: 30px; margin-bottom: 50px; display: flex; align-items: center; }
+        .gold-box { width: 12px; height: 35px; background: var(--gold); margin-right: 20px; }
+        .dir-header h2 { color: var(--navy); font-size: 30px; font-weight: 900; letter-spacing: 1px; }
+
+        .list { width: 100%; }
+        .item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #f0f0f0; }
+        .item-text { color: var(--navy); font-size: 16px; font-weight: 800; }
+        .item-page { color: var(--navy); font-size: 18px; font-weight: 900; }
+
+        .server-img {
+            width: 100%; height: 340px;
+            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1500') center/cover;
+            border-radius: 15px; margin-top: auto; margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        .supervised-text { color: #888; font-size: 18px; }
-        .supervised-name { color: var(--navy); font-size: 28px; font-weight: 900; }
 
-        .footer { position: absolute; bottom: 30px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
-        .footer-text { font-size: 11px; color: #999; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
-        .page-num { font-size: 30px; font-weight: 900; color: var(--navy); line-height: 0.8; }
+        /* Footer Unified */
+        .footer-base { position: absolute; bottom: 30px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
+        .foot-note { font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase; }
+        .page-num { font-size: 35px; font-weight: 900; color: var(--navy); line-height: 0.8; }
+        .page-num::before { content: ""; display: block; width: 40px; height: 6px; background: var(--gold); margin-bottom: 8px; margin-left: auto; }
 
-        @media print { body { background: none; } .page { margin: 0; box-shadow: none; border: none; } }
+        @media print { body { padding: 0; } .page { box-shadow: none; border-right: 18px solid var(--navy) !important; margin: 0; } }
     </style>
 </head>
 <body>
 
     <div class="page">
-        <div class="header-top">
-            <div class="univ-name">Al-Mamoon University College</div>
-            <div class="dept-name">Cybersecurity Dept.</div>
+        <div class="header-cover">
+            <div class="univ-title">Al-Mamoon University College</div>
+            <div class="dept-title">Cybersecurity Dept.</div>
         </div>
-
-        <div class="title-block">
+        <div class="main-title">
             <h1>SENTINEL AI</h1>
             <p>Advanced Deep Learning for Zero-Day Threat Mitigation</p>
         </div>
-
-        <div class="student-info-grid">
-            <div class="info-row">
-                <div>
-                    <div class="label-en">Student Name</div>
-                    <div class="val-en">Karrar Mohammed Dawood</div>
-                </div>
-                <div>
-                    <div class="label-ar">:اسم الطالب</div>
-                    <div class="val-ar">كرار محمد داود</div>
-                </div>
+        <div class="info-card">
+            <div class="row">
+                <div><div class="lbl-en">Student Name</div><div class="val-en">Karrar Mohammed Dawood</div></div>
+                <div><div class="lbl-ar">:اسم الطالب</div><div class="val-ar">كرار محمد داود</div></div>
             </div>
-            
-            <div class="info-row">
-                <div>
-                    <div class="label-en">Department</div>
-                    <div class="val-en">Cybersecurity Engineering</div>
-                </div>
-                <div>
-                    <div class="label-ar">:القسم</div>
-                    <div class="val-ar">هندسة الأمن السيبراني</div>
-                </div>
+            <div class="row">
+                <div><div class="lbl-en">Department</div><div class="val-en">Cybersecurity Engineering</div></div>
+                <div><div class="lbl-ar">:القسم</div><div class="val-ar">هندسة الأمن السيبراني</div></div>
             </div>
-
-            <div class="info-row">
-                <div>
-                    <div class="label-en">Stage / Section</div>
-                    <div class="val-en">Second Stage - Section C</div>
-                </div>
-                <div>
-                    <div class="label-ar">:المرحلة / الشعبة</div>
-                    <div class="val-ar">المرحلة الثانية - شعبة C</div>
-                </div>
+            <div class="row">
+                <div><div class="lbl-en">Stage / Section</div><div class="val-en">Second Stage - Section C</div></div>
+                <div><div class="lbl-ar">:المرحلة / الشعبة</div><div class="val-ar">المرحلة الثانية - شعبة C</div></div>
             </div>
         </div>
-
-        <div class="supervised-block">
-            <div class="supervised-text">Supervised By: <span class="supervised-name">Dr. Ahmed Saad</span></div>
-            <div style="color: #444; font-size: 12px; font-weight: bold; margin-top: 5px;">Technical Research Release 2026</div>
+        <div class="supervisor">
+            <div class="sup-text">Supervised By: <span class="sup-name">Dr. Ahmed Saad</span></div>
+            <div style="font-size: 12px; font-weight: bold; margin-top: 5px;">Technical Research Release 2026</div>
         </div>
-
-        <div class="footer">
-            <div class="footer-text">Technical Research Paper | Baghdad, Iraq</div>
-            <div class="page-num">01</div>
+        <div class="footer-base">
+            <div class="foot-note">Technical Research Paper | Baghdad, Iraq</div>
+            <div class="page-num" style="font-size: 35px;">01</div>
         </div>
     </div>
 
-</body>
-    </html>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Report Directory - Page 02</title>
-    <style>
-        /* استدعاء الخطوط */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
-
-        :root {
-            --navy: #0a1d37;
-            --gold: #c5a059;
-        }
-
-        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
-
-        body {
-            margin: 0; padding: 0;
-            background-color: #eee;
-            font-family: 'Roboto', sans-serif;
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh;
-        }
-
-        /* تنسيق الورقة A4 */
-        .page {
-            width: 210mm; height: 297mm;
-            background: white;
-            padding: 25mm 20mm;
-            position: relative;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-            border-right: 15px solid var(--navy); /* الخط الجانبي النيفي */
-            display: flex; flex-direction: column;
-        }
-
-        /* عنوان الفهرس مع العلامة الذهبية */
-        .directory-header {
-            margin-top: 30px;
-            margin-bottom: 60px;
-            display: flex;
-            align-items: center;
-        }
-        .gold-marker {
-            width: 12px; height: 35px;
-            background-color: var(--gold);
-            margin-right: 20px;
-        }
-        .directory-header h2 {
-            color: var(--navy);
-            font-size: 32px; font-weight: 900;
-            margin: 0; letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* قائمة المحتويات */
-        .contents-table { width: 100%; margin-bottom: 50px; }
-        
-        .content-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .item-label {
-            color: var(--navy);
-            font-size: 16px; font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-        
-        .item-page {
-            color: var(--navy);
-            font-size: 18px; font-weight: 900;
-        }
-
-        /* صورة السيرفرات في الأسفل (مطابقة لروح صورتك) */
-        .directory-image {
-            width: 100%;
-            height: 350px;
-            background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000&auto=format&fit=crop') center/cover;
-            border-radius: 15px;
-            margin-top: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            filter: contrast(1.1) brightness(0.9);
-        }
-
-        /* تذييل الصفحة ورقمها */
-        .footer-section {
-            margin-top: 35px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        .footer-line {
-            width: 45px; height: 6px;
-            background-color: var(--gold);
-            margin-bottom: 8px;
-        }
-        .page-num {
-            font-size: 38px; font-weight: 900;
-            color: var(--navy);
-            line-height: 1;
-        }
-
-        @media print { body { background: none; } .page { margin: 0; box-shadow: none; border: none; } }
-    </style>
-</head>
-<body>
-
     <div class="page">
-        <div class="directory-header">
-            <div class="gold-marker"></div>
+        <div class="dir-header">
+            <div class="gold-box"></div>
             <h2>REPORT DIRECTORY</h2>
         </div>
-
-        <div class="contents-table">
-            <div class="content-row">
-                <span class="item-label">01. EXECUTIVE SUMMARY</span>
-                <span class="item-page">03</span>
-            </div>
-            <div class="content-row">
-                <span class="item-label">02. PROBLEM DEFINITION</span>
-                <span class="item-page">04</span>
-            </div>
-            <div class="content-row">
-                <span class="item-label">03. LITERATURE REVIEW</span>
-                <span class="item-page">05</span>
-            </div>
-            <div class="content-row">
-                <span class="item-label">04. PROPOSED METHODOLOGY</span>
-                <span class="item-page">06</span>
-            </div>
-            <div class="content-row">
-                <span class="item-label">05. NEURAL ARCHITECTURE</span>
-                <span class="item-page">07</span>
-            </div>
-            <div class="content-row">
-                <span class="item-label">06. SYSTEM PERFORMANCE</span>
-                <span class="item-page">08</span>
-            </div>
-            <div class="content-row">
-                <span class="item-label">07. PRACTICAL IMPLEMENTATION</span>
-                <span class="item-page">09</span>
-            </div>
-            <div class="content-row">
-                <span class="item-label">08. CONCLUSION & REFERENCES</span>
-                <span class="item-page">10</span>
-            </div>
+        <div class="list">
+            <div class="item"><span class="item-text">01. EXECUTIVE SUMMARY</span><span class="item-page">03</span></div>
+            <div class="item"><span class="item-text">02. PROBLEM DEFINITION</span><span class="item-page">04</span></div>
+            <div class="item"><span class="item-text">03. LITERATURE REVIEW</span><span class="item-page">05</span></div>
+            <div class="item"><span class="item-text">04. PROPOSED METHODOLOGY</span><span class="item-page">06</span></div>
+            <div class="item"><span class="item-text">05. NEURAL ARCHITECTURE</span><span class="item-page">07</span></div>
+            <div class="item"><span class="item-text">06. SYSTEM PERFORMANCE</span><span class="item-page">08</span></div>
+            <div class="item"><span class="item-text">07. PRACTICAL IMPLEMENTATION</span><span class="item-page">09</span></div>
+            <div class="item"><span class="item-text">08. CONCLUSION & REFERENCES</span><span class="item-page">10</span></div>
         </div>
-
-        <div class="directory-image"></div>
-
-        <div class="footer-section">
-            <div class="footer-line"></div>
+        <div class="server-img"></div>
+        <div class="footer-base">
+            <div class="foot-note">Cybersecurity Framework | 2025-2026</div>
             <div class="page-num">02</div>
         </div>
     </div>
 
 </body>
-</html>
-
+    </html>
+    
