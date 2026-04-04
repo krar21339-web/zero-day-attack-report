@@ -2,170 +2,159 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel AI - Technical Report</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&family=IBM+Plex+Sans+Arabic:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap');
 
         :root {
             --navy: #0a1d37;
             --gold: #c5a059;
-            --bg: #ffffff;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            margin: 0; padding: 40px 0;
+            background-color: #eee;
+            font-family: 'Roboto', sans-serif;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 50px;
         }
 
         .page {
             width: 210mm; height: 297mm;
-            background: var(--bg);
-            padding: 25mm;
-            font-family: 'Roboto', sans-serif;
+            background: var(--white);
             position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
             border-right: 20px solid var(--navy);
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
+            padding: 20mm; overflow: hidden; flex-shrink: 0;
         }
 
-        /* عنوان الفهرس */
-        .dir-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 50px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
-        }
+        /* --- الصفحة 01: الغلاف --- */
+        .header-cover { display: flex; justify-content: space-between; border-bottom: 2px solid var(--navy); padding-bottom: 10px; margin-bottom: 40px; }
+        .univ-title { font-weight: bold; font-size: 18px; color: var(--navy); }
+        .dept-title { font-weight: bold; font-size: 18px; color: var(--gold); }
+        
+        .main-title { text-align: center; margin-top: 50px; }
+        .main-title h1 { font-size: 75px; font-weight: 900; color: var(--navy); letter-spacing: 15px; margin: 0; }
+        .main-title p { font-size: 18px; color: #777; letter-spacing: 2px; text-transform: uppercase; }
 
-        .marker {
-            width: 12px; height: 40px;
-            background: var(--gold);
-            margin-right: 20px;
-        }
-
-        .dir-header h2 {
-            color: var(--navy);
-            font-size: 34px;
-            font-weight: 900;
-            margin: 0;
-            letter-spacing: 2px;
-        }
-
-        /* قائمة المحتويات المرتبطة بالتقرير */
-        .content-list { flex-grow: 1; }
-
-        .item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .item-text {
-            color: var(--navy);
-            font-size: 16px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-
-        .item-text::before {
-            content: "ID_";
-            color: var(--gold);
-            font-size: 10px;
-            margin-right: 10px;
-        }
-
-        .page-num {
-            color: var(--navy);
-            font-weight: 900;
-            font-size: 18px;
-        }
-
-        /* قسم بديل للصورة (تصميم برمجي تقني) */
-        .tech-box {
-            width: 100%;
-            height: 300px;
-            background: var(--navy);
-            border-radius: 15px;
-            margin-top: 40px;
-            position: relative;
-            overflow: hidden;
+        .info-card {
+            margin: 60px auto; width: 90%;
+            background: var(--navy); border-radius: 25px;
+            padding: 35px; color: white;
+            box-shadow: 0 15px 35px rgba(10, 29, 55, 0.4);
             border-bottom: 8px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
+        .row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .row:last-child { border-bottom: none; }
+        .lbl-gold { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; }
+        .val-text { font-size: 16px; font-weight: 500; }
+        .val-ar { font-family: 'IBM Plex Sans Arabic'; font-size: 17px; font-weight: 700; text-align: right; direction: rtl; }
 
-        /* رسم شبكة تقنية (Grid) */
-        .tech-box::before {
-            content: "";
-            position: absolute;
-            width: 100%; height: 100%;
+        .supervisor { margin-top: auto; margin-bottom: 60px; padding-left: 25px; border-left: 5px solid var(--gold); }
+        .sup-name { color: var(--navy); font-size: 28px; font-weight: 900; }
+
+        /* --- الصفحة 02: الفهرس --- */
+        .dir-header { margin-top: 30px; margin-bottom: 40px; display: flex; align-items: center; }
+        .gold-marker { width: 12px; height: 35px; background: var(--gold); margin-right: 20px; }
+        .dir-header h2 { color: var(--navy); font-size: 32px; font-weight: 900; margin: 0; }
+
+        .list-item { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #f0f0f0; }
+        .item-label { color: var(--navy); font-size: 16px; font-weight: 800; }
+        .item-no { color: var(--navy); font-size: 18px; font-weight: 900; }
+
+        /* تعديل منطقة الصورة: تصميم سيبراني برمجي (لا يحتاج إنترنت) */
+        .cyber-image-area {
+            width: 100%; height: 350px;
+            background: var(--navy);
             background-image: 
-                linear-gradient(rgba(197, 160, 89, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(197, 160, 89, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(197, 160, 89, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 160, 89, 0.05) 1px, transparent 1px),
+                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000'); /* صورة سيبرانية */
+            background-size: 30px 30px, 30px 30px, cover;
+            background-position: center;
+            border-radius: 20px; margin-top: auto; margin-bottom: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-bottom: 10px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
         }
 
-        .status-text {
-            color: var(--gold);
-            font-family: monospace;
-            z-index: 1;
-            text-align: center;
-            line-height: 1.6;
+        .cyber-image-area::after {
+            content: "[ DATA INTERFACE ACTIVE ]";
+            color: var(--gold); font-family: monospace; font-size: 14px; letter-spacing: 3px;
+            background: rgba(10, 29, 55, 0.7); padding: 10px 20px; border-radius: 5px;
         }
 
-        /* تذييل الصفحة */
-        .footer {
-            margin-top: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .footer-line { position: absolute; bottom: 30px; width: 80%; left: 10%; display: flex; justify-content: space-between; align-items: flex-end; }
+        .page-id { font-size: 40px; font-weight: 900; color: var(--navy); line-height: 0.8; }
+        .page-id::before { content: ""; display: block; width: 45px; height: 6px; background: var(--gold); margin-bottom: 8px; margin-left: auto; }
 
-        .footer-tag {
-            font-size: 10px;
-            color: #aaa;
-            letter-spacing: 3px;
-            font-weight: bold;
-        }
-
-        .pg-indicator {
-            font-size: 45px;
-            font-weight: 900;
-            color: var(--navy);
-        }
+        @media print { body { padding: 0; } .page { box-shadow: none; border-right: 20px solid var(--navy) !important; } }
     </style>
 </head>
 <body>
 
     <div class="page">
-        <div class="dir-header">
-            <div class="marker"></div>
-            <h2>REPORT DIRECTORY</h2>
+        <div class="header-cover">
+            <div class="univ-title">Al-Mamoon University College</div>
+            <div class="dept-title">Cybersecurity Dept.</div>
         </div>
-
-        <div class="content-list">
-            <div class="item"><span class="item-text">EXECUTIVE SUMMARY</span><span class="page-num">03</span></div>
-            <div class="item"><span class="item-text">ZERO-DAY VULNERABILITY ANALYSIS</span><span class="page-num">04</span></div>
-            <div class="item"><span class="item-text">DEEP LEARNING ARCHITECTURE</span><span class="page-num">06</span></div>
-            <div class="item"><span class="item-text">MODEL TRAINING & DATASETS</span><span class="page-num">08</span></div>
-            <div class="item"><span class="item-text">NEURAL NETWORK EVALUATION</span><span class="page-num">10</span></div>
-            <div class="item"><span class="item-text">PRACTICAL PYTHON IMPLEMENTATION</span><span class="page-num">12</span></div>
-            <div class="item"><span class="item-text">CONCLUSION & RECOMMENDATIONS</span><span class="page-num">15</span></div>
-            <div class="item"><span class="item-text">ACADEMIC REFERENCES (IEEE)</span><span class="page-num">16</span></div>
+        <div class="main-title">
+            <h1>SENTINEL AI</h1>
+            <p>Deep Learning for Zero-Day Threat Mitigation</p>
         </div>
-
-        <div class="tech-box">
-            <div class="status-text">
-                [ SYSTEM STATUS: ENCRYPTED ]<br>
-                [ ANALYSIS: ZERO-DAY DETECTION ACTIVE ]<br>
-                [ CORE: DEEP LEARNING MODEL V.3.0 ]
+        <div class="info-card">
+            <div class="row">
+                <div><div class="lbl-gold">Student Name</div><div class="val-text">Karrar Mohammed Dawood</div></div>
+                <div><div class="lbl-gold" style="text-align:right">اسم الطالب</div><div class="val-ar">كرار محمد داود</div></div>
+            </div>
+            <div class="row">
+                <div><div class="lbl-gold">Department</div><div class="val-text">Cybersecurity Engineering</div></div>
+                <div><div class="lbl-gold" style="text-align:right">القسم</div><div class="val-ar">هندسة الأمن السيبراني</div></div>
+            </div>
+            <div class="row">
+                <div><div class="lbl-gold">Stage / Section</div><div class="val-text">Second Stage - Section C</div></div>
+                <div><div class="lbl-gold" style="text-align:right">المرحلة / الشعبة</div><div class="val-ar">المرحلة الثانية - شعبة C</div></div>
             </div>
         </div>
+        <div class="supervisor">
+            <div style="color:#888">Supervised By:</div>
+            <div class="sup-name">Dr. Ahmed Saad</div>
+        </div>
+        <div class="footer-line">
+            <div style="color:#aaa; font-size:10px; letter-spacing:2px">TECHNICAL RESEARCH PAPER | BAGHDAD</div>
+            <div class="page-id">01</div>
+        </div>
+    </div>
 
-        <div class="footer">
-            <div class="footer-tag">CYBERSECURITY FRAMEWORK | 2025-2026</div>
-            <div class="pg-indicator">02</div>
+    <div class="page">
+        <div class="dir-header">
+            <div class="gold-marker"></div>
+            <h2>REPORT DIRECTORY</h2>
+        </div>
+        <div class="contents">
+            <div class="list-item"><span class="item-label">01. EXECUTIVE SUMMARY</span><span class="item-no">03</span></div>
+            <div class="list-item"><span class="item-label">02. PROBLEM DEFINITION</span><span class="item-no">04</span></div>
+            <div class="list-item"><span class="item-label">03. LITERATURE REVIEW</span><span class="item-no">05</span></div>
+            <div class="list-item"><span class="item-label">04. PROPOSED METHODOLOGY</span><span class="item-no">06</span></div>
+            <div class="list-item"><span class="item-label">05. NEURAL ARCHITECTURE</span><span class="item-no">07</span></div>
+            <div class="list-item"><span class="item-label">06. SYSTEM PERFORMANCE</span><span class="item-no">08</span></div>
+            <div class="list-item"><span class="item-label">07. PRACTICAL IMPLEMENTATION</span><span class="item-no">09</span></div>
+            <div class="list-item"><span class="item-label">08. CONCLUSION & REFERENCES</span><span class="item-no">10</span></div>
+        </div>
+        
+        <div class="cyber-image-area"></div>
+        
+        <div class="footer-line">
+            <div style="color:#aaa; font-size:10px; letter-spacing:2px">CYBERSECURITY FRAMEWORK | 2025-2026</div>
+            <div class="page-id">02</div>
         </div>
     </div>
 
 </body>
-</html>
+                                                                                                                   </html>
+    
