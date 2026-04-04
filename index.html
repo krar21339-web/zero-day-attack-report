@@ -1,71 +1,80 @@
-    <div class="page">
-        <div class="header-top">
-            <div class="univ-title">
-                <h2>Al-Ma'moon University College</h2>
-                <p>Cybersecurity Engineering</p>
-                <div style="font-family:'IBM Plex Sans Arabic'; font-size: 13px; color: var(--navy); margin-top: 5px; font-weight: bold;">
-                    كلية المأمون الجامعة / هندسة الأمن السيبراني
-                </div>
-            </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Logo_of_Al-Ma%27moon_University_College.png/200px" 
-                 style="width: 85px; margin-left: 20px;" alt="Logo">
+    <div class="page" style="border-right: none; border-left: 12px solid var(--navy); display: flex; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; border-bottom: 2px solid var(--navy); padding-bottom: 10px;">
+            <div style="font-weight: bold; color: var(--navy); font-size: 18px;">Al-Mamoon University College</div>
+            <div style="font-weight: bold; color: var(--gold); font-size: 18px;">Cybersecurity Dept.</div>
         </div>
 
-        <div style="text-align: center; margin-top: 60px;">
-            <h1 style="font-size: 65px; color: var(--navy); letter-spacing: 12px; font-weight: 900; margin: 0;">
-                SENTINEL AI
-            </h1>
-            <p style="font-size: 20px; color: #666; letter-spacing: 4px; margin-top: 10px; text-transform: uppercase;">
-                Next-Gen Deep Learning Defense
-            </p>
+        <div style="text-align: center; margin-top: 80px;">
+            <h1 style="font-size: 75px; color: var(--navy); letter-spacing: 10px; font-weight: 900; margin: 0;">SENTINEL AI</h1>
+            <p style="font-size: 20px; color: #777; margin-top: 10px; letter-spacing: 2px;">Advanced Deep Learning for Zero-Day Threat Mitigation</p>
         </div>
 
-        <div style="margin-top: 50px;">
+        <div style="margin-top: 60px;">
             <style>
-                .student-info-table {
+                .identity-card {
                     width: 90%;
                     margin: 0 auto;
-                    border-collapse: collapse;
                     background: var(--navy);
-                    border-radius: 15px;
-                    overflow: hidden;
-                    box-shadow: 0 10px 30px rgba(10, 29, 55, 0.3);
-                    border-bottom: 6px solid var(--gold);
+                    border-radius: 20px;
+                    padding: 35px;
+                    box-shadow: 0 25px 50px rgba(10, 29, 55, 0.4);
+                    border-bottom: 8px solid var(--gold);
                 }
-                .student-info-table td {
-                    padding: 18px 25px;
-                    color: white;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                    font-size: 14px;
+                .data-split {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 18px 0;
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
                 }
-                .student-info-table b { color: var(--gold); text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
-                .arabic-font { font-family: 'IBM Plex Sans Arabic'; font-weight: bold; text-align: right; }
+                .tag-label { font-size: 10px; color: var(--gold); font-weight: 900; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 1px; }
+                .text-en { color: white; font-size: 15px; font-weight: 500; }
+                .text-ar { color: white; font-family: 'IBM Plex Sans Arabic'; font-size: 17px; font-weight: 700; text-align: right; }
             </style>
             
-            <table class="student-info-table">
-                <tr>
-                    <td><b>Student:</b> Karrar M. Dawood</td>
-                    <td class="arabic-font">الطالب: كرار محمد داود</td>
-                </tr>
-                <tr>
-                    <td><b>Dept:</b> Cyber Engineering</td>
-                    <td class="arabic-font">القسم: هندسة الأمن السيبراني</td>
-                </tr>
-                <tr>
-                    <td><b>Stage:</b> Second Year (C)</td>
-                    <td class="arabic-font">C المرحلة: الثانية - شعبة</td>
-                </tr>
-            </table>
+            <div class="identity-card">
+                <div class="data-split">
+                    <div>
+                        <div class="tag-label">Student Name</div>
+                        <div class="text-en">Karrar Mohammed Dawood</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="tag-label">:اسم الطالب</div>
+                        <div class="text-ar">كرار محمد داود</div>
+                    </div>
+                </div>
+                <div class="data-split">
+                    <div>
+                        <div class="tag-label">Department</div>
+                        <div class="text-en">Cybersecurity Engineering</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="tag-label">:القسم</div>
+                        <div class="text-ar">هندسة الأمن السيبراني</div>
+                    </div>
+                </div>
+                <div class="data-split" style="border-bottom: none;">
+                    <div>
+                        <div class="tag-label">Stage / Section</div>
+                        <div class="text-en">Second Stage - Section C</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="tag-label">:المرحلة / الشعبة</div>
+                        <div class="text-ar">المرحلة الثانية - شعبة C</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div style="margin-top: 80px; padding-left: 40px; border-left: 5px solid var(--gold);">
-            <p style="margin: 0; font-size: 14px; color: #888; font-weight: bold;">Supervised By:</p>
-            <h3 style="margin: 5px 0; font-size: 32px; color: var(--navy); font-weight: 900;">Dr. Ahmed Saad</h3>
-            <p style="margin: 0; font-size: 12px; color: var(--gold); font-weight: bold; letter-spacing: 1px;">
-                Technical Research Release 2026
-            </p>
+        <div style="margin-top: auto; margin-bottom: 100px; padding-left: 30px; border-left: 8px solid var(--gold); height: 80px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 20px; color: #888;">
+                Supervised By: <span style="color: var(--navy); font-weight: 900; font-size: 28px;">Dr. Ahmed Saad</span>
+            </div>
+            <div style="color: #555; font-size: 14px; font-weight: bold; margin-top: 5px;">Technical Research Release 2026</div>
         </div>
 
-        <div class="footer-number">01</div>
+        <div style="position: absolute; bottom: 40px; left: 10%; right: 10%; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #eee; padding-top: 20px;">
+            <div style="font-size: 11px; color: #999; letter-spacing: 3px; font-weight: bold;">TECHNICAL RESEARCH PAPER | BAGHDAD, IRAQ</div>
+            <div style="font-size: 35px; font-weight: 900; color: var(--navy); line-height: 0.8;">01</div>
+        </div>
     </div>
     
