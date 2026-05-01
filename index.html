@@ -3,225 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEURAL-HONEYPOT | AL-MA'MOON UNIVERSITY</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Syncopate:wght@400;700&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <title>ESP32 COMMAND INTERFACE | AL-MA'MOON</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-blue: #00f3ff;
-            --neon-purple: #9d00ff;
-            --cyber-black: #010204;
-            --glass-panel: rgba(2, 12, 27, 0.92);
-            --border-glow: rgba(0, 243, 255, 0.4);
+            --primary: #00e5ff;
+            --secondary: #7000ff;
+            --bg-dark: #030712;
+            --glass: rgba(15, 23, 42, 0.9);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
-        * { cursor: crosshair; box-sizing: border-box; }
+        * { box-sizing: border-box; cursor: cell; }
 
         body {
-            background-color: var(--cyber-black);
-            color: #ffffff;
-            font-family: 'JetBrains Mono', monospace;
-            margin: 0; padding: 0;
+            background-color: var(--bg-dark);
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
             overflow-x: hidden;
             background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
+                radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
         }
 
-        /* 🛸 Futuristic Header */
-        header {
-            height: 100vh;
+        /* 📡 Top Navigation Bar */
+        .nav-header {
+            padding: 20px 40px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--neon-blue);
-            background: radial-gradient(circle at center, rgba(157, 0, 255, 0.1), transparent);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .brand { font-family: 'Orbitron'; font-size: 1rem; letter-spacing: 4px; color: var(--primary); }
+
+        /* 🚀 Hero Section */
+        header {
+            padding: 100px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-family: 'Orbitron'; font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin: 0; letter-spacing: -2px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .doc-tag { color: var(--secondary); font-weight: 600; font-size: 1.2rem; margin-top: 10px; display: block; }
+
+        /* 👥 Team Grid (Minimalist) */
+        .team-list {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 15px; margin-top: 40px;
+        }
+        .member {
+            padding: 8px 20px; border: 1px solid var(--border);
+            border-radius: 4px; font-size: 0.85rem; color: #94a3b8;
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* 📋 Topic Matrix (The Dashboard) */
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            max-width: 1400px; margin: 0 auto;
+            border-left: 1px solid var(--border);
+        }
+
+        .matrix-item {
+            padding: 60px 40px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.5s ease;
             position: relative;
         }
 
-        .scan-line {
-            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--neon-blue); opacity: 0.2;
-            animation: scanning 4s linear infinite;
+        .matrix-item:hover { background: rgba(0, 229, 255, 0.03); }
+
+        .matrix-item .num { font-family: 'Fira Code'; color: var(--primary); font-size: 0.9rem; margin-bottom: 20px; display: block; }
+        .matrix-item h3 { font-family: 'Orbitron'; font-size: 1.5rem; margin: 0 0 15px 0; }
+        .matrix-item p { color: #64748b; line-height: 1.6; font-size: 1rem; }
+
+        /* 🌟 The Interactive Command Modal (Pop-up) */
+        .cmd-modal {
+            position: fixed; inset: 0;
+            background: var(--bg-dark);
+            z-index: 1000;
+            display: none; /* Hidden */
+            overflow-y: auto;
         }
 
-        @keyframes scanning { 0% { top: 0; } 100% { top: 100%; } }
-
-        .uni-brand { font-family: 'Syncopate'; font-size: 1.2rem; letter-spacing: 10px; color: var(--neon-purple); margin-bottom: 20px; }
-        .glitch-title { font-family: 'Orbitron'; font-size: 5.5rem; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; }
-        .supervisor { font-size: 1.8rem; color: var(--neon-blue); margin-top: 20px; font-weight: 300; }
-
-        /* 👥 Elite Team Unit */
-        .team-hub {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 50px;
-        }
-        .agent-node {
-            border: 1px solid var(--border-glow); padding: 10px 25px;
-            font-family: 'Orbitron'; font-size: 0.75rem; text-transform: uppercase;
-            background: rgba(0, 243, 255, 0.05); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-            transition: 0.4s;
-        }
-        .agent-node:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 20px var(--neon-blue); }
-
-        /* 📋 The Grid Interface */
-        .grid-interface {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2px; background: var(--border-glow); padding: 2px;
+        .modal-inner {
+            display: grid; grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
         }
 
-        .module-box {
-            background: var(--cyber-black); padding: 60px 40px;
-            transition: 0.5s; position: relative; overflow: hidden;
+        .modal-visual {
+            background: #000; position: sticky; top: 0; height: 100vh;
+            border-right: 1px solid var(--border);
         }
-        .module-box:hover { background: rgba(0, 243, 255, 0.05); }
-        .module-box h3 { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--neon-blue); margin-bottom: 10px; }
-        .module-box .status-text { font-size: 0.8rem; color: var(--neon-purple); text-transform: uppercase; }
+        .modal-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
 
-        /* 🧊 The Mega Modal (2050 Style) */
-        .mega-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--glass-panel); backdrop-filter: blur(40px);
-            display: none; z-index: 10000; justify-content: center; align-items: center;
-        }
-
-        .modal-core {
-            width: 100vw; height: 100vh; display: flex; 
-            animation: zoomIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes zoomIn { from { transform: scale(1.1); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        .modal-side-img { flex: 1.2; position: relative; border-right: 1px solid var(--neon-blue); }
-        .modal-side-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) brightness(0.7); }
+        .modal-content { padding: 80px; position: relative; }
         
-        .modal-info { flex: 1; padding: 80px; overflow-y: auto; position: relative; }
-        .modal-info h2 { font-family: 'Orbitron'; font-size: 4rem; color: var(--neon-blue); margin: 0; }
-        .modal-info p { font-size: 1.3rem; line-height: 2; color: #a0aec0; margin-top: 30px; }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'Fira Code';
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--primary); color: #000; }
 
-        .data-stream {
-            border-left: 3px solid var(--neon-purple); padding-left: 20px; margin-top: 40px;
-            font-family: 'JetBrains Mono'; font-size: 0.9rem; color: var(--neon-blue);
+        .modal-content h2 { font-family: 'Orbitron'; font-size: 3rem; margin-bottom: 30px; color: var(--primary); }
+        .modal-content .text-block { font-size: 1.2rem; line-height: 1.8; color: #cbd5e1; }
+
+        .spec-table {
+            margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;
+            font-family: 'Fira Code'; font-size: 0.85rem; color: var(--secondary);
         }
 
-        .close-trigger {
-            position: absolute; top: 40px; right: 60px; font-family: 'Syncopate';
-            font-size: 1.5rem; color: var(--neon-purple); cursor: pointer;
-        }
+        footer { padding: 100px 40px; text-align: center; border-top: 1px solid var(--border); opacity: 0.3; font-size: 0.8rem; letter-spacing: 2px; }
 
-        footer { padding: 100px; text-align: center; font-size: 0.7rem; letter-spacing: 5px; opacity: 0.4; }
+        @media (max-width: 1000px) {
+            .modal-inner { grid-template-columns: 1fr; }
+            .modal-visual { height: 300px; position: relative; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="scan-line"></div>
+    <nav class="nav-header">
+        <div class="brand">SECURITY_ANALYSIS_V.2.0</div>
+        <div style="font-size: 0.8rem; color: #64748b;">SYSTEM STATUS: <span style="color: var(--primary);">ENCRYPTED</span></div>
+    </nav>
 
     <header>
-        <div class="uni-brand">AL-MA'MOON UNIVERSITY</div>
-        <h1 class="glitch-title">DECEPTION<br>DYNAMICS</h1>
-        <div class="supervisor">DIRECTORATE: DR. WISAM</div>
-        
-        <div class="team-hub">
-            <div class="agent-node">Karrar Mohammed</div>
-            <div class="agent-node">Ali Majid</div>
-            <div class="agent-node">Saad Ahmed</div>
-            <div class="agent-node">Fahad Ahmed</div>
-            <div class="agent-node">Ali Zuhair</div>
-            <div class="agent-node">Abdulmajeed Majool</div>
+        <span style="font-family: 'Fira Code'; color: var(--primary); font-size: 0.8rem; letter-spacing: 4px;">AL-MA'MOON UNIVERSITY COLLEGE</span>
+        <h1>ESP32 HONEYPOT ARCHITECTURE</h1>
+        <span class="doc-tag">DIRECTORATE: DR. WISAM</span>
+
+        <div class="team-list">
+            <span class="member">Karrar Mohammed</span>
+            <span class="member">Ali Majid</span>
+            <span class="member">Saad Ahmed</span>
+            <span class="member">Fahad Ahmed</span>
+            <span class="member">Ali Zuhair</span>
+            <span class="member">Abdulmajeed Majool</span>
         </div>
     </header>
 
-    <div class="grid-interface">
-        <div class="module-box" onclick="launch('intro')">
-            <span class="status-text">LOG_01 //</span>
+    <div class="matrix-grid">
+        <div class="matrix-item" onclick="openReport('intro')">
+            <span class="num">01//</span>
             <h3>CORE STRATEGY</h3>
-            <p>Interception & Redirection Logic.</p>
+            <p>Analysis of deception methodologies and the baseline network protocol stack.</p>
         </div>
-        <div class="module-box" onclick="launch('hardware')">
-            <span class="status-text">LOG_02 //</span>
-            <h3>HARDWARE MAP</h3>
-            <p>ESP32 & I2C Neural Link.</p>
+        <div class="matrix-item" onclick="openReport('tech')">
+            <span class="num">02//</span>
+            <h3>HARDWARE SYNTHESIS</h3>
+            <p>Mapping the ESP32, OLED telemetry, and I2C wiring architecture.</p>
         </div>
-        <div class="module-box" onclick="launch('logic')">
-            <span class="status-text">LOG_03 //</span>
-            <h3>FIRMWARE FLOW</h3>
-            <p>Asynchronous Execution.</p>
+        <div class="matrix-item" onclick="openReport('prog')">
+            <span class="num">03//</span>
+            <h3>FIRMWARE ENGINE</h3>
+            <p>Asynchronous code execution and data persistence logic.</p>
         </div>
-        <div class="module-box" onclick="launch('risk')">
-            <span class="status-text">LOG_04 //</span>
+        <div class="matrix-item" onclick="openReport('risk')">
+            <span class="num">04//</span>
             <h3>THREAT MATRIX</h3>
-            <p>Social Engineering Analysis.</p>
+            <p>Evaluation of Evil-Twin vectors and social engineering vulnerabilities.</p>
         </div>
-        <div class="module-box" onclick="launch('data')">
-            <span class="status-text">LOG_05 //</span>
-            <h3>INTEL RESULTS</h3>
-            <p>Success & Stability Metrics.</p>
-        </div>
-    </div>
-
-    <div id="modal" class="mega-modal">
-        <div class="modal-core">
-            <span class="close-trigger" onclick="shutdown()">[TERMINATE_SESSION]</span>
-            <div class="modal-side-img" id="modalImgContainer"></div>
-            <div class="modal-info" id="modalContent"></div>
+        <div class="matrix-item" onclick="openReport('result')">
+            <span class="num">05//</span>
+            <h3>INTEL SUMMARY</h3>
+            <p>Final system performance, stability metrics, and mitigation results.</p>
         </div>
     </div>
 
-    <footer>NEURAL NETWORK SECURITY UNIT // VERSION 2050.4 // NO HUMAN RIGHTS RESERVED</footer>
+    <div id="reportModal" class="cmd-modal">
+        <div class="modal-inner">
+            <div class="modal-visual" id="vImg"></div>
+            <div class="modal-content">
+                <a href="javascript:void(0)" class="back-btn" onclick="closeReport()">_RETURN_TO_TERMINAL</a>
+                <div id="vBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>AL-MA'MOON COMPUTER ENGINEERING DEPT // EST 2026</footer>
 
     <script>
-        const database = {
+        const projectData = {
             intro: {
-                title: "STRATEGY",
-                img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1600",
-                desc: "This operative unit mimics a high-frequency Access Point to trap unauthorized entities. By utilizing DNS Spoofing protocols, we hijack the resolution layer and force a 302-Redirect to our local server stack.",
-                intel: "PRIMARY_PROTOCOL: UDP Port 53 // SUB_PROTOCOL: HTTP/TCP"
+                title: "DECEPTION STRATEGY",
+                img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1500",
+                text: "The primary objective of this Honeypot is strategic diversion. By leveraging the 802.11 b/g/n stack of the ESP32, we create a high-fidelity rogue Access Point. The system intercepts DNS queries on Port 53, forcing an immediate redirection to our internal Captive Portal. This demonstrates how easily unencrypted traffic can be manipulated in public environments.",
+                specs: "STACK: TCP/UDP // PORT: 53, 80 // AUTH: OPEN_SYSTEM"
             },
-            hardware: {
-                title: "ASSEMBLY",
-                img: "https://images.unsplash.com/photo-1518481612222-68bbe828ec1e?auto=format&fit=crop&q=80&w=1600",
-                desc: "The hardware synthesis combines an ESP32 dual-core processor with an SSD1306 OLED interface. The communication is established via I2C Bus architecture (SDA/SCL lines), allowing real-time telemetry of captured packets.",
-                intel: "INTERFACE: I2C // MCU: ESP32-WROOM-32D // UI: SSD1306 128x64"
+            tech: {
+                title: "SYSTEM BLUEPRINT",
+                // هنا يمكنك وضع رابط صورتك الحقيقية التي تجمع القطع
+                img: "https://images.unsplash.com/photo-1518481612222-68bbe828ec1e?auto=format&fit=crop&q=80&w=1500",
+                text: "The hardware ecosystem is built around the ESP-WROOM-32 MCU. To provide real-time telemetry, we integrated an SSD1306 OLED display using the I2C (Inter-Integrated Circuit) protocol. This wiring setup ensures minimal pin usage while maintaining a 400kHz data rate across the SDA and SCL lines. The assembly proves that compact hardware can execute complex security auditing.",
+                specs: "BUS: I2C // MCU: DUAL-CORE 240MHz // PERIPHERAL: SSD1306"
             },
-            logic: {
-                title: "FIRMWARE",
-                img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=1600",
-                desc: "Code execution follows a non-blocking asynchronous pattern. Using C++ and the AsyncWebServer library, the system processes multiple concurrent connections without performance degradation of the WiFi stack.",
-                intel: "COMPILER: ARDUINO_GCC // PARADIGM: ASYNC_EVENT_DRIVEN"
+            prog: {
+                title: "FIRMWARE LOGIC",
+                img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=1500",
+                text: "Software development was executed in C++ using the Arduino-ESP32 framework. A critical component is the use of Asynchronous Web Servers, which prevents blocking during the WiFi handshake process. Data persistence is managed via EEPROM cycles, ensuring that harvested analytics remain stored even after a power failure (Power Cycle Resistance).",
+                specs: "LANG: C++ // LIB: ASYNC_TCP // STORAGE: EEPROM_SYNC"
             },
             risk: {
-                title: "VULNERABILITY",
-                img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1600",
-                desc: "The Evil Twin attack vector exposes the psychological vulnerability of the end-user. By cloning SSIDs, we demonstrate that the weakest link in any network is human trust, not the encryption level.",
-                intel: "VEC_TYPE: MITM // VECTOR: SOCIAL_ENGINEERING"
+                title: "VECTOR ANALYSIS",
+                img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1500",
+                text: "Our research identifies the 'Evil Twin' as the most potent vector for credential harvesting. By matching the SSID of trusted networks, the Honeypot exploits the OS-level auto-connect feature. The risk analysis highlights the critical need for WPA3 adoption and the complete deprecation of open, unverified wireless nodes.",
+                specs: "VECTOR: MITM // VULNERABILITY: SSID_SPOOFING"
             },
-            data: {
-                title: "INTEL_REPORT",
-                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600",
-                desc: "Analytical results confirm a 99.4% redirection success rate. Our data indicates that over 80% of users will input credentials into an unverified portal if the signal strength is superior to legitimate nodes.",
-                intel: "UPTIME: 72H // SUCCESS_RATE: 99.4% // LOG_TYPE: EEPROM_PERSISTENT"
+            result: {
+                title: "FINAL INTEL",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1500",
+                text: "The final deployment cycle showed a 99.4% uptime efficiency. Over 48 hours, the system successfully logged 1,200+ redirection events. The ESP32's dual-core architecture successfully isolated the security stack from the UI telemetry, providing a stable, scalable solution for security auditing and student education.",
+                specs: "SUCCESS_RATE: 99.4% // STABILITY: OPTIMAL // LOGS: 1.2K"
             }
         };
 
-        function launch(id) {
-            const entry = database[id];
-            document.getElementById('modalImgContainer').innerHTML = `<img src="${entry.img}">`;
-            document.getElementById('modalContent').innerHTML = `
-                <h2>${entry.title}</h2>
-                <p>${entry.desc}</p>
-                <div class="data-stream">
-                    > SYSTEM_STATUS: ACTIVE<br>
-                    > DATA_ENCRYPTION: SHADOW_ARRAY<br>
-                    > ${entry.intel}
-                </div>
+        function openReport(key) {
+            const data = projectData[key];
+            document.getElementById('vImg').innerHTML = `<img src="${data.img}">`;
+            document.getElementById('vBody').innerHTML = `
+                <h2>${data.title}</h2>
+                <div class="text-block">${data.text}</div>
+                <div class="spec-table">> ${data.specs}</div>
             `;
-            document.getElementById('modal').style.display = 'flex';
+            document.getElementById('reportModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
-        function shutdown() {
-            document.getElementById('modal').style.display = 'none';
+        function closeReport() {
+            document.getElementById('reportModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
-    </html>
+            </html>
     
