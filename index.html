@@ -3,230 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Honeypot - Al-Ma'moon University College</title>
+    <title>ESP32 Honeypot - Advanced Security Hub</title>
     <style>
         :root {
-            --bg: #0d1117;
-            --card: #161b22;
-            --text: #c9d1d9;
-            --accent: #58a6ff;
-            --border: #30363d;
-            --success: #238636;
-        }
-
-        .light-mode {
-            --bg: #f6f8fa;
-            --card: #ffffff;
-            --text: #24292f;
-            --accent: #0969da;
-            --border: #d0d7de;
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --bg: #05070a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #e0e6ed;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            margin: 0;
-            transition: 0.3s;
-            line-height: 1.6;
+            font-family: 'Orbitron', sans-serif; /* خط تقني */
+            margin: 0; padding: 0;
+            overflow-x: hidden;
         }
 
-        /* Navigation Bar */
-        .nav-bar {
-            position: fixed;
-            top: 0; width: 100%;
-            background: var(--card);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 40px;
-            z-index: 1000;
-            box-sizing: border-box;
+        /* 🌓 Toggle Switch Modern */
+        .mode-switch {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            background: var(--glass); backdrop-filter: blur(10px);
+            padding: 10px 20px; border-radius: 30px; border: 1px solid var(--border);
+            cursor: pointer; color: var(--primary); font-weight: bold;
         }
 
-        .btn-toggle {
-            cursor: pointer;
-            padding: 6px 15px;
-            border-radius: 20px;
-            border: 1px solid var(--accent);
-            background: transparent;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        /* Hero Header */
-        .hero {
-            padding: 120px 20px 60px;
-            text-align: center;
-            background: radial-gradient(circle at top, #1e293b, var(--bg));
-            border-bottom: 1px solid var(--border);
-        }
-
-        .hero h1 { font-size: 2.8rem; margin: 10px 0; color: var(--accent); }
-        .uni-name { font-size: 1.4rem; font-weight: 700; color: var(--text); opacity: 0.9; }
-
-        .team-grid {
+        /* 🏗️ Main Layout */
+        .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            max-width: 900px;
-            margin: 30px auto;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 100px 40px;
+            max-width: 1400px; margin: 0 auto;
         }
 
-        .member {
-            background: var(--card);
-            padding: 12px;
-            border-radius: 8px;
+        /* 📍 Central Interactive Map (Section 1) */
+        .central-map {
+            grid-column: 1 / -1;
+            background: radial-gradient(circle at center, rgba(58,123,213,0.1), transparent);
+            border-radius: 20px; border: 1px solid var(--border);
+            padding: 40px; text-align: center; position: relative;
+        }
+
+        .map-container {
+            position: relative; width: 100%; max-width: 900px; margin: 0 auto;
+        }
+
+        .map-img { width: 100%; filter: drop-shadow(0 0 20px var(--primary)); }
+
+        /* 🛰️ Info Tags on Map */
+        .tag {
+            position: absolute; background: rgba(0, 0, 0, 0.8);
+            border-left: 3px solid var(--primary); padding: 10px;
+            font-size: 0.8rem; border-radius: 5px; backdrop-filter: blur(5px);
+        }
+        .tag.esp { top: 20%; left: 10%; }
+        .tag.oled { bottom: 20%; right: 10%; }
+        .tag.i2c { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+        /* 🃏 Smart Cards (Sections 2-6) */
+        .smart-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
             border: 1px solid var(--border);
-            font-size: 0.95rem;
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+            transition: 0.4s ease;
         }
 
-        /* Content Sections */
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        
-        .section-card {
-            background: var(--card);
-            border-radius: 12px;
+        .smart-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+
+        .card-img {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.4; transition: 0.4s;
+        }
+
+        .card-overlay {
+            position: absolute; inset: 0;
             padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid var(--border);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            background: linear-gradient(to top, var(--bg) 20%, transparent);
         }
 
-        h2 { color: var(--accent); font-size: 1.8rem; margin-top: 0; }
+        .smart-card h2 { color: var(--primary); margin: 0; font-size: 1.4rem; }
+        .smart-card p { font-size: 0.9rem; margin-top: 10px; color: #a0aec0; }
 
-        /* Technical Image Layout */
-        .tech-layout {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            margin-top: 20px;
+        /* 🎓 Header & Footer */
+        .header {
+            text-align: center; padding: 60px 20px;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
         }
 
-        .tech-content { flex: 2; }
-        .tech-images { flex: 1; display: flex; flex-direction: column; gap: 15px; }
-
-        .small-img {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid var(--accent);
-            transition: 0.3s;
-        }
-
-        .small-img:hover { transform: scale(1.05); }
-
-        .diagram-box {
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            border: 3px solid var(--accent);
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .badge {
-            background: var(--success);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            vertical-align: middle;
-        }
-
-        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); }
+        .team-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+        .tag-name { background: var(--secondary); padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; }
 
     </style>
 </head>
 <body>
 
-    <nav class="nav-bar">
-        <div style="font-weight: bold;">AL-MA'MOON UNIVERSITY COLLEGE</div>
-        <button class="btn-toggle" onclick="document.body.classList.toggle('light-mode')">🌓 Visual Mode</button>
-    </nav>
+    <button class="mode-switch" onclick="document.body.classList.toggle('light-mode')">📡 SYSTEM MODE</button>
 
-    <header class="hero">
-        <div class="uni-name">AL-MA'MOON UNIVERSITY COLLEGE</div>
-        <h1>ESP32 HONEYPOT SECURITY SYSTEM</h1>
-        <p>Cybersecurity Research: Wireless Intrusion Detection & Analysis</p>
+    <header class="header">
+        <p style="color: var(--primary); letter-spacing: 5px;">AL-MA'MOON UNIVERSITY COLLEGE</p>
+        <h1 style="font-size: 3rem;">CORE_HONEYPOT_v6.0</h1>
+        <p>Supervised By: <span style="color: var(--primary);">Dr. Mustafa Aqeel</span></p>
         
-        <div class="team-grid">
-            <div class="member">Karrar Mohammed Dawood</div>
-            <div class="member">Ali Majid Hussein</div>
-            <div class="member">Saad Ahmed Fadhil</div>
-            <div class="member">Fahad Ahmed Ali</div>
-            <div class="member">Ali Zuhair Qamar</div>
-            <div class="member">Abdulmajeed Majool</div>
+        <div class="team-tags">
+            <div class="tag-name">Karrar Mohammed</div>
+            <div class="tag-name">Ali Majid</div>
+            <div class="tag-name">Saad Ahmed</div>
+            <div class="tag-name">Fahad Ahmed</div>
+            <div class="tag-name">Ali Zuhair</div>
+            <div class="tag-name">Abdulmajeed Majool</div>
         </div>
-        <p>Supervised By: <strong style="color: var(--accent);">Dr. Mustafa Aqeel</strong></p>
     </header>
 
-    <div class="container">
+    <div class="dashboard">
 
-        <section class="section-card">
-            <h2>01. Hardware System Integration <span class="badge">Architecture</span></h2>
-            <div class="tech-layout">
-                <div class="tech-content">
-                    <p>The architecture of the <strong>ESP32 Honeypot</strong> is a synergy between high-speed wireless processing and real-time telemetry. At the core, the <strong>ESP32 NodeMCU</strong> acts as a bridge between the physical layer and the network layer.</p>
-                    <p>Key integration points include the <strong>I2C interface</strong> for the OLED display, which allows the system to remain "Headless" (not needing a PC to view logs). The wiring follows a strict protocol to ensure data integrity during packet sniffing operations.</p>
-                </div>
-                <div class="tech-images">
-                    <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ec1e?auto=format&fit=crop&q=60&w=400" class="small-img" alt="ESP32 Unit">
-                    <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=60&w=400" class="small-img" alt="OLED Display">
-                </div>
+        <div class="central-map">
+            <h2>01. INTEGRATED HARDWARE CIRCUIT</h2>
+            <div class="map-container">
+                <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ec1e?auto=format&fit=crop&q=80&w=1200" class="map-img" alt="Main Map">
+                
+                <div class="tag esp"><b>ESP32 BRAIN:</b> Multi-core logic hub.</div>
+                <div class="tag oled"><b>OLED INTERFACE:</b> Real-time packet logging.</div>
+                <div class="tag i2c"><b>I2C BUS:</b> Synchronized SDA/SCL Protocol.</div>
             </div>
-            
-            <div class="diagram-box">
-                <img src="https://raw.githubusercontent.com/Fureya0/ESP32-Honeypot-Reference/main/annotated_diagram.png" onerror="this.src='https://via.placeholder.com/800x400.png?text=Interactive+Diagram:+ESP32+(Brain)+---+Arrows+---+OLED+(Display)'" style="width: 100%;" alt="System Diagram with Arrows">
-                <p style="color: #333; font-size: 0.85rem;"><i>Figure 1: Full Circuit Mapping (Arrows indicate the flow of Data & Power)</i></p>
-            </div>
-        </section>
+            <p style="margin-top: 20px;">A unified schematic showcasing the physical layer integration between MCU and UI modules.</p>
+        </div>
 
-        <section class="section-card">
-            <h2>02. Embedded Firmware & Network Logic <span class="badge">Software</span></h2>
-            <div class="tech-layout">
-                <div class="tech-content">
-                    <p>The software is written in <strong>C++</strong> and optimized for low-latency response. The logic follows a "Capture-and-Log" loop. When a new station connects to the <strong>rogue Access Point</strong>, the <strong>DHCP server</strong> assigns an IP, and the <strong>DNS server</strong> intercepts any web request (Port 80/443).</p>
-                    <p>The <strong>Captive Portal</strong> is served using an asynchronous web server, preventing the ESP32 from hanging during multiple connections. Data persistence is managed via <strong>EEPROM</strong> to keep track of total intrusion attempts.</p>
-                </div>
-                <div class="tech-images">
-                    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=60&w=400" class="small-img" alt="Code Screenshot">
-                    <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=60&w=400" class="small-img" alt="Server Logic">
-                </div>
+        <div class="smart-card">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=800" class="card-img">
+            <div class="card-overlay">
+                <h2>02. FIRMWARE LOGIC</h2>
+                <p>Advanced C++ implementation using non-blocking asynchronous web servers for seamless intrusion monitoring.</p>
             </div>
-        </section>
+        </div>
 
-        <section class="section-card">
-            <h2>03. Cybersecurity Attack Vector Analysis <span class="badge">Security</span></h2>
-            <div class="tech-layout">
-                <div class="tech-content">
-                    <p>This project analyzes the <strong>Evil Twin</strong> vulnerability in public infrastructures. The honeypot simulates a trusted environment to test user awareness. It demonstrates how easily an attacker can bypass standard security if the user doesn't verify the <strong>SSL certificates</strong> or the source of the SSID.</p>
-                    <p>The captured data reveals that most users ignore security warnings when presented with a familiar-looking login page, highlighting the need for <strong>Multi-Factor Authentication (MFA)</strong>.</p>
-                </div>
-                <div class="tech-images">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=60&w=400" class="small-img" alt="Cyber Security">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=60&w=400" class="small-img" alt="Network Analysis">
-                </div>
+        <div class="smart-card">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800" class="card-img">
+            <div class="card-overlay">
+                <h2>03. DNS SPOOFING</h2>
+                <p>Capturing every domain request and forcing a 302-redirect to the local Captive Portal environment.</p>
             </div>
-        </section>
+        </div>
 
-        <section class="section-card">
-            <h2>04. Experimental Results & Findings <span class="badge">Results</span></h2>
-            <div class="tech-layout">
-                <div class="tech-content">
-                    <p>Final results confirm that the <strong>ESP32</strong> is a highly capable platform for lightweight cybersecurity tools. The system maintained a <strong>99.9% uptime</strong> during a 48-hour stress test with 5 simultaneous connections.</p>
-                    <p><strong>Conclusion:</strong> This research provides Al-Ma'moon University College with a practical baseline for future studies in embedded security and IoT threat mitigation.</p>
-                </div>
-                <div class="tech-images">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=60&w=400" class="small-img" alt="Result Graph">
-                </div>
+        <div class="smart-card">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="card-img">
+            <div class="card-overlay">
+                <h2>04. ATTACK VECTORS</h2>
+                <p>Simulating an 'Evil Twin' SSID to analyze how users interact with unencrypted login prompts in public areas.</p>
             </div>
-        </section>
+        </div>
+
+        <div class="smart-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" class="card-img">
+            <div class="card-overlay">
+                <h2>05. TELEMETRY LOGS</h2>
+                <p>Real-time data synchronization between EEPROM memory and the visual OLED interface for persistent tracking.</p>
+            </div>
+        </div>
+
+        <div class="smart-card">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="card-img">
+            <div class="card-overlay">
+                <h2>06. DEFENSE STRATEGY</h2>
+                <p>Analyzing honeypot results to develop robust WPA3 encryption policies and Multi-Factor Authentication (MFA) deployment.</p>
+            </div>
+        </div>
 
     </div>
 
     <footer>
-        <p>Department of Computer Engineering | Al-Ma'moon University College | 2026</p>
+        <p>© 2026 AL-MA'MOON UNIVERSITY | CYBERSECURITY DIVISION</p>
     </footer>
 
 </body>
-                    </html>
-                        
+</html>
