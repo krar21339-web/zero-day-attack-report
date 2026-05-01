@@ -1,44 +1,103 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>تقرير مشروع ESP32 Honeypot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Honeypot Project Report</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background: #f4f4f9; }
-        section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; border-right: 5px solid #2c3e50; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; text-align: center; }
-        h2 { color: #e67e22; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .img-placeholder { background: #eee; border: 2px dashed #ccc; text-align: center; padding: 40px; margin: 20px 0; color: #777; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; }
+        .page { background: white; padding: 40px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 8px solid #2c3e50; }
+        h1 { color: #2c3e50; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 0; }
+        .content { font-size: 1.1em; color: #444; }
+        .tech-info { background: #f8f9fa; border-left: 5px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        .image-box { text-align: center; margin: 20px 0; background: #fafafa; border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
+        .image-box img { max-width: 100%; height: auto; border-radius: 4px; }
+        .label { font-weight: bold; color: #c0392b; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        footer { text-align: center; font-size: 0.9em; color: #7f8c8d; margin-top: 50px; }
     </style>
 </head>
 <body>
-    <h1>تقرير مشروع نظام الـ Honeypot الأمني</h1>
 
-    <section id="page1">
-        <h2>1. المقدمة والفهرست</h2>
-        <p>مشروع Honeypot باستخدام ESP32 لرصد التهديدات السيبرانية. نستخدم بروتوكولات HTTP و I2C لنقل البيانات وعرضها.</p>
-    </section>
+    <h1>🛡️ Integrated Cybersecurity Report: ESP32 Honeypot Project</h1>
 
-    <section id="page2">
-        <h2>2. الجانب التقني (Hardware)</h2>
-        <p>تم استخدام متحكم ESP32 وشاشة OLED SSD1306.</p>
-        <div class="img-placeholder">ضع هنا صورة الـ ESP32 مع الأسهم التوضيحية</div>
-    </section>
+    <div class="page">
+        <h2>1. Introduction & Concept</h2>
+        <div class="content">
+            <p>This project implements a sophisticated cybersecurity defense mechanism: a <strong>Honeypot</strong> deployed on an ESP32 microcontroller. The primary objective is to simulate a vulnerability (an open Wi-Fi access point) to lure, deceive, and analyze potential attackers or unauthorized users without exposing the actual production network.</p>
+            <p>This system is designed for real-time monitoring of connection attempts, logging interaction patterns, and displaying a 'Captures' count on an integrated OLED screen. By studying these interactions, we gain insights into attack vectors and network vulnerabilities.</p>
+            <div class="tech-info">
+                <strong>Key Protocols Used:</strong>
+                <ul>
+                    <li><strong>HTTP:</strong> To serve the Captive Portal page to connected clients.</li>
+                    <li><strong>DNS:</strong> For DNS Spoofing, redirecting all traffic to the local server.</li>
+                    <li><strong>I2C:</strong> For high-speed communication between the ESP32 and the OLED display.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    <section id="page3">
-        <h2>3. المنظومة البرمجية (Software)</h2>
-        <p>تمت البرمجة باستخدام لغة C++ ومكتبات Adafruit.</p>
-        <div class="img-placeholder">ضع هنا لقطة شاشة للكود من Wokwi</div>
-    </section>
+    <div class="page">
+        <h2>2. Technical Architecture (Hardware)</h2>
+        <div class="content">
+            <p>The hardware setup is designed for portability and efficiency. We utilize the ESP32 for its robust dual-core processing and integrated Wi-Fi capabilities.</p>
+            <div class="image-box">
+                <img src="https://via.placeholder.com/600x400.png?text=ESP32+and+OLED+Pinout+Diagram+with+Arrows" alt="Hardware Pinout">
+                <p><i>Figure 1: ESP32 & OLED Pinout Diagram with technical annotations.</i></p>
+            </div>
+            <ul>
+                <li><span class="label">ESP32 Microcontroller:</span> Manages the Access Point and Web Server.</li>
+                <li><span class="label">SSD1306 OLED Display:</span> Provides real-time visual output of system status and captured data.</li>
+                <li><span class="label">I2C Wiring:</span> SDA connected to GPIO 21, SCL connected to GPIO 22.</li>
+            </ul>
+        </div>
+    </div>
 
-    <section id="page4">
-        <h2>4. تحليل المخاطر (Cyber Risks)</h2>
-        <p>توضيح لمخاطر الاتصال بالشبكات العامة وكيفية استدراج الضحية.</p>
-    </section>
+    <div class="page">
+        <h2>3. Embedded Software (Logic)</h2>
+        <div class="content">
+            <p>The code is developed in C++ using the Arduino framework. It manages the Wi-Fi stack, handles DNS queries, and serves a custom-designed login page.</p>
+            <div class="image-box">
+                <img src="https://via.placeholder.com/600x300.png?text=Code+Logic+and+Library+Structure" alt="Software Logic">
+                <p><i>Figure 2: Software execution flow and library integration.</i></p>
+            </div>
+            <p>The software utilizes the <code>DNSServer</code> library to intercept all web requests, forcing the device to display the <strong>Captive Portal</strong>. The <code>WebServer</code> library then handles the form data submission from the victim's device.</p>
+        </div>
+    </div>
 
-    <section id="page5">
-        <h2>5. النتائج والمغزى</h2>
-        <p>النجاح في رصد محاولات الاتصال وعرضها فورياً على الشاشة.</p>
-    </section>
+    <div class="page">
+        <h2>4. Cybersecurity Risk Analysis (Scenarios)</h2>
+        <div class="content">
+            <p>This project illustrates the risk of an <strong>'Evil Twin'</strong> attack. The scenario unfolds as follows:</p>
+            <ol>
+                <li><strong>Deception:</strong> The attacker sets up a free Wi-Fi network (e.g., "Airport_Free_WiFi").</li>
+                <li><strong>Connection:</strong> An unsuspecting user connects to the open network.</li>
+                <li><strong>Redirection:</strong> The Honeypot immediately serves a deceptive 'Login' page.</li>
+                <li><strong>Data Capture:</strong> The user submits credentials, which the Honeypot intercepts and displays on the OLED screen.</li>
+            </ol>
+            <div class="tech-info">
+                <strong>Educational Goal:</strong> To demonstrate the critical need for VPNs and the danger of using unencrypted public networks.
+            </div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2>5. Results & Final Deployment</h2>
+        <div class="content">
+            <p>The system successfully creates a stable access point and intercepts connection attempts seamlessly. The OLED display provides real-time monitoring of captured credentials and total capture count.</p>
+            <div class="image-box">
+                <img src="https://via.placeholder.com/600x400.png?text=Final+System+Prototype+Working" alt="Final Result">
+                <p><i>Figure 3: Final System Prototype in operation.</i></p>
+            </div>
+            <p><strong>Conclusion:</strong> This project successfully demonstrates practical embedded systems integration for cybersecurity education and threat analysis.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Cybersecurity Team - Al-Nahrain & Al-Ma'moon University College
+    </footer>
+
 </body>
 </html>
