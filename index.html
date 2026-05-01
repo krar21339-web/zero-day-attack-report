@@ -3,212 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al-Ma'moon Cyber Security Project</title>
+    <title>ESP32 HONEYPOT DEFENSE</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+
         :root {
-            --neon-cyan: #00f2ff;
-            --dark-bg: #05080a;
-            --grid-line: rgba(0, 242, 255, 0.1);
+            --neon-purple: #bc13fe;
+            --neon-blue: #00d2ff;
+            --bg-dark: #050505;
+            --card-bg: rgba(20, 20, 25, 0.8);
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
             margin: 0;
-            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), 
-                              linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 30px 30px;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, #1a0a2e 0%, #050505 100%);
         }
 
-        /* Nav Bar */
-        nav {
-            padding: 20px 40px;
+        /* Header Style from Video */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid var(--neon-purple);
+            background: rgba(0,0,0,0.5);
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+        }
+
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 10px;
+            margin: 0;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--neon-blue);
+            margin-top: 10px;
+            letter-spacing: 3px;
+        }
+
+        /* Team Grid */
+        .team-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--neon-cyan);
-            background: rgba(10, 14, 20, 0.9);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
         }
 
-        .back-btn {
-            background: transparent;
-            border: 1px solid var(--neon-cyan);
-            color: var(--neon-cyan);
-            padding: 10px 25px;
-            cursor: pointer;
-            display: none; /* يظهر فقط عند الدخول للتفاصيل */
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .back-btn:hover {
-            background: var(--neon-cyan);
-            color: black;
-            box-shadow: 0 0 20px var(--neon-cyan);
+        .member-tag {
+            border: 1px solid var(--neon-blue);
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            background: rgba(0, 210, 255, 0.05);
         }
 
         /* Dashboard Grid */
-        .hub-container {
+        .dashboard {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             padding: 50px;
             max-width: 1200px;
             margin: auto;
         }
 
-        .node-card {
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            background: rgba(0, 242, 255, 0.05);
+        .card {
+            background: var(--card-bg);
+            border-left: 4px solid var(--neon-purple);
             padding: 0;
             cursor: pointer;
+            transition: all 0.4s ease;
             position: relative;
-            transition: 0.4s;
             overflow: hidden;
+            border-radius: 0 15px 15px 0;
         }
 
-        .node-card:hover {
-            border-color: var(--neon-cyan);
-            transform: scale(1.02);
-            background: rgba(0, 242, 255, 0.1);
+        .card:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 0 30px rgba(188, 19, 254, 0.3);
+            border-left-color: var(--neon-blue);
         }
 
-        .node-card img {
+        .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            filter: grayscale(50%) brightness(0.7);
+            opacity: 0.6;
         }
 
-        .node-card h3 {
-            padding: 15px;
-            margin: 0;
-            background: rgba(0, 0, 0, 0.8);
-            color: var(--neon-cyan);
-            text-transform: uppercase;
-            font-size: 14px;
-            border-top: 1px solid var(--neon-cyan);
+        .card-content {
+            padding: 20px;
         }
 
-        /* Detailed Section */
-        #detail-view {
+        .card h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+        }
+
+        /* Detail View (Overlay) */
+        #detail-overlay {
             display: none;
-            padding: 60px;
-            max-width: 1100px;
-            margin: auto;
-            animation: slideUp 0.5s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            padding: 50px;
+            box-sizing: border-box;
+            overflow-y: auto;
         }
 
-        @keyframes slideUp { from {transform: translateY(20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .close-btn {
+            position: fixed;
+            top: 30px;
+            right: 50px;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-purple);
+            border: 2px solid var(--neon-purple);
+            padding: 10px 30px;
+            cursor: pointer;
+            background: transparent;
+            transition: 0.3s;
+        }
 
-        .content-box {
+        .close-btn:hover {
+            background: var(--neon-purple);
+            color: #fff;
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .detail-body {
+            max-width: 900px;
+            margin: 50px auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: start;
+            gap: 40px;
         }
 
-        .content-box img {
+        .detail-img {
             width: 100%;
-            border: 1px solid var(--neon-cyan);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            border: 2px solid var(--neon-blue);
+            border-radius: 10px;
         }
 
-        .description-text {
+        .detail-text h1 {
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .detail-text p {
             line-height: 1.8;
-            font-size: 16px;
+            font-size: 1.2rem;
+            color: #ccc;
         }
 
-        .description-text h1 { color: var(--neon-cyan); font-size: 28px; }
-        .description-text p { margin-bottom: 20px; text-align: justify; }
-
+        .code-block {
+            background: #000;
+            padding: 20px;
+            border: 1px solid #333;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-<nav>
-    <div style="font-size: 20px; font-weight: bold; color: var(--neon-cyan);">AL-MA'MOON // CYBER_EMULATION_LAB</div>
-    <button class="back-btn" id="backBtn" onclick="hideDetails()">[ BACK TO SYSTEM_HUB ]</button>
-</nav>
+<header>
+    <h1 class="main-title">DEFENSE</h1>
+    <div class="subtitle">Proactive Security Auditing & Intrusion Simulation</div>
+    <p>Supervised by: <strong>Dr. Mustafa Aqeel</strong></p>
+    
+    <div class="team-container">
+        <span class="member-tag">Karrar Mohammed Dawood</span>
+        <span class="member-tag">Ali Majid Hussain</span>
+        <span class="member-tag">Saad Ahmed Fadel</span>
+        <span class="member-tag">Fahad Ahmed Ali</span>
+        <span class="member-tag">Ali Zuhair Qamar</span>
+        <span class="member-tag">Abdul Majeed Majool</span>
+    </div>
+</header>
 
-<div class="hub-container" id="hub">
-    <div class="node-card" onclick="showDetails('intro')">
-        <img src="1000066879.png" alt="Overview">
-        <h3>01 // System Overview & Introduction</h3>
+<div class="dashboard" id="mainDashboard">
+    <div class="card" onclick="openDetail('blueprint')">
+        <img src="1000066883.jpg" alt="Blueprint">
+        <div class="card-content">
+            <h2>01// INTEGRATED BLUEPRINT</h2>
+            <p>Hardware ecosystem design for maximum efficiency and stability during packet injection.</p>
+        </div>
     </div>
-    <div class="node-card" onclick="showDetails('tech')">
-        <img src="1000066883.jpg" alt="Technology">
-        <h3>02 // Hardware Architecture (ESP32)</h3>
+
+    <div class="card" onclick="openDetail('firmware')">
+        <img src="1000066879.png" alt="Firmware">
+        <div class="card-content">
+            <h2>02// FIRMWARE CORE</h2>
+            <p>Implementing asynchronous web servers to handle multiple TCP handshakes simultaneously.</p>
+        </div>
     </div>
-    <div class="node-card" onclick="showDetails('risks')">
-        <img src="1000066879.png" alt="Risks">
-        <h3>03 // Threat Vectors & Wireless Risks</h3>
+
+    <div class="card" onclick="openDetail('dns')">
+        <img src="1000066887.jpg" alt="DNS Interception">
+        <div class="card-content">
+            <h2>03// DNS INTERCEPTION</h2>
+            <p>UDP-based redirect engine creating a perfect captive portal trap for auditing.</p>
+        </div>
     </div>
-    <div class="node-card" onclick="showDetails('results')">
-        <img src="1000066879.png" alt="Results">
-        <h3>04 // Analysis Results & Conclusion</h3>
+
+    <div class="card" onclick="openDetail('risks')">
+        <img src="1000066884.jpg" alt="Cyber Risks">
+        <div class="card-content">
+            <h2>04// THREAT ANALYSIS</h2>
+            <p>Mapping Evil Twin attack vectors and monitoring real-time intrusion metrics.</p>
+        </div>
     </div>
 </div>
 
-<div id="detail-view">
-    <div class="content-box" id="detailContent">
+<div id="detail-overlay">
+    <button class="close-btn" onclick="closeDetail()">[ INTERFACE_MODE: BACK ]</button>
+    <div class="detail-body" id="detailContent">
         </div>
 </div>
 
 <script>
     const projectData = {
-        intro: {
-            title: "Advanced IoT Emulation",
-            img: "1000066879.png",
-            desc: "This project explores the vulnerabilities of IEEE 802.11 networks. By deploying a custom-built ESP32 node, we simulated a rogue access point environment to analyze how university devices interact with unauthenticated signals. This is a critical study in proactive cybersecurity defense."
-        },
-        tech: {
-            title: "ESP32-S Hardware Stack",
+        blueprint: {
+            title: "Integrated System Blueprint",
             img: "1000066883.jpg",
-            desc: "The hardware layer utilizes the ESP32-S Dual-Core SoC. Key components include the I2C Bus for SSD1306 OLED communication, enabling real-time status monitoring of the traffic injection. The system operates in promiscuous mode to capture raw frame data."
+            text: "The schematic illustrates a unified hardware ecosystem centered around the ESP32-S. Communication is established via the I2C bus, ensuring low-power operation and stable data transmission during heavy network loads."
+        },
+        firmware: {
+            title: "Firmware Core Logic",
+            img: "1000066879.png",
+            text: "Our implementation utilizes the Arduino-ESP32 framework to manage raw packet injection. The code ensures the system remains responsive even under simulated brute-force connection attempts.",
+            code: "void setup() {\n  WiFi.softAP('Al-Ma'moon_Uni');\n  server.begin();\n}"
+        },
+        dns: {
+            title: "DNS Spoofing Engine",
+            img: "1000066887.jpg",
+            text: "Every 'A' record request from the client is intercepted and resolved to the ESP32's internal IP (192.168.4.1), creating a seamless captive portal trap for security analysis."
         },
         risks: {
-            title: "Risk Analysis (Evil Twin)",
-            img: "1000066879.png",
-            desc: "The 'Evil Twin' attack vector demonstrated here shows how an attacker can masquerade as a university gateway. Risks identified include Man-in-the-Middle (MitM) data interception, session hijacking, and credential harvesting via fake login portals."
-        },
-        results: {
-            title: "Research Findings",
-            img: "1000066879.png",
-            desc: "Our results confirm that institutional security requires more than just WPA2 passwords. The implementation of 802.1X Enterprise authentication and client isolation is essential. The ESP32 successfully managed multiple simulated connections without data loss."
+            title: "Threat Vector Monitoring",
+            img: "1000066884.jpg",
+            text: "Real-time metrics allow us to observe how devices react to 'Evil Twin' SSIDs. This data is crucial for developing institutional defense against wireless impersonation."
         }
     };
 
-    function showDetails(key) {
-        const item = projectData[key];
-        document.getElementById('hub').style.display = 'none';
-        document.getElementById('backBtn').style.display = 'block';
-        const detailView = document.getElementById('detail-view');
-        detailView.style.display = 'block';
+    function openDetail(id) {
+        const data = projectData[id];
+        const overlay = document.getElementById('detail-overlay');
+        const content = document.getElementById('detailContent');
         
-        document.getElementById('detailContent').innerHTML = `
-            <img src="${item.img}">
-            <div class="description-text">
-                <h1>${item.title}</h1>
-                <p>${item.desc}</p>
-                <div style="border-top: 1px solid #333; padding-top: 20px; color: #888;">
-                    STATUS: SECURE_VIEW_ACCESS<br>
-                    ENCRYPTION: AES-256-EMULATED
-                </div>
+        content.innerHTML = `
+            <img src="${data.img}" class="detail-img">
+            <div class="detail-text">
+                <h1>${data.title}</h1>
+                <p>${data.text}</p>
+                ${data.code ? `<div class="code-block"><code>${data.code}</code></div>` : ''}
             </div>
         `;
+        
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
     }
 
-    function hideDetails() {
-        document.getElementById('detail-view').style.display = 'none';
-        document.getElementById('backBtn').style.display = 'none';
-        document.getElementById('hub').style.display = 'grid';
+    function closeDetail() {
+        document.getElementById('detail-overlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 </script>
 
 </body>
-</html>
+    </html>
+    
