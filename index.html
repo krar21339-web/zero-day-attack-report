@@ -3,101 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Honeypot Project Report</title>
+    <title>Advanced Cybersecurity Report - ESP32 Honeypot</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; }
-        .page { background: white; padding: 40px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 8px solid #2c3e50; }
-        h1 { color: #2c3e50; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
-        h2 { color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 0; }
-        .content { font-size: 1.1em; color: #444; }
-        .tech-info { background: #f8f9fa; border-left: 5px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 4px; }
-        .image-box { text-align: center; margin: 20px 0; background: #fafafa; border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
-        .image-box img { max-width: 100%; height: auto; border-radius: 4px; }
-        .label { font-weight: bold; color: #c0392b; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        footer { text-align: center; font-size: 0.9em; color: #7f8c8d; margin-top: 50px; }
+        :root {
+            --primary-bg: #0a0b10;
+            --card-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --danger: #f85149;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: var(--text-main);
+            background-color: var(--primary-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Page Cover Style */
+        .cover-page {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 2px solid var(--accent-color);
+            border-radius: 20px;
+            margin-bottom: 50px;
+            background: radial-gradient(circle, #1c2128 0%, #0a0b10 100%);
+        }
+
+        .cover-page h1 { font-size: 3em; color: var(--accent-color); margin-bottom: 10px; }
+        .university-name { font-size: 1.5em; font-weight: bold; margin-bottom: 40px; }
+        .team-section { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; width: 80%; }
+        .info-box { border-left: 3px solid var(--accent-color); padding-left: 15px; }
+        .info-box span { display: block; color: var(--text-dim); font-size: 0.9em; }
+
+        /* Content Sections */
+        .section-card {
+            background: var(--card-bg);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        h2 { color: var(--accent-color); font-size: 2em; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        
+        .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #0d1117;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed var(--accent-color);
+            color: var(--accent-color);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        .highlight { color: var(--accent-color); font-weight: bold; }
+        footer { text-align: center; padding: 40px; color: var(--text-dim); border-top: 1px solid #30363d; }
     </style>
 </head>
 <body>
 
-    <h1>🛡️ Integrated Cybersecurity Report: ESP32 Honeypot Project</h1>
+<div class="container">
 
-    <div class="page">
-        <h2>1. Introduction & Concept</h2>
-        <div class="content">
-            <p>This project implements a sophisticated cybersecurity defense mechanism: a <strong>Honeypot</strong> deployed on an ESP32 microcontroller. The primary objective is to simulate a vulnerability (an open Wi-Fi access point) to lure, deceive, and analyze potential attackers or unauthorized users without exposing the actual production network.</p>
-            <p>This system is designed for real-time monitoring of connection attempts, logging interaction patterns, and displaying a 'Captures' count on an integrated OLED screen. By studying these interactions, we gain insights into attack vectors and network vulnerabilities.</p>
-            <div class="tech-info">
-                <strong>Key Protocols Used:</strong>
-                <ul>
-                    <li><strong>HTTP:</strong> To serve the Captive Portal page to connected clients.</li>
-                    <li><strong>DNS:</strong> For DNS Spoofing, redirecting all traffic to the local server.</li>
-                    <li><strong>I2C:</strong> For high-speed communication between the ESP32 and the OLED display.</li>
-                </ul>
+    <div class="cover-page">
+        <div class="university-name">AL-NAHRAIN UNIVERSITY / AL-MA'MOON UNIVERSITY COLLEGE</div>
+        <h1>ESP32 HONEYPOT SYSTEM</h1>
+        <p>Cybersecurity Research & Implementation Report</p>
+        
+        <div class="team-section">
+            <div class="info-box">
+                <span>Supervised By:</span>
+                <strong>Dr. [اسم الدكتور هنا]</strong>
+            </div>
+            <div class="info-box">
+                <span>Prepared By (Team Members):</span>
+                <strong>1. [اسم الشخص الأول]</strong>
+                <strong>2. [اسم الشخص الثاني]</strong>
+                <strong>3. [اسم الشخص الثالث]</strong>
+                <strong>4. [اسم الشخص الرابع]</strong>
+                <strong>5. [اسم الشخص الخامس]</strong>
             </div>
         </div>
     </div>
 
-    <div class="page">
-        <h2>2. Technical Architecture (Hardware)</h2>
-        <div class="content">
-            <p>The hardware setup is designed for portability and efficiency. We utilize the ESP32 for its robust dual-core processing and integrated Wi-Fi capabilities.</p>
-            <div class="image-box">
-                <img src="https://via.placeholder.com/600x400.png?text=ESP32+and+OLED+Pinout+Diagram+with+Arrows" alt="Hardware Pinout">
-                <p><i>Figure 1: ESP32 & OLED Pinout Diagram with technical annotations.</i></p>
-            </div>
-            <ul>
-                <li><span class="label">ESP32 Microcontroller:</span> Manages the Access Point and Web Server.</li>
-                <li><span class="label">SSD1306 OLED Display:</span> Provides real-time visual output of system status and captured data.</li>
-                <li><span class="label">I2C Wiring:</span> SDA connected to GPIO 21, SCL connected to GPIO 22.</li>
-            </ul>
+    <div class="section-card">
+        <h2>01. Executive Introduction</h2>
+        <p>The <span class="highlight">Honeypot Technology</span> represents a proactive defense mechanism in the field of Network Security. This project focuses on the design and deployment of a hardware-based honeypot using the <strong>ESP32 Microcontroller</strong>. Unlike traditional firewalls that block traffic, our system invites interaction to log and analyze the behavior of potential intruders.</p>
+        <p>By simulating a legitimate Open Wi-Fi Access Point, we utilize <span class="highlight">Captive Portal</span> technology to intercept unauthorized connections. This research explores the integration of embedded systems with cybersecurity protocols to provide real-time monitoring and threat intelligence gathering.</p>
+        <div class="image-placeholder">
+             [Insert Project Overview Image Here]
         </div>
     </div>
 
-    <div class="page">
-        <h2>3. Embedded Software (Logic)</h2>
-        <div class="content">
-            <p>The code is developed in C++ using the Arduino framework. It manages the Wi-Fi stack, handles DNS queries, and serves a custom-designed login page.</p>
-            <div class="image-box">
-                <img src="https://via.placeholder.com/600x300.png?text=Code+Logic+and+Library+Structure" alt="Software Logic">
-                <p><i>Figure 2: Software execution flow and library integration.</i></p>
+    <div class="section-card">
+        <h2>02. Technical Hardware Architecture</h2>
+        <p>Our system is built upon high-performance, low-power components designed for continuous operation. The core processing is handled by the ESP32, which manages both the network stack and the user interface logic.</p>
+        <div class="tech-grid">
+            <div>
+                <strong>1. ESP32 NodeMCU:</strong> Dual-core CPU with integrated 2.4GHz Wi-Fi and Bluetooth. It acts as the DNS server and Web host.
+                <br><br>
+                <strong>2. SSD1306 OLED (128x64):</strong> A high-contrast display used for real-time telemetry, showing IP addresses, connected clients, and captured data packets.
             </div>
-            <p>The software utilizes the <code>DNSServer</code> library to intercept all web requests, forcing the device to display the <strong>Captive Portal</strong>. The <code>WebServer</code> library then handles the form data submission from the victim's device.</p>
+            <div class="image-placeholder">
+                [Insert ESP32 Pinout Diagram Here]
+            </div>
+        </div>
+        <p>The communication between the MCU and the display is established via the <span class="highlight">I2C (Inter-Integrated Circuit)</span> protocol, ensuring minimal wiring complexity using only two signal lines: SDA (Data) and SCL (Clock).</p>
+    </div>
+
+    <div class="section-card">
+        <h2>03. Software Engineering & Logic</h2>
+        <p>The software architecture follows an asynchronous model to handle multiple concurrent connections. Using the <span class="highlight">Arduino Framework (C++)</span>, we implemented a custom DNS handler that redirects all 'A-record' queries to the local IP address of the ESP32 (192.168.4.1).</p>
+        <div class="image-placeholder">
+            [Insert Code Logic / Wokwi Screenshot Here]
+        </div>
+        <ul>
+            <li><strong>DNS Server:</strong> Intercepts domain name requests to bypass typical browser security checks.</li>
+            <li><strong>Async Web Server:</strong> Serves the HTML/CSS/JS files required for the Captive Portal.</li>
+            <li><strong>EEPROM Management:</strong> Used to store the 'Capture Count' persistently, even after power loss.</li>
+        </ul>
+    </div>
+
+    <div class="section-card" style="border-left: 5px solid var(--danger);">
+        <h2>04. Cybersecurity Risk Analysis</h2>
+        <p>This implementation demonstrates the <span class="highlight">Evil Twin Attack</span> vector. In a real-world scenario, an attacker mimics a trusted SSID (e.g., "University_Staff_WiFi"). Users, seeking connectivity, connect to this rogue AP. The system then serves a <span class="highlight">Social Engineering</span> page that requests sensitive credentials.</p>
+        <p>This section highlights the critical importance of <span class="highlight">HTTPS</span> and certificate validation. Since our honeypot operates on HTTP, it showcases how easily unencrypted data can be sniffed in transit.</p>
+        <div class="image-placeholder">
+            [Insert Attack Scenario Diagram Here]
         </div>
     </div>
 
-    <div class="page">
-        <h2>4. Cybersecurity Risk Analysis (Scenarios)</h2>
-        <div class="content">
-            <p>This project illustrates the risk of an <strong>'Evil Twin'</strong> attack. The scenario unfolds as follows:</p>
-            <ol>
-                <li><strong>Deception:</strong> The attacker sets up a free Wi-Fi network (e.g., "Airport_Free_WiFi").</li>
-                <li><strong>Connection:</strong> An unsuspecting user connects to the open network.</li>
-                <li><strong>Redirection:</strong> The Honeypot immediately serves a deceptive 'Login' page.</li>
-                <li><strong>Data Capture:</strong> The user submits credentials, which the Honeypot intercepts and displays on the OLED screen.</li>
-            </ol>
-            <div class="tech-info">
-                <strong>Educational Goal:</strong> To demonstrate the critical need for VPNs and the danger of using unencrypted public networks.
-            </div>
+    <div class="section-card">
+        <h2>05. Results & Empirical Observations</h2>
+        <p>The final deployment proved that a low-cost device can effectively simulate a large-scale network vulnerability. The system successfully managed up to 5 simultaneous client connections while maintaining a responsive OLED interface.</p>
+        <div class="image-placeholder">
+            [Insert Final Project Working Photo Here]
         </div>
+        <p><strong>Conclusion:</strong> The project serves as a powerful educational tool for students and IT professionals at Al-Nahrain University, emphasizing the "Defense-in-Depth" strategy and the necessity of user awareness in public network environments.</p>
     </div>
 
-    <div class="page">
-        <h2>5. Results & Final Deployment</h2>
-        <div class="content">
-            <p>The system successfully creates a stable access point and intercepts connection attempts seamlessly. The OLED display provides real-time monitoring of captured credentials and total capture count.</p>
-            <div class="image-box">
-                <img src="https://via.placeholder.com/600x400.png?text=Final+System+Prototype+Working" alt="Final Result">
-                <p><i>Figure 3: Final System Prototype in operation.</i></p>
-            </div>
-            <p><strong>Conclusion:</strong> This project successfully demonstrates practical embedded systems integration for cybersecurity education and threat analysis.</p>
-        </div>
-    </div>
+</div>
 
-    <footer>
-        &copy; 2026 Cybersecurity Team - Al-Nahrain & Al-Ma'moon University College
-    </footer>
+<footer>
+    Project Developed for Cybersecurity Curriculum 2026<br>
+    All Rights Reserved &copy; Team ESP-Honeypot
+</footer>
 
 </body>
-</html>
+    </html>
+    
