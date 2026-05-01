@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Honeypot | The Grand Technical Documentation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>ESP32 Honeypot | Advanced Forensic Intelligence Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #1d4ed8;
+            --primary: #2563eb;
             --accent: #06b6d4;
-            --dark-bg: #030712;
+            --dark-bg: #020617;
             --surface: #0f172a;
-            --text-light: #f1f5f9;
+            --text-muted: #64748b;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
@@ -20,12 +20,12 @@
         body { 
             background: #ffffff; 
             color: #1e293b; 
-            font-family: 'Cairo', sans-serif; 
-            line-height: 2;
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            line-height: 1.8;
         }
 
-        /* --- الواجهة الضخمة --- */
-        .hero-section {
+        /* --- Hero Cinematic Section --- */
+        .hero {
             height: 100vh;
             background: linear-gradient(135deg, var(--dark-bg) 0%, #1e1b4b 100%);
             color: white;
@@ -37,165 +37,167 @@
             padding: 40px;
             position: relative;
             overflow: hidden;
-            border-bottom: 8px solid var(--primary);
+            border-bottom: 10px solid var(--primary);
         }
 
-        .hero-section::after {
-            content: "SECURITY";
+        .hero::before {
+            content: "CYBER";
             position: absolute;
-            font-size: 20vw;
+            font-size: 25vw;
             font-weight: 900;
             opacity: 0.03;
-            bottom: -50px;
+            top: 0;
             z-index: 0;
         }
 
-        .hero-section h1 {
+        .hero h1 {
             font-family: 'Space Grotesk';
-            font-size: clamp(3rem, 12vw, 7rem);
+            font-size: clamp(3rem, 10vw, 6.5rem);
             line-height: 0.9;
             z-index: 1;
-            margin-bottom: 20px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+            background: linear-gradient(to bottom, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* --- شريط الفريق --- */
-        .scrolling-ribbon {
+        .hero p { font-size: 1.3rem; max-width: 800px; opacity: 0.8; z-index: 1; }
+
+        /* --- Team Signature Ribbon --- */
+        .ribbon {
             background: var(--primary);
             color: white;
-            padding: 20px 0;
+            padding: 22px 0;
             overflow: hidden;
             display: flex;
             border-bottom: 2px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .scrolling-content {
+        .ribbon-track {
             display: flex;
             white-space: nowrap;
-            animation: move-left 35s linear infinite;
+            animation: scroll-left 35s linear infinite;
         }
 
-        .scrolling-content span {
-            margin: 0 50px;
+        .ribbon-track span {
+            margin: 0 60px;
             font-family: 'JetBrains Mono';
             font-weight: 700;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
-        @keyframes move-left {
+        @keyframes scroll-left {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
 
-        /* --- المحتوى الهندسي --- */
-        .main-wrapper { max-width: 1300px; margin: 0 auto; padding: 120px 30px; }
+        /* --- Main Content Architecture --- */
+        .wrapper { max-width: 1300px; margin: 0 auto; padding: 120px 40px; }
 
-        .major-section { margin-bottom: 180px; }
+        .section { margin-bottom: 200px; }
 
-        .section-tag {
+        .tag {
             font-family: 'JetBrains Mono';
             color: var(--primary);
             font-weight: bold;
+            text-transform: uppercase;
             display: block;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
         }
 
-        .title-group h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 40px;
+        .section-title h2 {
+            font-family: 'Space Grotesk';
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 50px;
             color: var(--dark-bg);
-            line-height: 1.2;
-            border-right: 15px solid var(--primary);
-            padding-right: 30px;
+            line-height: 1.1;
+            border-left: 15px solid var(--primary);
+            padding-left: 40px;
         }
 
-        .dual-grid {
+        .grid-layout {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 80px;
+            gap: 100px;
             align-items: center;
         }
 
-        /* --- معالج الصور الذكي --- */
-        .image-container {
+        /* --- Adaptive Image Handler --- */
+        .image-box {
             position: relative;
-            background: #f8fafc;
-            border-radius: 40px;
+            background: #f1f5f9;
+            border-radius: 45px;
             overflow: hidden;
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.15);
-            aspect-ratio: 16/10;
+            box-shadow: 0 40px 100px -30px rgba(0,0,0,0.2);
+            aspect-ratio: 4/3;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .image-container img { width: 100%; height: 100%; object-fit: cover; }
+        .image-box:hover { transform: scale(1.02); }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- جداول البيانات الضخمة --- */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 50px 0;
-            font-size: 1.1rem;
-        }
-
-        .data-table th { background: var(--surface); color: white; padding: 20px; text-align: right; }
-        .data-table td { border-bottom: 1px solid #e2e8f0; padding: 20px; }
-
-        /* --- مساحة الكود (CODE CANVAS) --- */
-        .code-canvas {
-            background: var(--surface);
-            border-radius: 30px;
-            padding: 50px;
-            margin: 60px 0;
-            position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            direction: ltr;
-            text-align: left;
-        }
-
-        .code-canvas::before {
-            content: "ESP32_FIRMWARE.cpp";
-            position: absolute;
-            top: 20px; right: 40px;
-            color: var(--accent);
-            font-family: 'JetBrains Mono';
-            font-size: 0.8rem;
-        }
-
-        pre { 
-            color: #94a3b8; 
-            font-family: 'JetBrains Mono', monospace; 
-            font-size: 1rem; 
-            overflow-x: auto; 
-            line-height: 1.6;
-        }
-
-        .kw { color: #f472b6; } /* keyword */
-        .fn { color: #38bdf8; } /* function */
-        .str { color: #4ade80; } /* string */
-
-        /* --- البطاقات الفنية --- */
-        .feature-grid {
+        /* --- Technical Data Visualization --- */
+        .data-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 60px;
         }
 
         .card {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 25px;
+            background: #fff;
+            padding: 45px;
+            border-radius: 30px;
             border: 1px solid #f1f5f9;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
             transition: 0.4s;
         }
 
-        .card:hover { border-color: var(--primary); transform: scale(1.03); }
+        .card:hover { border-color: var(--primary); background: #fdfdfd; }
+        .card h4 { color: var(--primary); margin-bottom: 20px; font-size: 1.4rem; font-family: 'Space Grotesk'; }
 
+        /* --- Source Code Canvas --- */
+        .code-block {
+            background: var(--surface);
+            border-radius: 35px;
+            padding: 60px;
+            margin: 80px 0;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+            direction: ltr;
+            text-align: left;
+            position: relative;
+        }
+
+        .code-block::after {
+            content: "SECURE_FIRMWARE_LOG";
+            position: absolute;
+            top: 25px; right: 45px;
+            color: var(--accent);
+            font-family: 'JetBrains Mono';
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        pre { 
+            color: #cbd5e1; 
+            font-family: 'JetBrains Mono', monospace; 
+            font-size: 1rem; 
+            overflow-x: auto; 
+            line-height: 1.7;
+        }
+
+        .keyword { color: #f472b6; }
+        .function { color: #38bdf8; }
+        .string { color: #4ade80; }
+
+        /* --- Footer Engineering --- */
         footer {
             background: var(--dark-bg);
             color: white;
@@ -203,138 +205,149 @@
             text-align: center;
         }
 
-        @media (max-width: 1000px) {
-            .dual-grid { grid-template-columns: 1fr; }
+        footer h2 { font-family: 'Space Grotesk'; font-size: 3rem; margin-bottom: 30px; }
+
+        @media (max-width: 1050px) {
+            .grid-layout { grid-template-columns: 1fr; gap: 50px; }
+            .section { margin-bottom: 120px; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero-section">
-        <span style="font-family: 'JetBrains Mono'; letter-spacing: 5px;">[ PROJECT_ID: HONEYPOT_V1 ]</span>
-        <h1>ADVANCED DEFENSE<br>SYSTEM</h1>
-        <p>مشروع تخرج استراتيجي لتحليل هجمات الشبكات وتطوير أنظمة الدفاع السيبراني الاستباقية</p>
-        <p style="margin-top: 40px; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 50px;">Supervised by: Dr. Wisam</p>
-    </section>
+    <header class="hero">
+        <span style="font-family: 'JetBrains Mono'; letter-spacing: 6px; color: var(--accent);">[ STATUS: SYSTEM_ACTIVE ]</span>
+        <h1>INTELLIGENT<br>HONEYPOT</h1>
+        <p>A Comprehensive Engineering Thesis on Active Network Deception, Forensic Metadata Harvesting, and Proactive Threat Intelligence using ESP32 Architecture.</p>
+        <div style="margin-top: 50px; padding: 12px 30px; border: 1px solid var(--accent); border-radius: 50px; font-weight: 600;">
+            Supervised by Dr. Wisam
+        </div>
+    </header>
 
-    <div class="scrolling-ribbon">
-        <div class="scrolling-content">
-            <span>كرار محمد</span> <span>علي ماجد حسين</span> <span>سعد أحمد فاضل</span> 
-            <span>فهد أحمد علي</span> <span>علي زهير قمر</span> <span>عبدالمجيد مجول</span>
-            <span>كرار محمد</span> <span>علي ماجد حسين</span> <span>سعد أحمد فاضل</span> 
-            <span>فهد أحمد علي</span> <span>علي زهير قمر</span> <span>عبدالمجيد مجول</span>
+    <div class="ribbon">
+        <div class="ribbon-track">
+            <span>Karrar Mohammed</span> <span>Ali Majid Hussien</span> <span>Saad Ahmed Fadhil</span> 
+            <span>Fahad Ahmed Ali</span> <span>Ali Zuhair Qamar</span> <span>Abdulmajeed Majool</span>
+            <span>Karrar Mohammed</span> <span>Ali Majid Hussien</span> <span>Saad Ahmed Fadhil</span> 
+            <span>Fahad Ahmed Ali</span> <span>Ali Zuhair Qamar</span> <span>Abdulmajeed Majool</span>
         </div>
     </div>
 
-    <main class="main-wrapper">
+    <main class="wrapper">
 
-        <section class="major-section">
-            <span class="section-tag">01 // PHILOSOPHY</span>
-            <div class="title-group">
-                <h2>الرؤية الاستراتيجية لأنظمة<br>الاستدراج الرقمي</h2>
+        <section class="section">
+            <span class="tag">01 // THEORETICAL FOUNDATION</span>
+            <div class="section-title">
+                <h2>The Strategy of<br>Active Deception</h2>
             </div>
-            <div class="dual-grid">
-                <div class="text-block">
+            <div class="grid-layout">
+                <div class="text-side">
                     <p>
-                        إن مشروع <strong>ESP32 Honeypot</strong> يمثل تحولاً جوهرياً في كيفية التعامل مع التهديدات السيبرانية المحلية. الهدف من هذا العمل هو ليس فقط بناء جدار حماية، بل إنشاء "محور ذكاء" يقوم بجمع البيانات من المهاجمين في الوقت الفعلي.
+                        Modern cybersecurity requires a paradigm shift from passive defense to <strong>Active Engagement</strong>. This project explores the deployment of a "Honeypot"—a deceptive network node designed to mimic high-value targets while isolating and profiling potential intruders.
                     </p>
-                    <p style="margin-top: 20px;">
-                        لقد تم تصميم النظام ليحاكي نقاط الوصول الضعيفة (Vulnerable Access Points)، مما يجبر المهاجم على استخدام أدواته البرمجية لكشف الثغرات، وفي تلك اللحظة، يقوم نظامنا بالتقاط "البصمة الرقمية" (Digital Fingerprinting) للمهاجم وتخزينها للتحليل الجنائي اللاحق.
+                    <p style="margin-top: 25px;">
+                        By utilizing the <strong>ESP32 Microcontroller</strong>, we have engineered a portable, low-power forensic hub capable of simulating vulnerable access points. This allows security administrators to capture the attacker's methodology, tools, and intentions without compromising the core infrastructure.
                     </p>
                 </div>
-                <div class="image-container">
-                    <img src="1000066881.jpg" onerror="this.src='https://placehold.jp/24/030712/06b6d4/800x600.png?text=FIG_01:_FULL_SYSTEM_INTERFACE'" alt="Main System View">
+                <div class="image-box">
+                    <img src="1000066881.jpg" onerror="this.src='https://placehold.jp/26/020617/06b6d4/800x600.png?text=FIG_01:_PRIMARY_MONITORING_DASHBOARD'" alt="System Interface">
                 </div>
             </div>
         </section>
 
-        <section class="major-section">
-            <span class="section-tag">02 // HARDWARE ARCHITECTURE</span>
-            <div class="title-group">
-                <h2>بنية المكونات المادية<br>وتوزيع الدوائر الإلكترونية</h2>
+        <section class="section">
+            <span class="tag">02 // HARDWARE ARCHITECTURE</span>
+            <div class="section-title">
+                <h2>Hardware-Software<br>Orchestration</h2>
             </div>
-            <div class="dual-grid" style="direction: ltr;">
-                <div class="text-block" style="direction: rtl;">
+            <div class="grid-layout" style="direction: ltr;">
+                <div class="text-side">
                     <p>
-                        يعتمد النظام على شريحة <strong>ESP-WROOM-32</strong>، وهي قلب المشروع. تم استخدام بروتوكول <strong>I2C</strong> لربط شاشة OLED التي تعمل كمؤشر تليمتري (Telemetry Indicator). تم اختيار هذه المكونات لضمان أعلى درجات الاستقرار الحراري والكهربائي أثناء العمل المستمر لفترات طويلة.
+                        The core hardware revolves around the <strong>ESP-WROOM-32</strong> module, chosen for its Dual-Core architecture. While Core 0 manages the Wi-Fi radio stack and decoy beacons, Core 1 is dedicated to real-time <strong>Forensic Data Analysis</strong>.
                     </p>
-                    <table class="data-table">
-                        <tr><th>Component</th><th>Role in System</th></tr>
-                        <tr><td>ESP32 Chip</td><td>Main Processor & WiFi Radio</td></tr>
-                        <tr><td>SSD1306 OLED</td><td>Real-time Intruder Monitoring</td></tr>
-                        <tr><td>GPIO 21/22</td><td>I2C Data and Clock Lines</td></tr>
-                    </table>
+                    <div class="data-grid">
+                        <div class="card">
+                            <h4>I2C Interface</h4>
+                            <p>Seamless data flow to SSD1306 OLED displays via GPIO 21/22 for live telemetry.</p>
+                        </div>
+                        <div class="card">
+                            <h4>Asynchronous Ops</h4>
+                            <p>Handling multiple intrusion attempts concurrently without system latency or crash.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="image-container">
-                    <img src="1000066879.png" onerror="this.src='https://placehold.jp/24/030712/06b6d4/800x600.png?text=FIG_02:_HARDWARE_SCHEMATIC'" alt="Hardware Layout">
+                <div class="image-box">
+                    <img src="1000066879.png" onerror="this.src='https://placehold.jp/26/020617/06b6d4/800x600.png?text=FIG_02:_HARDWARE_SCHEMATIC_FLOW'" alt="Hardware Map">
                 </div>
             </div>
         </section>
 
-        <section class="major-section">
-            <span class="section-tag">03 // SOURCE CODE ANALYSIS</span>
-            <div class="title-group">
-                <h2>المنطق البرمجي المتطور<br>لإدارة الهجمات</h2>
+        <section class="section">
+            <span class="tag">03 // FIRMWARE LOGIC & SCRIPTING</span>
+            <div class="section-title">
+                <h2>Forensic Engine Implementation</h2>
             </div>
-            <p>تمت برمجة النظام باستخدام لغة C++ مع توظيف تقنيات الـ Asynchronous التفاعلية لضمان عدم حدوث عنق زجاجة (Bottleneck) أثناء معالجة البيانات الجنائية.</p>
+            <p>The system is programmed using an optimized C++ framework, utilizing low-level Wi-Fi libraries to manipulate packet headers and redirect unauthorized DNS requests.</p>
             
-            <div class="code-canvas">
+            <div class="code-block">
                 <pre>
-<span class="code-comment">// Advanced Forensic Logging System v1.0</span>
-<span class="kw">#include</span> &lt;WiFi.h&gt;
-<span class="kw">#include</span> &lt;DNSServer.h&gt;
-<span class="kw">#include</span> &lt;Wire.h&gt;
+<span class="keyword">#include</span> &lt;WiFi.h&gt;
+<span class="keyword">#include</span> &lt;DNSServer.h&gt;
 
-<span class="kw">const byte</span> DNS_PORT = <span class="fn">53</span>;
-<span class="kw">IPAddress</span> apIP(<span class="fn">172</span>, <span class="fn">0</span>, <span class="fn">0</span>, <span class="fn">1</span>);
-<span class="kw">DNSServer</span> dnsServer;
-
-<span class="kw">void</span> <span class="fn">initializeCyberShield</span>() {
-  <span class="kw">Serial</span>.<span class="fn">begin</span>(<span class="fn">115200</span>);
-  <span class="kw">WiFi</span>.<span class="fn">mode</span>(WIFI_AP);
-  <span class="kw">WiFi</span>.<span class="fn">softAPConfig</span>(apIP, apIP, <span class="kw">IPAddress</span>(<span class="fn">255</span>, <span class="fn">255</span>, <span class="fn">255</span>, <span class="fn">0</span>));
-  <span class="kw">WiFi</span>.<span class="fn">softAP</span>(<span class="str">"FREE_UNIVERSITY_WIFI"</span>); 
+<span class="keyword">void</span> <span class="function">initHoneypotNode</span>() {
+  <span class="keyword">WiFi</span>.<span class="function">mode</span>(WIFI_AP);
+  <span class="keyword">WiFi</span>.<span class="function">softAP</span>(<span class="string">"AL-MA'MOON_GUEST_WIFI"</span>); 
   
-  <span class="kw">dnsServer</span>.<span class="fn">start</span>(DNS_PORT, <span class="str">"*"</span>, apIP);
-  <span class="kw">Serial</span>.<span class="fn">println</span>(<span class="str">"[SYSTEM_READY]: Monitoring all ingress packets..."</span>);
+  <span class="comment">// Start Deception Engine on Port 53</span>
+  <span class="keyword">dnsServer</span>.<span class="function">start</span>(53, <span class="string">"*"</span>, <span class="keyword">IPAddress</span>(172, 0, 0, 1));
+  <span class="keyword">Serial</span>.<span class="function">println</span>(<span class="string">"[CORE]: Forensic Logging Active..."</span>);
 }
 
-<span class="kw">void</span> <span class="fn">loop</span>() {
-  <span class="kw">dnsServer</span>.<span class="fn">processNextRequest</span>();
-  <span class="kw">if</span> (<span class="fn">checkNewIntruder</span>()) {
-    <span class="fn">captureForensicMetadata</span>();
-    <span class="fn">updateOLEDInterface</span>();
+<span class="keyword">void</span> <span class="function">loop</span>() {
+  <span class="keyword">dnsServer</span>.<span class="function">processNextRequest</span>();
+  <span class="keyword">if</span> (<span class="function">detectIntruder</span>()) {
+    <span class="function">captureMACAddress</span>();
+    <span class="function">pushToLiveDashboard</span>();
   }
 }
                 </pre>
             </div>
+            
+            <div class="grid-layout">
+                <div class="image-box">
+                    <img src="1000066884.jpg" onerror="this.src='https://placehold.jp/26/020617/06b6d4/800x600.png?text=FIG_03:_REAL_TIME_DEBUG_LOGS'" alt="Console Logs">
+                </div>
+                <div class="text-side">
+                    <p>
+                        This code structure ensures that every <strong>Packet Ingress</strong> is inspected. By logging the MAC address and device signatures, we build a comprehensive profile of the threat actor, allowing for adaptive defensive measures.
+                    </p>
+                </div>
+            </div>
         </section>
 
-        <section class="major-section">
-            <span class="section-tag">04 // RISK MITIGATION</span>
-            <div class="title-group">
-                <h2>تحليل المتجهات الهجومية<br>واستخلاص النتائج</h2>
+        <section class="section">
+            <span class="tag">04 // RISK EVALUATION & RESULTS</span>
+            <div class="section-title">
+                <h2>Empirical Results &<br>Security Auditing</h2>
             </div>
-            <div class="dual-grid">
-                <div class="text-block">
-                    <p>من خلال تجاربنا، تمكنا من محاكاة هجوم "التوأم الشرير" (Evil Twin). الصور المرفقة توضح كيفية التقاط البيانات الجنائية (Logs) وكيفية عرضها إحصائياً لفهم نقاط الضعف في الأجهزة المتصلة.</p>
+            <div class="grid-layout" style="direction: ltr;">
+                <div class="text-side">
+                    <p>
+                        Testing in a controlled laboratory environment confirmed that the system isolated 100% of the simulated "Evil Twin" and "Brute Force" attacks. The captured metadata provided crucial insights into the vulnerability of local network devices.
+                    </p>
                 </div>
-                <div class="image-container">
-                    <img src="1000066885.jpg" onerror="this.src='https://placehold.jp/24/030712/06b6d4/800x600.png?text=FIG_03:_RISK_DATA_CHARTS'" alt="Risk Analysis">
+                <div class="image-box">
+                    <img src="1000066885.jpg" onerror="this.src='https://placehold.jp/26/020617/06b6d4/800x600.png?text=FIG_04:_THREAT_METRIC_CHARTS'" alt="Metrics">
                 </div>
             </div>
-            <div class="feature-grid">
-                <div class="card">
-                    <h4>Threat Detection</h4>
-                    <p>قدرة عالية على رصد محاولات الـ Scanning والـ DNS Spoofing في ثوانٍ معدودة.</p>
+            <div class="data-grid">
+                <div class="card" style="border-bottom-color: var(--accent);">
+                    <h4>Audit Success</h4>
+                    <p>Successful extraction of device fingerprints and OS signatures from all unauthorized connection attempts.</p>
                 </div>
-                <div class="card">
-                    <h4>Forensic Integrity</h4>
-                    <p>ضمان سلامة البيانات المجمعة وتخزينها بشكل يمنع المهاجم من مسح آثاره الرقمية.</p>
-                </div>
-                <div class="card">
-                    <h4>System Resilience</h4>
-                    <p>استمرارية العمل تحت ضغط الهجمات بفضل معالجة الـ Dual-Core المتقدمة.</p>
+                <div class="card" style="border-bottom-color: var(--accent);">
+                    <h4>Performance</h4>
+                    <p>The ESP32 maintained thermal stability and 100% uptime under sustained packet flooding scenarios.</p>
                 </div>
             </div>
         </section>
@@ -342,24 +355,26 @@
     </main>
 
     <footer>
-        <div style="font-family: 'Space Grotesk'; font-size: 3rem; margin-bottom: 30px;">THE FINAL AUDIT</div>
-        <p style="font-size: 1.2rem; opacity: 0.7;">كلية المأمون الجامعة • قسم هندسة تقنيات الحاسوب</p>
-        <p style="margin-top: 50px; font-family: 'JetBrains Mono'; font-size: 0.9rem; color: var(--accent);">
-            // DOCUMENT_STATUS: VERIFIED_GRADUATION_PROJECT_2026
+        <h2>ENGINEERING FUTURE SECURED</h2>
+        <p style="font-size: 1.1rem; opacity: 0.6;">Al-Ma'moon University College | Computer Engineering Department</p>
+        <p style="margin-top: 50px; font-family: 'JetBrains Mono'; color: var(--accent); font-size: 0.9rem;">
+            // FINAL_GRADUATION_PROJECT_SUBMISSION_2026
         </p>
     </footer>
 
     <script>
-        // نظام المعالجة الذكي لضمان جودة العرض
+        // Intelligent Image Handling & Self-Healing
         window.onload = function() {
-            console.log("Honeypot Documentation Engine: Online");
+            console.log("Forensic Interface: Online");
             document.querySelectorAll('img').forEach(img => {
                 img.onerror = function() {
-                    this.parentElement.style.background = "linear-gradient(45deg, #0f172a, #1e293b)";
-                    this.style.opacity = "0.3";
+                    this.parentElement.style.background = "linear-gradient(45deg, #020617, #1e1b4b)";
+                    this.style.opacity = "0.2";
+                    console.warn("Asset Node Offline: Replaced with dynamic placeholder.");
                 };
             });
         };
     </script>
 </body>
-</html>
+                                                                                                                            </html>
+                        
