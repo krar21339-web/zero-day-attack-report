@@ -3,221 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 HONEYPOT DEFENSE | FINAL V6.0</title>
+    <title>ESP32 Honeypot Defense | Graduation Project</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary: #00d2ff;
-            --bg: #0b111a;
-            --card-bg: #111827;
-            --border: rgba(255, 255, 255, 0.08);
+            --neon-blue: #00d2ff;
+            --dark-bg: #020617;
+            --card-bg: #0f172a;
+            --text-gray: #94a3b8;
+            --cyber-border: rgba(0, 210, 255, 0.2);
         }
 
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: var(--bg);
-            color: #e5e7eb;
+            background-color: var(--dark-bg);
+            color: #f8fafc;
             font-family: 'Inter', sans-serif;
-            margin: 0; padding: 0;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
+        /* Cyber Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--cyber-border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        /* 1. SECTION: MAIN INTERFACE (كلية المأمون) */
         header {
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(to bottom, #111827, #0b111a);
+            padding: 100px 20px;
+            border-bottom: 1px solid var(--cyber-border);
+            margin-bottom: 60px;
         }
 
-        .uni-name { font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 3px; color: #9ca3af; margin-bottom: 10px; }
-        .main-title { font-family: 'Orbitron'; font-size: 3.2rem; margin: 15px 0; color: #fff; text-transform: uppercase; }
-        .sub-title { color: var(--primary); font-weight: 600; letter-spacing: 1px; display: block; margin-bottom: 30px; }
-
-        .team-container {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 900px; margin: 0 auto;
-        }
-        .member-tag {
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-            padding: 8px 16px; border-radius: 4px; font-size: 0.85rem; color: #d1d5db;
+        .uni-name {
+            font-family: 'Orbitron';
+            font-size: 24px;
+            letter-spacing: 6px;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
         }
 
-        .content-grid {
-            max-width: 1200px; margin: 40px auto; padding: 0 20px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px;
+        .main-title {
+            font-family: 'Orbitron';
+            font-size: 3.5rem;
+            margin: 20px 0;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
         }
 
-        /* 01 // Introduction Card (Full Width) */
-        .intro-card {
-            grid-column: 1 / -1;
-            background: var(--card-bg); border: 1px solid var(--border);
-            border-radius: 12px; padding: 50px; text-align: center; cursor: pointer;
-        }
-        .intro-img {
-            width: 100%; max-width: 800px; border-radius: 8px; border: 1px solid var(--primary);
-            margin: 25px auto; display: block; filter: brightness(0.9);
+        .supervisor {
+            font-family: 'Orbitron';
+            font-size: 1.2rem;
+            color: #fff;
+            margin: 20px 0;
         }
 
-        /* Standard Topic Cards */
-        .topic-card {
-            background: var(--card-bg); border: 1px solid var(--border);
-            border-radius: 12px; overflow: hidden; cursor: pointer; transition: 0.3s;
-        }
-        .topic-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-
-        .card-img-box {
-            width: 100%; height: 220px; background: #000; overflow: hidden;
-            border-bottom: 1px solid var(--border);
-        }
-        .card-img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
-
-        .info-box { padding: 30px; }
-        .info-box h2 { font-family: 'Orbitron'; font-size: 1.15rem; color: var(--primary); margin: 0 0 15px 0; }
-        .info-box p { font-size: 0.9rem; color: #9ca3af; margin-bottom: 20px; min-height: 50px; line-height: 1.5; }
-
-        .tag-group { display: flex; gap: 8px; }
-        .tag {
-            background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.2);
-            color: var(--primary); padding: 4px 10px; border-radius: 4px; font-family: 'Fira Code'; font-size: 0.7rem;
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 800px;
+            margin: 40px auto 0;
         }
 
-        /* Modal Pop-up System */
-        .modal {
-            position: fixed; inset: 0; background: rgba(11, 17, 26, 0.98); z-index: 2000;
-            display: none; padding: 60px 20px; overflow-y: auto; backdrop-filter: blur(10px);
+        .student-box {
+            background: var(--card-bg);
+            padding: 10px;
+            border: 1px solid var(--cyber-border);
+            font-size: 0.9rem;
+            border-radius: 4px;
         }
-        .modal-inner { max-width: 900px; margin: 0 auto; animation: fadeInUp 0.4s ease; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .modal-img { width: 100%; border-radius: 12px; border: 1px solid var(--border); margin: 30px 0; }
-        .modal-inner h2 { font-family: 'Orbitron'; font-size: 2.8rem; color: var(--primary); margin: 0; }
-        .modal-inner p { font-size: 1.25rem; line-height: 1.8; color: #d1d5db; margin: 30px 0; white-space: pre-line; }
+        /* SECTION TITLES */
+        .section-title {
+            font-family: 'Orbitron';
+            font-size: 2rem;
+            color: var(--neon-blue);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--neon-blue);
+            padding-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content-block {
+            background: var(--card-bg);
+            border: 1px solid var(--cyber-border);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 968px) {
+            .content-block { grid-template-columns: 1fr; }
+        }
+
+        .text-side h3 { font-family: 'Orbitron'; color: #fff; margin-bottom: 20px; }
+        .text-side p { color: var(--text-gray); margin-bottom: 15px; font-size: 1.1rem; }
+
+        .image-side {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--neon-blue);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
         
-        .close-btn {
-            border: 1px solid var(--primary); background: transparent; color: var(--primary);
-            padding: 12px 35px; cursor: pointer; font-family: 'Fira Code'; font-size: 0.9rem; transition: 0.3s;
-        }
-        .close-btn:hover { background: var(--primary); color: #000; }
+        .image-side:hover { transform: scale(1.02); }
+        .image-side img { width: 100%; display: block; filter: brightness(0.9); }
 
-        footer { text-align: center; padding: 80px; opacity: 0.4; font-size: 0.8rem; letter-spacing: 2px; }
+        /* LISTS */
+        .cyber-list { list-style: none; }
+        .cyber-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; color: var(--text-gray); }
+        .cyber-list li i { color: var(--neon-blue); margin-top: 5px; }
+
+        /* TECH GRID */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .tech-item { text-align: center; font-size: 0.8rem; }
+        .tech-item img { width: 100%; border-radius: 8px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.1); }
+
+        /* POPUP SYSTEM */
+        #popup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.95);
+            display: none; justify-content: center; align-items: center;
+            z-index: 9999; padding: 20px; backdrop-filter: blur(8px);
+        }
+        .popup-content { max-width: 900px; width: 100%; }
+        .popup-img { width: 100%; border-radius: 12px; border: 1px solid var(--neon-blue); }
+        .close-popup {
+            position: absolute; top: 30px; right: 30px;
+            background: none; border: 1px solid var(--neon-blue);
+            color: var(--neon-blue); padding: 10px 25px; cursor: pointer;
+            font-family: 'Orbitron';
+        }
+
+        footer { text-align: center; padding: 80px; color: var(--text-gray); font-size: 0.8rem; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="uni-name">AL-MA'MOON UNIVERSITY COLLEGE</div>
-        <h1 class="main-title">ESP32 HONEYPOT DEFENSE</h1>
-        <span class="sub-title">Proactive Security Auditing & Intrusion Simulation</span>
-        <p style="color: #9ca3af; margin-bottom: 25px;">Supervised by: <strong style="color: #fff;">Dr. Mustafa Aqeel</strong></p>
-        
-        <div class="team-container">
-            <span class="member-tag">Karrar Mohammed</span>
-            <span class="member-tag">Ali Majid Hussien</span>
-            <span class="member-tag">Saad Ahmed Fadhil</span>
-            <span class="member-tag">Fahad Ahmed Ali</span>
-            <span class="member-tag">Ali Zuhair Qamar</span>
-            <span class="member-tag">Abdulmajeed Majool</span>
-        </div>
-    </header>
+    <div class="container">
+        <header>
+            <div class="uni-name">AL-MA'MOON UNIVERSITY COLLEGE</div>
+            <h1 class="main-title">ESP32 HONEYPOT DEFENSE</h1>
+            <div class="supervisor">Supervised by: <span style="color: var(--neon-blue);">Dr. Wisam</span></div>
+            
+            <div class="student-grid">
+                <div class="student-box">Karrar Mohammed</div>
+                <div class="student-box">Ali Majid Hussien</div>
+                <div class="student-box">Saad Ahmed Fadhil</div>
+                <div class="student-box">Fahad Ahmed Ali</div>
+                <div class="student-box">Ali Zuhair Qamar</div>
+                <div class="student-box">Abdulmajeed Majool</div>
+            </div>
+        </header>
 
-    <div class="content-grid">
-        <div class="intro-card" onclick="openNode('n1')">
-            <h2>01 // INTRODUCTION & INDEX</h2>
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/10367614348791306972_0" class="intro-img" alt="Honeypot Blueprint visualization">
-            <p>An abstract overview of the Honeypot defense mechanism and the primary research objectives.</p>
-        </div>
-
-        <div class="topic-card" onclick="openNode('n2')">
-            <div class="card-img-box"><img src="http://googleusercontent.com/image_collection/image_retrieval/17064016862209319701_0" alt="ESP32 Hardward Setup"></div>
-            <div class="info-box">
-                <h2>02. TECHNOLOGY STACK</h2>
-                <p>Integrating the ESP32 MCU with an SSD1306 OLED via I2C for real-time telemetry.</p>
-                <div class="tag-group"><span class="tag">ESP32</span><span class="tag">I2C BUS</span></div>
+        <div class="section-title"><i class="fa-solid fa-folder-open"></i> 01 // Introduction & Index</div>
+        <div class="content-block">
+            <div class="text-side">
+                <h3>The Decoy Strategy</h3>
+                <p>Our Honeypot is a proactive cybersecurity tool designed to act as a decoy. It lures potential attackers into a simulated network environment to log their behaviors without compromising real systems.</p>
+                <ul class="cyber-list">
+                    <li><i class="fa-solid fa-chevron-right"></i> Dynamic SSID Spoofing</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Real-time Intrusion Logging</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Forensic Data Capturing</li>
+                </ul>
+            </div>
+            <div class="image-side" onclick="showPopup('http://googleusercontent.com/image_collection/image_retrieval/10337288150817901540')">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/10337288150817901540" alt="ESP32 Map">
             </div>
         </div>
 
-        <div class="topic-card" onclick="openNode('n3')">
-            <div class="card-img-box"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800" alt="Programming Code"></div>
-            <div class="info-box">
-                <h2>03. FIRMWARE LOGIC</h2>
-                <p>Developing non-blocking C++ routines to manage DHCP and DNS requests.</p>
-                <div class="tag-group"><span class="tag">C++</span><span class="tag">ASYNC-TCP</span></div>
+        <div class="section-title"><i class="fa-solid fa-microchip"></i> 02 // Technology Stack</div>
+        <div class="content-block">
+            <div class="text-side">
+                <h3>Hardware Components</h3>
+                <p>We utilized low-cost yet powerful modules to build a portable defense station. Each part was selected for its specific protocol compatibility.</p>
+                <div class="tech-grid">
+                    <div class="tech-item"><img src="http://googleusercontent.com/image_collection/image_retrieval/8530380352103718180">ESP32 Core</div>
+                    <div class="tech-item"><img src="http://googleusercontent.com/image_collection/image_retrieval/179459623305648973">OLED Screen</div>
+                    <div class="tech-item"><img src="http://googleusercontent.com/image_collection/image_retrieval/14104969013813947611">Custom Circuit</div>
+                </div>
+            </div>
+            <div class="text-side">
+                <ul class="cyber-list">
+                    <li><strong>ESP32:</strong> Dual-core Wi-Fi & Bluetooth module.</li>
+                    <li><strong>SSD1306:</strong> 0.96 inch I2C OLED for local monitoring.</li>
+                    <li><strong>I2C Bus:</strong> For seamless communication between modules.</li>
+                </ul>
             </div>
         </div>
 
-        <div class="topic-card" onclick="openNode('n4')">
-            <div class="card-img-box"><img src="http://googleusercontent.com/image_collection/image_retrieval/392643343317702467_0" alt="Security Risks"></div>
-            <div class="info-box">
-                <h2>04. ATTACK VECTORS</h2>
-                <p>Analyzing Evil Twin vulnerabilities and the impact of rogue access points.</p>
-                <div class="tag-group"><span class="tag">MITM</span><span class="tag">EVIL TWIN</span></div>
+        <div class="section-title"><i class="fa-solid fa-code"></i> 03 // Programming & Ethics</div>
+        <div class="content-block">
+            <div class="image-side" onclick="showPopup('http://googleusercontent.com/image_collection/image_retrieval/2421750344885957891')">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/2421750344885957891" alt="Programming Animation">
+            </div>
+            <div class="text-side">
+                <h3>C++ / Arduino Logic</h3>
+                <p>The system is built on an <strong>Asynchronous</strong> model. It manages DNS spoofing and DHCP assignments without blocking the CPU.</p>
+                <p style="background: rgba(255,0,0,0.1); padding: 15px; border-left: 3px solid red;">
+                    <strong>Ethical Boundry:</strong> While this hardware can be programmed for advanced 'De-authentication' or 'Man-in-the-Middle' attacks, our implementation is strictly for auditing and education.
+                </p>
             </div>
         </div>
 
-        <div class="topic-card" onclick="openNode('n5')">
-            <div class="card-img-box"><img src="http://googleusercontent.com/image_collection/image_retrieval/3388839495031788031_0" alt="Final Results"></div>
-            <div class="info-box">
-                <h2>05. TELEMETRY RESULTS</h2>
-                <p>Persistent storage of intrusion logs synchronized with the visual OLED interface.</p>
-                <div class="tag-group"><span class="tag">EEPROM</span><span class="tag">LOGS</span></div>
+        <div class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> 04 // Security Risks</div>
+        <div class="content-block">
+            <div class="text-side">
+                <h3>The Victim's Perspective</h3>
+                <p>Connecting to an open network exposes users to massive risks. Once connected to our Honeypot, a victim faces:</p>
+                <ul class="cyber-list">
+                    <li><i class="fa-solid fa-skull-crossbones"></i> <strong>Evil Twin Attack:</strong> User thinks it's a safe public Wi-Fi.</li>
+                    <li><i class="fa-solid fa-skull-crossbones"></i> <strong>DNS Redirection:</strong> All traffic sent to fake login portals.</li>
+                    <li><i class="fa-solid fa-skull-crossbones"></i> <strong>Data Theft:</strong> Clear-text passwords recorded instantly.</li>
+                </ul>
+            </div>
+            <div class="image-side" onclick="showPopup('http://googleusercontent.com/image_collection/image_retrieval/11043642473470394905')">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/11043642473470394905" alt="Risks Visual">
+            </div>
+        </div>
+
+        <div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 05 // Conclusion & Benefits</div>
+        <div class="content-block" style="grid-template-columns: 1fr;">
+            <div class="text-side" style="text-align: center;">
+                <h3>The Importance of Defense</h3>
+                <p>Our project proves that Honeypots are vital for modern security infrastructure. They provide early warning systems that are low-cost, efficient, and highly effective against common Wi-Fi exploits.</p>
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/6117264292666972785" style="max-width: 400px; margin-top: 30px; border-radius: 12px;">
             </div>
         </div>
     </div>
 
-    <div id="modal" class="modal">
-        <div class="modal-inner">
-            <button class="close-btn" onclick="closeNode()">_BACK_TO_REPORT</button>
-            <div id="modalContent"></div>
+    <div id="popup">
+        <button class="close-popup" onclick="hidePopup()">CLOSE [X]</button>
+        <div class="popup-content">
+            <img id="popupImg" src="" class="popup-img">
         </div>
     </div>
 
     <footer>AL-MA'MOON UNIVERSITY COLLEGE // COMPUTER ENGINEERING // 2026</footer>
 
     <script>
-        const content = {
-            n1: {
-                title: "INTRODUCTION",
-                img: "http://googleusercontent.com/image_collection/image_retrieval/10367614348791306972_0",
-                text: "The ESP32 Honeypot acts as a proactive defense mechanism designed to detect and log unauthorized access attempts. This index covers the unified hardware setup, the programming logic, and the security analysis of wireless spoofing vulnerabilities."
-            },
-            n2: {
-                title: "HARDWARE TECH",
-                img: "http://googleusercontent.com/image_collection/image_retrieval/17064016862209319701_0",
-                text: "The technology stack utilizes the dual-core ESP32 MCU for processing. An SSD1306 OLED screen is integrated via I2C, providing a head-up display of network telemetry without external PC monitoring."
-            },
-            n3: {
-                title: "PROGRAMMING CORE",
-                img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800",
-                text: "Software logic follows a strictly asynchronous, non-blocking model. While the DHCP server assigns IP addresses, the DNS server redirects Port 53 traffic, ensuring all connected clients interact only with the Captive Portal."
-            },
-            n4: {
-                title: "SECURITY RISKS",
-                img: "http://googleusercontent.com/image_collection/image_retrieval/392643343317702467_0",
-                text: "The primary risk evaluated is the Evil Twin attack. By matching trusted SSIDs (e.g., Free_WiFi), our system demonstrates how easily users connect and provide credentials without certificate verification."
-            },
-            n5: {
-                title: "FINAL RESULTS",
-                img: "http://googleusercontent.com/image_collection/image_retrieval/3388839495031788031_0",
-                text: "Telemetry results were successfully captured and stored in the internal EEPROM, demonstrating data persistence. Statistical analysis of the captured logs provides accurate metrics on user redirection and interaction rates."
-            }
-        };
-
-        function openNode(id) {
-            const data = content[id];
-            // Render Pop-up content
-            document.getElementById('modalContent').innerHTML = `
-                <img src="${data.img}" class="modal-img">
-                <h2>${data.title}</h2>
-                <p>${data.text}</p>
-            `;
-            // Show modal
-            document.getElementById('modal').style.display = 'block';
-            // Disable background scrolling
+        function showPopup(src) {
+            document.getElementById('popupImg').src = src;
+            document.getElementById('popup').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-        function closeNode() {
-            // Hide modal
-            document.getElementById('modal').style.display = 'none';
-            // Enable background scrolling
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
     </script>
 </body>
-</html>
+    </html>
+                                           
