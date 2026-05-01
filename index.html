@@ -1,223 +1,229 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Honeypot Defense - Project View</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>ESP32 Honeypot Defense | Al-Ma'moon University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --neon-blue: #00d2ff;
             --cyber-dark: #020617;
             --card-bg: #0f172a;
-            --text-gray: #9ca3af;
+            --border-glow: rgba(0, 210, 255, 0.2);
         }
 
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             background-color: var(--cyber-dark);
             color: #f8fafc;
-            font-family: 'Cairo', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* Background Grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--border-glow) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -1;
         }
 
-        /* العنوان الرئيسي */
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        /* 1. INITIAL INTERFACE (Slide 1) */
         header {
             text-align: center;
-            padding: 60px 0;
-            border-bottom: 2px solid rgba(0, 210, 255, 0.2);
-            margin-bottom: 50px;
+            padding: 80px 20px;
+            border: 1px solid var(--border-glow);
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            margin-top: 40px;
         }
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            color: var(--neon-blue);
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        .uni-name { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--neon-blue); letter-spacing: 4px; }
+        .project-title { font-family: 'Orbitron'; font-size: 3.2rem; margin: 20px 0; text-transform: uppercase; text-shadow: 0 0 15px var(--neon-blue); }
+        .supervisor { font-size: 1.3rem; margin-bottom: 30px; border-top: 1px solid var(--border-glow); padding-top: 20px; display: inline-block; }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-top: 10px;
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
         }
+        .student-card { background: var(--card-bg); padding: 12px; border: 1px solid var(--border-glow); border-radius: 8px; font-size: 0.9rem; }
 
-        /* أقسام العرض */
+        /* SECTION STYLING */
         .section {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 210, 255, 0.1);
+            margin: 80px 0;
+            padding: 40px;
+            background: rgba(15, 23, 42, 0.6);
             border-radius: 15px;
-            margin-bottom: 40px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
+            border: 1px solid var(--border-glow);
         }
 
-        .section:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon-blue);
-        }
-
-        .section-header {
-            padding: 20px;
-            background: rgba(0, 210, 255, 0.05);
-            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
+        .section-title {
+            font-family: 'Orbitron';
+            font-size: 2rem;
             color: var(--neon-blue);
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .section-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 30px;
-        }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        @media (max-width: 850px) { .content-wrapper { grid-template-columns: 1fr; } }
 
-        @media (max-width: 768px) {
-            .section-content { grid-template-columns: 1fr; }
-        }
-
-        .image-box {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid #1e293b;
+        /* IMAGE SYSTEM */
+        .image-container {
+            position: relative;
+            cursor: pointer;
+            border: 2px solid var(--neon-blue);
+            border-radius: 12px;
             overflow: hidden;
-            background: #000;
+            transition: transform 0.3s ease;
+        }
+        .image-container:hover { transform: scale(1.02); }
+        .image-container img { width: 100%; display: block; filter: brightness(0.8) contrast(1.1); }
+        .image-container::after {
+            content: 'VIEW IMAGE';
+            position: absolute; bottom: 10px; right: 10px;
+            background: var(--neon-blue); color: #000; padding: 5px 10px;
+            font-size: 10px; font-weight: bold; border-radius: 4px;
         }
 
-        .image-box img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-        }
+        .text-content h3 { font-family: 'Orbitron'; margin-bottom: 15px; color: #fff; }
+        .text-content p { color: #94a3b8; font-size: 1.05rem; }
 
-        .text-box h3 {
-            color: #fff;
-            margin-top: 0;
+        /* POPUP (MODAL) */
+        #imgModal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.98);
+            display: none; justify-content: center; align-items: center;
+            z-index: 9999;
         }
+        #modalImg { max-width: 90%; max-height: 85%; border: 2px solid var(--neon-blue); border-radius: 8px; }
+        .close-btn { position: absolute; top: 30px; right: 40px; font-size: 30px; color: #fff; cursor: pointer; }
 
-        .text-box p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(0, 210, 255, 0.1);
-            color: var(--neon-blue);
-            border-radius: 5px;
-            font-size: 0.8rem;
-            margin-top: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(0, 210, 255, 0.1);
-        }
+        footer { text-align: center; padding: 60px; color: #475569; font-size: 0.8rem; border-top: 1px solid var(--border-glow); }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>ESP32 HONEYPOT DEFENSE</h1>
-        <p class="subtitle">كلية المأمون الجامعة - هندسة تقنيات الحاسوب</p>
-        <p>بإشراف الدكتور: وسام</p>
+        <div class="uni-name">AL-MA'MOON UNIVERSITY COLLEGE</div>
+        <h1 class="project-title">ESP32 HONEYPOT DEFENSE</h1>
+        <div class="supervisor">Under Supervision of: <span style="color: var(--neon-blue);">Dr. Wisam</span></div>
+        
+        <div class="student-grid">
+            <div class="student-card">Karrar Mohammed</div>
+            <div class="student-card">Ali Majid Hussien</div>
+            <div class="student-card">Saad Ahmed Fadhil</div>
+            <div class="student-card">Fahad Ahmed Ali</div>
+            <div class="student-card">Ali Zuhair Qamar</div>
+            <div class="student-card">Abdulmajeed Majool</div>
+        </div>
     </header>
 
     <div class="section">
-        <div class="section-header">01 // PROJECT BLUEPRINT</div>
-        <div class="section-content">
-            <div class="image-box">
-                <img src="1000066879.png" alt="Full Blueprint">
+        <div class="section-title"><i class="fa-solid fa-map"></i> 01 // Introduction & Map</div>
+        <div class="content-wrapper">
+            <div class="text-content">
+                <h3>The Decoy Blueprint</h3>
+                <p>This project addresses unauthorized network intrusions. By creating a deceptive Access Point, we can isolate and analyze hacker behaviors without risking primary data.</p>
+                <div style="margin-top: 20px; font-family: 'Fira Code'; font-size: 0.9rem; color: var(--neon-blue);">
+                    [ INDEX: Tech Stack -> Logic -> Risk -> Conclusion ]
+                </div>
             </div>
-            <div class="text-box">
-                <h3>المخطط الهندسي المتكامل</h3>
-                <p>هذا المخطط يوضح هيكلية النظام بالكامل، بدءاً من المقدمة وصولاً إلى النتائج. يربط الكود البرمجي بالعتاد الصلب (Hardware) ويشرح آلية كشف التهديدات.</p>
-                <span class="badge">Architecture</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="section-header">02 // TECHNOLOGY STACK</div>
-        <div class="section-content">
-            <div class="text-box">
-                <h3>المكونات المادية (Hardware)</h3>
-                <p>يعتمد المشروع على قطعة ESP32 كعقل مدبر، حيث يتم توصيلها مع شاشة OLED عبر بروتوكول I2C لعرض البيانات والتحذيرات بشكل مباشر.</p>
-                <span class="badge">ESP32 / I2C Bus</span>
-            </div>
-            <div class="image-box">
-                <img src="1000066883.jpg" alt="Hardware Stack">
+            <div class="image-container" onclick="openModal('1000066879.png')">
+                <img src="1000066879.png" alt="System Map">
             </div>
         </div>
     </div>
 
     <div class="section">
-        <div class="section-header">03 // PROGRAMMING LOGIC</div>
-        <div class="section-content">
-            <div class="image-box">
-                <img src="1000066884.jpg" alt="Code Console">
+        <div class="section-title"><i class="fa-solid fa-microchip"></i> 02 // Technology Stack</div>
+        <div class="content-wrapper">
+            <div class="image-container" onclick="openModal('1000066883.jpg')">
+                <img src="1000066883.jpg" alt="Hardware Setup">
             </div>
-            <div class="text-box">
-                <h3>برمجة النظام والتحكم</h3>
-                <p>يتم استخدام لغة C++ وبرمجة الـ Async Web Server لضمان عمل النظام بدون توقف، حيث يقوم الكود بإنشاء شبكة وهمية ومراقبة كل المحاولات عبر الـ Console.</p>
-                <span class="badge">C++ / Web Server</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="section-header">04 // ATTACK VECTORS</div>
-        <div class="section-content">
-            <div class="text-box">
-                <h3>تحليل مخاطر الـ Evil Twin</h3>
-                <p>يوضح هذا القسم كيف يمكن للمهاجمين إنشاء شبكات وهمية لاصطياد المستخدمين، وكيف يعمل الـ Honeypot الخاص بنا على محاكاة هذا الخطر لكشف المهاجمين.</p>
-                <span class="badge">Cyber Security</span>
-            </div>
-            <div class="image-box">
-                <img src="1000066885.jpg" alt="Security Risks">
+            <div class="text-content">
+                <h3>Hardware Components</h3>
+                <p>We utilized high-performance components for real-time monitoring:</p>
+                <ul style="list-style: none; margin-top: 15px;">
+                    <li><i class="fa-solid fa-square-check" style="color:var(--neon-blue)"></i> <strong>ESP32:</strong> Dual-Core MCU for Wi-Fi simulation.</li>
+                    <li><i class="fa-solid fa-square-check" style="color:var(--neon-blue)"></i> <strong>OLED Display:</strong> I2C interface for forensic logging.</li>
+                    <li><i class="fa-solid fa-square-check" style="color:var(--neon-blue)"></i> <strong>Custom Map:</strong> Routing integrated components.</li>
+                </ul>
             </div>
         </div>
     </div>
 
     <div class="section">
-        <div class="section-header">05 // FINAL INTERFACE</div>
-        <div class="section-content">
-            <div class="image-box">
-                <img src="1000066881.jpg" alt="Final UI">
+        <div class="section-title"><i class="fa-solid fa-code"></i> 03 // Programming Logic</div>
+        <div class="content-wrapper">
+            <div class="text-content">
+                <h3>Async C++ Firmware</h3>
+                <p>Our code runs on an asynchronous non-blocking model. It manages a DNS server and Captive Portal simultaneously.</p>
+                <p style="color: #ef4444; border-left: 2px solid #ef4444; padding-left: 10px; margin-top: 15px; font-size: 0.9rem;">
+                    *ETHICAL WARNING: The hardware capability for active packet injection was restricted to defensive auditing only.
+                </p>
             </div>
-            <div class="text-box">
-                <h3>واجهة عرض المشروع</h3>
-                <p>الشكل النهائي للواجهة التي تظهر للمستخدم أو المشرف، والتي تحتوي على كافة التفاصيل الخاصة بالمشروع والطلاب المشاركين.</p>
-                <span class="badge">UI / UX</span>
+            <div class="image-container" onclick="openModal('1000066884.jpg')">
+                <img src="1000066884.jpg" alt="Programming Context">
             </div>
         </div>
     </div>
 
-    <footer>
-        2026 // مشروع تخرج هندسة تقنيات الحاسوب
-    </footer>
+    <div class="section">
+        <div class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> 04 // Security Risks</div>
+        <div class="content-wrapper">
+            <div class="image-container" onclick="openModal('1000066885.jpg')">
+                <img src="1000066885.jpg" alt="Attack Risks">
+            </div>
+            <div class="text-content">
+                <h3>The Evil Twin Trap</h3>
+                <p>Connecting to networks without encryption exposes victims to:</p>
+                <ul style="list-style: none; margin-top: 15px;">
+                    <li><i class="fa-solid fa-biohazard" style="color:#ef4444"></i> Phishing for credentials via DNS redirection.</li>
+                    <li><i class="fa-solid fa-biohazard" style="color:#ef4444"></i> Man-in-the-Middle (MitM) data sniffing.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title"><i class="fa-solid fa-flag-checkered"></i> 05 // Conclusion</div>
+        <div class="content-wrapper" style="grid-template-columns: 1fr; text-align: center;">
+            <div class="text-content">
+                <h3>Project Outcome</h3>
+                <p>The ESP32 Honeypot successfully demonstrates that visibility is the first step of defense. This system provides a scalable, low-cost method for network administrators to detect unauthorized entry early.</p>
+            </div>
+        </div>
+    </div>
 </div>
 
+<div id="imgModal" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="modalImg" src="">
+</div>
+
+<footer>AL-MA'MOON UNIVERSITY COLLEGE // 2026</footer>
+
+<script>
+    function openModal(src) {
+        document.getElementById('modalImg').src = src;
+        document.getElementById('imgModal').style.display = 'flex';
+    }
+</script>
+
 </body>
-                </html>
-                
+                    </html>
+                                                                                                    
