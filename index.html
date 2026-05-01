@@ -2,213 +2,230 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Honeypot: Technical Report v2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>ESP32 Honeypot | Master Engineering Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500;700&family=Fira+Code&display=swap" rel="stylesheet">
     <style>
-        /* إعدادات صفحة A4 القياسية */
-        @page { size: A4; margin: 0; }
+        /* الأساسيات الفنية */
         :root {
-            --cyber-blue: #00d2ff;
-            --tech-navy: #0f172a;
-            --paper-white: #ffffff;
-            --border-gray: #e2e8f0;
+            --primary: #004e92;
+            --accent: #00d2ff;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --border: #e2e8f0;
         }
 
-        body {
-            background-color: #f1f5f9;
-            margin: 0;
-            padding: 20px;
-            font-family: 'Inter', sans-serif;
-            color: #334155;
-        }
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+        body { background: #1e293b; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 
-        .a4-page {
+        /* حاوية الصفحات الستة */
+        .page {
             width: 210mm;
-            min-height: 297mm;
-            padding: 25mm;
-            margin: 10px auto;
-            background: var(--paper-white);
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            height: 297mm;
+            padding: 20mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
             position: relative;
-            box-sizing: border-box;
+            overflow: hidden;
             page-break-after: always;
+            border-top: 8px solid var(--primary);
         }
 
-        /* تنسيق الهوية والكلية */
-        .header-title {
+        /* الصفحة الأولى: الواجهة */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             text-align: center;
-            border-bottom: 3px solid var(--cyber-blue);
-            padding-bottom: 25px;
-            margin-bottom: 40px;
         }
 
-        .header-title h1 {
-            font-family: 'Orbitron';
-            font-size: 26px;
-            color: var(--tech-navy);
-            margin: 10px 0;
-            letter-spacing: 1px;
-        }
-
-        .university-info {
-            font-size: 14px;
-            font-weight: 600;
-            color: #64748b;
-            text-transform: uppercase;
-        }
-
-        /* نظام توزيع الصور الهندسي */
-        .image-frame {
-            width: 100%;
+        .uni-header { font-family: 'Orbitron'; color: var(--primary); letter-spacing: 2px; }
+        .main-title { font-family: 'Orbitron'; font-size: 32px; margin: 40px 0; color: var(--text-dark); }
+        .supervisor { font-size: 18px; margin-bottom: 50px; color: var(--primary); }
+        
+        .names-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            text-align: left;
             background: #f8fafc;
-            border: 1px solid var(--border-gray);
-            margin: 30px 0;
-            padding: 15px;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .name-tag { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+
+        /* تنسيق المحتوى والصور */
+        h2 { 
+            font-family: 'Orbitron'; 
+            color: var(--primary); 
+            font-size: 20px; 
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        p { text-align: justify; line-height: 1.8; font-size: 14px; color: var(--text-dark); margin-bottom: 15px; }
+
+        .img-container {
+            width: 100%;
+            height: 350px;
+            background: #000;
+            margin: 25px 0;
             border-radius: 8px;
-            text-align: center;
+            overflow: hidden;
+            border: 1px solid var(--border);
         }
 
-        /* الحل البرمجي لضمان ظهور الصور */
-        .image-frame img {
-            max-width: 100%;
-            max-height: 400px;
-            display: block;
-            margin: 0 auto;
-            border-radius: 4px;
-            background: #eee; /* لون مؤقت في حال تأخر التحميل */
-        }
+        .img-container img { width: 100%; height: 100%; object-fit: contain; }
 
-        .caption {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 15px;
-            font-style: italic;
-        }
-
-        /* النصوص والشرح المكثف */
-        h2 {
-            font-family: 'Orbitron';
-            font-size: 18px;
-            color: var(--cyber-blue);
-            margin-top: 40px;
-            border-left: 5px solid var(--cyber-blue);
-            padding-left: 15px;
-        }
-
-        p {
-            text-align: justify;
-            font-size: 14.5px;
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
-
-        .tech-list {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
+        .caption { font-size: 12px; color: var(--text-light); text-align: center; margin-top: -15px; }
 
         footer {
             position: absolute;
-            bottom: 20mm;
-            left: 25mm;
-            right: 25mm;
-            text-align: center;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            font-size: 11px;
-            color: #94a3b8;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+            font-size: 10px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* عناصر تقنية إضافية */
+        .tech-box {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="a4-page">
-        <div class="header-title">
-            <div class="university-info">Al-Ma'moon University College</div>
-            <h1>The ESP32 Honeypot Defense Framework</h1>
-            <p style="font-weight: 600;">Supervised by: Dr. Wisam</p>
+    <div class="page cover-page">
+        <div class="uni-header">AL-MA'MOON UNIVERSITY COLLEGE<br>COMPUTER ENGINEERING DEPARTMENT</div>
+        
+        <div>
+            <div class="main-title">ADVANCED CYBERSECURITY FRAMEWORK:<br>PROACTIVE HONEYPOT VIA ESP32</div>
+            <div class="supervisor">Supervised by: <strong>Dr. Wisam</strong></div>
         </div>
 
-        <h2>01 // INTRODUCTION & ABSTRACT</h2>
-        <p>
-            In the contemporary digital era, cybersecurity has transitioned from a peripheral concern to a central pillar of organizational integrity. This technical report details the design and deployment of an <strong>Active Deception Mechanism</strong> using the ESP32 microcontroller. Unlike passive defense systems, our Honeypot is engineered to actively engage with potential threats by simulating a high-value targets (HVT) within a network ecosystem.
-        </p>
-        <p>
-            The project focuses on the implementation of a <strong>Captive Portal</strong> and <strong>DNS Spoofing</strong> logic to redirect unauthorized traffic into a secure, isolated auditing node. This allows for real-time behavioral analysis without exposing the primary infrastructure to risk.
-        </p>
-
-        <div class="image-frame">
-            <img src="1000066881.jpg" alt="[Hardware Dashboard Visualization]">
-            <div class="caption">Fig 1.0: System Telemetry and Hardware Operational View.</div>
+        <div class="names-grid">
+            <div class="name-tag">1. Karrar Mohammed</div>
+            <div class="name-tag">2. Ali Majid Hussien</div>
+            <div class="name-tag">3. Saad Ahmed Fadhil</div>
+            <div class="name-tag">4. Fahad Ahmed Ali</div>
+            <div class="name-tag">5. Ali Zuhair Qamar</div>
+            <div class="name-tag">6. Abdulmajeed Majool</div>
         </div>
 
-        <h2>02 // SYSTEM ARCHITECTURE</h2>
-        <p>
-            The architecture is based on the <strong>I2C (Inter-Integrated Circuit)</strong> bus protocol, linking the ESP32 processing unit to high-fidelity monitoring modules. The logic follows an event-driven model where every connection attempt triggers a forensic signature capture.
-        </p>
-
-        <footer>Al-Ma'moon University College - Graduation Project - Page 1</footer>
+        <footer>
+            <span>Year: 2026</span>
+            <span>Graduation Project - Phase Final</span>
+        </footer>
     </div>
 
-    <div class="a4-page">
-        <h2>03 // HARDWARE NODES & SCHEMATICS</h2>
+    <div class="page">
+        <h2>01 // CONCEPTUAL PHILOSOPHY</h2>
         <p>
-            The implementation utilizes the <strong>ESP32 dual-core MCU</strong> running at 240MHz. This hardware was specifically selected for its asynchronous capabilities, allowing the system to maintain a Wi-Fi beacon while simultaneously logging forensic data to internal flash memory (SPIFFS).
+            In modern network security, the paradigm has shifted from "Preventative" to "Proactive." The ESP32 Honeypot represents a critical evolution in localized threat detection. By deploying a low-cost, high-efficiency decoy, we create a <strong>Digital Mirage</strong> that lures potential intruders into a controlled environment.
         </p>
-
-        <div class="image-frame">
-            <img src="1000066879.png" alt="[Integrated System Blueprint]">
-            <div class="caption">Fig 2.0: Structural Architecture and Data-Flow Diagram.</div>
+        <p>
+            This system utilizes the core principles of Deception Technology. Instead of waiting for a firewall breach, the Honeypot presents an intentional vulnerability. This allows us to capture the <strong>Attacker's Fingerprint</strong>—including their MAC address, intent, and methodology—before they can touch actual sensitive data.
+        </p>
+        <div class="img-container">
+            <img src="1000066881.jpg" alt="Final Deployment View">
         </div>
-
-        <h2>04 // VULNERABILITY AUDITING (THE EVIL TWIN)</h2>
+        <p class="caption">Figure 1.0: Real-time telemetry dashboard showing active decoy nodes.</p>
         <p>
-            A primary component of this project is the analysis of <strong>Unencrypted Rogue APs</strong>. By mimicking standard SSIDs, we demonstrate the inherent vulnerabilities in public Wi-Fi infrastructures. The Honeypot logs connection handshakes and DNS requests, providing a clear map of user exposure levels.
+            The project leverages the dual-core architecture of the ESP32 to maintain a stable Wi-Fi beacon while simultaneously processing background forensic logs, ensuring no data is lost during high-frequency intrusion attempts.
         </p>
-
-        <div class="image-frame">
-            <img src="1000066884.jpg" alt="[Forensic Console Output]">
-            <div class="caption">Fig 3.0: Execution Logs and Real-Time Intrusion Detection.</div>
-        </div>
-
-        <p>
-            The data harvesting process is strictly limited to <strong>metadata analysis</strong>, ensuring that the project remains within ethical boundaries while providing deep insights into modern attack vectors.
-        </p>
-
-        <footer>Al-Ma'moon University College - Graduation Project - Page 2</footer>
+        <footer><span>ESP32 Honeypot | Technical Report</span><span>Page 2</span></footer>
     </div>
 
-    <div class="a4-page">
-        <h2>05 // STRATEGIC DEFENSIVE OUTCOMES</h2>
+    <div class="page">
+        <h2>02 // SYSTEM ARCHITECTURE & BLUEPRINT</h2>
         <p>
-            Our findings indicate that the integration of low-cost hardware into a security framework can provide <strong>enterprise-grade visibility</strong>. The system effectively identified 95% of simulated intrusion attempts within the first 10 seconds of network association. This serves as a vital proof-of-concept for proactive security in IoT environments.
+            The blueprint of our system follows a modular I2C-driven approach. This architectural choice minimizes physical wiring while maximizing data throughput between the MCU and peripheral displays. The data-flow is mapped from the <strong>Wi-Fi Radio Stack</strong> through the <strong>Asynchronous Event Handler</strong> to the local <strong>OLED Telemetry</strong>.
         </p>
-
-        <div class="image-frame">
-            <img src="1000066886.jpg" alt="[Final Defense Shield Metrics]">
-            <div class="caption">Fig 4.0: Analytical Shield Metrics and Final Conclusion.</div>
+        <div class="img-container">
+            <img src="1000066879.png" alt="Architecture Blueprint">
         </div>
-
-        <div class="tech-list">
-            <strong>Key Features:</strong>
-            <ul>
-                <li>Non-Blocking Asynchronous Core Processing.</li>
-                <li>Real-Time OLED Forensic Telemetry via I2C.</li>
-                <li>Strategic DNS Redirection for Threat Isolation.</li>
-                <li>Persistent Metadata Logging for Post-Attack Analysis.</li>
-            </ul>
+        <p class="caption">Figure 2.0: Structural blueprint and data-flow logical mapping.</p>
+        <div class="tech-box">
+            - Bus Protocol: I2C (SDA/SCL Line Integration)<br>
+            - OS Model: FreeRTOS (Asynchronous Dual-Core Tasking)<br>
+            - Memory Management: SPIFFS Forensic Storage Partition
         </div>
-
-        <p style="text-align: center; margin-top: 50px; border-top: 1px solid #ddd; padding-top: 20px;">
-            <strong>"In Cyber Defense, Visibility is the Ultimate Shield."</strong>
+        <p>
+            The integration shown in the blueprint ensures that the Captive Portal remains responsive even when the DNS server is under spoofing-related stress, a common issue in single-core IoT devices.
         </p>
+        <footer><span>ESP32 Honeypot | Technical Report</span><span>Page 3</span></footer>
+    </div>
 
-        <footer>Al-Ma'moon University College - Graduation Project - Page 3</footer>
+    <div class="page">
+        <h2>03 // HARDWARE IMPLEMENTATION</h2>
+        <p>
+            Precision in the hardware layer is the foundation of a reliable Honeypot. We utilized the ESP32-WROOM-32 for its robust Wi-Fi stack and versatile GPIO pins. The integration with the SSD1306 OLED via I2C allows for field-ready monitoring without the need for an external computer.
+        </p>
+        <div class="img-container" style="height: 300px;">
+            <img src="1000066883.jpg" alt="Hardware Circuit">
+        </div>
+        <p class="caption">Figure 3.1: Detailed hardware wiring and peripheral integration.</p>
+        <div class="img-container" style="height: 300px;">
+            <img src="1000066882.jpg" alt="ESP32 Logic Core">
+        </div>
+        <p class="caption">Figure 3.2: Internal MCU logic routing and power distribution.</p>
+        <footer><span>ESP32 Honeypot | Technical Report</span><span>Page 4</span></footer>
+    </div>
+
+    <div class="page">
+        <h2>04 // CODE LOGIC & THREAT ANALYSIS</h2>
+        <p>
+            The programming logic is built on an <strong>Asynchronous Web Server</strong>. When a "Victim" (Attacker) connects to the SSID, the DNS server spoofing forces all traffic to our internal gateway. Every HTTP request is parsed for metadata collection.
+        </p>
+        <div class="img-container" style="height: 250px;">
+            <img src="1000066884.jpg" alt="Code Console">
+        </div>
+        <p class="caption">Figure 4.1: Real-time execution console showing non-blocking logs.</p>
+        <div class="img-container" style="height: 250px;">
+            <img src="1000066885.jpg" alt="Risk Analysis">
+        </div>
+        <p class="caption">Figure 4.2: Attack vector analysis and simulated risk metrics.</p>
+        <p>
+            The "Evil Twin" scenario is simulated here to show the vulnerability of public networks. Our results prove that metadata harvesting can be performed without the user's knowledge if they connect to unencrypted open SSIDs.
+        </p>
+        <footer><span>ESP32 Honeypot | Technical Report</span><span>Page 5</span></footer>
+    </div>
+
+    <div class="page">
+        <h2>05 // FINAL OUTCOMES & CONCLUSION</h2>
+        <p>
+            In conclusion, the ESP32 Honeypot system serves as a cost-effective yet powerful tool for organizational security audits. It effectively provides a <strong>Forensic Snapshot</strong> of potential intruders, allowing network administrators to patch vulnerabilities before a real breach occurs.
+        </p>
+        <div class="img-container">
+            <img src="1000066886.jpg" alt="Results Shield">
+        </div>
+        <p class="caption">Figure 5.0: Final system shield metrics and defensive success rate.</p>
+        <p>
+            The project successfully met its goals of: 
+            <br>1. Real-time intrusion detection. 
+            <br>2. Secure metadata logging. 
+            <br>3. Non-blocking asynchronous operation.
+        </p>
+        <div style="margin-top: 50px; text-align: center; border-top: 2px dashed var(--accent); padding-top: 30px;">
+            <h3 style="font-family: 'Orbitron'; color: var(--primary);">PROJECT COMPLETED</h3>
+            <p>Computer Engineering Dept. - 2026</p>
+        </div>
+        <footer><span>ESP32 Honeypot | Final Page</span><span>Page 6</span></footer>
     </div>
 
 </body>
-            </html>
-                                                                                            
+                </html>
+    
