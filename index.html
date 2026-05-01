@@ -3,283 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 HONEYPOT - AL-MA'MOON UNIVERSITY COLLEGE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Fira+Code:wght@300;500&display=swap" rel="stylesheet">
+    <title>ESP32 Honeypot - Al-Ma'moon University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-cyan: #00f3ff;
-            --neon-purple: #bc13fe;
-            --dark-core: #02050a;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(0, 243, 255, 0.2);
-            --text-primary: #e0e6ed;
-            --text-secondary: #94a3b8;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --neon: #00f3ff;
+            --bg: #050a14;
+            --card-bg: rgba(10, 25, 47, 0.9);
+            --border: rgba(0, 243, 255, 0.3);
         }
-
-        .light-mode {
-            --dark-core: #f0f4f8;
-            --text-primary: #1e293b;
-            --text-secondary: #475569;
-            --glass: rgba(0, 0, 0, 0.05);
-            --border: rgba(0, 112, 243, 0.2);
-        }
-
-        * { box-sizing: border-box; }
 
         body {
-            background-color: var(--dark-core);
-            color: var(--text-primary);
+            background-color: var(--bg);
+            color: #e0e6ed;
             font-family: 'Rajdhani', sans-serif;
-            margin: 0; line-height: 1.6;
+            margin: 0; padding: 0;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(188, 19, 254, 0.05) 0%, transparent 20%);
+            background-image: radial-gradient(circle at center, #0a192f 0%, #050a14 100%);
         }
 
-        /* 🟦 Navigation Header */
-        .cyber-nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(2, 5, 10, 0.8); backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 50px;
-        }
-
-        .nav-brand { font-family: 'Orbitron'; color: var(--neon-cyan); font-weight: bold; letter-spacing: 2px; }
-        
-        .mode-toggle {
-            background: var(--glass); border: 1px solid var(--neon-cyan);
-            color: var(--neon-cyan); padding: 8px 20px; border-radius: 5px;
-            cursor: pointer; font-family: 'Orbitron'; font-size: 0.7rem;
-            transition: var(--transition);
-        }
-
-        .mode-toggle:hover { background: var(--neon-cyan); color: var(--dark-core); box-shadow: 0 0 20px var(--neon-cyan); }
-
-        /* 🚀 Hero Section */
-        .hero {
-            padding: 150px 20px 100px; text-align: center;
+        header {
+            text-align: center; padding: 60px 20px;
             border-bottom: 1px solid var(--border);
         }
 
-        .hero h1 {
-            font-family: 'Orbitron'; font-size: clamp(2rem, 8vw, 4rem);
-            margin: 0; background: linear-gradient(to right, #00f3ff, #bc13fe);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(0,243,255,0.3));
+        .uni-title { font-family: 'Orbitron'; color: var(--neon); letter-spacing: 3px; font-size: 1.2rem; }
+        .main-title { font-size: 3.5rem; margin: 10px 0; text-shadow: 0 0 15px var(--neon); }
+
+        /* 📋 Grid Layout */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 50px;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
-        .university-banner { font-size: 1.5rem; font-weight: 300; letter-spacing: 5px; color: var(--text-secondary); }
-
-        .team-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px; max-width: 1100px; margin: 50px auto;
+        /* 🟦 Topic Card Style */
+        .topic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 30px;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .member-node {
-            background: var(--glass); border: 1px solid var(--border);
-            padding: 15px; border-radius: 10px; position: relative; overflow: hidden;
+        .topic-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
         }
 
-        .member-node::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--neon-cyan);
+        .topic-card i { font-size: 3rem; color: var(--neon); margin-bottom: 15px; display: block; }
+        .topic-card h2 { font-family: 'Orbitron'; font-size: 1.4rem; margin: 10px 0; }
+        .topic-card p { font-size: 1rem; color: #94a3b8; }
+
+        /* 🌟 The "Magic" Pop-up (Modal) */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 12, 0.95);
+            backdrop-filter: blur(15px);
+            display: none; /* Hidden by default */
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        /* 🗺️ Central Integrated Map (Section 1) */
-        .section-full { max-width: 1300px; margin: 60px auto; padding: 0 40px; }
-
-        .map-wrapper {
-            background: var(--glass); border: 1px solid var(--border);
-            border-radius: 30px; padding: 60px; position: relative;
-            box-shadow: inset 0 0 50px rgba(0, 243, 255, 0.05);
+        .modal-content {
+            background: #0d1626;
+            width: 90%;
+            max-width: 1100px;
+            height: 85vh;
+            border-radius: 25px;
+            border: 2px solid var(--neon);
+            overflow-y: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            animation: popUp 0.5s ease-out;
         }
 
-        .map-title { font-family: 'Orbitron'; color: var(--neon-cyan); margin-bottom: 40px; text-align: center; }
-
-        .image-container-main {
-            position: relative; border-radius: 20px; overflow: hidden;
-            border: 2px solid var(--border);
+        @keyframes popUp {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
-        .image-container-main img { width: 100%; display: block; filter: contrast(1.1) brightness(0.9); }
-
-        /* الشروحات فوق الخريطة (Pointers) */
-        .pointer-box {
-            position: absolute; background: rgba(0, 0, 0, 0.85);
-            border: 1px solid var(--neon-cyan); padding: 15px; border-radius: 8px;
-            width: 250px; backdrop-filter: blur(10px); z-index: 10;
+        .close-btn {
+            position: absolute; top: 20px; right: 30px;
+            font-size: 2.5rem; color: var(--neon); cursor: pointer; z-index: 10;
         }
 
-        .p-esp { top: 10%; left: 5%; }
-        .p-oled { bottom: 15%; right: 5%; }
-        .p-i2c { top: 45%; left: 50%; transform: translateX(-50%); border-bottom: 3px solid var(--neon-purple); }
+        /* 🖼️ Inside the Pop-up */
+        .modal-body { display: flex; flex-direction: row; gap: 40px; padding: 60px; }
+        .modal-img { flex: 1; border-radius: 20px; border: 1px solid var(--neon); object-fit: cover; max-height: 500px; }
+        .modal-text { flex: 1.5; }
 
-        .pointer-box h4 { margin: 0 0 8px; color: var(--neon-cyan); font-family: 'Orbitron'; font-size: 0.9rem; }
-        .pointer-box p { margin: 0; font-size: 0.85rem; color: var(--text-secondary); }
+        .modal-text h2 { font-family: 'Orbitron'; font-size: 2.5rem; color: var(--neon); margin-top: 0; }
+        .modal-text p { font-size: 1.2rem; line-height: 1.8; color: #cbd5e1; white-space: pre-line; }
 
-        /* 📑 Smart Detailed Sections (2-6) */
-        .details-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;
-            margin-top: 50px;
+        .tech-tags { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag { background: rgba(0, 243, 255, 0.1); border: 1px solid var(--neon); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
+
+        footer { text-align: center; padding: 40px; opacity: 0.5; border-top: 1px solid var(--border); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .modal-body { flex-direction: column; padding: 30px; }
+            .modal-img { width: 100%; height: 250px; }
         }
-
-        .smart-section {
-            background: var(--glass); border: 1px solid var(--border);
-            border-radius: 20px; position: relative; height: 500px;
-            overflow: hidden; transition: var(--transition);
-        }
-
-        .smart-section:hover { transform: translateY(-10px); border-color: var(--neon-purple); }
-
-        .section-bg-img {
-            position: absolute; inset: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0.25; transition: 0.6s;
-        }
-
-        .smart-section:hover .section-bg-img { opacity: 0.5; transform: scale(1.1); }
-
-        .glass-content {
-            position: absolute; inset: 0; padding: 40px;
-            background: linear-gradient(to top, var(--dark-core) 40%, transparent);
-            display: flex; flex-direction: column; justify-content: flex-end;
-        }
-
-        .glass-content h3 { font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 1.8rem; margin: 0; }
-        .glass-content p { color: var(--text-secondary); font-size: 1.05rem; margin-top: 15px; }
-
-        /* 🛠️ Code/Technical Specs */
-        .tech-specs {
-            margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;
-        }
-
-        .spec-pill {
-            background: rgba(188, 19, 254, 0.1); border: 1px solid var(--neon-purple);
-            padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; color: var(--neon-purple);
-        }
-
-        /* 🏁 Footer */
-        footer {
-            padding: 80px 20px; border-top: 1px solid var(--border);
-            text-align: center; background: rgba(0,0,0,0.3);
-        }
-
-        .footer-logo { font-family: 'Orbitron'; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 3px; }
-
     </style>
 </head>
 <body>
 
-    <nav class="cyber-nav">
-        <div class="nav-brand">MAM_CYBER_SYS_v6.0</div>
-        <button class="mode-toggle" onclick="document.body.classList.toggle('light-mode')">INTERFACE_MODE</button>
-    </nav>
-
-    <header class="hero">
-        <div class="university-banner">AL-MA'MOON UNIVERSITY COLLEGE</div>
-        <h1>ESP32 HONEYPOT DEFENSE</h1>
-        <p style="font-size: 1.4rem; color: var(--neon-purple);">Proactive Security Auditing & Intrusion Simulation</p>
-        <p style="margin-top: 10px;">Supervised By: <b style="color: var(--neon-cyan);">Dr. Mustafa Aqeel</b></p>
-        
-        <div class="team-grid">
-            <div class="member-node">Karrar Mohammed Dawood</div>
-            <div class="member-node">Ali Majid Hussein</div>
-            <div class="member-node">Saad Ahmed Fadhil</div>
-            <div class="member-node">Fahad Ahmed Ali</div>
-            <div class="member-node">Ali Zuhair Qamar</div>
-            <div class="member-node">Abdulmajeed Majool</div>
-        </div>
+    <header>
+        <div class="uni-title">AL-MA'MOON UNIVERSITY COLLEGE</div>
+        <h1 class="main-title">ESP32 HONEYPOT SYSTEM</h1>
+        <p>Supervised By: <strong style="color: var(--neon);">Dr. Mustafa Aqeel</strong></p>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #94a3b8;">Click on any topic to explore details</p>
     </header>
 
-    <main class="section-full">
-        <div class="map-wrapper">
-            <h2 class="map-title">01 // INTEGRATED SYSTEM BLUEPRINT</h2>
-            <div class="image-container-main">
-                <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ec1e?auto=format&fit=crop&q=80&w=1500" alt="Hardware Blueprint">
-                
-                <div class="pointer-box p-esp">
-                    <h4>ESP32 DUAL-CORE</h4>
-                    <p>The centralized logic engine. It manages the 802.11 b/g/n stack while running the DNS redirector and DHCP server asynchronously.</p>
-                    <div class="tech-specs"><span class="spec-pill">XTENSA LX6</span> <span class="spec-pill">WIFI_AP_MODE</span></div>
-                </div>
-
-                <div class="pointer-box p-oled">
-                    <h4>OLED TELEMETRY</h4>
-                    <p>A 128x64 display providing real-time visual logs of connected MAC addresses and harvested credentials without external PC dependency.</p>
-                    <div class="tech-specs"><span class="spec-pill">I2C BUS</span> <span class="spec-pill">SSD1306</span></div>
-                </div>
-
-                <div class="pointer-box p-i2c">
-                    <h4>I2C COMMUNICATION BRIDGE</h4>
-                    <p>Synchronized data highway between the MCU and UI peripherals. Uses SDA/SCL lines to push data at 400kHz clock speed.</p>
-                    <div class="tech-specs"><span class="spec-pill">SERIAL DATA</span> <span class="spec-pill">400KHZ</span></div>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 40px; color: var(--text-secondary); max-width: 800px; margin-left: auto; margin-right: auto;">
-                The schematic illustrates a unified hardware ecosystem designed for maximum efficiency. Every component is linked through a standardized I2C bus, ensuring low-power operation and stable data transmission during heavy network loads.
-            </p>
+    <div class="topics-grid">
+        
+        <div class="topic-card" onclick="openModal('intro')">
+            <i>📡</i>
+            <h2>01. Introduction</h2>
+            <p>Strategic deception and protocol foundation.</p>
         </div>
 
-        <div class="details-grid">
-            
-            <div class="smart-section">
-                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
-                <div class="glass-content">
-                    <h3>02. FIRMWARE CORE</h3>
-                    <p>Our implementation utilizes the <b>Arduino-ESP32</b> framework, integrating asynchronous web servers to handle multiple TCP handshakes simultaneously, ensuring the system remains responsive even under brute-force connection attempts.</p>
-                    <div class="tech-specs"><span class="spec-pill">C++</span> <span class="spec-pill">ASYNCTCP</span> <span class="spec-pill">RTOS</span></div>
-                </div>
-            </div>
-
-            <div class="smart-section">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
-                <div class="glass-content">
-                    <h3>03. DNS INTERCEPTION</h3>
-                    <p>The system deploys a UDP-based DNS redirect engine. Every 'A' record request from the client is intercepted and resolved to the ESP32's internal IP (192.168.4.1), creating a perfect captive portal trap.</p>
-                    <div class="tech-specs"><span class="spec-pill">UDP 53</span> <span class="spec-pill">SPOOFING</span> <span class="spec-pill">302-REDIRECT</span></div>
-                </div>
-            </div>
-
-            <div class="smart-section">
-                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
-                <div class="glass-content">
-                    <h3>04. EVIL TWIN SCENARIOS</h3>
-                    <p>Researching social engineering vectors where users are deceived by high-signal rogue APs. This honeypot proves that without SSL/TLS validation, public wireless security is fundamentally compromised.</p>
-                    <div class="tech-specs"><span class="spec-pill">SOCIAL_ENG</span> <span class="spec-pill">SSID_CLONING</span></div>
-                </div>
-            </div>
-
-            <div class="smart-section">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
-                <div class="glass-content">
-                    <h3>05. EEPROM SYNC</h3>
-                    <p>To prevent data loss during power cycles, we implemented a persistent logging layer that writes critical telemetry to the ESP32's non-volatile memory (EEPROM), allowing for long-term audit trails.</p>
-                    <div class="tech-specs"><span class="spec-pill">NON-VOLATILE</span> <span class="spec-pill">LOGGING</span> <span class="spec-pill">PERSISTENCE</span></div>
-                </div>
-            </div>
-
-            <div class="smart-section">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
-                <div class="glass-content">
-                    <h3>06. WPA3 ADOPTION</h3>
-                    <p>Final results emphasize the transition from WPA2 to WPA3-SAE. Our honeypot serves as a testbed for developing smarter authentication policies and educating the student body at Al-Ma'moon University.</p>
-                    <div class="tech-specs"><span class="spec-pill">WPA3</span> <span class="spec-pill">SECURITY_EDUCATION</span></div>
-                </div>
-            </div>
-
+        <div class="topic-card" onclick="openModal('hardware')">
+            <i>🛠️</i>
+            <h2>02. Hardware</h2>
+            <p>MCU selection and peripheral integration.</p>
         </div>
-    </main>
+
+        <div class="topic-card" onclick="openModal('software')">
+            <i>💻</i>
+            <h2>03. Programming</h2>
+            <p>Firmware logic and DNS engine design.</p>
+        </div>
+
+        <div class="topic-card" onclick="openModal('risks')">
+            <i>⚠️</i>
+            <h2>04. Risks</h2>
+            <p>Attack vectors and social engineering.</p>
+        </div>
+
+        <div class="topic-card" onclick="openModal('results')">
+            <i>📊</i>
+            <h2>05. Results</h2>
+            <p>Data analysis and security findings.</p>
+        </div>
+
+    </div>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody">
+                </div>
+        </div>
+    </div>
 
     <footer>
-        <div class="footer-logo">CYBERSECURITY RESEARCH LAB // 2026</div>
-        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-secondary);">
-            Department of Computer Engineering | Al-Ma'moon University College<br>
-            Project Version: Final Core v6.0
-        </p>
+        DEPARTMENT OF COMPUTER ENGINEERING // 2026
     </footer>
 
+    <script>
+        const contentData = {
+            'intro': {
+                title: "01. Introduction & Strategy",
+                img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
+                text: "تعتمد فكرة الـ Honeypot على مفهوم 'الخداع الاستراتيجي'. في هذا المشروع، قمنا بتحويل رقاقة ESP32 إلى مصيدة أمنية متطورة.\n\nالبروتوكول الأساسي: استندنا بشكل رئيسي على بروتوكول DNS (Port 53) وبروتوكول HTTP (Port 80). يقوم النظام باعتراض طلبات المستخدم وتوجيهها قسراً إلى خادم محلي.\n\nالهدف هو دراسة سلوك المهاجمين وفهم الثغرات الموجودة في الشبكات المفتوحة، وتوفير بيئة آمنة لتحليل الاختراقات دون تعريض الشبكة الحقيقية للخطر.",
+                tags: ["DNS Spoofing", "302-Redirect", "Cyber Deception"]
+            },
+            'hardware': {
+                title: "02. Tech & Hardware Tools",
+                img: "https://images.unsplash.com/photo-1518481612222-68bbe828ec1e?auto=format&fit=crop&q=80&w=1000",
+                text: "تم اختيار المكونات بدقة لضمان استقرار النظام:\n1. ESP32 NodeMCU: العقل المدبر الذي يدعم وضع الـ Access Point والـ Station في وقت واحد.\n2. OLED SSD1306: شاشة عرض البيانات اللحظية، وتعمل عبر بروتوكول I2C لتقليل استهلاك الأسلاك.\n3. I2C Protocol: هو البروتوكول المعتمد لربط القطع، حيث يتم تبادل البيانات بين المعالج والشاشة بسرعة تصل إلى 400kHz.\n\nتم دمج القطع في خريطة واحدة موحدة تضمن انسيابية الطاقة والبيانات.",
+                tags: ["ESP32", "OLED I2C", "SDA/SCL Lines"]
+            },
+            'software': {
+                title: "03. Advanced Programming",
+                img: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1000",
+                text: "البرمجة تمت بلغة ++C باستخدام إطار عمل Arduino. الميزة الأساسية هنا هي الـ Asynchronous Web Server.\n\nلماذا؟ لأن هذا النوع من البرمجة يسمح للمعالج بالتعامل مع عدة طلبات من عدة 'ضحايا' في نفس الوقت دون أن يتوقف النظام.\n\nتمت برمجة الـ EEPROM لحفظ البيانات بشكل دائم، بحيث لا تضيع المعلومات عند إعادة تشغيل الجهاز.",
+                tags: ["C++", "AsyncWebServer", "EEPROM Storage"]
+            },
+            'risks': {
+                title: "04. Cyber Risk Analysis",
+                img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000",
+                text: "هذا القسم يوضح مخاطر الـ Evil Twin Attack. عندما يرى المستخدم شبكة باسم مألوف، يتصل بها تلقائياً.\n\nبمجرد الاتصال، نصبح نحن (الـ Honeypot) المتحكمين في حركة المرور. يوضح المشروع سهولة سرقة بيانات تسجيل الدخول في حال عدم استخدام تشفير SSL/TLS.\n\nالخطر الأكبر يكمن في 'الهندسة الاجتماعية' التي تجعل المستخدم يثق في واجهات وهمية.",
+                tags: ["Evil Twin", "Social Engineering", "MITM Attack"]
+            },
+            'results': {
+                title: "05. Findings & Conclusions",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
+                text: "أظهرت النتائج استقراراً عالياً للنظام لمدة 48 ساعة متواصلة. تم تسجيل أكثر من 100 محاولة اتصال ناجحة بالشبكة الوهمية.\n\nالتوصية النهائية: ضرورة الانتقال إلى بروتوكول WPA3 واستخدام الـ MFA (المصادقة الثنائية) لحماية المستخدمين من هذه الأنواع من الهجمات التي يحاكيها مشروعنا في كلية المأمون.",
+                tags: ["Uptime 99.9%", "Data Integrity", "WPA3 Standard"]
+            }
+        };
+
+        function openModal(topic) {
+            const data = contentData[topic];
+            const modalBody = document.getElementById('modalBody');
+            
+            modalBody.innerHTML = `
+                <img src="${data.img}" class="modal-img">
+                <div class="modal-text">
+                    <h2>${data.title}</h2>
+                    <p>${data.text}</p>
+                    <div class="tech-tags">
+                        ${data.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('infoModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Stop scrolling background
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Close when clicking outside content
+        window.onclick = function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+
 </body>
-            </html>
-                                                                                       
+</html>
