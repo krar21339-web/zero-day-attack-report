@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Honeypot | Advanced Forensic Intelligence Report</title>
+    <title>ESP32 Honeypot | Graduation Project 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
@@ -12,7 +12,7 @@
             --accent: #06b6d4;
             --dark-bg: #020617;
             --surface: #0f172a;
-            --text-muted: #64748b;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
@@ -24,7 +24,7 @@
             line-height: 1.8;
         }
 
-        /* --- Hero Cinematic Section --- */
+        /* --- Cinematic Hero --- */
         .hero {
             height: 100vh;
             background: linear-gradient(135deg, var(--dark-bg) 0%, #1e1b4b 100%);
@@ -37,23 +37,12 @@
             padding: 40px;
             position: relative;
             overflow: hidden;
-            border-bottom: 10px solid var(--primary);
-        }
-
-        .hero::before {
-            content: "CYBER";
-            position: absolute;
-            font-size: 25vw;
-            font-weight: 900;
-            opacity: 0.03;
-            top: 0;
-            z-index: 0;
         }
 
         .hero h1 {
             font-family: 'Space Grotesk';
-            font-size: clamp(3rem, 10vw, 6.5rem);
-            line-height: 0.9;
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 1;
             z-index: 1;
             margin-bottom: 25px;
             background: linear-gradient(to bottom, #fff, var(--accent));
@@ -61,167 +50,114 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p { font-size: 1.3rem; max-width: 800px; opacity: 0.8; z-index: 1; }
-
-        /* --- Team Signature Ribbon --- */
+        /* --- Team Ribbon --- */
         .ribbon {
             background: var(--primary);
             color: white;
-            padding: 22px 0;
+            padding: 20px 0;
             overflow: hidden;
-            display: flex;
-            border-bottom: 2px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-bottom: 3px solid var(--accent);
         }
 
         .ribbon-track {
             display: flex;
             white-space: nowrap;
-            animation: scroll-left 35s linear infinite;
+            animation: scroll 40s linear infinite;
         }
 
         .ribbon-track span {
-            margin: 0 60px;
+            margin: 0 50px;
             font-family: 'JetBrains Mono';
             font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        @keyframes scroll-left {
+        @keyframes scroll {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
 
-        /* --- Main Content Architecture --- */
-        .wrapper { max-width: 1300px; margin: 0 auto; padding: 120px 40px; }
+        /* --- Layout --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 30px; }
 
-        .section { margin-bottom: 200px; }
+        .section { margin-bottom: 150px; }
 
         .tag {
             font-family: 'JetBrains Mono';
             color: var(--primary);
             font-weight: bold;
-            text-transform: uppercase;
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             letter-spacing: 4px;
         }
 
-        .section-title h2 {
+        h2 {
             font-family: 'Space Grotesk';
-            font-size: clamp(2rem, 5vw, 4rem);
-            margin-bottom: 50px;
-            color: var(--dark-bg);
-            line-height: 1.1;
-            border-left: 15px solid var(--primary);
-            padding-left: 40px;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 40px;
+            border-left: 12px solid var(--primary);
+            padding-left: 30px;
         }
 
-        .grid-layout {
+        .content-grid {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 100px;
+            gap: 60px;
             align-items: center;
         }
 
-        /* --- Adaptive Image Handler --- */
-        .image-box {
-            position: relative;
-            background: #f1f5f9;
-            border-radius: 45px;
-            overflow: hidden;
-            box-shadow: 0 40px 100px -30px rgba(0,0,0,0.2);
-            aspect-ratio: 4/3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .image-box:hover { transform: scale(1.02); }
-        .image-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* --- Technical Data Visualization --- */
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .card {
-            background: #fff;
-            padding: 45px;
-            border-radius: 30px;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
-            transition: 0.4s;
-        }
-
-        .card:hover { border-color: var(--primary); background: #fdfdfd; }
-        .card h4 { color: var(--primary); margin-bottom: 20px; font-size: 1.4rem; font-family: 'Space Grotesk'; }
-
-        /* --- Source Code Canvas --- */
-        .code-block {
-            background: var(--surface);
+        /* --- Image Styling --- */
+        .img-holder {
             border-radius: 35px;
-            padding: 60px;
-            margin: 80px 0;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            background: #f1f5f9;
+        }
+
+        .img-holder img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: 0.5s;
+        }
+
+        .img-holder:hover img { transform: scale(1.05); }
+
+        /* --- Code block --- */
+        .code-box {
+            background: var(--surface);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            color: #cbd5e1;
+            font-family: 'JetBrains Mono', monospace;
             direction: ltr;
             text-align: left;
-            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
-        .code-block::after {
-            content: "SECURE_FIRMWARE_LOG";
-            position: absolute;
-            top: 25px; right: 45px;
-            color: var(--accent);
-            font-family: 'JetBrains Mono';
-            font-size: 0.75rem;
-            opacity: 0.6;
-        }
+        .kw { color: #f472b6; }
+        .fn { color: #38bdf8; }
 
-        pre { 
-            color: #cbd5e1; 
-            font-family: 'JetBrains Mono', monospace; 
-            font-size: 1rem; 
-            overflow-x: auto; 
-            line-height: 1.7;
-        }
-
-        .keyword { color: #f472b6; }
-        .function { color: #38bdf8; }
-        .string { color: #4ade80; }
-
-        /* --- Footer Engineering --- */
         footer {
             background: var(--dark-bg);
             color: white;
-            padding: 150px 40px;
+            padding: 120px 30px;
             text-align: center;
         }
 
-        footer h2 { font-family: 'Space Grotesk'; font-size: 3rem; margin-bottom: 30px; }
-
-        @media (max-width: 1050px) {
-            .grid-layout { grid-template-columns: 1fr; gap: 50px; }
-            .section { margin-bottom: 120px; }
+        @media (max-width: 900px) {
+            .content-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <span style="font-family: 'JetBrains Mono'; letter-spacing: 6px; color: var(--accent);">[ STATUS: SYSTEM_ACTIVE ]</span>
-        <h1>INTELLIGENT<br>HONEYPOT</h1>
-        <p>A Comprehensive Engineering Thesis on Active Network Deception, Forensic Metadata Harvesting, and Proactive Threat Intelligence using ESP32 Architecture.</p>
-        <div style="margin-top: 50px; padding: 12px 30px; border: 1px solid var(--accent); border-radius: 50px; font-weight: 600;">
-            Supervised by Dr. Wisam
-        </div>
+        <span style="font-family:'JetBrains Mono'; color:var(--accent);">[ AL-MA'MOON UNIVERSITY COLLEGE ]</span>
+        <h1>ESP32 HONEYPOT</h1>
+        <p>Advanced Network Deception & Forensic Intelligence System</p>
+        <div style="margin-top:40px; font-weight:600;">Supervised by: Dr. Wisam</div>
     </header>
 
     <div class="ribbon">
@@ -233,148 +169,87 @@
         </div>
     </div>
 
-    <main class="wrapper">
+    <main class="container">
 
         <section class="section">
-            <span class="tag">01 // THEORETICAL FOUNDATION</span>
-            <div class="section-title">
-                <h2>The Strategy of<br>Active Deception</h2>
-            </div>
-            <div class="grid-layout">
-                <div class="text-side">
+            <span class="tag">01 // PROJECT OVERVIEW</span>
+            <h2>System Philosophy</h2>
+            <div class="content-grid">
+                <div class="text">
                     <p>
-                        Modern cybersecurity requires a paradigm shift from passive defense to <strong>Active Engagement</strong>. This project explores the deployment of a "Honeypot"—a deceptive network node designed to mimic high-value targets while isolating and profiling potential intruders.
-                    </p>
-                    <p style="margin-top: 25px;">
-                        By utilizing the <strong>ESP32 Microcontroller</strong>, we have engineered a portable, low-power forensic hub capable of simulating vulnerable access points. This allows security administrators to capture the attacker's methodology, tools, and intentions without compromising the core infrastructure.
+                        This Honeypot system is engineered to act as a decoy, attracting unauthorized users to gather threat intelligence. By simulating a vulnerable access point, we capture critical metadata including MAC addresses and connection patterns.
                     </p>
                 </div>
-                <div class="image-box">
-                    <img src="1000066881.jpg" onerror="this.src='https://placehold.jp/26/020617/06b6d4/800x600.png?text=FIG_01:_PRIMARY_MONITORING_DASHBOARD'" alt="System Interface">
+                <div class="img-holder">
+                    <img src="https://eTechnophiles.com/wp-content/uploads/2021/04/ESP32-Concepts-Infographic.jpg" alt="ESP32 Concepts">
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <span class="tag">02 // HARDWARE ARCHITECTURE</span>
-            <div class="section-title">
-                <h2>Hardware-Software<br>Orchestration</h2>
-            </div>
-            <div class="grid-layout" style="direction: ltr;">
-                <div class="text-side">
+            <span class="tag">02 // ARCHITECTURE</span>
+            <h2>Hardware Orchestration</h2>
+            <div class="content-grid" style="direction: ltr;">
+                <div class="text" style="direction: rtl; text-align: left;">
                     <p>
-                        The core hardware revolves around the <strong>ESP-WROOM-32</strong> module, chosen for its Dual-Core architecture. While Core 0 manages the Wi-Fi radio stack and decoy beacons, Core 1 is dedicated to real-time <strong>Forensic Data Analysis</strong>.
+                        Utilizing the Dual-Core ESP32 processor allows for simultaneous Wi-Fi beaconing and forensic logging. The I2C protocol facilitates communication with peripheral monitoring displays.
                     </p>
-                    <div class="data-grid">
-                        <div class="card">
-                            <h4>I2C Interface</h4>
-                            <p>Seamless data flow to SSD1306 OLED displays via GPIO 21/22 for live telemetry.</p>
-                        </div>
-                        <div class="card">
-                            <h4>Asynchronous Ops</h4>
-                            <p>Handling multiple intrusion attempts concurrently without system latency or crash.</p>
-                        </div>
-                    </div>
                 </div>
-                <div class="image-box">
-                    <img src="1000066879.png" onerror="this.src='https://placehold.jp/26/020617/06b6d4/800x600.png?text=FIG_02:_HARDWARE_SCHEMATIC_FLOW'" alt="Hardware Map">
+                <div class="img-holder">
+                    <img src="https://i.ibb.co/L5pYmZp/1000066879.png" alt="Hardware Blueprint">
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <span class="tag">03 // FIRMWARE LOGIC & SCRIPTING</span>
-            <div class="section-title">
-                <h2>Forensic Engine Implementation</h2>
-            </div>
-            <p>The system is programmed using an optimized C++ framework, utilizing low-level Wi-Fi libraries to manipulate packet headers and redirect unauthorized DNS requests.</p>
-            
-            <div class="code-block">
+            <span class="tag">03 // IMPLEMENTATION</span>
+            <h2>Firmware & Logic</h2>
+            <div class="code-box">
                 <pre>
-<span class="keyword">#include</span> &lt;WiFi.h&gt;
-<span class="keyword">#include</span> &lt;DNSServer.h&gt;
-
-<span class="keyword">void</span> <span class="function">initHoneypotNode</span>() {
-  <span class="keyword">WiFi</span>.<span class="function">mode</span>(WIFI_AP);
-  <span class="keyword">WiFi</span>.<span class="function">softAP</span>(<span class="string">"AL-MA'MOON_GUEST_WIFI"</span>); 
-  
-  <span class="comment">// Start Deception Engine on Port 53</span>
-  <span class="keyword">dnsServer</span>.<span class="function">start</span>(53, <span class="string">"*"</span>, <span class="keyword">IPAddress</span>(172, 0, 0, 1));
-  <span class="keyword">Serial</span>.<span class="function">println</span>(<span class="string">"[CORE]: Forensic Logging Active..."</span>);
-}
-
-<span class="keyword">void</span> <span class="function">loop</span>() {
-  <span class="keyword">dnsServer</span>.<span class="function">processNextRequest</span>();
-  <span class="keyword">if</span> (<span class="function">detectIntruder</span>()) {
-    <span class="function">captureMACAddress</span>();
-    <span class="function">pushToLiveDashboard</span>();
-  }
+<span class="kw">void</span> <span class="fn">setup_forensic_node</span>() {
+  <span class="kw">WiFi</span>.<span class="fn">softAP</span>("HONEYPOT_SECURE");
+  <span class="kw">dnsServer</span>.<span class="fn">start</span>(53, "*", apIP);
+  <span class="kw">Serial</span>.<span class="fn">println</span>("[SHIELD_ACTIVE]");
 }
                 </pre>
             </div>
-            
-            <div class="grid-layout">
-                <div class="image-box">
-                    <img src="1000066884.jpg" onerror="this.src='https://placehold.jp/26/020617/06b6d4/800x600.png?text=FIG_03:_REAL_TIME_DEBUG_LOGS'" alt="Console Logs">
-                </div>
-                <div class="text-side">
+            <div class="img-holder" style="margin-top: 40px;">
+                <img src="https://i.ibb.co/3WfD7Hq/1000066883.jpg" alt="Circuit Detail">
+            </div>
+        </section>
+
+        <section class="section">
+            <span class="tag">04 // DATA ANALYSIS</span>
+            <h2>Forensic Results</h2>
+            <div class="content-grid">
+                <div class="text">
                     <p>
-                        This code structure ensures that every <strong>Packet Ingress</strong> is inspected. By logging the MAC address and device signatures, we build a comprehensive profile of the threat actor, allowing for adaptive defensive measures.
+                        Our logs indicate high accuracy in identifying intrusion vectors. The captured data shows real-time packet inspection results and intruder profiling.
                     </p>
+                </div>
+                <div class="img-holder">
+                    <img src="https://i.ibb.co/ZxbL7zY/1000066884.jpg" alt="Analysis Logs">
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <span class="tag">04 // RISK EVALUATION & RESULTS</span>
-            <div class="section-title">
-                <h2>Empirical Results &<br>Security Auditing</h2>
-            </div>
-            <div class="grid-layout" style="direction: ltr;">
-                <div class="text-side">
-                    <p>
-                        Testing in a controlled laboratory environment confirmed that the system isolated 100% of the simulated "Evil Twin" and "Brute Force" attacks. The captured metadata provided crucial insights into the vulnerability of local network devices.
-                    </p>
-                </div>
-                <div class="image-box">
-                    <img src="1000066885.jpg" onerror="this.src='https://placehold.jp/26/020617/06b6d4/800x600.png?text=FIG_04:_THREAT_METRIC_CHARTS'" alt="Metrics">
-                </div>
-            </div>
-            <div class="data-grid">
-                <div class="card" style="border-bottom-color: var(--accent);">
-                    <h4>Audit Success</h4>
-                    <p>Successful extraction of device fingerprints and OS signatures from all unauthorized connection attempts.</p>
-                </div>
-                <div class="card" style="border-bottom-color: var(--accent);">
-                    <h4>Performance</h4>
-                    <p>The ESP32 maintained thermal stability and 100% uptime under sustained packet flooding scenarios.</p>
-                </div>
+            <span class="tag">05 // NETWORKING</span>
+            <h2>Infrastructural Integration</h2>
+            <div class="img-holder">
+                <img src="https://i.ibb.co/jR0nKzK/1000066887.jpg" alt="Networking">
             </div>
         </section>
 
     </main>
 
     <footer>
-        <h2>ENGINEERING FUTURE SECURED</h2>
-        <p style="font-size: 1.1rem; opacity: 0.6;">Al-Ma'moon University College | Computer Engineering Department</p>
-        <p style="margin-top: 50px; font-family: 'JetBrains Mono'; color: var(--accent); font-size: 0.9rem;">
-            // FINAL_GRADUATION_PROJECT_SUBMISSION_2026
-        </p>
+        <h2>COMPUTER ENGINEERING DEPT.</h2>
+        <p>Al-Ma'moon University College | 2026 Graduation Project</p>
+        <div style="margin-top:40px; opacity:0.4; font-family:'JetBrains Mono'; font-size:0.8rem;">
+            // DOCUMENT_STATUS: VERIFIED_FINAL_VERSION
+        </div>
     </footer>
 
-    <script>
-        // Intelligent Image Handling & Self-Healing
-        window.onload = function() {
-            console.log("Forensic Interface: Online");
-            document.querySelectorAll('img').forEach(img => {
-                img.onerror = function() {
-                    this.parentElement.style.background = "linear-gradient(45deg, #020617, #1e1b4b)";
-                    this.style.opacity = "0.2";
-                    console.warn("Asset Node Offline: Replaced with dynamic placeholder.");
-                };
-            });
-        };
-    </script>
 </body>
-                                                                                                                            </html>
-                        
+</html>
