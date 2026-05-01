@@ -3,155 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ESP32 HONEYPOT DEFENSE | AL-MA'MOON</title>
+<title>ESP32 HONEYPOT REPORT</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --primary: #00d2ff;
-    --bg: #0b111a;
-    --card-bg: #111827;
-    --border: rgba(255,255,255,0.08);
+    --primary:#00d2ff;
+    --bg:#0b111a;
+    --card:#111827;
+    --border:rgba(255,255,255,0.08);
 }
 
-body {
-    background-color: var(--bg);
-    color: #e5e7eb;
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    overflow-x: hidden;
+body{
+    margin:0;
+    font-family:Inter;
+    background:var(--bg);
+    color:#fff;
 }
 
-header {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(to bottom, #111827, #0b111a);
+header{
+    text-align:center;
+    padding:80px 20px;
 }
 
-.uni-name {
-    font-family: 'Orbitron';
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: #9ca3af;
+h1{
+    font-family:Orbitron;
+    font-size:3rem;
 }
 
-.main-title {
-    font-family: 'Orbitron';
-    font-size: 3.2rem;
-    color: #fff;
+.content{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    padding:20px;
 }
 
-.sub-title {
-    color: var(--primary);
-    margin-bottom: 30px;
-    display: block;
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.team-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+.card:hover{
+    transform:translateY(-5px);
+    border-color:var(--primary);
 }
 
-.member-tag {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 4px;
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
 }
 
-.content-grid {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
-    gap: 25px;
+.card h2{
+    padding:15px;
+    color:var(--primary);
 }
 
-.blueprint-card, .topic-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: .3s;
+.card p{
+    padding:0 15px 20px;
+    color:#aaa;
 }
 
-.blueprint-card:hover, .topic-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
+/* Modal */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000;
+    padding:40px;
 }
 
-.blueprint-card {
-    grid-column: 1/-1;
-    padding: 40px;
-    text-align: center;
+.modal-content{
+    max-width:800px;
+    margin:auto;
 }
 
-.blueprint-img {
-    width: 100%;
-    max-width: 800px;
-    border-radius: 8px;
-    margin: 20px auto;
-    display: block;
+.modal img{
+    width:100%;
+    border-radius:10px;
 }
 
-.card-img-box {
-    height: 220px;
-    overflow: hidden;
-}
-
-.card-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.info-box {
-    padding: 25px;
-}
-
-.tag {
-    background: rgba(0,210,255,0.1);
-    border: 1px solid rgba(0,210,255,0.2);
-    padding: 4px 10px;
-    font-size: 0.7rem;
-    margin-right: 5px;
-}
-
-.modal {
-    position: fixed;
-    inset: 0;
-    background: var(--bg);
-    display: none;
-    padding: 60px 20px;
-    overflow-y: auto;
-}
-
-.modal-inner {
-    max-width: 900px;
-    margin: auto;
-}
-
-.modal-img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.close-btn {
-    border: 1px solid var(--primary);
-    background: none;
-    color: var(--primary);
-    padding: 10px 30px;
-    cursor: pointer;
-}
-
-footer {
-    text-align: center;
-    padding: 60px;
-    opacity: 0.5;
+.close{
+    margin-bottom:20px;
+    padding:10px 20px;
+    border:1px solid var(--primary);
+    background:none;
+    color:var(--primary);
+    cursor:pointer;
 }
 </style>
 </head>
@@ -159,94 +104,100 @@ footer {
 <body>
 
 <header>
-<div class="uni-name">AL-MA'MOON UNIVERSITY COLLEGE</div>
-<h1 class="main-title">CORE_HONEYPOT_v6.0</h1>
-<span class="sub-title">Cybersecurity & Network Simulation</span>
+<h1>ESP32 HONEYPOT</h1>
+<p>Cybersecurity Graduation Project</p>
 </header>
 
-<div class="content-grid">
+<div class="content">
 
-<div class="blueprint-card" onclick="openNode('b1')">
-<h2>01 // NETWORK ARCHITECTURE</h2>
-<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200" class="blueprint-img">
-<p>ESP32 network topology with WiFi communication and packet routing.</p>
+<div class="card" onclick="openModal('m1')">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200">
+<h2>1. INTRODUCTION</h2>
+<p>Overview and project structure.</p>
 </div>
 
-<div class="topic-card" onclick="openNode('b2')">
-<div class="card-img-box">
+<div class="card" onclick="openModal('m2')">
+<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800">
+<h2>2. TECHNOLOGY</h2>
+<p>ESP32, WiFi and hardware used.</p>
+</div>
+
+<div class="card" onclick="openModal('m3')">
 <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=800">
-</div>
-<div class="info-box">
-<h2>ESP32 HARDWARE</h2>
-<p>Microcontroller with integrated WiFi for attack simulation.</p>
-<span class="tag">ESP32</span>
-</div>
+<h2>3. PROGRAMMING</h2>
+<p>Firmware and system logic.</p>
 </div>
 
-<div class="topic-card" onclick="openNode('b3')">
-<div class="card-img-box">
-<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800">
-</div>
-<div class="info-box">
-<h2>NETWORK PROTOCOLS</h2>
-<p>DNS, DHCP and TCP/IP analysis.</p>
-<span class="tag">TCP/IP</span>
-</div>
-</div>
-
-<div class="topic-card" onclick="openNode('b4')">
-<div class="card-img-box">
+<div class="card" onclick="openModal('m4')">
 <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800">
-</div>
-<div class="info-box">
-<h2>WIFI SECURITY</h2>
-<p>Rogue access point simulation.</p>
-<span class="tag">WIFI</span>
-</div>
+<h2>4. RISKS</h2>
+<p>Security threats and attacks.</p>
 </div>
 
-<div class="topic-card" onclick="openNode('b5')">
-<div class="card-img-box">
-<img src="https://images.unsplash.com/photo-1581090700227-1e8a7a53b52a?q=80&w=800">
-</div>
-<div class="info-box">
-<h2>DATA LOGGING</h2>
-<p>Monitoring and storing captured data.</p>
-<span class="tag">LOGS</span>
-</div>
+<div class="card" onclick="openModal('m5')">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800">
+<h2>5. RESULTS</h2>
+<p>Final outcomes and analysis.</p>
 </div>
 
 </div>
 
-<div id="modal" class="modal">
-<div class="modal-inner">
-<button class="close-btn" onclick="closeNode()">BACK</button>
-<div id="modalContent"></div>
+<!-- Modal -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<button class="close" onclick="closeModal()">BACK</button>
+<div id="data"></div>
 </div>
 </div>
-
-<footer>2026</footer>
 
 <script>
 const content = {
-b1:{title:"NETWORK",img:"https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200",text:"Full ESP32 network structure."},
-b2:{title:"ESP32",img:"https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=800",text:"Core microcontroller."},
-b3:{title:"PROTOCOLS",img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800",text:"Network protocols analysis."},
-b4:{title:"WIFI",img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800",text:"WiFi attacks."},
-b5:{title:"LOGGING",img:"https://images.unsplash.com/photo-1581090700227-1e8a7a53b52a?q=80&w=800",text:"System logs."}
-};
 
-function openNode(id){
-const d = content[id];
-document.getElementById('modalContent').innerHTML =
-`<img src="${d.img}" class="modal-img"><h2>${d.title}</h2><p>${d.text}</p>`;
-document.getElementById('modal').style.display='block';
+m1:{
+title:"INTRODUCTION",
+img:"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200",
+text:"This project is a cybersecurity honeypot system based on ESP32. It is designed to simulate attacks and analyze network behavior. The report includes hardware, software, risks, and results."
+},
+
+m2:{
+title:"TECHNOLOGY",
+img:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800",
+text:"The system uses ESP32 microcontroller with built-in WiFi. It also includes OLED display (SSD1306) and network modules. Communication is handled using TCP/IP and DNS protocols."
+},
+
+m3:{
+title:"PROGRAMMING",
+img:"https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=800",
+text:"The firmware is written in C++. It uses asynchronous programming to handle multiple connections. DNS spoofing and captive portal are implemented to simulate attacks."
+},
+
+m4:{
+title:"RISKS",
+img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800",
+text:"The system demonstrates risks such as Evil Twin attacks, MITM attacks, and data interception. It highlights the importance of secure WiFi protocols like WPA3."
+},
+
+m5:{
+title:"RESULTS",
+img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800",
+text:"The system successfully captured network requests and simulated attacks. Results show how users can be tricked and how networks can be monitored effectively."
 }
 
-function closeNode(){
-document.getElementById('modal').style.display='none';
+};
+
+function openModal(id){
+let d = content[id];
+document.getElementById("modal").style.display="block";
+document.getElementById("data").innerHTML =
+`<img src="${d.img}">
+<h2>${d.title}</h2>
+<p>${d.text}</p>`;
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
 }
 </script>
 
 </body>
-    </html>
+</html>
