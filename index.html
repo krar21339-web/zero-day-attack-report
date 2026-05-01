@@ -3,184 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Honeypot - Advanced Security Hub</title>
+    <title>ESP32 HONEYPOT - AL-MA'MOON UNIVERSITY COLLEGE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Fira+Code:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00d2ff;
-            --secondary: #3a7bd5;
-            --bg: #05070a;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --text: #e0e6ed;
+            --neon-cyan: #00f3ff;
+            --neon-purple: #bc13fe;
+            --dark-core: #02050a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(0, 243, 255, 0.2);
+            --text-primary: #e0e6ed;
+            --text-secondary: #94a3b8;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
+        .light-mode {
+            --dark-core: #f0f4f8;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --glass: rgba(0, 0, 0, 0.05);
+            --border: rgba(0, 112, 243, 0.2);
+        }
+
+        * { box-sizing: border-box; }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Orbitron', sans-serif; /* خط تقني */
-            margin: 0; padding: 0;
+            background-color: var(--dark-core);
+            color: var(--text-primary);
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0; line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(188, 19, 254, 0.05) 0%, transparent 20%);
         }
 
-        /* 🌓 Toggle Switch Modern */
-        .mode-switch {
-            position: fixed; top: 20px; right: 20px; z-index: 1000;
-            background: var(--glass); backdrop-filter: blur(10px);
-            padding: 10px 20px; border-radius: 30px; border: 1px solid var(--border);
-            cursor: pointer; color: var(--primary); font-weight: bold;
+        /* 🟦 Navigation Header */
+        .cyber-nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(2, 5, 10, 0.8); backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 50px;
         }
 
-        /* 🏗️ Main Layout */
-        .dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 100px 40px;
-            max-width: 1400px; margin: 0 auto;
+        .nav-brand { font-family: 'Orbitron'; color: var(--neon-cyan); font-weight: bold; letter-spacing: 2px; }
+        
+        .mode-toggle {
+            background: var(--glass); border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan); padding: 8px 20px; border-radius: 5px;
+            cursor: pointer; font-family: 'Orbitron'; font-size: 0.7rem;
+            transition: var(--transition);
         }
 
-        /* 📍 Central Interactive Map (Section 1) */
-        .central-map {
-            grid-column: 1 / -1;
-            background: radial-gradient(circle at center, rgba(58,123,213,0.1), transparent);
-            border-radius: 20px; border: 1px solid var(--border);
-            padding: 40px; text-align: center; position: relative;
+        .mode-toggle:hover { background: var(--neon-cyan); color: var(--dark-core); box-shadow: 0 0 20px var(--neon-cyan); }
+
+        /* 🚀 Hero Section */
+        .hero {
+            padding: 150px 20px 100px; text-align: center;
+            border-bottom: 1px solid var(--border);
         }
 
-        .map-container {
-            position: relative; width: 100%; max-width: 900px; margin: 0 auto;
+        .hero h1 {
+            font-family: 'Orbitron'; font-size: clamp(2rem, 8vw, 4rem);
+            margin: 0; background: linear-gradient(to right, #00f3ff, #bc13fe);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(0,243,255,0.3));
         }
 
-        .map-img { width: 100%; filter: drop-shadow(0 0 20px var(--primary)); }
+        .university-banner { font-size: 1.5rem; font-weight: 300; letter-spacing: 5px; color: var(--text-secondary); }
 
-        /* 🛰️ Info Tags on Map */
-        .tag {
-            position: absolute; background: rgba(0, 0, 0, 0.8);
-            border-left: 3px solid var(--primary); padding: 10px;
-            font-size: 0.8rem; border-radius: 5px; backdrop-filter: blur(5px);
-        }
-        .tag.esp { top: 20%; left: 10%; }
-        .tag.oled { bottom: 20%; right: 10%; }
-        .tag.i2c { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-
-        /* 🃏 Smart Cards (Sections 2-6) */
-        .smart-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            position: relative;
-            height: 400px;
-            transition: 0.4s ease;
+        .team-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px; max-width: 1100px; margin: 50px auto;
         }
 
-        .smart-card:hover { border-color: var(--primary); transform: translateY(-10px); }
-
-        .card-img {
-            width: 100%; height: 100%; object-fit: cover;
-            opacity: 0.4; transition: 0.4s;
+        .member-node {
+            background: var(--glass); border: 1px solid var(--border);
+            padding: 15px; border-radius: 10px; position: relative; overflow: hidden;
         }
 
-        .card-overlay {
-            position: absolute; inset: 0;
-            padding: 30px;
+        .member-node::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--neon-cyan);
+        }
+
+        /* 🗺️ Central Integrated Map (Section 1) */
+        .section-full { max-width: 1300px; margin: 60px auto; padding: 0 40px; }
+
+        .map-wrapper {
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 30px; padding: 60px; position: relative;
+            box-shadow: inset 0 0 50px rgba(0, 243, 255, 0.05);
+        }
+
+        .map-title { font-family: 'Orbitron'; color: var(--neon-cyan); margin-bottom: 40px; text-align: center; }
+
+        .image-container-main {
+            position: relative; border-radius: 20px; overflow: hidden;
+            border: 2px solid var(--border);
+        }
+
+        .image-container-main img { width: 100%; display: block; filter: contrast(1.1) brightness(0.9); }
+
+        /* الشروحات فوق الخريطة (Pointers) */
+        .pointer-box {
+            position: absolute; background: rgba(0, 0, 0, 0.85);
+            border: 1px solid var(--neon-cyan); padding: 15px; border-radius: 8px;
+            width: 250px; backdrop-filter: blur(10px); z-index: 10;
+        }
+
+        .p-esp { top: 10%; left: 5%; }
+        .p-oled { bottom: 15%; right: 5%; }
+        .p-i2c { top: 45%; left: 50%; transform: translateX(-50%); border-bottom: 3px solid var(--neon-purple); }
+
+        .pointer-box h4 { margin: 0 0 8px; color: var(--neon-cyan); font-family: 'Orbitron'; font-size: 0.9rem; }
+        .pointer-box p { margin: 0; font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* 📑 Smart Detailed Sections (2-6) */
+        .details-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;
+            margin-top: 50px;
+        }
+
+        .smart-section {
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 20px; position: relative; height: 500px;
+            overflow: hidden; transition: var(--transition);
+        }
+
+        .smart-section:hover { transform: translateY(-10px); border-color: var(--neon-purple); }
+
+        .section-bg-img {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.25; transition: 0.6s;
+        }
+
+        .smart-section:hover .section-bg-img { opacity: 0.5; transform: scale(1.1); }
+
+        .glass-content {
+            position: absolute; inset: 0; padding: 40px;
+            background: linear-gradient(to top, var(--dark-core) 40%, transparent);
             display: flex; flex-direction: column; justify-content: flex-end;
-            background: linear-gradient(to top, var(--bg) 20%, transparent);
         }
 
-        .smart-card h2 { color: var(--primary); margin: 0; font-size: 1.4rem; }
-        .smart-card p { font-size: 0.9rem; margin-top: 10px; color: #a0aec0; }
+        .glass-content h3 { font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 1.8rem; margin: 0; }
+        .glass-content p { color: var(--text-secondary); font-size: 1.05rem; margin-top: 15px; }
 
-        /* 🎓 Header & Footer */
-        .header {
-            text-align: center; padding: 60px 20px;
-            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+        /* 🛠️ Code/Technical Specs */
+        .tech-specs {
+            margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;
         }
 
-        .team-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
-        .tag-name { background: var(--secondary); padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; }
+        .spec-pill {
+            background: rgba(188, 19, 254, 0.1); border: 1px solid var(--neon-purple);
+            padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; color: var(--neon-purple);
+        }
+
+        /* 🏁 Footer */
+        footer {
+            padding: 80px 20px; border-top: 1px solid var(--border);
+            text-align: center; background: rgba(0,0,0,0.3);
+        }
+
+        .footer-logo { font-family: 'Orbitron'; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 3px; }
 
     </style>
 </head>
 <body>
 
-    <button class="mode-switch" onclick="document.body.classList.toggle('light-mode')">📡 SYSTEM MODE</button>
+    <nav class="cyber-nav">
+        <div class="nav-brand">MAM_CYBER_SYS_v6.0</div>
+        <button class="mode-toggle" onclick="document.body.classList.toggle('light-mode')">INTERFACE_MODE</button>
+    </nav>
 
-    <header class="header">
-        <p style="color: var(--primary); letter-spacing: 5px;">AL-MA'MOON UNIVERSITY COLLEGE</p>
-        <h1 style="font-size: 3rem;">CORE_HONEYPOT_v6.0</h1>
-        <p>Supervised By: <span style="color: var(--primary);">Dr. Mustafa Aqeel</span></p>
+    <header class="hero">
+        <div class="university-banner">AL-MA'MOON UNIVERSITY COLLEGE</div>
+        <h1>ESP32 HONEYPOT DEFENSE</h1>
+        <p style="font-size: 1.4rem; color: var(--neon-purple);">Proactive Security Auditing & Intrusion Simulation</p>
+        <p style="margin-top: 10px;">Supervised By: <b style="color: var(--neon-cyan);">Dr. Mustafa Aqeel</b></p>
         
-        <div class="team-tags">
-            <div class="tag-name">Karrar Mohammed</div>
-            <div class="tag-name">Ali Majid</div>
-            <div class="tag-name">Saad Ahmed</div>
-            <div class="tag-name">Fahad Ahmed</div>
-            <div class="tag-name">Ali Zuhair</div>
-            <div class="tag-name">Abdulmajeed Majool</div>
+        <div class="team-grid">
+            <div class="member-node">Karrar Mohammed Dawood</div>
+            <div class="member-node">Ali Majid Hussein</div>
+            <div class="member-node">Saad Ahmed Fadhil</div>
+            <div class="member-node">Fahad Ahmed Ali</div>
+            <div class="member-node">Ali Zuhair Qamar</div>
+            <div class="member-node">Abdulmajeed Majool</div>
         </div>
     </header>
 
-    <div class="dashboard">
-
-        <div class="central-map">
-            <h2>01. INTEGRATED HARDWARE CIRCUIT</h2>
-            <div class="map-container">
-                <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ec1e?auto=format&fit=crop&q=80&w=1200" class="map-img" alt="Main Map">
+    <main class="section-full">
+        <div class="map-wrapper">
+            <h2 class="map-title">01 // INTEGRATED SYSTEM BLUEPRINT</h2>
+            <div class="image-container-main">
+                <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ec1e?auto=format&fit=crop&q=80&w=1500" alt="Hardware Blueprint">
                 
-                <div class="tag esp"><b>ESP32 BRAIN:</b> Multi-core logic hub.</div>
-                <div class="tag oled"><b>OLED INTERFACE:</b> Real-time packet logging.</div>
-                <div class="tag i2c"><b>I2C BUS:</b> Synchronized SDA/SCL Protocol.</div>
+                <div class="pointer-box p-esp">
+                    <h4>ESP32 DUAL-CORE</h4>
+                    <p>The centralized logic engine. It manages the 802.11 b/g/n stack while running the DNS redirector and DHCP server asynchronously.</p>
+                    <div class="tech-specs"><span class="spec-pill">XTENSA LX6</span> <span class="spec-pill">WIFI_AP_MODE</span></div>
+                </div>
+
+                <div class="pointer-box p-oled">
+                    <h4>OLED TELEMETRY</h4>
+                    <p>A 128x64 display providing real-time visual logs of connected MAC addresses and harvested credentials without external PC dependency.</p>
+                    <div class="tech-specs"><span class="spec-pill">I2C BUS</span> <span class="spec-pill">SSD1306</span></div>
+                </div>
+
+                <div class="pointer-box p-i2c">
+                    <h4>I2C COMMUNICATION BRIDGE</h4>
+                    <p>Synchronized data highway between the MCU and UI peripherals. Uses SDA/SCL lines to push data at 400kHz clock speed.</p>
+                    <div class="tech-specs"><span class="spec-pill">SERIAL DATA</span> <span class="spec-pill">400KHZ</span></div>
+                </div>
             </div>
-            <p style="margin-top: 20px;">A unified schematic showcasing the physical layer integration between MCU and UI modules.</p>
+            <p style="text-align: center; margin-top: 40px; color: var(--text-secondary); max-width: 800px; margin-left: auto; margin-right: auto;">
+                The schematic illustrates a unified hardware ecosystem designed for maximum efficiency. Every component is linked through a standardized I2C bus, ensuring low-power operation and stable data transmission during heavy network loads.
+            </p>
         </div>
 
-        <div class="smart-card">
-            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=800" class="card-img">
-            <div class="card-overlay">
-                <h2>02. FIRMWARE LOGIC</h2>
-                <p>Advanced C++ implementation using non-blocking asynchronous web servers for seamless intrusion monitoring.</p>
+        <div class="details-grid">
+            
+            <div class="smart-section">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
+                <div class="glass-content">
+                    <h3>02. FIRMWARE CORE</h3>
+                    <p>Our implementation utilizes the <b>Arduino-ESP32</b> framework, integrating asynchronous web servers to handle multiple TCP handshakes simultaneously, ensuring the system remains responsive even under brute-force connection attempts.</p>
+                    <div class="tech-specs"><span class="spec-pill">C++</span> <span class="spec-pill">ASYNCTCP</span> <span class="spec-pill">RTOS</span></div>
+                </div>
             </div>
-        </div>
 
-        <div class="smart-card">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800" class="card-img">
-            <div class="card-overlay">
-                <h2>03. DNS SPOOFING</h2>
-                <p>Capturing every domain request and forcing a 302-redirect to the local Captive Portal environment.</p>
+            <div class="smart-section">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
+                <div class="glass-content">
+                    <h3>03. DNS INTERCEPTION</h3>
+                    <p>The system deploys a UDP-based DNS redirect engine. Every 'A' record request from the client is intercepted and resolved to the ESP32's internal IP (192.168.4.1), creating a perfect captive portal trap.</p>
+                    <div class="tech-specs"><span class="spec-pill">UDP 53</span> <span class="spec-pill">SPOOFING</span> <span class="spec-pill">302-REDIRECT</span></div>
+                </div>
             </div>
-        </div>
 
-        <div class="smart-card">
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="card-img">
-            <div class="card-overlay">
-                <h2>04. ATTACK VECTORS</h2>
-                <p>Simulating an 'Evil Twin' SSID to analyze how users interact with unencrypted login prompts in public areas.</p>
+            <div class="smart-section">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
+                <div class="glass-content">
+                    <h3>04. EVIL TWIN SCENARIOS</h3>
+                    <p>Researching social engineering vectors where users are deceived by high-signal rogue APs. This honeypot proves that without SSL/TLS validation, public wireless security is fundamentally compromised.</p>
+                    <div class="tech-specs"><span class="spec-pill">SOCIAL_ENG</span> <span class="spec-pill">SSID_CLONING</span></div>
+                </div>
             </div>
-        </div>
 
-        <div class="smart-card">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" class="card-img">
-            <div class="card-overlay">
-                <h2>05. TELEMETRY LOGS</h2>
-                <p>Real-time data synchronization between EEPROM memory and the visual OLED interface for persistent tracking.</p>
+            <div class="smart-section">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
+                <div class="glass-content">
+                    <h3>05. EEPROM SYNC</h3>
+                    <p>To prevent data loss during power cycles, we implemented a persistent logging layer that writes critical telemetry to the ESP32's non-volatile memory (EEPROM), allowing for long-term audit trails.</p>
+                    <div class="tech-specs"><span class="spec-pill">NON-VOLATILE</span> <span class="spec-pill">LOGGING</span> <span class="spec-pill">PERSISTENCE</span></div>
+                </div>
             </div>
-        </div>
 
-        <div class="smart-card">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="card-img">
-            <div class="card-overlay">
-                <h2>06. DEFENSE STRATEGY</h2>
-                <p>Analyzing honeypot results to develop robust WPA3 encryption policies and Multi-Factor Authentication (MFA) deployment.</p>
+            <div class="smart-section">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="section-bg-img">
+                <div class="glass-content">
+                    <h3>06. WPA3 ADOPTION</h3>
+                    <p>Final results emphasize the transition from WPA2 to WPA3-SAE. Our honeypot serves as a testbed for developing smarter authentication policies and educating the student body at Al-Ma'moon University.</p>
+                    <div class="tech-specs"><span class="spec-pill">WPA3</span> <span class="spec-pill">SECURITY_EDUCATION</span></div>
+                </div>
             </div>
-        </div>
 
-    </div>
+        </div>
+    </main>
 
     <footer>
-        <p>© 2026 AL-MA'MOON UNIVERSITY | CYBERSECURITY DIVISION</p>
+        <div class="footer-logo">CYBERSECURITY RESEARCH LAB // 2026</div>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-secondary);">
+            Department of Computer Engineering | Al-Ma'moon University College<br>
+            Project Version: Final Core v6.0
+        </p>
     </footer>
 
 </body>
-</html>
+            </html>
+                                                                                       
