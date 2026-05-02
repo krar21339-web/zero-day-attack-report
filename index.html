@@ -2,105 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Advanced IoT Report - Karrar Mohammed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Report - IoT Traffic Emulation</title>
     <style>
-        /* تحسينات الطباعة - لا تحذف هذه التعديلات */
-        @page { 
+        /* إعدادات الطباعة الاحترافية لمنع الصفحات البيضاء */
+        @page {
             size: A4;
             margin: 0;
         }
+        
+        @media print {
+            body {
+                background: none !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .page {
+                margin: 0 !important;
+                box-shadow: none !important;
+                page-break-after: always;
+            }
+        }
+
         body {
+            background-color: #e2e8f0;
             margin: 0;
             padding: 0;
-            background: #f1f5f9; /* لون مريح للمعاينة */
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
-        .page-container {
+
+        /* حاوية الصفحة الواحدة - تم ضبطها لتكون متوافقة مع محرك PDF */
+        .page {
             width: 210mm;
-            min-height: 297mm;
+            height: 296mm; /* تقليل 1 ملم لمنع ظهور صفحة فارغة إضافية */
             padding: 20mm;
             margin: 10mm auto;
             background: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
             box-sizing: border-box;
             position: relative;
-            page-break-after: always;
-            /* تقليل الظل ليتمكن الموبايل من المعالجة */
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
-        }
-        /* منع تقطيع العناصر داخل الصفحة */
-        .page-container * {
-            page-break-inside: avoid;
+            overflow: hidden;
         }
 
-        /* تنسيقات الهوية الأكاديمية */
-        .header-top { 
+        /* الهيدر الأكاديمي */
+        .header {
             display: flex;
             justify-content: space-between;
-            border-bottom: 3px solid #0f172a;
+            border-bottom: 3px solid #1e293b;
             padding-bottom: 10px;
-            margin-bottom: 20mm;
-        }
-        .project-title { 
-            font-size: 36pt;
-            font-weight: 900;
-            text-align: center;
-            color: #0f172a;
-            margin-top: 30mm;
-        }
-        .sub-title { 
-            font-size: 16pt;
-            color: #0891b2;
-            text-align: center;
-            font-weight: bold;
-            letter-spacing: 2px;
+            margin-bottom: 25mm;
         }
 
-        /* شبكة البيانات والأسماء */
-        .details-grid { 
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        .university-name {
+            font-weight: 900;
+            font-size: 14pt;
+            color: #1e293b;
+        }
+
+        .report-type {
+            text-align: right;
+            font-weight: bold;
+            color: #64748b;
+        }
+
+        /* العنوان الرئيسي */
+        .title-section {
+            text-align: center;
             margin-top: 40mm;
         }
-        .detail-item { 
-            border-left: 4px solid #0891b2;
+
+        .main-title {
+            font-size: 42pt;
+            font-weight: 900;
+            color: #0f172a;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .accent-line {
+            width: 100px;
+            height: 5px;
+            background: #0891b2;
+            margin: 20px auto;
+        }
+
+        /* شبكة الأسماء والمعلومات */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 50mm;
+        }
+
+        .info-box {
+            border-left: 5px solid #0891b2;
             padding-left: 15px;
         }
-        .label { font-size: 10pt; color: #0891b2; font-weight: 800; display: block; }
-        .value { font-size: 13pt; font-weight: bold; color: #1e293b; }
-        
-        .names-container { 
+
+        .label {
+            font-size: 10pt;
+            color: #0891b2;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .value {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #1e293b;
+            display: block;
+        }
+
+        .students-list {
             grid-column: span 2;
+            background: #f8fafc;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
         }
-        .name-box { border-bottom: 1px solid #cbd5e1; padding: 5px 0; }
-
-        /* تنسيق المحتوى */
-        .main-text { 
-            line-height: 1.6;
-            font-size: 12pt;
-            text-align: justify;
-            background: #f8fafc;
-            padding: 25px;
-            border-right: 6px solid #0891b2;
-            margin: 20px 0;
-        }
-        .tech-card {
-            display: flex;
-            gap: 20px;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            align-items: center;
-        }
-        .tech-img { width: 150px; border-radius: 5px; }
 
         .footer {
             position: absolute;
@@ -108,92 +129,83 @@
             left: 20mm;
             right: 20mm;
             border-top: 1px solid #e2e8f0;
+            padding-top: 5px;
             display: flex;
             justify-content: space-between;
             font-size: 10pt;
-            color: #64748b;
+            color: #94a3b8;
+            font-weight: bold;
         }
 
-        /* تحسينات إضافية للتحميل كـ PDF */
-        @media print {
-            body { background: none; }
-            .page-container { 
-                margin: 0; 
-                box-shadow: none; 
-                width: 100%;
-            }
+        /* تنسيقات المحتوى الداخلي */
+        .content-h2 {
+            color: #0891b2;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+        
+        .text-p {
+            line-height: 1.8;
+            color: #334155;
+            font-size: 12pt;
         }
     </style>
 </head>
 <body>
 
-<div class="page-container">
-    <div class="header-top">
-        <div style="font-weight: 900;">AL-MAMOON UNIVERSITY COLLEGE<br><span style="color: #0891b2;">CYBERSECURITY ENGINEERING</span></div>
-        <div style="text-align: right;">TECHNICAL REPORT<br>BAGHDAD, 2026</div>
-    </div>
-
-    <h1 class="project-title">Emulate IoT Traffic</h1>
-    <div class="sub-title">Advanced Network Security Simulation</div>
-
-    <div class="details-grid">
-        <div class="detail-item" style="grid-column: span 2;">
-            <span class="label">Supervised By / بإشراف</span>
-            <span class="value" style="font-size: 20pt;">Dr. Wisam</span>
-        </div>
-        <div class="detail-item">
-            <span class="label">Department / القسم</span>
-            <span class="value">Cybersecurity Engineering</span>
-        </div>
-        <div class="detail-item">
-            <span class="label">Stage / المرحلة</span>
-            <span class="value">Second Stage</span>
+    <div class="page">
+        <div class="header">
+            <div class="university-name">AL-MAMOON UNIVERSITY COLLEGE<br><span style="color: #0891b2;">Cybersecurity Engineering</span></div>
+            <div class="report-type">TECHNICAL REPORT<br>BAGHDAD, 2026</div>
         </div>
 
-        <div class="names-container">
-            <div style="grid-column: span 2; color: #0f172a; font-weight: 800; border-bottom: 2px solid #0891b2;">Prepared By / إعداد الطلبة</div>
-            <div class="name-box"><span class="value">Karrar Mohammed Dawood</span></div>
-            <div class="name-box"><span class="value">Fahad Ahmed Ali</span></div>
-            <div class="name-box"><span class="value">Ali Majid Hussain</span></div>
-            <div class="name-box"><span class="value">Ali Zuhair Qamar</span></div>
-            <div class="name-box"><span class="value">Saad Ahmed Fadhel</span></div>
-            <div class="name-box"><span class="value">Abdel Majeed Majwal</span></div>
+        <div class="title-section">
+            <h1 class="main-title">Emulate IoT Traffic</h1>
+            <div class="accent-line"></div>
+            <p style="font-size: 16pt; font-weight: bold; color: #0891b2;">Advanced Network Simulation & Security Analysis</p>
         </div>
-    </div>
 
-    <div class="footer">
-        <div>CYBER-PHYSICAL SYSTEMS LAB</div>
-        <div>Page 1</div>
-    </div>
-</div>
+        <div class="info-grid">
+            <div class="info-box" style="grid-column: span 2;">
+                <span class="label">Supervised By</span>
+                <span class="value" style="font-size: 18pt;">Dr. Wisam</span>
+            </div>
+            
+            <div class="info-box">
+                <span class="label">Academic Stage</span>
+                <span class="value">Second Stage</span>
+            </div>
 
-<div class="page-container">
-    <h2 style="color: #0891b2; text-transform: uppercase;">Section 01: Introduction</h2>
-    <p class="main-text">
-        [span_2](start_span)[span_3](start_span)This report discusses the <b>Emulation of IoT Traffic</b>, utilizing the <b>ESP32 microcontroller</b> to simulate real-world data[span_2](end_span)[span_3](end_span). 
-        [span_4](start_span)This study is crucial for building resilient <b>Cyber-Physical Systems (CPS)</b> that can withstand modern digital threats[span_4](end_span).
-    </p>
+            <div class="students-list">
+                <div style="grid-column: span 2; font-weight: 800; color: #0f172a; margin-bottom: 5px;">Prepared By:</div>
+                <div class="value">• Karrar Mohammed Dawood</div>
+                <div class="value">• Fahad Ahmed Ali</div>
+                <div class="value">• Ali Majid Hussain</div>
+                <div class="value">• Ali Zuhair Qamar</div>
+                <div class="value">• Saad Ahmed Fadhel</div>
+                <div class="value">• Abdel Majeed Majwal</div>
+            </div>
+        </div>
 
-    <div class="tech-card">
-        <div style="flex: 1;">
-            <b>1. ESP32 Microcontroller:</b>
-            [span_5](start_span)The brain of the system, responsible for generating synthetic traffic packets to test network security protocols[span_5](end_span).
+        <div class="footer">
+            <div>CYBER-PHYSICAL SYSTEMS UNIT</div>
+            <div>PAGE 01</div>
         </div>
     </div>
 
-    <div class="tech-card">
-        <div style="flex: 1;">
-            <b>2. OLED Diagnostic (SSD1306):</b>
-            [span_6](start_span)Provides real-time visual metrics such as IP address and packet success count via I2C protocol[span_6](end_span).
+    <div class="page">
+        <h2 class="content-h2">01. Introduction & Background</h2>
+        <p class="text-p">
+            In this project, we explore the mechanics of IoT traffic generation and the vulnerabilities associated with interconnected devices. Using the ESP32 as a core emulator, we simulate various traffic conditions to test the robustness of cybersecurity frameworks.
+        </p>
+        <div style="background: #f1f5f9; padding: 20px; border-radius: 10px; border-left: 5px solid #0891b2;">
+            <b>Key Objective:</b> To understand how malicious actors can exploit IoT communication protocols and how to implement hardware-level defenses.
+        </div>
+        <div class="footer">
+            <div>AL-MAMOON UNIVERSITY COLLEGE</div>
+            <div>PAGE 02</div>
         </div>
     </div>
 
-    <div class="footer">
-        <div>AL-MAMOON UNIVERSITY COLLEGE</div>
-        <div>Page 2</div>
-    </div>
-</div>
-
-</body>
-        </html>
-    
+    </body>
+</html>
