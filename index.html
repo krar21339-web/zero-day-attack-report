@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cover Page - Sentinel Style</title>
+    <title>Cover Page - Sentinel Style V2</title>
     <style>
         @page { size: A4; margin: 0; }
         body { 
             margin: 0; 
             padding: 0; 
             background: #ffffff; 
-            font-family: 'Arial', sans-serif; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             -webkit-print-color-adjust: exact;
             display: flex;
             justify-content: center;
@@ -17,7 +17,7 @@
         .page-container {
             width: 210mm;
             height: 297mm;
-            padding: 20mm;
+            padding: 25mm; /* زيادة الهوامش لإعطاء مساحة جمالية */
             box-sizing: border-box;
             position: relative;
             display: flex;
@@ -26,81 +26,84 @@
             background: #ffffff;
         }
 
+        /* الهيدر العلوي - مسافات مريحة */
         .header-top {
             display: flex;
             justify-content: space-between;
-            border-bottom: 2.5px solid #000;
-            padding-bottom: 10px;
+            border-bottom: 1.5px solid #000;
+            padding-bottom: 12px;
             text-align: left;
             margin-bottom: 45mm;
         }
-        .header-text { font-size: 11pt; font-weight: bold; color: #000; line-height: 1.3; text-transform: uppercase; }
+        .header-text { font-size: 10.5pt; font-weight: bold; color: #000; line-height: 1.4; letter-spacing: 0.5px; }
 
-        /* منطقة العنوان - في المنتصف */
+        /* منطقة العنوان - توزيع مريح لمنع التداخل */
         .main-title-box { margin-bottom: 45mm; }
         .project-title { 
-            font-size: 36pt; 
+            font-size: 34pt; /* تصغير طفيف لمنع الضخامة المفرطة */
             font-weight: 900; 
             color: #000; 
             margin: 0; 
-            line-height: 1.1;
+            line-height: 1.2;
             text-transform: uppercase;
+            letter-spacing: -0.5px;
         }
         .sub-title { 
-            font-size: 14pt; 
+            font-size: 13pt; 
             color: #22d3ee; 
             font-weight: bold; 
-            margin-top: 10px;
-            letter-spacing: 1.5px;
+            margin-top: 15px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        /* شبكة البيانات */
+        /* شبكة البيانات - منظمة بوضوح */
         .details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 35px;
             text-align: left;
             margin: 0 auto;
             width: 100%;
         }
         .detail-item {
-            border-left: 5px solid #000;
-            padding-left: 15px;
-            margin-bottom: 20px;
+            border-left: 3px solid #000;
+            padding-left: 18px;
+            margin-bottom: 15px;
         }
-        .label { font-size: 9.5pt; color: #22d3ee; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 5px; }
-        .value { font-size: 11.5pt; font-weight: bold; color: #000; display: block; text-transform: uppercase; }
-        .value-ar { font-size: 12.5pt; font-weight: bold; color: #000; display: block; margin-top: 2px; }
+        .label { font-size: 8.5pt; color: #22d3ee; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 8px; }
+        .value { font-size: 11pt; font-weight: bold; color: #000; display: block; text-transform: uppercase; }
+        .value-ar { font-size: 12pt; font-weight: bold; color: #000; display: block; margin-top: 4px; }
 
         .students-section {
             grid-column: span 2;
-            margin-top: 10px;
+            margin-top: 15px;
         }
-        .student-entry { margin-bottom: 15px; }
+        .student-entry { margin-bottom: 18px; }
 
+        /* الفوتر ورقم الصفحة الصغير */
         .footer-line {
             position: absolute;
             bottom: 20mm;
-            left: 20mm;
-            right: 20mm;
+            left: 25mm;
+            right: 25mm;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
             text-align: left;
         }
-        .page-num-square {
+        .page-num-small {
             background: #000;
             color: #fff;
-            width: 48px;
-            height: 48px;
+            width: 30px; /* تصغير المربع */
+            height: 30px; /* تصغير المربع */
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 18pt;
+            font-size: 12pt; /* تصغير الرقم */
         }
     </style>
 </head>
@@ -112,7 +115,7 @@
                 Al-Mamoon University College<br>
                 Cybersecurity Engineering
             </div>
-            <div style="text-align: right; font-size: 10pt; color: #666; font-weight: 900;">
+            <div style="text-align: right; font-size: 9.5pt; color: #888; font-weight: bold;">
                 TECHNICAL RESEARCH<br>BAGHDAD, IRAQ
             </div>
         </div>
@@ -125,50 +128,50 @@
         <div class="details-grid">
             <div class="detail-item" style="grid-column: span 2;">
                 <span class="label">Supervised By:</span>
-                <span class="value" style="font-size: 17pt;">Dr. Wisam</span>
+                <span class="value" style="font-size: 15pt;">Dr. Wisam</span>
             </div>
 
             <div class="detail-item">
-                <span class="label">Department / القسم:</span>
+                <span class="label">Department / القسم</span>
                 <span class="value">Cybersecurity Engineering</span>
                 <span class="value-ar">هندسة الأمن السيبراني</span>
             </div>
 
             <div class="detail-item">
-                <span class="label">Stage / المرحلة:</span>
+                <span class="label">Stage / المرحلة</span>
                 <span class="value">Second Stage</span>
                 <span class="value-ar">المرحلة الثانية</span>
             </div>
 
             <div class="students-section">
                 <span class="label">Prepared By / أسماء الطلبة:</span>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 12px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 15px;">
                     <div>
                         <div class="student-entry">
                             <span class="value-ar">كرار محمد داود (شعبة C)</span>
-                            <span class="value" style="font-size: 9.5pt; color: #666;">Karrar Mohammed Dawood (Section C)</span>
+                            <span class="value" style="font-size: 9pt; color: #777;">Karrar Mohammed Dawood (Section C)</span>
                         </div>
                         <div class="student-entry">
                             <span class="value-ar">علي ماجد حسين (شعبة B)</span>
-                            <span class="value" style="font-size: 9.5pt; color: #666;">Ali Majid Hussein (Section B)</span>
+                            <span class="value" style="font-size: 9pt; color: #777;">Ali Majid Hussein (Section B)</span>
                         </div>
                         <div class="student-entry">
                             <span class="value-ar">سعد احمد فاضل (شعبة B)</span>
-                            <span class="value" style="font-size: 9.5pt; color: #666;">Saad Ahmed Fadhil (Section B)</span>
+                            <span class="value" style="font-size: 9pt; color: #777;">Saad Ahmed Fadhil (Section B)</span>
                         </div>
                     </div>
                     <div>
                         <div class="student-entry">
                             <span class="value-ar">فهد احمد علي (شعبة B)</span>
-                            <span class="value" style="font-size: 9.5pt; color: #666;">Fahad Ahmed Ali (Section B)</span>
+                            <span class="value" style="font-size: 9pt; color: #777;">Fahad Ahmed Ali (Section B)</span>
                         </div>
                         <div class="student-entry">
                             <span class="value-ar">علي زهير قمر (شعبة B)</span>
-                            <span class="value" style="font-size: 9.5pt; color: #666;">Ali Zuhair Qamar (Section B)</span>
+                            <span class="value" style="font-size: 9pt; color: #777;">Ali Zuhair Qamar (Section B)</span>
                         </div>
                         <div class="student-entry">
                             <span class="value-ar">عبد المجيد مجول (شعبة B)</span>
-                            <span class="value" style="font-size: 9.5pt; color: #666;">Abdulmajeed Majool (Section B)</span>
+                            <span class="value" style="font-size: 9pt; color: #777;">Abdulmajeed Majool (Section B)</span>
                         </div>
                     </div>
                 </div>
@@ -177,13 +180,12 @@
 
         <div class="footer-line">
             <div>
-                <span style="font-weight: 900; color: #000; text-transform: uppercase; letter-spacing: 1px;">Cyber-Physical Systems Lab</span><br>
-                <span style="font-size: 9pt; color: #666;">Academic Year: 2025 - 2026</span>
+                <span style="font-weight: bold; color: #000; text-transform: uppercase; font-size: 9pt; letter-spacing: 1px;">Cyber-Physical Systems Lab</span><br>
+                <span style="font-size: 8.5pt; color: #888;">Academic Year: 2025 - 2026</span>
             </div>
-            <div class="page-num-square">01</div>
+            <div class="page-num-small">1</div>
         </div>
     </div>
 
 </body>
-    </html>
-    
+</html>
