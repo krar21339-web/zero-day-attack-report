@@ -2,48 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cover Page - Page 1</title>
+    <title>IoT Project - Centered Layout</title>
     <style>
-        /* إعدادات الطباعة A4 */
         @page { size: A4; margin: 0; }
-        body { margin: 0; padding: 0; background: #ffffff; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-print-color-adjust: exact; }
         
+        /* هذا الجزء هو المسؤول عن وضع الورقة في وسط الشاشة */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background: #f0f2f5; 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            display: flex;
+            justify-content: center; /* تبيسط أفقي */
+            align-items: center;    /* تبيسط عمودي */
+            min-height: 100vh;      /* ملء طول الشاشة */
+        }
+        
+        /* حاوية الصفحة الأساسية */
         .page-container {
             width: 210mm;
             height: 297mm;
             padding: 22mm;
             box-sizing: border-box;
             background: #ffffff;
+            position: relative;
             display: flex;
             flex-direction: column;
-            position: relative; /* ضروري لثبات الفوتر */
+            box-shadow: 0 0 30px rgba(0,0,0,0.2); /* ظل لتمييز الورقة */
         }
 
-        /* 1. الهيدر العلوي */
-        .header-top { 
-            display: flex; 
-            justify-content: space-between; 
-            border-bottom: 2px solid #000; 
-            padding-bottom: 10px; 
-            margin-bottom: 35mm; /* مساحة واسعة تحت الهيدر */
-        }
-
-        /* 2. منطقة العنوان */
-        .main-title-box { 
-            text-align: center; 
-            margin-bottom: 40mm; /* مساحة واسعة ليتوسط العنوان الورقة */
-        }
+        /* --- تصميم الواجهة --- */
+        .header-top { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 35mm; }
+        .main-title-box { text-align: center; margin-bottom: 35mm; }
         .project-title { font-size: 34pt; font-weight: 900; margin: 0; text-transform: uppercase; line-height: 1.1; }
         .sub-title { font-size: 14pt; color: #22d3ee; font-weight: bold; margin-top: 10px; letter-spacing: 2px; }
         
-        /* 3. شبكة التفاصيل (المشرف والقسم) */
         .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .detail-item { border-left: 4px solid #000; padding-left: 15px; margin-bottom: 15px; }
+        .detail-item { border-left: 4px solid #000; padding-left: 15px; margin-bottom: 10px; }
         .label { font-size: 9pt; color: #22d3ee; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 2px; }
-        .value { font-size: 12pt; font-weight: bold; }
+        .value { font-size: 11pt; font-weight: bold; }
         .value-ar { font-size: 12pt; font-weight: bold; font-family: 'Arial'; display: block; margin-top: 2px; }
 
-        /* 4. بوكس الأسماء المنظم */
+        /* بوكس الأسماء المنظم */
         .names-container {
             grid-column: span 2;
             display: grid;
@@ -56,28 +56,12 @@
         }
         .name-box { border-bottom: 1px solid #eee; padding-bottom: 5px; }
 
-        /* 5. الفوتر الثابت في الأسفل */
         .footer { 
-            position: absolute; 
-            bottom: 20mm; /* مسافة أمان من حافة الورقة السفلى */
-            left: 22mm; 
-            right: 22mm; 
-            border-top: 1px solid #f0f0f0; 
-            padding-top: 10px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+            position: absolute; bottom: 15mm; left: 22mm; right: 22mm; 
+            border-top: 1px solid #f0f0f0; padding-top: 10px; 
+            display: flex; justify-content: space-between; align-items: center; 
         }
-        .page-num { 
-            background: #000; 
-            color: #fff; 
-            width: 32px; 
-            height: 32px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-weight: bold; 
-        }
+        .page-num { background: #000; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
     </style>
 </head>
 <body>
