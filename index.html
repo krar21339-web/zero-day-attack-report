@@ -1,63 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprehensive IoT Report - Page 1, 2 & 3</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        body { 
+            margin: 0; padding: 40px 0; background: #f0f2f5; 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            display: flex; flex-direction: column; align-items: center;    
+        }
+        .page-container {
+            width: 210mm; height: 297mm; padding: 20mm; box-sizing: border-box;
+            background: #ffffff; position: relative; display: flex; flex-direction: column;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2); margin-bottom: 50px; page-break-after: always;
+        }
+
+        /* --- Global Elements --- */
+        .section-tag { font-size: 11pt; font-weight: 800; color: #22d3ee; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 8px; }
+        .content-title { font-size: 28pt; font-weight: 900; margin: 0 0 5px 0; color: #000; }
+        .accent-bar { width: 70px; height: 5px; background: #000; margin-bottom: 25px; }
+        .footer { position: absolute; bottom: 15mm; left: 20mm; right: 20mm; border-top: 1px solid #eee; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .page-num { background: #000; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+        /* --- Page 1 Styles (Cover) --- */
+        .header-top { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 30mm; }
+        .main-title-box { text-align: center; margin-bottom: 30mm; }
+        .project-title { font-size: 34pt; font-weight: 900; line-height: 1.1; }
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .detail-item { border-left: 4px solid #000; padding-left: 15px; margin-bottom: 10px; }
+        .names-container { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: #fcfcfc; border: 1px solid #eee; padding: 15px; }
+
+        /* --- Page 3 Styles (Technical) --- */
+        .tech-card { display: flex; gap: 20px; background: #fafafa; border: 1px solid #eee; padding: 15px; margin-bottom: 20px; align-items: center; }
+        .tech-img { width: 150px; height: 110px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
+        .tech-desc { flex: 1; font-size: 10pt; line-height: 1.5; color: #444; }
+        .tech-desc b { color: #000; font-size: 11pt; display: block; margin-bottom: 5px; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 9.5pt; }
+        th { background: #000; color: #fff; padding: 10px; text-align: left; }
+        td { padding: 8px; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <div class="header-top">
+            <div style="font-weight: bold; font-size: 11pt;">AL-MAMOON UNIVERSITY COLLEGE<br>CYBERSECURITY ENGINEERING</div>
+            <div style="text-align: right; font-size: 10pt; color: #666; font-weight: bold;">TECHNICAL REPORT<br>BAGHDAD, 2026</div>
+        </div>
+        <div class="main-title-box">
+            <h1 class="project-title">Emulate IoT Traffic</h1>
+            <div style="font-size: 14pt; color: #22d3ee; font-weight: bold; margin-top: 10px;">Using Esp32 And Raspberry Pi</div>
+        </div>
+        <div class="details-grid">
+            <div class="detail-item" style="grid-column: span 2;">
+                <span style="font-size: 9pt; color: #22d3ee; font-weight: 800;">SUPERVISED BY:</span><br>
+                <span style="font-size: 18pt; font-weight: bold;">Dr. Wisam</span>
+            </div>
+            <div class="detail-item">
+                <span style="font-size: 9pt; color: #22d3ee; font-weight: 800;">DEPARTMENT:</span><br>
+                <span style="font-weight: bold;">Cybersecurity Engineering</span>
+            </div>
+            <div class="detail-item">
+                <span style="font-size: 9pt; color: #22d3ee; font-weight: 800;">STAGE:</span><br>
+                <span style="font-weight: bold;">Second Stage</span>
+            </div>
+            <div class="names-container">
+                <div style="grid-column: span 2; border-bottom: 2px solid #22d3ee; padding-bottom: 5px;"><b>Prepared By:</b></div>
+                <div>Karrar Mohammed (Sec C)</div><div>Fahad Ahmed (Sec B)</div>
+                <div>Ali Majid (Sec B)</div><div>Ali Zuhair (Sec B)</div>
+                <div>Saad Ahmed (Sec B)</div><div>Abdel Majeed (Sec B)</div>
+            </div>
+        </div>
+        <div class="footer"><div>CYBER-PHYSICAL SYSTEMS RESEARCH</div><div class="page-num">1</div></div>
+    </div>
+
+    <div class="page-container">
+        <span class="section-tag">Section 01</span>
+        <h2 class="content-title">Introduction</h2>
+        <div class="accent-bar"></div>
+        <div style="line-height: 1.8; font-size: 12pt; text-align: justify; background: #fcfcfc; padding: 25px; border-right: 6px solid #22d3ee; margin-bottom: 30px;">
+            The <b>Internet of Things (IoT)</b> has become a fundamental pillar in the architecture of smart cities and industrial automation. However, the surge in connected devices introduces significant security vulnerabilities. This project focuses on <b>IoT Traffic Emulation</b> to provide a controlled environment for analyzing network behavior. By utilizing the <b>ESP32</b>, we can simulate realistic data patterns and evaluate how cybersecurity frameworks respond to various traffic loads and potential anomalies in real-time.
+        </div>
+        <div style="background: #000; color: #fff; padding: 30px; text-align: center; border-radius: 4px; margin-top: auto;">
+            <h3>NETWORK ANALYSIS CORE</h3>
+            <p style="opacity: 0.7;">SIMULATING COMPLEX CYBER ENVIRONMENTS</p>
+        </div>
+        <div class="footer"><div>AL-MAMOON UNIVERSITY COLLEGE</div><div class="page-num">2</div></div>
+    </div>
+
     <div class="page-container">
         <span class="section-tag">Section 02</span>
-        <h2 class="content-title">Technical Implementation</h2>
+        <h2 class="content-title">Technical Specifications</h2>
         <div class="accent-bar"></div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
-            <div style="background: #000; color: #fff; padding: 20px; border-radius: 4px;">
-                <h4 style="color: #22d3ee; margin-top: 0;">HARDWARE LIST</h4>
-                <ul style="font-size: 10pt; line-height: 1.6; padding-left: 20px;">
-                    <li><b>ESP32 DevKit V1:</b> Processing & Wi-Fi.</li>
-                    <li><b>OLED Display SSD1306:</b> Data Visualization.</li>
-                    <li><b>Jumper Wires:</b> Signal Transmission.</li>
-                    <li><b>Breadboard:</b> Circuit Prototyping.</li>
-                    <li><b>Power Source:</b> 5V USB/External.</li>
-                </ul>
-            </div>
-            <div style="border: 2px solid #eee; overflow: hidden; border-radius: 4px;">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+        <div class="tech-card">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400" class="tech-img" alt="ESP32">
+            <div class="tech-desc">
+                <b>1. The ESP32 Microcontroller Unit (MCU)</b>
+                The ESP32 is the brain of our emulation system. It is a powerful Dual-Core processor with integrated Wi-Fi and Bluetooth capabilities. In this project, it executes the firmware responsible for generating synthetic TCP/UDP traffic, mimicking multiple IoT sensors simultaneously to test network bandwidth and security protocols.
             </div>
         </div>
 
-        <h3 style="font-size: 14pt; border-left: 4px solid #22d3ee; padding-left: 10px; margin-bottom: 15px;">CIRCUIT WIRING & LOGIC</h3>
-        <table style="width: 100%; border-collapse: collapse; font-size: 10pt; margin-bottom: 25px;">
-            <tr style="background: #22d3ee; color: #000;">
-                <th style="padding: 10px; text-align: left;">Component</th>
-                <th style="padding: 10px; text-align: left;">ESP32 Pin</th>
-                <th style="padding: 10px; text-align: left;">Function</th>
-            </tr>
-            <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px;">OLED VCC / GND</td>
-                <td style="padding: 10px;">3.3V / GND</td>
-                <td style="padding: 10px;">Power Supply</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px;">OLED SCL (Clock)</td>
-                <td style="padding: 10px;">GPIO 22</td>
-                <td style="padding: 10px;">I2C Communication</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px;">OLED SDA (Data)</td>
-                <td style="padding: 10px;">GPIO 21</td>
-                <td style="padding: 10px;">I2C Communication</td>
-            </tr>
+        <div class="tech-card">
+            <div class="tech-desc">
+                <b>2. OLED Diagnostic Interface (SSD1306)</b>
+                The 0.96-inch OLED display serves as our hardware debugger. It connects to the MCU via the I2C protocol. Its primary role is to provide real-time visual metrics, displaying the current IP address, the number of packets successfully sent, and any transmission errors detected during the traffic emulation process.
+            </div>
+            <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=400" class="tech-img" alt="OLED">
+        </div>
+
+        <div style="background: #eef2f3; padding: 15px; border-left: 5px solid #22d3ee; margin-bottom: 15px;">
+            <b style="font-size: 12pt;">System Wiring & Logic</b>
+            <p style="font-size: 10pt; margin: 5px 0;">We utilize <b>Jumper Wires</b> and a <b>Breadboard</b> to establish a stable communication bridge between components. The connectivity follows a strict I2C mapping to ensure high-speed data transfer between the processor and the display.</p>
+        </div>
+
+        <table>
+            <thead><tr><th>Component Pin</th><th>ESP32 GPIO</th><th>Protocol/Function</th></tr></thead>
+            <tbody>
+                <tr><td>VCC (Power)</td><td>3.3V Pin</td><td>Main logic power supply</td></tr>
+                <tr><td>GND (Ground)</td><td>GND Pin</td><td>Common ground reference</td></tr>
+                <tr><td>SCL (Clock)</td><td>GPIO 22</td><td>I2C Synchronous Clock signal</td></tr>
+                <tr><td>SDA (Data)</td><td>GPIO 21</td><td>I2C Serial Data line</td></tr>
+            </tbody>
         </table>
 
-        <div style="background: #f9f9f9; padding: 20px; border-left: 5px solid #000; margin-bottom: 30px;">
-            <h4 style="margin-top: 0;">How it Works (Simulation Logic):</h4>
-            <p style="font-size: 10.5pt; line-height: 1.6; color: #444;">
-                يعمل الـ <b>ESP32</b> كعقل مدبر للعملية، حيث يتم برمجته لمحاكاة بروتوكولات IoT (مثل MQTT أو HTTP). يتم ربط الشاشة عبر بروتوكول <b>I2C</b> لإظهار حالة الشبكة وعدد الحزم (Packets) المرسلة لحظياً. تستخدم الأسلاك لنقل الإشارات الرقمية بين الحساسات الوهمية والمعالج لضمان استقرار محاكاة الترافيك السيبراني.
-            </p>
-        </div>
-
-        <div style="margin-top: auto; position: relative; height: 180px; overflow: hidden; border-radius: 8px;">
-            <div style="position: absolute; top: 15px; left: 15px; background: rgba(34, 211, 238, 0.8); color: #000; padding: 5px 15px; font-weight: bold; font-size: 9pt; z-index: 10;">CYBER EMBEDDED SYSTEM</div>
+        <div style="margin-top: auto; height: 160px; border-radius: 8px; overflow: hidden;">
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
 
-        <div class="footer">
-            <div style="font-size: 9pt; font-weight: bold;">TECHNICAL SPECIFICATIONS | PHASE 02</div>
-            <div class="page-num">3</div>
-        </div>
+        <div class="footer"><div>TECHNICAL SPECIFICATIONS | PHASE 02</div><div class="page-num">3</div></div>
     </div>
-    
+
+</body>
+                                                 </html>
+                
