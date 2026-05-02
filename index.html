@@ -2,131 +2,128 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IoT Project - Centered Layout</title>
+    <title>Introduction - IoT Project</title>
     <style>
         @page { size: A4; margin: 0; }
         
-        /* هذا الجزء هو المسؤول عن وضع الورقة في وسط الشاشة */
         body { 
             margin: 0; 
-            padding: 0; 
+            padding: 20px 0; 
             background: #f0f2f5; 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             display: flex;
-            justify-content: center; /* تبيسط أفقي */
-            align-items: center;    /* تبيسط عمودي */
-            min-height: 100vh;      /* ملء طول الشاشة */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         
-        /* حاوية الصفحة الأساسية */
         .page-container {
             width: 210mm;
             height: 297mm;
-            padding: 22mm;
+            padding: 25mm;
             box-sizing: border-box;
             background: #ffffff;
             position: relative;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 0 30px rgba(0,0,0,0.2); /* ظل لتمييز الورقة */
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
         }
 
-        /* --- تصميم الواجهة --- */
-        .header-top { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 35mm; }
-        .main-title-box { text-align: center; margin-bottom: 35mm; }
-        .project-title { font-size: 34pt; font-weight: 900; margin: 0; text-transform: uppercase; line-height: 1.1; }
-        .sub-title { font-size: 14pt; color: #22d3ee; font-weight: bold; margin-top: 10px; letter-spacing: 2px; }
+        /* رأس صفحة المقدمة */
+        .intro-header { 
+            border-bottom: 2px solid #000; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end;
+        }
+        .section-number { font-size: 24pt; font-weight: 900; color: #000; }
+        .section-title { font-size: 14pt; font-weight: bold; color: #22d3ee; text-transform: uppercase; }
+
+        /* المحتوى النصي */
+        .content-title { font-size: 26pt; font-weight: 900; margin-bottom: 10px; }
+        .accent-line { width: 60px; height: 5px; background: #22d3ee; margin-bottom: 30px; }
         
-        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .detail-item { border-left: 4px solid #000; padding-left: 15px; margin-bottom: 10px; }
-        .label { font-size: 9pt; color: #22d3ee; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 2px; }
-        .value { font-size: 11pt; font-weight: bold; }
-        .value-ar { font-size: 12pt; font-weight: bold; font-family: 'Arial'; display: block; margin-top: 2px; }
-
-        /* بوكس الأسماء المنظم */
-        .names-container {
-            grid-column: span 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            background: #fcfcfc;
-            border: 1px solid #eee;
-            padding: 15px;
-            margin-top: 10px;
+        .main-paragraph { 
+            line-height: 1.8; 
+            font-size: 12pt; 
+            text-align: justify; 
+            color: #333; 
+            margin-bottom: 40px; 
         }
-        .name-box { border-bottom: 1px solid #eee; padding-bottom: 5px; }
 
+        /* كروت الهاردوير */
+        .hw-label { font-weight: 800; font-size: 10pt; color: #22d3ee; margin-bottom: 15px; display: block; }
+        
+        .hw-card { 
+            display: flex; 
+            gap: 25px; 
+            margin-bottom: 25px; 
+            align-items: center; 
+            background: #fafafa; 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 1px solid #eee; 
+        }
+        .hw-info { flex: 1; }
+        .hw-info h4 { margin: 0 0 8px 0; font-size: 13pt; color: #000; }
+        .hw-info p { margin: 0; font-size: 10pt; color: #666; line-height: 1.5; }
+        
+        .hw-img { 
+            width: 130px; 
+            height: 100px; 
+            object-fit: contain; 
+            background: white; 
+            border: 1px solid #eee; 
+            border-radius: 8px;
+        }
+
+        /* الفوتر */
         .footer { 
-            position: absolute; bottom: 15mm; left: 22mm; right: 22mm; 
-            border-top: 1px solid #f0f0f0; padding-top: 10px; 
+            position: absolute; bottom: 15mm; left: 25mm; right: 25mm; 
+            border-top: 1px solid #eee; padding-top: 15px; 
             display: flex; justify-content: space-between; align-items: center; 
         }
-        .page-num { background: #000; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .page-num { background: #000; color: #fff; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="page-container">
-        <div class="header-top">
-            <div style="font-weight: bold; font-size: 11pt;">AL-MAMOON UNIVERSITY COLLEGE<br>CYBERSECURITY ENGINEERING</div>
-            <div style="text-align: right; font-size: 10pt; color: #666; font-weight: bold;">TECHNICAL REPORT<br>BAGHDAD, 2026</div>
+        <div class="intro-header">
+            <span class="section-number">01</span>
+            <span class="section-title">Introduction & Overview</span>
         </div>
 
-        <div class="main-title-box">
-            <h1 class="project-title">Emulate IoT Traffic</h1>
-            <div class="sub-title">Using Esp32 And Raspberry Pi</div>
+        <h2 class="content-title">EXECUTIVE SUMMARY</h2>
+        <div class="accent-line"></div>
+
+        <p class="main-paragraph">
+            The integration of <b>Internet of Things (IoT)</b> technology has revolutionized how we interact with the physical world. However, with this connectivity comes the challenge of network security and traffic management. This project focuses on <b>Emulating IoT Traffic</b> to create a realistic simulation environment. Using the <b>ESP32</b> platform, we can generate diverse data packets that mimic real-world sensors, allowing for advanced analysis of network behavior and cybersecurity resilience.
+        </p>
+
+        <span class="hw-label">CORE HARDWARE COMPONENTS</span>
+
+        <div class="hw-card">
+            <div class="hw-info">
+                <h4>ESP32 Microcontroller</h4>
+                <p>The primary emulation engine capable of handling Wi-Fi stacks and generating synthetic network traffic protocols.</p>
+            </div>
+            <img class="hw-img" src="https://m.media-amazon.com/images/I/61m1OnrAn3L._AC_SL1000_.jpg" alt="ESP32">
         </div>
 
-        <div class="details-grid">
-            <div class="detail-item" style="grid-column: span 2;">
-                <span class="label">Supervised By / بإشراف:</span>
-                <span class="value" style="font-size: 18pt;">Dr. Wisam</span>
-            </div>
-            <div class="detail-item">
-                <span class="label">Department / القسم:</span>
-                <span class="value">Cybersecurity Engineering</span>
-                <span class="value-ar">هندسة الأمن السيبراني</span>
-            </div>
-            <div class="detail-item">
-                <span class="label">Stage / المرحلة:</span>
-                <span class="value">Second Stage</span>
-                <span class="value-ar">المرحلة الثانية</span>
-            </div>
-
-            <div class="names-container">
-                <div style="grid-column: span 2; border-bottom: 2px solid #22d3ee; padding-bottom: 5px; margin-bottom: 5px;">
-                    <span class="label" style="color: #000;">Prepared By / إعداد الطلبة:</span>
-                </div>
-                <div class="name-box">
-                    <span class="value">Karrar Mohammed (Sec C)</span>
-                    <span class="value-ar">كرار محمد داود</span>
-                </div>
-                <div class="name-box">
-                    <span class="value">Fahad Ahmed (Sec B)</span>
-                    <span class="value-ar">فهد احمد علي</span>
-                </div>
-                <div class="name-box">
-                    <span class="value">Ali Majid (Sec B)</span>
-                    <span class="value-ar">علي ماجد حسين</span>
-                </div>
-                <div class="name-box">
-                    <span class="value">Ali Zuhair (Sec B)</span>
-                    <span class="value-ar">علي زهير قمر</span>
-                </div>
-                <div class="name-box">
-                    <span class="value">Saad Ahmed (Sec B)</span>
-                    <span class="value-ar">سعد احمد فاضل</span>
-                </div>
-                <div class="name-box">
-                    <span class="value">Abdel Majeed (Sec B)</span>
-                    <span class="value-ar">عبد المجيد مجول</span>
-                </div>
+        <div class="hw-card">
+            <img class="hw-img" src="https://m.media-amazon.com/images/I/61-A7Yp52mL._AC_SL1200_.jpg" alt="OLED">
+            <div class="hw-info">
+                <h4>OLED Diagnostic Display</h4>
+                <p>Provides real-time feedback on the emulation status, including IP address, packet rate, and transmission errors.</p>
             </div>
         </div>
 
         <div class="footer">
-            <div style="font-size: 9pt; font-weight: bold;">CYBER-PHYSICAL SYSTEMS RESEARCH</div>
-            <div class="page-num">1</div>
+            <div style="font-size: 10pt; font-weight: 800;">AL-MAMOON UNIVERSITY COLLEGE</div>
+            <div class="page-num">2</div>
         </div>
     </div>
 
