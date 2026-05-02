@@ -244,3 +244,48 @@
 
 </body>
 </html>
+    <div class="page" style="page-break-before: always; min-height: 297mm; padding: 20mm; background: #020617; color: #ffffff; box-sizing: border-box; border-left: 4px solid #22d3ee; position: relative;">
+        
+        <div style="border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 30px;">
+            <h1 style="font-size: 28pt; font-weight: 800; color: #22d3ee; text-transform: uppercase; letter-spacing: 2px; margin: 0;">
+                Introduction
+            </h1>
+        </div>
+
+        <div style="line-height: 1.8; font-size: 12.5pt; color: #cbd5e1; text-align: justify;">
+            <p>
+                In the contemporary field of <span style="color: #22d3ee; font-weight: bold;">Cybersecurity Engineering</span>, the security of interconnected devices has become a paramount concern. This project, <span style="color: #22d3ee; font-weight: bold;">"Emulate IoT Traffic Using ESP32 And Raspberry Pi"</span>, provides a strategic framework for simulating complex network environments. By utilizing the dual-core processing power of the <span style="color: #22d3ee; font-weight: bold;">ESP32</span>, we synthesize realistic traffic signatures that allow for the stress-testing of defense protocols.
+            </p>
+
+            <p>
+                The core implementation features an <span style="color: #22d3ee; font-weight: bold;">OLED Diagnostic Interface</span>, which serves as a localized monitoring hub for real-time telemetry. This hardware edge-node transmits emulated data packets to a <span style="color: #22d3ee; font-weight: bold;">Raspberry Pi</span> gateway, functioning as the central analytical engine for traffic forensics and anomaly detection.
+            </p>
+
+            <div style="width: 100%; background: #0f172a; border: 1px dashed #22d3ee; margin: 30px 0; padding: 20px; text-align: center;">
+                <img src="https://www.espressif.com/sites/default/files/esp32_wroom_32_front.png" alt="ESP32 Module" style="max-height: 180px;">
+                <span style="display: block; margin-top: 10px; font-size: 10pt; color: #94a3b8; font-style: italic;">
+                    Figure 1.1: Hardware infrastructure featuring ESP32 and OLED telemetry system.
+                </span>
+            </div>
+
+            <p>
+                Through this methodology, we evaluate the efficiency of various communication standards against potential cyber disruptions. This emulation infrastructure is essential for developing resilient <span style="color: #22d3ee; font-weight: bold;">Intrusion Detection Systems (IDS)</span> tailored for the evolving IoT ecosystem.
+            </p>
+        </div>
+
+        <div style="position: absolute; bottom: 15mm; width: calc(100% - 40mm); border-top: 1px solid #1e293b; padding-top: 10px; font-size: 10pt; color: #475569; display: flex; justify-content: space-between;">
+            <span>Cybersecurity Engineering Department</span>
+            <span>Page 02</span>
+        </div>
+    </div>
+    ```
+
+### ماذا تفعل الآن؟
+1. في صورتك، اذهب إلى السطر **244** (قبل `</body>`).
+2. قم بلصق الكود أعلاه بالكامل.
+3. الأمر `page-break-before: always;` الموجود في أول سطر من الكود هو الذي سيخبر المتصفح أن "هنا تنتهي الواجهة وتبدأ صفحة جديدة".
+
+**ملاحظة تقنية:** تأكد أن الكود في ملفك الأصلي (في قسم الـ `<style>`) يحتوي على هذه الخاصية لضمان ظهور الألوان عند السحب كـ PDF:
+`-webkit-print-color-adjust: exact;`
+
+هل تحتاج مساعدة في "تركيب" الكود أو البدء بصفحة المكونات (Hardware Components)؟
