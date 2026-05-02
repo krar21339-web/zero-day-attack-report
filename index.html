@@ -13,7 +13,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #020617; /* Dark Cyber Background */
+            background-color: #020617; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             -webkit-print-color-adjust: exact;
         }
@@ -34,7 +34,7 @@
             overflow: hidden;
         }
 
-        /* Cyber Decorations (Modern Lines) */
+        /* Cyber Decorations */
         .page-a4::before {
             content: "";
             position: absolute;
@@ -65,7 +65,7 @@
             padding-bottom: 10mm;
         }
 
-        .ar-text {
+        .ar-title {
             font-family: 'Arial', sans-serif;
             font-size: 22pt;
             font-weight: bold;
@@ -75,7 +75,7 @@
             direction: rtl;
         }
 
-        .en-text {
+        .en-title {
             font-size: 16pt;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -125,7 +125,7 @@
             font-size: 18pt;
         }
 
-        /* Students Grid */
+        /* Students Grid Mapped for Arabic & English */
         .students-section {
             width: 100%;
             margin-top: 15mm;
@@ -150,15 +150,27 @@
 
         .student-item {
             text-align: left;
-            padding: 10px;
-            background: rgba(30, 41, 59, 0.5);
-            border-left: 2px solid #1e293b;
+            padding: 12px;
+            background: rgba(30, 41, 59, 0.4);
+            border-left: 2px solid #22d3ee;
+        }
+
+        .st-ar {
+            font-family: 'Arial', sans-serif;
+            font-size: 13pt;
+            font-weight: bold;
+            color: #f8fafc;
+            display: block;
+            direction: rtl;
+            text-align: right;
+            margin-bottom: 4px;
         }
 
         .st-en {
-            font-size: 13pt;
-            font-weight: 600;
-            color: #ffffff;
+            font-size: 11pt;
+            color: #94a3b8;
+            display: block;
+            text-transform: capitalize;
         }
 
         .footer {
@@ -174,8 +186,8 @@
 
     <div class="page-a4">
         <div class="college-header">
-            <span class="ar-text">كلية المأمون الجامعة</span>
-            <span class="en-text">Al-Ma'moon University College</span>
+            <span class="ar-title">كلية المأمون الجامعة</span>
+            <span class="en-title">Al-Ma'moon University College</span>
             <div class="dept-name">Cybersecurity Engineering Department</div>
         </div>
 
@@ -191,12 +203,37 @@
         <div class="students-section">
             <div class="students-title">Prepared by:</div>
             <div class="students-grid">
-                <div class="student-item"><span class="st-en">Karrar Mohammed Dawood</span></div>
-                <div class="student-item"><span class="st-en">Ali Majid Hussein</span></div>
-                <div class="student-item"><span class="st-en">Saad Ahmed Fadhil</span></div>
-                <div class="student-item"><span class="st-en">Fahad Ahmed Ali</span></div>
-                <div class="student-item"><span class="st-en">Ali Zuhair Qamar</span></div>
-                <div class="student-item"><span class="st-en">Abdulmajeed Majool</span></div>
+                
+                <div class="student-item">
+                    <span class="st-ar">كرار محمد داود</span>
+                    <span class="st-en">Karrar Mohammed Dawood</span>
+                </div>
+
+                <div class="student-item">
+                    <span class="st-ar">علي ماجد حسين</span>
+                    <span class="st-en">Ali Majid Hussein</span>
+                </div>
+
+                <div class="student-item">
+                    <span class="st-ar">سعد احمد فاضل</span>
+                    <span class="st-en">Saad Ahmed Fadhil</span>
+                </div>
+
+                <div class="student-item">
+                    <span class="st-ar">فهد احمد علي</span>
+                    <span class="st-en">Fahad Ahmed Ali</span>
+                </div>
+
+                <div class="student-item">
+                    <span class="st-ar">علي زهير قمر</span>
+                    <span class="st-en">Ali Zuhair Qamar</span>
+                </div>
+
+                <div class="student-item">
+                    <span class="st-ar">عبد المجيد مجول</span>
+                    <span class="st-en">Abdulmajeed Majool</span>
+                </div>
+
             </div>
         </div>
 
