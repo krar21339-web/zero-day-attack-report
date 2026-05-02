@@ -2,290 +2,192 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Graduation Project Cover - Cybersecurity Engineering</title>
+    <title>Graduation Project Cover - IoT Traffic Emulation</title>
     <style>
-        /* A4 Setup for Print */
         @page {
             size: A4;
             margin: 0;
         }
-        
         body {
             margin: 0;
             padding: 0;
-            background-color: #020617; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            font-family: 'Arial', sans-serif;
             -webkit-print-color-adjust: exact;
         }
-
-        .page-a4 {
+        .page-cover {
             width: 210mm;
             height: 297mm;
             padding: 20mm;
-            margin: 10mm auto;
-            background: #020617;
             box-sizing: border-box;
-            border: 5px solid #1e293b;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
-            color: #ffffff;
-            overflow: hidden;
+            background: #ffffff;
         }
 
-        /* Cyber Decorations */
-        .page-a4::before {
-            content: "";
-            position: absolute;
-            top: 0; right: 0;
-            width: 150px; height: 150px;
-            border-top: 4px solid #22d3ee;
-            border-right: 4px solid #22d3ee;
-        }
-
-        .page-a4::after {
-            content: "";
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 150px; height: 150px;
-            border-bottom: 4px solid #22d3ee;
-            border-left: 4px solid #22d3ee;
-        }
-
-        @media print {
-            body { background: #020617 !important; }
-            .page-a4 { margin: 0; border: none; }
-        }
-
-        /* College Headers */
-        .college-header {
-            text-align: center;
-            border-bottom: 1px solid #1e293b;
-            padding-bottom: 10mm;
-        }
-
-        .ar-title {
-            font-family: 'Arial', sans-serif;
-            font-size: 22pt;
-            font-weight: bold;
-            display: block;
-            color: #22d3ee;
-            margin-bottom: 5px;
-            direction: rtl;
-        }
-
-        .en-title {
-            font-size: 16pt;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #94a3b8;
-        }
-
-        .dept-name {
-            margin-top: 10px;
-            font-size: 14pt;
-            color: #ffffff;
-            font-weight: 500;
-        }
-
-        /* Main Body */
-        .project-content {
-            flex-grow: 1;
+        /* الجزء العلوي - اسم الجامعة والكلية */
+        .header-section {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #020617;
+            padding-bottom: 10px;
         }
-
-        .label-text {
-            color: #22d3ee;
-            font-size: 12pt;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-        }
-
-        .project-title {
-            font-size: 34pt;
-            font-weight: 800;
-            line-height: 1.2;
-            color: #ffffff;
-            margin-bottom: 15mm;
-            text-transform: uppercase;
-        }
-
-        .supervisor-section {
-            font-size: 16pt;
-            color: #94a3b8;
-        }
-
-        .supervisor-name {
-            color: #22d3ee;
+        .univ-info {
+            font-size: 11pt;
             font-weight: bold;
-            font-size: 18pt;
+            color: #020617;
+            line-height: 1.4;
         }
 
-        /* Students Grid Mapped for Arabic & English */
-        .students-section {
-            width: 100%;
-            margin-top: 15mm;
+        /* عنوان المشروع الضخم - ستايل Sentinel */
+        .title-section {
+            margin-top: 30mm;
         }
-
-        .students-title {
+        .topic-number {
             font-size: 14pt;
             color: #22d3ee;
-            text-transform: uppercase;
+            font-weight: 800;
             letter-spacing: 2px;
-            margin-bottom: 8mm;
-            text-align: left;
-            border-left: 4px solid #22d3ee;
-            padding-left: 10px;
+            text-transform: uppercase;
+        }
+        .main-project-title {
+            font-size: 44pt;
+            font-weight: 900;
+            line-height: 1;
+            color: #020617;
+            margin: 15px 0;
+            text-transform: uppercase;
+        }
+        .sub-title {
+            font-size: 16pt;
+            color: #64748b;
+            letter-spacing: 1px;
+            font-weight: normal;
         }
 
-        .students-grid {
+        /* شبكة المعلومات (الطلاب والمشرف) */
+        .meta-data-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8mm;
+            gap: 25px;
+            margin-top: 40mm;
         }
-
-        .student-item {
-            text-align: left;
-            padding: 12px;
-            background: rgba(30, 41, 59, 0.4);
-            border-left: 2px solid #22d3ee;
+        .data-card {
+            border-left: 4px solid #020617;
+            padding-left: 15px;
+            margin-bottom: 20px;
         }
-
-        .st-ar {
-            font-family: 'Arial', sans-serif;
-            font-size: 13pt;
-            font-weight: bold;
-            color: #f8fafc;
+        .card-label {
+            font-size: 10pt;
+            color: #22d3ee;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .names-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .name-entry {
+            margin-bottom: 12px;
+        }
+        .name-ar {
             display: block;
             direction: rtl;
-            text-align: right;
-            margin-bottom: 4px;
+            text-align: left; /* لكي تتناسب مع التصميم الإنجليزي */
+            font-size: 13pt;
+            font-weight: bold;
+            color: #020617;
         }
-
-        .st-en {
-            font-size: 11pt;
-            color: #94a3b8;
+        .name-en {
             display: block;
-            text-transform: capitalize;
+            font-size: 10pt;
+            color: #64748b;
         }
 
-        .footer {
-            text-align: center;
-            font-size: 11pt;
-            color: #475569;
-            border-top: 1px solid #1e293b;
-            padding-top: 5mm;
+        /* التذييل الأسفل */
+        .footer-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+        .location-tag {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #020617;
+            text-transform: uppercase;
+        }
+        .page-index {
+            background: #020617;
+            color: #ffffff;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16pt;
+            font-weight: 900;
         }
     </style>
 </head>
 <body>
 
-    <div class="page-a4">
-        <div class="college-header">
-            <span class="ar-title">كلية المأمون الجامعة</span>
-            <span class="en-title">Al-Ma'moon University College</span>
-            <div class="dept-name">Cybersecurity Engineering Department</div>
-        </div>
-
-        <div class="project-content">
-            <div class="label-text">GRADUATION PROJECT</div>
-            <h1 class="project-title">Emulate IoT Traffic Using<br>ESP32 And Raspberry Pi</h1>
-            
-            <div class="supervisor-section">
-                Supervised by: <span class="supervisor-name">Dr. Wisam</span>
+    <div class="page-cover">
+        <div class="header-section">
+            <div class="univ-info">
+                AL-MAMOON UNIVERSITY COLLEGE<br>
+                CYBERSECURITY ENGINEERING
+            </div>
+            <div style="text-align: right; font-size: 10pt; color: #64748b; font-weight: bold;">
+                TECHNICAL RESEARCH<br>2025 - 2026
             </div>
         </div>
 
-        <div class="students-section">
-            <div class="students-title">Prepared by:</div>
-            <div class="students-grid">
-                
-                <div class="student-item">
-                    <span class="st-ar">كرار محمد داود</span>
-                    <span class="st-en">Karrar Mohammed Dawood</span>
-                </div>
+        <div class="title-section">
+            <span class="topic-number">Topic 47 / IoT Security</span>
+            <h1 class="main-project-title">EMULATE IoT<br>TRAFFIC</h1>
+            <h2 class="sub-title">ESP32 & RASPBERRY PI INTEGRATED FRAMEWORK</h2>
+        </div>
 
-                <div class="student-item">
-                    <span class="st-ar">علي ماجد حسين</span>
-                    <span class="st-en">Ali Majid Hussein</span>
-                </div>
+        <div class="meta-data-grid">
+            <div class="data-card" style="grid-column: span 2;">
+                <span class="card-label">Supervised By:</span>
+                <span style="font-size: 18pt; font-weight: 900; color: #020617;">Dr. Wisam</span>
+            </div>
 
-                <div class="student-item">
-                    <span class="st-ar">سعد احمد فاضل</span>
-                    <span class="st-en">Saad Ahmed Fadhil</span>
+            <div class="data-card" style="grid-column: span 2;">
+                <span class="card-label">Prepared By:</span>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div class="names-list">
+                        <div class="name-entry"><span class="name-ar">كرار محمد داود</span><span class="name-en">Karrar Mohammed Dawood</span></div>
+                        <div class="name-entry"><span class="name-ar">علي ماجد حسين</span><span class="name-en">Ali Majid Hussein</span></div>
+                        <div class="name-entry"><span class="name-ar">سعد احمد فاضل</span><span class="name-en">Saad Ahmed Fadhil</span></div>
+                    </div>
+                    <div class="names-list">
+                        <div class="name-entry"><span class="name-ar">فهد احمد علي</span><span class="name-en">Fahad Ahmed Ali</span></div>
+                        <div class="name-entry"><span class="name-ar">علي زهير قمر</span><span class="name-en">Ali Zuhair Qamar</span></div>
+                        <div class="name-entry"><span class="name-ar">عبد المجيد مجول</span><span class="name-en">Abdulmajeed Majool</span></div>
+                    </div>
                 </div>
-
-                <div class="student-item">
-                    <span class="st-ar">فهد احمد علي</span>
-                    <span class="st-en">Fahad Ahmed Ali</span>
-                </div>
-
-                <div class="student-item">
-                    <span class="st-ar">علي زهير قمر</span>
-                    <span class="st-en">Ali Zuhair Qamar</span>
-                </div>
-
-                <div class="student-item">
-                    <span class="st-ar">عبد المجيد مجول</span>
-                    <span class="st-en">Abdulmajeed Majool</span>
-                </div>
-
             </div>
         </div>
 
-        <div class="footer">
-            Academic Year: 2025 - 2026
+        <div class="footer-strip">
+            <div>
+                <span class="location-tag">Cyber-Physical Systems Lab</span><br>
+                <span style="font-size: 9pt; color: #94a3b8;">BAGHDAD, IRAQ / ACADEMIC SUBMISSION</span>
+            </div>
+            <div class="page-index">01</div>
         </div>
     </div>
 
 </body>
-</html>
-    <div style="page-break-after: always;"></div>
-
-    <div class="page" style="min-height: 297mm; padding: 20mm; background: #ffffff; color: #000000; box-sizing: border-box; border-left: 8px solid #020617; position: relative; font-family: 'Times New Roman', Times, serif;">
-        
-        <div style="border-bottom: 2px solid #020617; padding-bottom: 10px; margin-bottom: 20px;">
-            <h1 style="font-size: 24pt; font-weight: bold; color: #020617; text-transform: uppercase; margin: 0;">
-                Chapter 1: Introduction
-            </h1>
-        </div>
-
-        <div style="line-height: 1.6; font-size: 12pt; text-align: justify; color: #000000;">
-            <p>
-                The rapid integration of the Internet of Things (IoT) into industrial and domestic environments has revolutionized how data is collected and processed. However, this massive connectivity introduces critical vulnerabilities in network security. This project, titled <b>"Emulate IoT Traffic Using ESP32 And Raspberry Pi"</b>, addresses these challenges by creating a controlled emulation environment. The primary goal is to synthesize realistic network traffic signatures that allow cybersecurity engineers to analyze patterns and strengthen defense mechanisms against potential cyber-attacks.
-            </p>
-
-            <p>
-                At the hardware level, the <b>ESP32</b> microcontroller acts as the core emulation node due to its powerful dual-core processor and integrated wireless capabilities. It is programmed to simulate various IoT device behaviors, from simple periodic sensors to complex data-streaming units. This flexibility is essential for generating the diverse traffic entropy required for high-fidelity security testing.
-            </p>
-
-            <div style="margin: 25px 0; text-align: center; border: 1px solid #e2e8f0; padding: 15px; background: #f8fafc;">
-                <img src="https://www.espressif.com/sites/default/files/esp32_wroom_32_front.png" alt="ESP32 Module" style="max-height: 180px; margin-bottom: 10px;">
-                <div style="font-size: 10pt; color: #475569; font-style: italic; border-top: 1px solid #cbd5e1; pt: 8px;">
-                    <b>Figure 1.1:</b> The ESP32 Hardware Node integrated with high-performance Wi-Fi stack for traffic synthesis and local diagnostic monitoring.
-                </div>
-            </div>
-
-            <p>
-                To provide immediate local visibility, an <b>OLED Display</b> is utilized. This interface is crucial for real-time diagnostics, displaying vital system metrics such as IP allocation, packet transmission rates, and connection stability. By offloading these logs to a physical screen, the system maintains its autonomy as an edge device, reducing the reliance on external serial debugging tools during active emulation phases.
-            </p>
-
-            <p>
-                The data flow is orchestrated towards a <b>Raspberry Pi</b> gateway. This central hub is responsible for aggregating the emulated traffic and performing deep packet inspection (DPI). By combining the low-power efficiency of the ESP32 with the analytical performance of the Raspberry Pi, this project establishes a scalable blueprint for building more resilient IoT infrastructures. The synergy between these components allows us to measure end-to-end latency and evaluate encryption overheads, ensuring that cybersecurity measures do not compromise network performance.
-            </p>
-
-            <p>
-                Ultimately, this work contributes to the development of next-generation <b>Intrusion Detection Systems (IDS)</b>. By providing a hardware-in-the-loop (HIL) testing bed, security researchers can validate defense algorithms in a safe, repeatable environment, which is vital for protecting the critical infrastructure of the future.
-            </p>
-        </div>
-
-        <div style="position: absolute; bottom: 15mm; width: calc(100% - 40mm); border-top: 1px solid #000; padding-top: 10px; font-size: 10pt; display: flex; justify-content: space-between;">
-            <span style="font-weight: bold;">Cybersecurity Engineering Department</span>
-            <span>Page | 01</span>
-        </div>
-    </div>
-    
+                            </html>
+                    
