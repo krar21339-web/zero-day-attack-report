@@ -39,7 +39,7 @@
         .accent-bar { width: 100px; height: 8px; background: #0f172a; margin-bottom: 30px; }
         .main-text { line-height: 1.8; font-size: 12.5pt; text-align: justify; color: #334155; background: #f8fafc; padding: 30px; border-right: 8px solid #0891b2; border-radius: 4px; margin-bottom: 30px; }
 
-        /* بطاقات التقنية المحدثة (شرح أكثر) */
+        /* بطاقات التقنية */
         .tech-card { display: flex; gap: 25px; background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 25px; align-items: center; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .tech-img { width: 180px; height: 130px; object-fit: cover; border-radius: 8px; border: 2px solid #0891b2; }
         .tech-info { flex: 1; font-size: 10.5pt; line-height: 1.6; color: #475569; }
@@ -53,6 +53,18 @@
         /* الفوتر */
         .footer { position: absolute; bottom: 15mm; left: 22mm; right: 22mm; border-top: 2px solid #f1f5f9; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; }
         .page-num { background: #0f172a; color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 50%; }
+
+        /* --- التنسيق الجديد الخاص بالصفحة الرابعة (البرمجة) --- */
+        .code-window { 
+            background: #1a1a1a; color: #d4d4d4; padding: 25px; border-radius: 8px; 
+            font-family: 'Consolas', monospace; font-size: 9pt; line-height: 1.5; 
+            border-left: 6px solid #0891b2; margin-bottom: 20px; text-align: left; direction: ltr;
+        }
+        .kw { color: #569cd6; } .fn { color: #dcdcaa; } .str { color: #ce9178; } .cmt { color: #6a9955; font-style: italic; }
+        .tech-description-box { 
+            font-size: 10.5pt; line-height: 1.7; text-align: justify; color: #444; 
+            background: #f9f9f9; padding: 20px; border: 1px solid #eee; border-radius: 5px; margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -137,5 +149,40 @@
         <div class="footer"><div style="font-weight: 900;">TECHNICAL ANALYSIS PHASE</div><div class="page-num">3</div></div>
     </div>
 
+    <div class="page-container">
+        <span class="section-tag">Section 03</span>
+        <h2 class="content-title">Firmware Logic</h2>
+        <div class="accent-bar"></div>
+
+        <div class="tech-description-box">
+            The firmware is developed using <b>C++</b> on the Arduino framework. It focuses on creating a <b>Beacon Frame Injection</b> system to emulate multiple IoT traffic nodes. The code utilizes the ESP32's promiscuous mode to monitor and inject packets without disrupting the main network layer.
+        </div>
+
+        <div class="code-window">
+            <span class="cmt">// Advanced IoT Traffic Emulation Firmware v1.0</span><br>
+            <span class="kw">#include</span> &lt;WiFi.h&gt;<br>
+            <span class="kw">#include</span> &lt;esp_wifi.h&gt;<br><br>
+            
+            <span class="kw">void</span> <span class="fn">setup</span>() {<br>
+            &nbsp;&nbsp;Serial.<span class="fn">begin</span>(115200);<br>
+            &nbsp;&nbsp;WiFi.<span class="fn">mode</span>(WIFI_AP);<br>
+            &nbsp;&nbsp;WiFi.<span class="fn">softAP</span>(<span class="str">"Al-Mamoon_Cyber_Lab"</span>, <span class="str">"CyberSecurity2026"</span>);<br>
+            }<br><br>
+
+            <span class="kw">void</span> <span class="fn">loop</span>() {<br>
+            &nbsp;&nbsp;<span class="fn">simulateSensorData</span>();<br>
+            &nbsp;&nbsp;<span class="fn">delay</span>(10);<br>
+            }
+        </div>
+
+        <div class="tech-description-box">
+            <b>Key Implementation Details:</b><br>
+            1. <b>Concurrency:</b> The system handles background tasks while updating the OLED display.<br>
+            2. <b>Security:</b> Emulated traffic is encrypted using WPA2 protocols for resilience testing.
+        </div>
+
+        <div class="footer"><div style="font-weight: 900;">EMBEDDED SYSTEMS SECURITY</div><div class="page-num">4</div></div>
+    </div>
+
 </body>
-                                </html>
+</html>
