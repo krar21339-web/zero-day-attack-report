@@ -2,216 +2,149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Final Cover Page - Al-Mamoon College</title>
+    <title>Cover Page - Page 1</title>
     <style>
-        /* إعدادات الصفحة الأساسية - A4 */
-        @page { 
-            size: A4; 
-            margin: 0; 
-        }
+        /* إعدادات الطباعة A4 */
+        @page { size: A4; margin: 0; }
+        body { margin: 0; padding: 0; background: #ffffff; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-print-color-adjust: exact; }
         
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background-color: #f5f5f5; /* للمعاينة فقط */
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
-        }
-
-        /* حاوية الورقة الكبيرة */
-        .a4-sheet {
+        .page-container {
             width: 210mm;
             height: 297mm;
-            background: white;
-            margin: 20px auto;
-            padding: 25mm; /* هوامش أمان واسعة */
+            padding: 22mm;
             box-sizing: border-box;
+            background: #ffffff;
             display: flex;
             flex-direction: column;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            position: relative; /* ضروري لثبات الفوتر */
         }
 
-        /* 1. قسم الهيدر (أعلى الورقة) */
-        .top-header {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 3px solid #000000;
-            padding-bottom: 15px;
-            margin-bottom: 40mm; /* مساحة ضخمة تحت الهيدر */
-        }
-        .uni-text { font-weight: 900; font-size: 12pt; line-height: 1.5; }
-        .report-type { text-align: right; font-weight: 900; font-size: 11pt; color: #333; }
-
-        /* 2. قسم العنوان (منتصف الورقة) */
-        .main-title-container {
-            text-align: center;
-            margin-bottom: 50mm; /* مساحة ضخمة تحت العنوان */
-        }
-        .title-primary { 
-            font-size: 38pt; 
-            font-weight: 900; 
-            margin: 0; 
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .title-secondary { 
-            font-size: 18pt; 
-            color: #22d3ee; 
-            font-weight: bold; 
-            margin-top: 15px; 
-            letter-spacing: 5px; 
+        /* 1. الهيدر العلوي */
+        .header-top { 
+            display: flex; 
+            justify-content: space-between; 
+            border-bottom: 2px solid #000; 
+            padding-bottom: 10px; 
+            margin-bottom: 35mm; /* مساحة واسعة تحت الهيدر */
         }
 
-        /* 3. قسم معلومات الإشراف والكلية */
-        .info-section {
+        /* 2. منطقة العنوان */
+        .main-title-box { 
+            text-align: center; 
+            margin-bottom: 40mm; /* مساحة واسعة ليتوسط العنوان الورقة */
+        }
+        .project-title { font-size: 34pt; font-weight: 900; margin: 0; text-transform: uppercase; line-height: 1.1; }
+        .sub-title { font-size: 14pt; color: #22d3ee; font-weight: bold; margin-top: 10px; letter-spacing: 2px; }
+        
+        /* 3. شبكة التفاصيل (المشرف والقسم) */
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .detail-item { border-left: 4px solid #000; padding-left: 15px; margin-bottom: 15px; }
+        .label { font-size: 9pt; color: #22d3ee; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 2px; }
+        .value { font-size: 12pt; font-weight: bold; }
+        .value-ar { font-size: 12pt; font-weight: bold; font-family: 'Arial'; display: block; margin-top: 2px; }
+
+        /* 4. بوكس الأسماء المنظم */
+        .names-container {
+            grid-column: span 2;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 15px;
+            background: #fcfcfc;
+            border: 1px solid #eee;
+            padding: 15px;
+            margin-top: 10px;
         }
-        .info-block {
-            border-left: 6px solid #000000;
-            padding-left: 20px;
-        }
-        .tag { font-size: 10pt; color: #22d3ee; font-weight: 800; text-transform: uppercase; }
-        .data { font-size: 14pt; font-weight: 900; display: block; margin-top: 5px; }
-        .data-ar { font-family: 'Arial'; font-size: 14pt; font-weight: bold; display: block; margin-top: 5px; }
+        .name-box { border-bottom: 1px solid #eee; padding-bottom: 5px; }
 
-        /* 4. جدول الأسماء (منع التداخل) */
-        .students-box {
-            margin-top: 20px;
-            width: 100%;
+        /* 5. الفوتر الثابت في الأسفل */
+        .footer { 
+            position: absolute; 
+            bottom: 20mm; /* مسافة أمان من حافة الورقة السفلى */
+            left: 22mm; 
+            right: 22mm; 
+            border-top: 1px solid #f0f0f0; 
+            padding-top: 10px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
         }
-        .names-table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid #000;
-        }
-        .names-table th { 
-            background: #f0f0f0; 
-            padding: 15px; 
-            text-align: left; 
-            border-bottom: 3px solid #22d3ee;
-            font-size: 10pt;
-        }
-        .names-table td { 
-            padding: 12px 15px; 
-            border-bottom: 1px solid #ddd; 
-            width: 50%;
-        }
-        .st-eng { font-weight: bold; font-size: 11pt; }
-        .st-ar { font-family: 'Arial'; font-size: 12pt; font-weight: bold; text-align: right; display: block; }
-
-        /* 5. الفوتر (أسفل الورقة تماماً) */
-        .bottom-footer {
-            position: absolute;
-            bottom: 25mm;
-            left: 25mm;
-            right: 25mm;
-            border-top: 2px solid #eee;
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .lab-name { font-weight: 900; font-size: 11pt; letter-spacing: 1px; }
-        .page-badge { 
+        .page-num { 
             background: #000; 
             color: #fff; 
-            width: 35px; 
-            height: 35px; 
+            width: 32px; 
+            height: 32px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            font-weight: 900;
-            border-radius: 4px;
+            font-weight: bold; 
         }
     </style>
 </head>
 <body>
 
-    <div class="a4-sheet">
-        
-        <div class="top-header">
-            <div class="uni-text">
-                AL-MAMOON UNIVERSITY COLLEGE<br>
-                CYBERSECURITY ENGINEERING DEPARTMENT
+    <div class="page-container">
+        <div class="header-top">
+            <div style="font-weight: bold; font-size: 11pt;">AL-MAMOON UNIVERSITY COLLEGE<br>CYBERSECURITY ENGINEERING</div>
+            <div style="text-align: right; font-size: 10pt; color: #666; font-weight: bold;">TECHNICAL REPORT<br>BAGHDAD, 2026</div>
+        </div>
+
+        <div class="main-title-box">
+            <h1 class="project-title">Emulate IoT Traffic</h1>
+            <div class="sub-title">Using Esp32 And Raspberry Pi</div>
+        </div>
+
+        <div class="details-grid">
+            <div class="detail-item" style="grid-column: span 2;">
+                <span class="label">Supervised By / بإشراف:</span>
+                <span class="value" style="font-size: 18pt;">Dr. Wisam</span>
             </div>
-            <div class="report-type">
-                TECHNICAL PROJECT REPORT<br>
-                ACADEMIC YEAR 2025 - 2026
+            <div class="detail-item">
+                <span class="label">Department / القسم:</span>
+                <span class="value">Cybersecurity Engineering</span>
+                <span class="value-ar">هندسة الأمن السيبراني</span>
+            </div>
+            <div class="detail-item">
+                <span class="label">Stage / المرحلة:</span>
+                <span class="value">Second Stage</span>
+                <span class="value-ar">المرحلة الثانية</span>
+            </div>
+
+            <div class="names-container">
+                <div style="grid-column: span 2; border-bottom: 2px solid #22d3ee; padding-bottom: 5px; margin-bottom: 5px;">
+                    <span class="label" style="color: #000;">Prepared By / إعداد الطلبة:</span>
+                </div>
+                <div class="name-box">
+                    <span class="value">Karrar Mohammed (Sec C)</span>
+                    <span class="value-ar">كرار محمد داود</span>
+                </div>
+                <div class="name-box">
+                    <span class="value">Fahad Ahmed (Sec B)</span>
+                    <span class="value-ar">فهد احمد علي</span>
+                </div>
+                <div class="name-box">
+                    <span class="value">Ali Majid (Sec B)</span>
+                    <span class="value-ar">علي ماجد حسين</span>
+                </div>
+                <div class="name-box">
+                    <span class="value">Ali Zuhair (Sec B)</span>
+                    <span class="value-ar">علي زهير قمر</span>
+                </div>
+                <div class="name-box">
+                    <span class="value">Saad Ahmed (Sec B)</span>
+                    <span class="value-ar">سعد احمد فاضل</span>
+                </div>
+                <div class="name-box">
+                    <span class="value">Abdel Majeed (Sec B)</span>
+                    <span class="value-ar">عبد المجيد مجول</span>
+                </div>
             </div>
         </div>
 
-        <div class="main-title-container">
-            <h1 class="title-primary">Emulate IoT Traffic</h1>
-            <div class="title-secondary">ESP32 & RASPBERRY PI</div>
+        <div class="footer">
+            <div style="font-size: 9pt; font-weight: bold;">CYBER-PHYSICAL SYSTEMS RESEARCH</div>
+            <div class="page-num">1</div>
         </div>
-
-        <div class="info-section">
-            <div class="info-block" style="grid-column: span 2; margin-bottom: 25px;">
-                <span class="tag">Supervised By / بإشراف الدكتور</span>
-                <span class="data" style="font-size: 22pt;">Dr. Wisam</span>
-            </div>
-
-            <div class="info-block">
-                <span class="tag">Department / القسم</span>
-                <span class="data">Cybersecurity Engineering</span>
-                <span class="data-ar">هندسة الأمن السيبراني</span>
-            </div>
-
-            <div class="info-block">
-                <span class="tag">Stage / المرحلة</span>
-                <span class="data">Second Stage</span>
-                <span class="data-ar">المرحلة الثانية</span>
-            </div>
-        </div>
-
-        <div class="students-box">
-            <span class="tag" style="color: #000; display: block; margin-bottom: 10px;">Prepared By / إعداد الطلبة:</span>
-            <table class="names-table">
-                <thead>
-                    <tr>
-                        <th>Student Name (English)</th>
-                        <th style="text-align: right;">اسم الطالب (عربي)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="st-eng">Karrar Mohammed Dawood</span></td>
-                        <td><span class="st-ar">كرار محمد داود</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="st-eng">Fahad Ahmed Ali</span></td>
-                        <td><span class="st-ar">فهد احمد علي</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="st-eng">Ali Majid Hussein</span></td>
-                        <td><span class="st-ar">علي ماجد حسين</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="st-eng">Ali Zuhair Qamar</span></td>
-                        <td><span class="st-ar">علي زهير قمر</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="st-eng">Saad Ahmed Fadel</span></td>
-                        <td><span class="st-ar">سعد احمد فاضل</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="st-eng">Abdel Majeed Majwal</span></td>
-                        <td><span class="st-ar">عبد المجيد مجول</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="bottom-footer">
-            <div class="lab-name">CYBER-PHYSICAL SYSTEMS RESEARCH LAB</div>
-            <div class="page-badge">1</div>
-        </div>
-
     </div>
 
 </body>
-                </html>
-    
+</html>
