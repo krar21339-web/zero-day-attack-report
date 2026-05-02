@@ -1,4 +1,165 @@
-    <div style="page-break-before: always;"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced IoT Report - Karrar Mohammed</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        body { 
+            margin: 0; padding: 40px 0; background: #0f172a; 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            display: flex; flex-direction: column; align-items: center;    
+        }
+        .page-container {
+            width: 210mm; height: 297mm; padding: 22mm; box-sizing: border-box;
+            background: #ffffff; position: relative; display: flex; flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); margin-bottom: 50px; page-break-after: always;
+        }
+
+        /* التصميم العلوي */
+        .header-top { display: flex; justify-content: space-between; border-bottom: 3px solid #000; padding-bottom: 10px; margin-bottom: 30mm; }
+        .main-title-box { text-align: center; margin-bottom: 30mm; }
+        .project-title { font-size: 38pt; font-weight: 900; margin: 0; text-transform: uppercase; line-height: 1; color: #0f172a; }
+        .sub-title { font-size: 16pt; color: #0891b2; font-weight: bold; margin-top: 15px; letter-spacing: 3px; }
+
+        /* شبكة البيانات */
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .detail-item { border-left: 5px solid #0891b2; padding-left: 15px; margin-bottom: 15px; }
+        .label { font-size: 10pt; color: #0891b2; font-weight: 800; text-transform: uppercase; display: block; }
+        .value { font-size: 13pt; font-weight: bold; color: #1e293b; }
+        .value-ar { font-size: 13pt; font-weight: bold; font-family: 'Arial'; display: block; margin-top: 2px; text-align: right; }
+
+        /* قائمة الأسماء */
+        .names-container { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; }
+        .name-box { border-bottom: 1px solid #cbd5e1; padding-bottom: 5px; }
+
+        /* تنسيقات المحتوى */
+        .section-tag { font-size: 12pt; font-weight: 800; color: #0891b2; text-transform: uppercase; letter-spacing: 5px; }
+        .content-title { font-size: 34pt; font-weight: 900; margin: 5px 0; color: #0f172a; }
+        .accent-bar { width: 100px; height: 8px; background: #0f172a; margin-bottom: 30px; }
+        .main-text { line-height: 1.8; font-size: 12.5pt; text-align: justify; color: #334155; background: #f8fafc; padding: 30px; border-right: 8px solid #0891b2; border-radius: 4px; margin-bottom: 30px; }
+
+        /* بطاقات التقنية */
+        .tech-card { display: flex; gap: 25px; background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 25px; align-items: center; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .tech-img { width: 180px; height: 130px; object-fit: cover; border-radius: 8px; border: 2px solid #0891b2; }
+        .tech-info { flex: 1; font-size: 10.5pt; line-height: 1.6; color: #475569; }
+        .tech-info b { color: #0f172a; font-size: 11pt; display: block; margin-bottom: 5px; border-bottom: 1px solid #0891b2; width: fit-content; }
+
+        /* الجدول */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
+        th { background: #0f172a; color: #ffffff; padding: 12px; text-align: left; font-size: 10pt; }
+        td { padding: 10px; border-bottom: 1px solid #e2e8f0; font-size: 10pt; font-weight: 500; }
+
+        /* الفوتر */
+        .footer { position: absolute; bottom: 15mm; left: 22mm; right: 22mm; border-top: 2px solid #f1f5f9; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .page-num { background: #0f172a; color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 50%; }
+
+        /* البرمجة */
+        .code-window { 
+            background: #1a1a1a; color: #d4d4d4; padding: 25px; border-radius: 8px; 
+            font-family: 'Consolas', monospace; font-size: 9pt; line-height: 1.5; 
+            border-left: 6px solid #0891b2; margin-bottom: 20px; text-align: left; direction: ltr;
+        }
+        .kw { color: #569cd6; } .fn { color: #dcdcaa; } .str { color: #ce9178; } .cmt { color: #6a9955; font-style: italic; }
+        .tech-description-box { 
+            font-size: 10.5pt; line-height: 1.7; text-align: justify; color: #444; 
+            background: #f9f9f9; padding: 20px; border: 1px solid #eee; border-radius: 5px; margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <div class="header-top">
+            <div style="font-weight: 900; font-size: 13pt;">AL-MAMOON UNIVERSITY COLLEGE<br><span style="color: #0891b2;">CYBERSECURITY ENGINEERING</span></div>
+            <div style="text-align: right; font-size: 11pt; font-weight: bold;">TECHNICAL REPORT<br>BAGHDAD, 2026</div>
+        </div>
+        <div class="main-title-box">
+            <h1 class="project-title">Emulate IoT Traffic</h1>
+            <div class="sub-title">Advanced Network Security Simulation</div>
+        </div>
+        <div class="details-grid">
+            <div class="detail-item" style="grid-column: span 2;"><span class="label">Supervised By / بإشراف</span><span class="value" style="font-size: 22pt;">Dr. Wisam</span></div>
+            <div class="detail-item"><span class="label">Department / القسم</span><span class="value">Cybersecurity Engineering</span><span class="value-ar">هندسة الأمن السيبراني</span></div>
+            <div class="detail-item"><span class="label">Stage / المرحلة</span><span class="value">Second Stage</span><span class="value-ar">المرحلة الثانية</span></div>
+            <div class="names-container">
+                <div style="grid-column: span 2; border-bottom: 2px solid #0891b2; padding-bottom: 5px;"><span class="label" style="color: #0f172a;">Prepared By / إعداد الطلبة</span></div>
+                <div class="name-box"><span class="value">Karrar Mohammed Dawood</span><span class="value-ar">كرار محمد داود</span></div>
+                <div class="name-box"><span class="value">Fahad Ahmed Ali</span><span class="value-ar">فهد احمد علي</span></div>
+                <div class="name-box"><span class="value">Ali Majid Hussain</span><span class="value-ar">علي ماجد حسين</span></div>
+                <div class="name-box"><span class="value">Ali Zuhair Qamar</span><span class="value-ar">علي زهير قمر</span></div>
+                <div class="name-box"><span class="value">Saad Ahmed Fadhel</span><span class="value-ar">سعد احمد فاضل</span></div>
+                <div class="name-box"><span class="value">Abdel Majeed Majwal</span><span class="value-ar">عبد المجيد مجول</span></div>
+            </div>
+        </div>
+        <div class="footer"><div style="font-weight: 900;">CYBER-PHYSICAL SYSTEMS LAB</div><div class="page-num">1</div></div>
+    </div>
+
+    <div class="page-container">
+        <span class="section-tag">Section 01</span>
+        <h2 class="content-title">Introduction</h2>
+        <div class="accent-bar"></div>
+        <p class="main-text">
+            This technical report discusses the <b>Emulation of IoT Traffic</b>, a vital process in cybersecurity engineering. By utilizing the <b>ESP32 microcontroller</b>, we simulate real-world data streams to analyze how networks handle high volumes of traffic. This study is crucial for building resilient <b>Cyber-Physical Systems (CPS)</b>.
+            <br><br>
+            إن عملية محاكاة حركة بيانات إنترنت الأشياء تتيح للمهندسين كشف نقاط الضعف في الشبكات قبل استغلالها من قبل المهاجمين، مما يجعل هذا المشروع حجر زاوية في فهم الهجمات المتقدمة.
+        </p>
+        <div style="margin-top: auto; background: #0f172a; color: white; padding: 40px; border-radius: 8px; text-align: center;">
+            <h3 style="margin: 0; font-size: 22pt; letter-spacing: 5px;">SECURITY SIMULATION</h3>
+            <p style="margin: 10px 0 0 0; opacity: 0.6; font-size: 11pt;">HARDWARE-BASED TRAFFIC INJECTION PHASE</p>
+        </div>
+        <div class="footer"><div style="font-weight: 900;">AL-MAMOON UNIVERSITY COLLEGE</div><div class="page-num">2</div></div>
+    </div>
+
+    <div class="page-container">
+        <span class="section-tag">Section 02</span>
+        <h2 class="content-title">Technical Specs</h2>
+        <div class="accent-bar"></div>
+        <div class="tech-card">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400" class="tech-img">
+            <div class="tech-info">
+                <b>1. The ESP32 Microcontroller:</b>
+                Acts as the main computational engine for traffic emulation, enabling synthetic data packets that mimic IoT sensors.
+            </div>
+        </div>
+        <div class="tech-card">
+            <div class="tech-info">
+                <b>2. SSD1306 OLED Display:</b>
+                Provides real-time visual telemetry and live network statistics via the I2C protocol.
+            </div>
+            <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=400" class="tech-img">
+        </div>
+        <table>
+            <thead><tr><th>Component Pin</th><th>ESP32 GPIO</th><th>Protocol Function</th></tr></thead>
+            <tbody>
+                <tr><td>VCC (Power)</td><td>3.3V Pin</td><td>Main Logic Voltage</td></tr>
+                <tr><td>GND (Ground)</td><td>GND Pin</td><td>Common Ground Reference</td></tr>
+                <tr><td>SCL (Clock)</td><td>GPIO 22</td><td>I2C Synchronous Clock Signal</td></tr>
+                <tr><td>SDA (Data)</td><td>GPIO 21</td><td>I2C Serial Data Bus Line</td></tr>
+            </tbody>
+        </table>
+        <div class="footer"><div style="font-weight: 900;">TECHNICAL ANALYSIS PHASE</div><div class="page-num">3</div></div>
+    </div>
+
+    <div class="page-container">
+        <span class="section-tag">Section 03</span>
+        <h2 class="content-title">Firmware Logic</h2>
+        <div class="accent-bar"></div>
+        <div class="tech-description-box">
+            The firmware focuses on creating a <b>Beacon Frame Injection</b> system to emulate multiple IoT nodes.
+        </div>
+        <div class="code-window">
+            <span class="kw">#include</span> &lt;WiFi.h&gt;<br>
+            <span class="kw">void</span> <span class="fn">setup</span>() {<br>
+            &nbsp;&nbsp;WiFi.<span class="fn">softAP</span>(<span class="str">"Al-Mamoon_Cyber_Lab"</span>);<br>
+            }<br>
+            <span class="kw">void</span> <span class="fn">loop</span>() {<br>
+            &nbsp;&nbsp;<span class="fn">simulateSensorData</span>();<br>
+            }
+        </div>
+        <div class="footer"><div style="font-weight: 900;">EMBEDDED SYSTEMS SECURITY</div><div class="page-num">4</div></div>
+    </div>
+
     <div class="page-container">
         <span class="section-tag">Section 04</span>
         <h2 class="content-title">Threat Analysis</h2>
@@ -11,7 +172,7 @@
         <div class="tech-card" style="border-right: 8px solid #ef4444; margin-bottom: 20px;">
             <div class="tech-info">
                 <b>1. Denial of Service (DoS) Risks:</b>
-                By emulating high-velocity traffic, we test if the network can handle mass packet injection. Without mitigation, this leads to <b>Kernel Panics</b> and device resets.
+                By emulating high-velocity traffic, we test if the network can handle mass packet injection. Failure to mitigate leads to <b>Kernel Panics</b> and device resets.
             </div>
         </div>
 
@@ -35,17 +196,12 @@
             </table>
         </div>
 
-        <div style="margin-top: auto; background: #0f172a; color: white; padding: 25px; border-radius: 8px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
-                <div style="width: 10px; height: 10px; background: #0891b2; border-radius: 50%;"></div>
-                <b style="color: #0891b2;">Security Mitigation:</b>
-            </div>
-            <p style="margin: 0; font-size: 10pt; opacity: 0.8;">Implement Flash Encryption and Secure Boot V2 to protect the firmware integrity.</p>
-        </div>
-
         <div class="footer">
             <div style="font-weight: 900;">VULNERABILITY ANALYSIS DIVISION</div>
             <div class="page-num">5</div>
         </div>
     </div>
-    
+
+</body>
+                </html>
+                    
