@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>واجهة مشروع التخرج - رقم 47</title>
+    <title>Graduation Project Cover - Cybersecurity Engineering</title>
     <style>
-        /* إعدادات الصفحة للطباعة A4 */
+        /* A4 Setup for Print */
         @page {
             size: A4;
             margin: 0;
@@ -13,56 +13,84 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            font-family: 'Arial', sans-serif;
+            background-color: #020617; /* Dark Cyber Background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             -webkit-print-color-adjust: exact;
         }
 
-        /* حاوية الصفحة القياسية A4 */
         .page-a4 {
             width: 210mm;
             height: 297mm;
             padding: 20mm;
             margin: 10mm auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #020617;
             box-sizing: border-box;
-            border: 2px solid #000;
+            border: 5px solid #1e293b;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            color: #ffffff;
+            overflow: hidden;
         }
 
-        /* عند الطباعة، قم بإزالة الهوامش والظل */
+        /* Cyber Decorations (Modern Lines) */
+        .page-a4::before {
+            content: "";
+            position: absolute;
+            top: 0; right: 0;
+            width: 150px; height: 150px;
+            border-top: 4px solid #22d3ee;
+            border-right: 4px solid #22d3ee;
+        }
+
+        .page-a4::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 150px; height: 150px;
+            border-bottom: 4px solid #22d3ee;
+            border-left: 4px solid #22d3ee;
+        }
+
         @media print {
-            body { background: none; }
-            .page-a4 {
-                margin: 0;
-                box-shadow: none;
-                border: 2px solid #000;
-            }
+            body { background: #020617 !important; }
+            .page-a4 { margin: 0; border: none; }
         }
 
-        .header {
+        /* College Headers */
+        .college-header {
             text-align: center;
-            border-bottom: 2px solid #000;
+            border-bottom: 1px solid #1e293b;
             padding-bottom: 10mm;
         }
 
-        .header h1 {
-            font-size: 26pt;
-            margin: 0;
-            color: #000;
+        .ar-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 22pt;
+            font-weight: bold;
+            display: block;
+            color: #22d3ee;
+            margin-bottom: 5px;
+            direction: rtl;
         }
 
-        .header h2 {
-            font-size: 18pt;
-            margin: 5mm 0 0 0;
-            font-weight: normal;
+        .en-text {
+            font-size: 16pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #94a3b8;
         }
 
-        .content {
+        .dept-name {
+            margin-top: 10px;
+            font-size: 14pt;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Main Body */
+        .project-content {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -70,119 +98,110 @@
             text-align: center;
         }
 
-        .topic-number {
-            font-size: 16pt;
-            font-weight: bold;
-            margin-bottom: 10mm;
+        .label-text {
+            color: #22d3ee;
+            font-size: 12pt;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
         }
 
         .project-title {
-            font-size: 30pt;
-            font-weight: bold;
+            font-size: 34pt;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ffffff;
             margin-bottom: 15mm;
-            line-height: 1.3;
-            direction: ltr; /* لضمان ظهور النص الإنجليزي بشكل صحيح */
+            text-transform: uppercase;
         }
 
-        .supervisor {
+        .supervisor-section {
+            font-size: 16pt;
+            color: #94a3b8;
+        }
+
+        .supervisor-name {
+            color: #22d3ee;
+            font-weight: bold;
             font-size: 18pt;
-            margin-top: 10mm;
         }
 
+        /* Students Grid */
         .students-section {
             width: 100%;
-            margin-top: 20mm;
+            margin-top: 15mm;
         }
 
         .students-title {
-            font-size: 16pt;
-            font-weight: bold;
-            text-align: right;
-            margin-bottom: 10mm;
-            border-right: 5px solid #000;
-            padding-right: 10px;
+            font-size: 14pt;
+            color: #22d3ee;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8mm;
+            text-align: left;
+            border-left: 4px solid #22d3ee;
+            padding-left: 10px;
         }
 
         .students-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10mm;
+            gap: 8mm;
         }
 
         .student-item {
-            text-align: right;
+            text-align: left;
+            padding: 10px;
+            background: rgba(30, 41, 59, 0.5);
+            border-left: 2px solid #1e293b;
         }
 
-        .student-name-ar {
-            font-size: 14pt;
-            font-weight: bold;
-            display: block;
-        }
-
-        .student-name-en {
-            font-size: 11pt;
-            color: #555;
-            display: block;
-            direction: ltr;
+        .st-en {
+            font-size: 13pt;
+            font-weight: 600;
+            color: #ffffff;
         }
 
         .footer {
             text-align: center;
-            border-top: 1px solid #ccc;
+            font-size: 11pt;
+            color: #475569;
+            border-top: 1px solid #1e293b;
             padding-top: 5mm;
-            font-size: 12pt;
         }
     </style>
 </head>
 <body>
 
     <div class="page-a4">
-        <div class="header">
-            <h1>كلية المأمون الجامعة</h1>
-            <h2>قسم هندسة تقنيات الحاسوب</h2>
+        <div class="college-header">
+            <span class="ar-text">كلية المأمون الجامعة</span>
+            <span class="en-text">Al-Ma'moon University College</span>
+            <div class="dept-name">Cybersecurity Engineering Department</div>
         </div>
 
-        <div class="content">
-            <div class="topic-number">الموضوع المختار : رقم 47</div>
-            <div class="project-title">Emulate IoT Traffic Using<br>ESP32 And Raspberry Pi</div>
+        <div class="project-content">
+            <div class="label-text">GRADUATION PROJECT</div>
+            <h1 class="project-title">Emulate IoT Traffic Using<br>ESP32 And Raspberry Pi</h1>
             
-            <div class="supervisor">
-                إشراف الأستاذ: <strong>دكتور وسام</strong>
+            <div class="supervisor-section">
+                Supervised by: <span class="supervisor-name">Dr. Wisam</span>
             </div>
         </div>
 
         <div class="students-section">
-            <div class="students-title">إعداد الطلبة:</div>
+            <div class="students-title">Prepared by:</div>
             <div class="students-grid">
-                <div class="student-item">
-                    <span class="student-name-ar">1. كرار محمد داود</span>
-                    <span class="student-name-en">Karrar Mohammed Dawood</span>
-                </div>
-                <div class="student-item">
-                    <span class="student-name-ar">2. علي ماجد حسين</span>
-                    <span class="student-name-en">Ali Majid Hussein</span>
-                </div>
-                <div class="student-item">
-                    <span class="student-name-ar">3. سعد احمد فاضل</span>
-                    <span class="student-name-en">Saad Ahmed Fadhil</span>
-                </div>
-                <div class="student-item">
-                    <span class="student-name-ar">4. فهد احمد علي</span>
-                    <span class="student-name-en">Fahad Ahmed Ali</span>
-                </div>
-                <div class="student-item">
-                    <span class="student-name-ar">5. علي زهير قمر</span>
-                    <span class="student-name-en">Ali Zuhair Qamar</span>
-                </div>
-                <div class="student-item">
-                    <span class="student-name-ar">6. عبد المجيد مجول</span>
-                    <span class="student-name-en">Abdulmajeed Majool</span>
-                </div>
+                <div class="student-item"><span class="st-en">Karrar Mohammed Dawood</span></div>
+                <div class="student-item"><span class="st-en">Ali Majid Hussein</span></div>
+                <div class="student-item"><span class="st-en">Saad Ahmed Fadhil</span></div>
+                <div class="student-item"><span class="st-en">Fahad Ahmed Ali</span></div>
+                <div class="student-item"><span class="st-en">Ali Zuhair Qamar</span></div>
+                <div class="student-item"><span class="st-en">Abdulmajeed Majool</span></div>
             </div>
         </div>
 
         <div class="footer">
-            العام الدراسي: 2025 - 2026
+            Academic Year: 2025 - 2026
         </div>
     </div>
 
