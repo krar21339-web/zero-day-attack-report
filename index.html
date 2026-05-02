@@ -1,227 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Honeypot | Graduation Report 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    
+    <title>واجهة مشروع التخرج - رقم 47</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --accent: #06b6d4;
-            --dark-bg: #020617;
-            --surface: #0f172a;
+        /* إعدادات الصفحة للطباعة A4 */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            -webkit-print-color-adjust: exact;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { background: #ffffff; color: #1e293b; font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.8; overflow-x: hidden; }
-
-        /* Cinematic Header */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e1b4b 100%);
-            color: white;
+        /* حاوية الصفحة القياسية A4 */
+        .page-a4 {
+            width: 210mm;
+            height: 297mm;
+            padding: 20mm;
+            margin: 10mm auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            border: 2px solid #000;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px;
+            justify-content: space-between;
             position: relative;
         }
 
-        .hero h1 {
-            font-family: 'Space Grotesk';
-            font-size: clamp(3rem, 10vw, 6rem);
-            line-height: 1;
-            margin-bottom: 25px;
-            background: linear-gradient(to bottom, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* عند الطباعة، قم بإزالة الهوامش والظل */
+        @media print {
+            body { background: none; }
+            .page-a4 {
+                margin: 0;
+                box-shadow: none;
+                border: 2px solid #000;
+            }
         }
 
-        /* Moving Team Ribbon */
-        .ribbon {
-            background: var(--primary);
-            color: white;
-            padding: 20px 0;
-            overflow: hidden;
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10mm;
+        }
+
+        .header h1 {
+            font-size: 26pt;
+            margin: 0;
+            color: #000;
+        }
+
+        .header h2 {
+            font-size: 18pt;
+            margin: 5mm 0 0 0;
+            font-weight: normal;
+        }
+
+        .content {
+            flex-grow: 1;
             display: flex;
-            border-bottom: 4px solid var(--accent);
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
         }
 
-        .ribbon-track {
-            display: flex;
-            white-space: nowrap;
-            animation: scroll 40s linear infinite;
-        }
-
-        .ribbon-track span { margin: 0 50px; font-family: 'JetBrains Mono'; font-weight: 700; letter-spacing: 2px; }
-
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-        /* Main Content Layout */
-        .container { max-width: 1250px; margin: 0 auto; padding: 100px 30px; }
-        .section { margin-bottom: 180px; }
-        
-        .tag {
-            font-family: 'JetBrains Mono';
-            color: var(--primary);
+        .topic-number {
+            font-size: 16pt;
             font-weight: bold;
-            text-transform: uppercase;
+            margin-bottom: 10mm;
+        }
+
+        .project-title {
+            font-size: 30pt;
+            font-weight: bold;
+            margin-bottom: 15mm;
+            line-height: 1.3;
+            direction: ltr; /* لضمان ظهور النص الإنجليزي بشكل صحيح */
+        }
+
+        .supervisor {
+            font-size: 18pt;
+            margin-top: 10mm;
+        }
+
+        .students-section {
+            width: 100%;
+            margin-top: 20mm;
+        }
+
+        .students-title {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 10mm;
+            border-right: 5px solid #000;
+            padding-right: 10px;
+        }
+
+        .students-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10mm;
+        }
+
+        .student-item {
+            text-align: right;
+        }
+
+        .student-name-ar {
+            font-size: 14pt;
+            font-weight: bold;
             display: block;
-            margin-bottom: 15px;
-            letter-spacing: 5px;
         }
 
-        h2 { font-family: 'Space Grotesk'; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 40px; border-left: 15px solid var(--primary); padding-left: 30px; }
-
-        .dual-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
-
-        /* Photo Display System */
-        .img-frame {
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.15);
-            background: #f1f5f9;
-            transition: 0.5s;
-            border: 1px solid #e2e8f0;
-        }
-
-        .img-frame:hover { transform: translateY(-10px); }
-        .img-frame img { width: 100%; height: auto; display: block; }
-
-        /* Technical Code Display */
-        .code-window {
-            background: var(--surface);
-            border-radius: 30px;
-            padding: 40px;
-            margin: 50px 0;
-            color: #cbd5e1;
-            font-family: 'JetBrains Mono', monospace;
+        .student-name-en {
+            font-size: 11pt;
+            color: #555;
+            display: block;
             direction: ltr;
-            text-align: left;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
         }
 
-        .kw { color: #f472b6; } .fn { color: #38bdf8; }
-
-        footer { background: var(--dark-bg); color: white; padding: 120px 40px; text-align: center; }
-
-        @media (max-width: 1000px) { .dual-grid { grid-template-columns: 1fr; } }
+        .footer {
+            text-align: center;
+            border-top: 1px solid #ccc;
+            padding-top: 5mm;
+            font-size: 12pt;
+        }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <span style="font-family:'JetBrains Mono'; color:var(--accent);">[ CYBER-SECURITY GRADUATION PROJECT ]</span>
-        <h1>INTELLIGENT<br>HONEYPOT</h1>
-        <p>Strategic Active Deception & Metadata Harvesting using ESP32 Hardware Architecture.</p>
-        <div style="margin-top:50px; border:1px solid var(--accent); padding:12px 30px; border-radius:50px;">Supervised by: Dr. Wisam</div>
-    </header>
+    <div class="page-a4">
+        <div class="header">
+            <h1>كلية المأمون الجامعة</h1>
+            <h2>قسم هندسة تقنيات الحاسوب</h2>
+        </div>
 
-    <div class="ribbon">
-        <div class="ribbon-track">
-            <span>Karrar Mohammed</span> <span>Ali Majid Hussien</span> <span>Saad Ahmed Fadhil</span> 
-            <span>Fahad Ahmed Ali</span> <span>Ali Zuhair Qamar</span> <span>Abdulmajeed Majool</span>
-            <span>Karrar Mohammed</span> <span>Ali Majid Hussien</span> <span>Saad Ahmed Fadhil</span> 
-            <span>Fahad Ahmed Ali</span> <span>Ali Zuhair Qamar</span> <span>Abdulmajeed Majool</span>
+        <div class="content">
+            <div class="topic-number">الموضوع المختار : رقم 47</div>
+            <div class="project-title">Emulate IoT Traffic Using<br>ESP32 And Raspberry Pi</div>
+            
+            <div class="supervisor">
+                إشراف الأستاذ: <strong>دكتور وسام</strong>
+            </div>
+        </div>
+
+        <div class="students-section">
+            <div class="students-title">إعداد الطلبة:</div>
+            <div class="students-grid">
+                <div class="student-item">
+                    <span class="student-name-ar">1. كرار محمد داود</span>
+                    <span class="student-name-en">Karrar Mohammed Dawood</span>
+                </div>
+                <div class="student-item">
+                    <span class="student-name-ar">2. علي ماجد حسين</span>
+                    <span class="student-name-en">Ali Majid Hussein</span>
+                </div>
+                <div class="student-item">
+                    <span class="student-name-ar">3. سعد احمد فاضل</span>
+                    <span class="student-name-en">Saad Ahmed Fadhil</span>
+                </div>
+                <div class="student-item">
+                    <span class="student-name-ar">4. فهد احمد علي</span>
+                    <span class="student-name-en">Fahad Ahmed Ali</span>
+                </div>
+                <div class="student-item">
+                    <span class="student-name-ar">5. علي زهير قمر</span>
+                    <span class="student-name-en">Ali Zuhair Qamar</span>
+                </div>
+                <div class="student-item">
+                    <span class="student-name-ar">6. عبد المجيد مجول</span>
+                    <span class="student-name-en">Abdulmajeed Majool</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            العام الدراسي: 2025 - 2026
         </div>
     </div>
 
-    <main class="container">
-
-        <section class="section">
-            <span class="tag">01 // Hardware Infrastructure</span>
-            <h2>Electronic Synthesis<br>& Circuit Logic</h2>
-            <div class="dual-grid">
-                <div class="text">
-                    <p>The core of our project utilizes the <strong>ESP32 Microcontroller</strong> for its dual-core multitasking capabilities. Core 0 handles the Wi-Fi decoy beaconing, while Core 1 executes forensic data logging.</p>
-                </div>
-                <div class="img-frame">
-                    <img src="1000066879.png" alt="Hardware Circuit Blueprint">
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <span class="tag">02 // Technical Foundation</span>
-            <h2>10 Essential Concepts<br>of ESP32 Forensics</h2>
-            <div class="dual-grid" style="direction: ltr;">
-                <div class="text" style="direction: rtl; text-align: left;">
-                    <p>To ensure system stability, we implemented 10 key architectural concepts. This infographic details the internal logic of the chip during an intrusion event.</p>
-                </div>
-                <div class="img-frame">
-                    <img src="1000066882.jpg" alt="ESP32 Forensic Concepts">
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <span class="tag">03 // Source Code Execution</span>
-            <h2>Intrusion Detection<br>Loop Logic</h2>
-            <div class="code-window">
-                <pre>
-<span class="kw">void</span> <span class="fn">loop</span>() {
-  <span class="kw">dnsServer</span>.<span class="fn">processNextRequest</span>();
-  <span class="kw">if</span> (<span class="fn">detectIntruder</span>()) {
-    <span class="fn">captureMACAddress</span>();
-    <span class="fn">pushToLiveDashboard</span>();
-  }
-}
-                </pre>
-            </div>
-            <div class="dual-grid">
-                <div class="img-frame">
-                    <img src="1000066883.jpg" alt="Physical Circuit Integration">
-                </div>
-                <div class="text">
-                    <p>The physical integration (shown left) demonstrates the compact nature of the defense node, allowing for easy deployment in any networking environment.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <span class="tag">04 // Forensic Analysis</span>
-            <h2>Real-time Debugging<br>& Console Output</h2>
-            <div class="dual-grid">
-                <div class="text">
-                    <p>Our custom dashboard captures every <strong>Packet Ingress</strong>. As shown in the console logs, we can extract critical metadata from attackers instantly.</p>
-                </div>
-                <div class="img-frame">
-                    <img src="1000066884.jpg" alt="Forensic Console Logs">
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <span class="tag">05 // Physical Deployment</span>
-            <h2>Final Network<br>Verification</h2>
-            <div class="img-frame" style="margin-top: 40px;">
-                <img src="1000066887.jpg" alt="Final Infrastructure Deployment">
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <h2>COMPUTER ENGINEERING DEPT.</h2>
-        <p>Al-Ma'moon University College | Graduation 2026</p>
-        <p style="margin-top:40px; opacity:0.4; font-family:'JetBrains Mono'; font-size:0.8rem;">// FINAL_BUILD_STABLE_V1.0</p>
-    </footer>
-
-    <script>
-        // لضمان ظهور الصور، سنقوم بتنبيه المتصفح في حال فقدان المسار
-        window.onload = function() {
-            document.querySelectorAll('img').forEach(img => {
-                img.onerror = function() {
-                    console.error("Image not found locally: " + this.src);
-                    this.parentElement.style.padding = "20px";
-                    this.parentElement.innerHTML = "<div style='color:#64748b; font-weight:bold;'>[ IMAGE_NODE_OFFLINE ]<br><small>Please ensure " + this.alt + " is in the same folder.</small></div>";
-                };
-            });
-        };
-    </script>
 </body>
 </html>
