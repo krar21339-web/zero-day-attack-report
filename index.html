@@ -244,48 +244,48 @@
 
 </body>
 </html>
-    <div class="page" style="page-break-before: always; min-height: 297mm; padding: 20mm; background: #020617; color: #ffffff; box-sizing: border-box; border-left: 4px solid #22d3ee; position: relative;">
+    <div style="page-break-after: always;"></div>
+
+    <div class="page" style="min-height: 297mm; padding: 20mm; background: #ffffff; color: #000000; box-sizing: border-box; border-left: 8px solid #020617; position: relative; font-family: 'Times New Roman', Times, serif;">
         
-        <div style="border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 30px;">
-            <h1 style="font-size: 28pt; font-weight: 800; color: #22d3ee; text-transform: uppercase; letter-spacing: 2px; margin: 0;">
-                Introduction
+        <div style="border-bottom: 2px solid #020617; padding-bottom: 10px; margin-bottom: 20px;">
+            <h1 style="font-size: 24pt; font-weight: bold; color: #020617; text-transform: uppercase; margin: 0;">
+                Chapter 1: Introduction
             </h1>
         </div>
 
-        <div style="line-height: 1.8; font-size: 12.5pt; color: #cbd5e1; text-align: justify;">
+        <div style="line-height: 1.6; font-size: 12pt; text-align: justify; color: #000000;">
             <p>
-                In the contemporary field of <span style="color: #22d3ee; font-weight: bold;">Cybersecurity Engineering</span>, the security of interconnected devices has become a paramount concern. This project, <span style="color: #22d3ee; font-weight: bold;">"Emulate IoT Traffic Using ESP32 And Raspberry Pi"</span>, provides a strategic framework for simulating complex network environments. By utilizing the dual-core processing power of the <span style="color: #22d3ee; font-weight: bold;">ESP32</span>, we synthesize realistic traffic signatures that allow for the stress-testing of defense protocols.
+                The rapid integration of the Internet of Things (IoT) into industrial and domestic environments has revolutionized how data is collected and processed. However, this massive connectivity introduces critical vulnerabilities in network security. This project, titled <b>"Emulate IoT Traffic Using ESP32 And Raspberry Pi"</b>, addresses these challenges by creating a controlled emulation environment. The primary goal is to synthesize realistic network traffic signatures that allow cybersecurity engineers to analyze patterns and strengthen defense mechanisms against potential cyber-attacks.
             </p>
 
             <p>
-                The core implementation features an <span style="color: #22d3ee; font-weight: bold;">OLED Diagnostic Interface</span>, which serves as a localized monitoring hub for real-time telemetry. This hardware edge-node transmits emulated data packets to a <span style="color: #22d3ee; font-weight: bold;">Raspberry Pi</span> gateway, functioning as the central analytical engine for traffic forensics and anomaly detection.
+                At the hardware level, the <b>ESP32</b> microcontroller acts as the core emulation node due to its powerful dual-core processor and integrated wireless capabilities. It is programmed to simulate various IoT device behaviors, from simple periodic sensors to complex data-streaming units. This flexibility is essential for generating the diverse traffic entropy required for high-fidelity security testing.
             </p>
 
-            <div style="width: 100%; background: #0f172a; border: 1px dashed #22d3ee; margin: 30px 0; padding: 20px; text-align: center;">
-                <img src="https://www.espressif.com/sites/default/files/esp32_wroom_32_front.png" alt="ESP32 Module" style="max-height: 180px;">
-                <span style="display: block; margin-top: 10px; font-size: 10pt; color: #94a3b8; font-style: italic;">
-                    Figure 1.1: Hardware infrastructure featuring ESP32 and OLED telemetry system.
-                </span>
+            <div style="margin: 25px 0; text-align: center; border: 1px solid #e2e8f0; padding: 15px; background: #f8fafc;">
+                <img src="https://www.espressif.com/sites/default/files/esp32_wroom_32_front.png" alt="ESP32 Module" style="max-height: 180px; margin-bottom: 10px;">
+                <div style="font-size: 10pt; color: #475569; font-style: italic; border-top: 1px solid #cbd5e1; pt: 8px;">
+                    <b>Figure 1.1:</b> The ESP32 Hardware Node integrated with high-performance Wi-Fi stack for traffic synthesis and local diagnostic monitoring.
+                </div>
             </div>
 
             <p>
-                Through this methodology, we evaluate the efficiency of various communication standards against potential cyber disruptions. This emulation infrastructure is essential for developing resilient <span style="color: #22d3ee; font-weight: bold;">Intrusion Detection Systems (IDS)</span> tailored for the evolving IoT ecosystem.
+                To provide immediate local visibility, an <b>OLED Display</b> is utilized. This interface is crucial for real-time diagnostics, displaying vital system metrics such as IP allocation, packet transmission rates, and connection stability. By offloading these logs to a physical screen, the system maintains its autonomy as an edge device, reducing the reliance on external serial debugging tools during active emulation phases.
+            </p>
+
+            <p>
+                The data flow is orchestrated towards a <b>Raspberry Pi</b> gateway. This central hub is responsible for aggregating the emulated traffic and performing deep packet inspection (DPI). By combining the low-power efficiency of the ESP32 with the analytical performance of the Raspberry Pi, this project establishes a scalable blueprint for building more resilient IoT infrastructures. The synergy between these components allows us to measure end-to-end latency and evaluate encryption overheads, ensuring that cybersecurity measures do not compromise network performance.
+            </p>
+
+            <p>
+                Ultimately, this work contributes to the development of next-generation <b>Intrusion Detection Systems (IDS)</b>. By providing a hardware-in-the-loop (HIL) testing bed, security researchers can validate defense algorithms in a safe, repeatable environment, which is vital for protecting the critical infrastructure of the future.
             </p>
         </div>
 
-        <div style="position: absolute; bottom: 15mm; width: calc(100% - 40mm); border-top: 1px solid #1e293b; padding-top: 10px; font-size: 10pt; color: #475569; display: flex; justify-content: space-between;">
-            <span>Cybersecurity Engineering Department</span>
-            <span>Page 02</span>
+        <div style="position: absolute; bottom: 15mm; width: calc(100% - 40mm); border-top: 1px solid #000; padding-top: 10px; font-size: 10pt; display: flex; justify-content: space-between;">
+            <span style="font-weight: bold;">Cybersecurity Engineering Department</span>
+            <span>Page | 01</span>
         </div>
     </div>
-    ```
-
-### ماذا تفعل الآن؟
-1. في صورتك، اذهب إلى السطر **244** (قبل `</body>`).
-2. قم بلصق الكود أعلاه بالكامل.
-3. الأمر `page-break-before: always;` الموجود في أول سطر من الكود هو الذي سيخبر المتصفح أن "هنا تنتهي الواجهة وتبدأ صفحة جديدة".
-
-**ملاحظة تقنية:** تأكد أن الكود في ملفك الأصلي (في قسم الـ `<style>`) يحتوي على هذه الخاصية لضمان ظهور الألوان عند السحب كـ PDF:
-`-webkit-print-color-adjust: exact;`
-
-هل تحتاج مساعدة في "تركيب" الكود أو البدء بصفحة المكونات (Hardware Components)؟
+    
